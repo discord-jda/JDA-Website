@@ -1,0 +1,68 @@
+site_name: JDA Wiki
+copyright: Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß
+
+theme:
+  favicon: https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/readme/logo.png
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - toc.integrate
+  name: material
+  logo: assets/logo-transparent.svg
+  icon:
+    repo: fontawesome/brands/github
+  palette:
+  - media: "(prefers-color-scheme: light)"
+    scheme: default
+    primary: purple
+    toggle:
+      icon: material/weather-night
+      name: Switch to dark mode
+  - media: "(prefers-color-scheme: dark)"
+    scheme: slate
+    primary: purple
+    toggle:
+      icon: material/weather-sunny
+      name: Switch to light mode
+
+repo_name: JDA
+repo_url: https://github.com/DV8FromTheWorld/JDA
+
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - toc:
+      permalink: true
+
+nav:
+  - Getting Started:
+    - Home: index.md
+    - Using Events: introduction/events.md
+    - List of Events: introduction/events-list.md
+    - FAQ: introduction/faq.md
+    - Migration V3 -> V4: introduction/migration-v3-v4.md
+  - Setup:
+    - IntelliJ IDEA Setup: setup/intellij.md
+    - Eclipse Setup: setup/eclipse.md
+    - Netbeans Setup: setup/netbeans.md
+    - Logging (SLF4J): setup/logging.md
+  - Using JDA:
+    - Getting Started: using-jda/getting-started.md
+    - Making a Music Bot: using-jda/making-a-music-bot.md
+    - Using RestAction: using-jda/using-restaction.md
+    - Interactions: using-jda/interactions.md
+    - Paginating Entities: using-jda/paginating-entities.md
+    - Gateway Intents and Member Cache Policy: using-jda/gateway-intents-and-member-cache-policy.md
+    - Webhooks: https://github.com/MinnDevelopment/discord-webhooks
+    - Managers and Moderation: using-jda/separation-of-concerns.md
+    - Troubleshooting: using-jda/troubleshooting.md
+  - Contributing:
+    - Contributing: contributing/contributing.md
+    - Structure Guide: contributing/structure-guide.md
+    - Repository Structure: contributing/repository-structure.md
+  - Javadocs: https://ci.dv8tion.net/job/JDA5/javadoc/
