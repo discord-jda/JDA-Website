@@ -27,6 +27,7 @@ theme:
 
 repo_name: JDA
 repo_url: https://github.com/DV8FromTheWorld/JDA
+edit_uri: ../JDA-Website/edit/master/docs/
 extra:
   social:
     - icon: fontawesome/brands/github
