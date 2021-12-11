@@ -243,7 +243,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
     === "Gradle"
 
         1. Exclude OPUS natives if you don't need encoding/decoding of audio (With LavaPlayer you don't need these natives)
-            ```gradle
+            ```groovy
             implementation("net.dv8tion:JDA:$VERSION") {
                 exclude module: "opus-java"
             }
@@ -251,7 +251,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
             For kotlin-dsl use `exclude(module="opus-java")`
 
         2. Minimize your Jar with the Shadow Plugin
-            ```gradle
+            ```groovy
             shadowJar { minimize() }
             ```
 

@@ -48,7 +48,7 @@
 5. Let intellij index your project.
 6. Open `build.gradle`
 7. Populate the build file with the following
-    ```gradle
+    ```groovy
     plugins {
         id'application'
         id'com.github.johnrengelman.shadow' version '5.2.0'

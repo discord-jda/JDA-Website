@@ -37,7 +37,7 @@ To start developing with Eclipse, follow one of the guides below:
 
 8. Replace its content with the following code:
 
-    ```gradle
+    ```groovy
     plugins {
         id("java")
         id("application")

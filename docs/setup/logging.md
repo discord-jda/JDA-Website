@@ -10,7 +10,7 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
 ### Gradle
 
-```gradle
+```groovy
 dependencies {
     implementation("ch.qos.logback:logback-classic:1.2.3")
 }
