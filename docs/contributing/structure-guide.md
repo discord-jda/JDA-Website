@@ -7,6 +7,10 @@ use in JDA to ensure consistency and readability.
 
 In JDA we use a specific brackets placement that is common for C# development.
 We put each `{` curly bracket on its own respective line:
+
+!!! note inline end
+    This rule goes for every curly bracket (open `{`/close `}`) and every scope usage such as try/catch/finally, loops, methods, lambda expressions, class scopes...
+
 ```java
 public void someMethod()
 {
@@ -17,7 +21,8 @@ public void someMethod()
     }
 }
 ```
-> Note: This rule goes for every curly bracket (open `{`/close `}`) and every scope usage such as try/catch/finally, loops, methods, lambda expressions, class scopes...
+
+
 
 ### Indentation
 
@@ -34,12 +39,13 @@ Access Modifiers are the keywords such as `public`, `protected` and `private`. T
 accessing these fields, methods or classes from locations throughout the library.
 
 When trying to order your fields, methods or nested classes we recommend using this logical order:
+
 1. Public Members
 2. Protected Members
 3. Private Members
 4. Package Private Members (no access modifier)
 
-In addition it is recommended to always put `static` fields and methods (not [[nested classes|6)-JDA-Structure-Guide#nested-classes]]) first in your class.
+In addition it is recommended to always put `static` fields and methods (not [nested classes](#nested-classes)) first in your class.
 <br>Fields marked with the `final` keyword should come first and should be separated from other fields.
 <br>For better structure it is suggested to group fields by their declared types.
 
@@ -47,6 +53,7 @@ In addition it is recommended to always put `static` fields and methods (not [[n
 
 Methods are always defined after fields and the constructor of your class.
 There are 3 types of methods listed in logical order of appearance:
+
 1. Overriding or Implementing which make use of the `@Override` tag
 2. Internal (impl) setters which can be found in the impl classes of JDA.
 3. Object Overrides such as `toString`, `equals` and `hashCode`
@@ -73,17 +80,24 @@ We put JavaDoc on the following targets:
 JDA has a specific JavaDoc structure that is unique to our repository.
 We use a style in which we encapsulate each important part of the doc in a "block" for itself.
 <br>Each `<br>` tag is placed in-front of the new line: 
+
+!!! note inline end
+    `<br>` tags are not to be closed
+
 ```java
 /**
  * This is my first line
  * <br>And this is my second line
  */
 ```
-> Note: `<br>` tags are not to be closed
 
 A new paragraph starts with `<p>` (not `<br><br>`!).
 The `<p>` tag is supposed to be placed either between the previous and following paragraph or like the `<br>` tag directly
 in-front of the first line of that following paragraph:
+
+!!! note inline end 
+    Do not close a paragraph tag! It is unnecessary and redundant.
+
 ```java
 /**
  * Either do this
@@ -93,7 +107,6 @@ in-front of the first line of that following paragraph:
  * You can decide.
  */
 ```
-> Note: Do not close a paragraph tag! It is unnecessary and redundant.
 
 ### Escaping
 
@@ -110,14 +123,17 @@ If you however want to also have nested links or other JavaDoc tags in your code
  * <p>Or even do <code>channel.sendMessage("hey").{@link net.dv8tion.jda.core.requests.RestAction#submit submit()}</code>!!
  */
 ```
-> Note: If you are using a tag like this, you **have** to close it!
+!!! note
+    If you are using a tag like this, you **have** to close it!
 
 ### Linking
 
 If the class is not already imported, use the fully qualified name when you are linking to something through JavaDoc!
 <br>Bad: `{@link RestAction}`
 <br>Good: `{@link net.dv8tion.jda.core.requests.RestAction RestAction}`
-> Note: We also highly recommend setting an alias name as you can see in the 2nd example snippet.
+
+!!! note
+    We also highly recommend setting an alias name as you can see in the 2nd example snippet.
 
 When you link to an external resource (such as the official api docs) you can use the `<a>` tag to create
 a hyperlink.
@@ -147,8 +163,9 @@ you have to document possible `ErrorResponses` that can follow from this request
  * </ul>
  */
 ```
-> Note: Always make these your last description paragraph
-> <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/core/entities/MessageChannel.java#L169-L179)
+!!! note
+    Always make these your last description paragraph
+    <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/core/entities/MessageChannel.java#L169-L179)
 
 The `@return` for simple RestActions is as follows:
 ```java
@@ -217,4 +234,5 @@ The `@return` for simple RestActions is as follows:
      *         it should start the block in the next line with the correct indentation.
      */
 ```
-> Note: We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name
+!!! note
+     We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name

@@ -52,11 +52,47 @@ Based on the current `upstream/development` (or `upstream/docs/development`) cha
 
 1. Adding a new Method or Class
     - If your addition is not internal (e.g. an impl class or private method) you have to write documentation.
-        - For that please follow the [[JavaDoc template|6)-JDA-Structure-Guide#javadoc]]
-    - Keep your code consistent! [[example|5)-contributing#examples]]
-        - Follow the guides provided at [[6) JDA Structure Guide|6)-JDA-Structure-Guide]]
+        - For that please follow the [JavaDoc template](structure-guide.md#javadoc)
+    - Keep your code consistent!
+        - Follow the [Structure Guide](structure-guide.md)
         - Compare your code style to the one used all over JDA and ensure you
           do not break the consistency (if you find issues in the JDA style you can include and update it)
+
+    !!! Example
+        === ":octicons-x-circle-16: Bad Addition"
+
+            ```diff
+            +    public void reset() {
+            +        name.reset();
+            +        avatar.reset();
+            +
+            +        if (isType(AccountType.CLIENT)) {
+            +            email.reset();
+            +            password.reset();
+            +        }
+            +    }
+            ```
+
+        === ":octicons-check-circle-fill-16: Good Addition"
+
+            ```diff
+            +    /*
+            +     * Resets all {@link net.dv8tion.jda.core.managers.fields.AccountField Fields}
+            +     * for this manager instance by calling
+            +     * {@link net.dv8tion.jda.core.managers.fields.Field#reset() Field.reset()} sequentially
+            +     */
+            +    public void reset() 
+            +    {
+            +        name.reset();
+            +        avatar.reset();
+            +
+            +        if (isType(AccountType.CLIENT)) 
+            +        {
+            +            email.reset();
+            +            password.reset();
+            +        }
+            +    }
+            ```
 
 2. Making a Commit
     - While having multiple commits can help the reader understand your changes, it might sometimes be
@@ -104,39 +140,3 @@ Based on the current `upstream/development` (or `upstream/docs/development`) cha
 6. Done! Just click **Create pull request** and await a review by one of the maintainers!
 
 ![Example Pull-Request](https://i.imgur.com/ELZJSn2.png)
-
-### Examples
-
-***
-**Bad Addition**
-```diff
-+    public void reset() {
-+        name.reset();
-+        avatar.reset();
-+
-+        if (isType(AccountType.CLIENT)) {
-+            email.reset();
-+            password.reset();
-+        }
-+    }
-```
-
-**Good Addition**
-```diff
-+    /*
-+     * Resets all {@link net.dv8tion.jda.core.managers.fields.AccountField Fields}
-+     * for this manager instance by calling
-+     * {@link net.dv8tion.jda.core.managers.fields.Field#reset() Field.reset()} sequentially
-+     */
-+    public void reset() 
-+    {
-+        name.reset();
-+        avatar.reset();
-+
-+        if (isType(AccountType.CLIENT)) 
-+        {
-+            email.reset();
-+            password.reset();
-+        }
-+    }
-```
