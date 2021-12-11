@@ -65,7 +65,7 @@ build pages of the [Downloads](https://ci.dv8tion.net/job/JDA/).<br>
 The web format allows for viewing of the [Latest Docs](https://ci.dv8tion.net/job/JDA/javadoc/)
 and also viewing of each individual build's javadoc. To view the javadoc for a specific build, you will need to go to that build's page
 on [the build server](https://ci.dv8tion.net/job/JDA/) and download the javadoc jar for the specific build.<br>
-A shortcut would be: https://ci.dv8tion.net/job/JDA/BUILD_NUMBER_GOES_HERE, you just need to replace the 
+A shortcut would be: `https://ci.dv8tion.net/job/JDA/BUILD_NUMBER_GOES_HERE`, you just need to replace the 
 "BUILD_NUMBER_GOES_HERE" with the build you want.<br>
 Once you have the jar extract the files with the zip tool of your preference (winrar or 7zip, etc.) and open the `index.html` file with your internet browser.
 
