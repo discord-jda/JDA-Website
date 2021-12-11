@@ -52,8 +52,9 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 nav:
+  - Home: index.md
   - Getting Started:
-    - Home: index.md
+    - JDA: introduction/jda.md
     - Using Events: introduction/events.md
     - List of Events: introduction/events-list.md
     - FAQ: introduction/faq.md
