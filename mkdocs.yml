@@ -2,7 +2,7 @@ site_name: JDA Wiki
 copyright: Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß
 
 theme:
-  favicon: https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/readme/logo.png
+  favicon: assets/logo-round.png
   features:
     - navigation.instant
     - navigation.tabs
