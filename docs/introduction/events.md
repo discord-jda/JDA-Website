@@ -1,4 +1,4 @@
-# Events
+# Using Events
 
 ## Registering your Listener
 

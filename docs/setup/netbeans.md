@@ -38,7 +38,7 @@ To start developing with Netbeans, follow one of the guides below:
     ```
 >Note: These can go anywhere within the `<project></project>` tags.
 
-5. [[Setup Logback|Logging-Setup]]
+5. [Setup Logback](logging.md)
 
 6. **Start developing!**
 
@@ -60,5 +60,5 @@ To start developing with Netbeans, follow one of the guides below:
 6. **Select `Browse...` and add the javadoc jar**
     
     ![Browse](http://i.imgur.com/bm51esA.png)
-7. [[Setup Logback|Logging-Setup]]
+7. [Setup Logback](logging.md)
 8. **Start developing!**

@@ -1,25 +1,6 @@
 # List of Events
 
- - [Core Events](#core-events)
-   - [JDA Events](#jda-events)
-   - [Self Events](#self-events)
-   - [User Events](#user-events)
-   - [Message Events](#message-events)
-      - [Private Message Events](#private-message-events)
-   - [Guild Events](#guild-events)
-   - [Channel Events](#channel-events)
-     - [TextChannel Events](#text-channel-events)
-     - [VoiceChannel Events](#voice-channel-events)
-     - [Category Events](#category-events)
-     - [StoreChannel Events](#store-channel-events)
-     - [PrivateChannel Events](#private-channel-events)
-   - [Role Events](#role-events)
-   - [Emote Events](#emote-events)
-
 All events mentioned in this list are a sub-type of [GenericEvent](https://github.com/DV8FromTheWorld/JDA/tree/master/src/main/java/net/dv8tion/jda/api/events/GenericEvent.java)
-
-Core Events
-=============
 
 ## JDA Events
 
@@ -177,7 +158,7 @@ GenericGuildEvent
 
 ## Channel Events
 
-#### Text Channel Events
+### Text Channel Events
 
 <pre>
 GenericTextChannelEvent
@@ -192,7 +173,7 @@ GenericTextChannelEvent
     └── TextChannelUpdateTopicEvent
 </pre>
 
-#### Voice Channel Events
+### Voice Channel Events
 
 <pre>
 GenericVoiceChannelEvent
@@ -206,7 +187,7 @@ GenericVoiceChannelEvent
     └── VoiceChannelUpdateUserLimitEvent
 </pre>
 
-#### Category Events
+### Category Events
 
 <pre>
 GenericCategoryEvent
@@ -217,7 +198,7 @@ GenericCategoryEvent
     └── CategoryUpdatePositionEvent
 </pre>
 
-#### Store Channel Events
+### Store Channel Events
 
 <pre>
 GenericStoreChannelEvent
@@ -228,7 +209,7 @@ GenericStoreChannelEvent
     └── StoreChannelUpdateNameEvent
 </pre>
 
-#### Private Channel Events
+### Private Channel Events
 
 Note: We don't use a generic event here because there are only 2 events.
 
