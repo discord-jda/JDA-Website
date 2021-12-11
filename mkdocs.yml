@@ -27,6 +27,12 @@ theme:
 
 repo_name: JDA
 repo_url: https://github.com/DV8FromTheWorld/JDA
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/DV8FromTheWorld/JDA
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/jda
 
 
 markdown_extensions:
@@ -34,6 +40,7 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
+  - footnotes
   - pymdownx.tasklist:
       custom_checkbox: true
   - toc:
