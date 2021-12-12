@@ -2,7 +2,7 @@
 
 ## Creating a Discord Bot
 
-1. Go to https://discord.com/developers/applications/
+1. Go to <https://discord.com/developers/applications>
 2. Create an Application
 3. Give the application an awesome name (this will be used as the bots initial username)
     
@@ -19,7 +19,7 @@
 
     ![public bot](https://i.imgur.com/la0JbJi.png)
 
-> You only want require code grant enabled if you plan to use an oauth2 flow, the general user will not need this.
+    You only want require code grant enabled if you plan to use an oauth2 flow, the general user will not need this.
 
 ## Add your Discord Bot to a Server
 
@@ -30,7 +30,8 @@
 2. Create an OAuth2 authorization URL (reference [docs](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow))
     **Example**: `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot`
 
-> Note: This can be done from the **Bot** tab at the very bottom. Here you can select the scope **bot** and some permissions required for your bots functionality (optional).
+    !!! note 
+        This can be done from the **Bot** tab at the very bottom. Here you can select the scope **bot** and some permissions required for your bots functionality (optional).
 
 3. Open the authorization dialogue (click link from step 2)
 4. Select your Server (Requires permission to manage server)
@@ -44,9 +45,13 @@
     
     ![get token](https://i.imgur.com/sSIDHu8.png)
     
-> Note that it is very important not to show this token to anyone, ever.
+    !!! caution
+        Note that it is very important not to show this token to anyone, ever.
 
-2. **[[Setup JDA Project|2)-Setup]]**
+2. Set up your JDA project: 
+    - [IntelliJ IDEA](../setup/intellij.md)
+    - [Eclipse](../setup/eclipse.md)
+    - [Netbeans](../setup/netbeans.md)
     
     [ ![Download](https://shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fm2.dv8tion.net%2Freleases%2Fnet%2Fdv8tion%2FJDA%2Fmaven-metadata.xml&color=informational&label=Download&style=for-the-badge) ](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
 
@@ -62,7 +67,7 @@
 
 ## Making a Ping-Pong Protocol
 
-1. Setup your JDA instance (see [[Connecting To Discord|3)-Getting-Started#Connecting-to-Discord-with-a-Bot-Account]])
+1. Setup your JDA instance (see [Connecting To Discord](#connecting-to-discord-with-a-bot-account))
 2. Implement an `EventListener` or extend `ListenerAdapter`
 
     ```java
@@ -85,5 +90,8 @@
         }
     }
     ```
-> More information about [[RestAction|7)-Using-RestAction]]
-3. Register your listener with either `JDABuilder.addEventListeners(new MyListener())` or `JDA.addEventListeners(new MyListener())` [ct. [[1) Events|1)-Events]]]
+    !!! info
+        More information about [RestAction](using-restaction.md)
+
+
+3. Register your listener with either `JDABuilder.addEventListeners(new MyListener())` or `JDA.addEventListeners(new MyListener())` (see [Events](../introduction/events.md))

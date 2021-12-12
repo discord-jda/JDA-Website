@@ -20,14 +20,17 @@ client.dispatcher().executorService().shutdown();
 
 An error like `java.lang.NoClassDefFoundError: net/dv8tion/jda/api/JDABuilder` or similar means you are not including your dependencies or transitive dependencies in the archive.
 
-1. Gradle (build.gradle)
-    <br>With gradle this can be fixed by using the [shadow plugin](https://github.com/johnrengelman/shadow) and building your jar with `shadowJar` instead. The jar will then be present in the `build/libs` directory with a name like `example-1.0-all.jar`
+=== "Gradle (build.gradle)"
+    
+    With gradle this can be fixed by using the [shadow plugin](https://github.com/johnrengelman/shadow) and building your jar with `shadowJar` instead. The jar will then be present in the `build/libs` directory with a name like `example-1.0-all.jar`
 
-2. Maven (pom.xml)
-    <br>With maven you need the [shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/) in your pom to add dependencies to your package task. You can see the shade plugin being applied in this [example pom.xml](https://gist.github.com/MinnDevelopment/5d8c5965043bbe5315d47b690cd7a4d9)
+=== "Maven (pom.xml)"
+    
+    With maven you need the [shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/) in your pom to add dependencies to your package task. You can see the shade plugin being applied in this [example pom.xml](https://gist.github.com/MinnDevelopment/5d8c5965043bbe5315d47b690cd7a4d9)
 
-3. Jar
-    <br>You need to use the `-withDependencies.jar` rather than the normal one.
+=== "Jar"
+    
+    You need to use the `-withDependencies.jar` rather than the normal one.
 
 
 ## Discord Issues and API Limitations
@@ -59,8 +62,8 @@ A valid token looks like this:
 ```
 NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 ```
-
-**NEVER SHARE YOUR TOKEN WITH ANYONE. DO NOT COMMIT IT AND PUSH IT TO GITHUB. DO NOT SHOW IT TO ANYONE UNDER ANY CIRCUMSTANCES.**
+!!! caution
+    **NEVER SHARE YOUR TOKEN WITH ANYONE. DO NOT COMMIT IT AND PUSH IT TO GITHUB. DO NOT SHOW IT TO ANYONE UNDER ANY CIRCUMSTANCES.**
 
 ### Can't get emoji from message
 
@@ -78,26 +81,26 @@ An example use-case including a code sample can be found in my answer to a relat
 
 When JDA encounters an issue while executing a `RestAction` it will emit an error through the **failure callback**. You can handle this by adding a second callback to `queue()`, for example: `message.delete().queue(v -> System.out.println("success"), ContextException.herePrintingTrace​());`.
 
-Example:
+!!! example
 
-```java
-public void deleteMessage(Message message) {
-    message.delete().queue(null, (exception) -> {
-        message.getChannel().sendMessage("There was an error " + exception).queue();
-    });
-}
-```
+    ```java
+    public void deleteMessage(Message message) {
+        message.delete().queue(null, (exception) -> {
+            message.getChannel().sendMessage("There was an error " + exception).queue();
+        });
+    }
+    ```
 
 You can use [ErrorHandler](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/exceptions/ErrorHandler.html) to handle or ignore specific [ErrorResponse](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/ErrorResponse.html) failures.
 
 ### Nothing happens when using X
 
-In JDA we make use of async rate-limit handling through the use of the common [[RestAction|7)-Using-RestAction]] class.
+In JDA we make use of async rate-limit handling through the use of the common [RestAction](using-restaction.md) class.
 <br>When you have code such as `channel.sendMessage("hello");` or `message.delete();` nothing actually happens.
 This is because both `sendMessage(...)` as well as `delete()` return a `RestAction` instance. You are not done here since that class is only an intermediate step to executing your request. Here you can decide to use async `queue()` (recommended) or `submit()` or the blocking `complete()` (not recommended).
 
 You might notice that `queue()` returns `void`. This is because it's **async** and uses callbacks instead.
-[[Read More|7)-Using-RestAction]]
+[Read More](using-restaction.md)
 
 If you *do* have a `queue()` then maybe your code doesn't even run? Try putting a `System.out.println("debug")` right before and after your code and see if it prints. If not, then read this [My event listener code is not executed](#my-event-listener-code-is-not-executed).
 
@@ -114,10 +117,10 @@ There are many reasons why your event listener might not be executed but here ar
 1. You never registered your listener? 
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
 1. You did not override the correct method?
-    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [[Read More|1)-Events]].
+    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
-1. You are missing a required [`GatewayIntent`](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy) for this event.
+1. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
     <br>Make sure that you `enableIntents(...)` on the `JDABuilder` to allow the events to be received.
 1. The event has other requirements that might not be satisfied such as the cache not being enabled.
     <br>Please check the requirements on the event documentation.
@@ -227,7 +230,7 @@ Things that contribute to the WebSocket RateLimit include:
 
 It is also possible that you get spammed by this warning if you use `ChunkingFilter.ALL` (this is done when using `create(token, intents)`). If your bot is in more than 120 guilds then this warning is unavoidable when using member chunking. It is recommended to use `setChunkingFilter(ChunkingFilter.NONE)` to reduce the startup time and get rid of this warning. If chunking on startup is absolutely necessary, you have to accept this warning.
 
-There are many ways to retrieve members: [Loading Members](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy#loading-members)
+There are many ways to retrieve members: [Loading Members](gateway-intents-and-member-cache-policy.md#loading-members)
 
 I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
 
@@ -264,9 +267,9 @@ Instead store IDs of the entities, or for messages simply the parts you need suc
 The default behavior in `createDefault` is to only cache members connected to voice channels.
 If you need members to be cached, for example to lookup users by roles, then you have to enable this explicitly.
 
-I explained this in [this wiki page](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy) and [this stackoverflow answer](https://stackoverflow.com/a/61229594/10630900).
+I explained this in [this wiki page](gateway-intents-and-member-cache-policy.md) and [this stackoverflow answer](https://stackoverflow.com/a/61229594/10630900).
 
-There are many ways you can retrieve members dynamically: [Loading Members](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy#loading-members)
+There are many ways you can retrieve members dynamically: [Loading Members](gateway-intents-and-member-cache-policy.md#loading-members)
 
 
 

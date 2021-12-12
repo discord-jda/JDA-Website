@@ -43,7 +43,7 @@ You can create commands through these methods in JDA:
 - `updateCommands()`
 - `upsertCommand(name, description)`
 
-To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands <- here
+To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands> <- here
 
 Once a command is created, it will continue persisting even when your bot restarts. Commands stay until the bot is either kicked or your bot explicitly deletes the command. **You don't need to create your commands every time your bot starts!**
 
@@ -54,46 +54,46 @@ The flow of a slash command response is as follows:
 
 1. Acknowledge the command
 
-This means you need to either **reply** or **deferReply**. You only have ***3 SECONDS*** to acknowledge a command.
-Since some commands may take longer than 3 seconds you may want to use `deferReply` to have more time for handling. This will instead send a `Thinking...` message to channel which is later updated by a followup message (see step 2).
+    This means you need to either **reply** or **deferReply**. You only have ***3 SECONDS*** to acknowledge a command.
+    Since some commands may take longer than 3 seconds you may want to use `deferReply` to have more time for handling. This will instead send a `Thinking...` message to channel which is later updated by a followup message (see step 2).
 
-![Example Thinking](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/DeferredReply.gif)
+    ![Example Thinking](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/DeferredReply.gif)
 
 2. Send followup messages
 
-Sometimes commands need more than one response. However, you can only send one initial reply to a command. To send additional messages for the same slash command you need to use the `InteractionHook` attached to the event with `getHook()`. This is a **webhook** that allows you to send additional messages for up to 15 minutes after the initial command.
+    Sometimes commands need more than one response. However, you can only send one initial reply to a command. To send additional messages for the same slash command you need to use the `InteractionHook` attached to the event with `getHook()`. This is a **webhook** that allows you to send additional messages for up to 15 minutes after the initial command.
 
 When you use `deferReply` the first message sent to this webhook will act identically to using `editOriginal(...)`. The message you send is also referred to as *deferred reply* in this case. Your deferred reply will **edit** your initial `Thinking...` message instead of sending an additional message to channel. This means you cannot use `setEphemeral` on this deferred reply since you already decided whether the message will be ephemeral through your initial acknowledgment.
 
-**Example Reply**
+!!! example "Example Reply"
 
-```java
-public class SayCommand extends ListenerAdapter {
-  @Override
-  public void onSlashCommand(SlashCommandEvent event) {
-    if (event.getName().equals("say")) {
-      event.reply(event.getOption("content").getAsString()).queue(); // reply immediately
+    ```java
+    public class SayCommand extends ListenerAdapter {
+      @Override
+      public void onSlashCommand(SlashCommandEvent event) {
+        if (event.getName().equals("say")) {
+          event.reply(event.getOption("content").getAsString()).queue(); // reply immediately
+        }
+      }
     }
-  }
-}
-```
+    ```
 
-**Example Deferred Reply**
+!!! example "Example Deferred Reply"
 
-```java
-public class TagCommand extends ListenerAdapter {
-  @Override
-  public void onSlashCommand(SlashCommandEvent event) {
-    if (event.getName().equals("tag")) {
-      event.deferReply().queue(); // Tell discord we received the command, send a thinking... message to the user
-      String tagName = event.getOption("name").getAsString();
-      TagDatabase.fingTag(tagName,
-        (tag) -> event.getHook().sendMessage(tag).queue() // delayed response updates our inital "thinking..." message with the tag value
-      );
+    ```java
+    public class TagCommand extends ListenerAdapter {
+      @Override
+      public void onSlashCommand(SlashCommandEvent event) {
+        if (event.getName().equals("tag")) {
+          event.deferReply().queue(); // Tell discord we received the command, send a thinking... message to the user
+          String tagName = event.getOption("name").getAsString();
+          TagDatabase.fingTag(tagName,
+            (tag) -> event.getHook().sendMessage(tag).queue() // delayed response updates our inital "thinking..." message with the tag value
+          );
+        }
+      }
     }
-  }
-}
-```
+    ```
 
 
 ## Buttons
@@ -125,35 +125,35 @@ These button interactions, or component interactions, offer 4 response types:
 
 The reply and deferred reply responses are identical to the Slash-Commands response types. However, these new edit response types are used to update the existing message the button is attached to. If you simply want to acknowledge that the button was pressed, you can simply do a `deferEdit()` without any further updates, which will prevent the interaction from failing on the user side.
 
-**Example**:
+!!! example
 
-```java
- public class HelloBot extends ListenerAdapter {
-   @Override
-   public void onSlashCommand(SlashCommandEvent event) {
-       if (event.getName().equals("hello")) {
-           event.reply("Click the button to say hello")
-               .addActionRow(
-                 Button.primary("hello", "Click Me"), // Button with only a label
-                 Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
-               .queue();
-       } else if (event.getName().equals("info")) {
-           event.reply("Click the buttons for more info")
-               .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
-                   Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
-                     .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
-                   Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
-               .queue();
-       }
-   }
+    ```java
+    public class HelloBot extends ListenerAdapter {
+      @Override
+      public void onSlashCommand(SlashCommandEvent event) {
+          if (event.getName().equals("hello")) {
+              event.reply("Click the button to say hello")
+                  .addActionRow(
+                    Button.primary("hello", "Click Me"), // Button with only a label
+                    Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
+                  .queue();
+          } else if (event.getName().equals("info")) {
+              event.reply("Click the buttons for more info")
+                  .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                      Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
+                        .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
+                      Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                  .queue();
+          }
+      }
 
-   @Override
-   public void onButtonClick(ButtonClickEvent event) {
-       if (event.getComponentId().equals("hello")) {
-           event.reply("Hello :)").queue(); // send a message in the channel
-       } else if (event.getComponentId().equals("emoji")) {
-           event.editMessage("That button didn't say click me").queue(); // update the message
-       }
-   }
- }
-```
+      @Override
+      public void onButtonClick(ButtonClickEvent event) {
+          if (event.getComponentId().equals("hello")) {
+              event.reply("Hello :)").queue(); // send a message in the channel
+          } else if (event.getComponentId().equals("emoji")) {
+              event.editMessage("That button didn't say click me").queue(); // update the message
+          }
+      }
+    }
+    ```
