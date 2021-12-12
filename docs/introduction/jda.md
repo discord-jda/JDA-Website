@@ -1,55 +1,56 @@
 # JDA (Java Discord API)
 JDA strives to provide a clean and full wrapping of the Discord REST api and its Websocket-Events for Java.
-> Note: If you have any suggestions/questions/feedback for this wiki please contact Minn#6688 or DV8FromTheWorld#6297 via [Discord](https://discord.gg/0hMr4ce0tIk3pSjp)
 
-## Examples:
-```java
-public class ReadyListener implements EventListener
-{
-    public static void main(String[] args)
-    throws LoginException
-    {
-        JDA jda = JDABuilder.createDefault(args[0])
-            .addEventListeners(new ReadyListener()).build();
-    }
+If you have any suggestions/questions/feedback for this wiki please contact Minn#6688 or DV8FromTheWorld#6297 via [Discord](https://discord.gg/0hMr4ce0tIk3pSjp)
 
-    @Override
-    public void onEvent(GenericEvent event)
+!!! example "Examples"
+    ```java
+    public class ReadyListener implements EventListener
     {
-        if(event instanceof ReadyEvent)
-            System.out.println("API is ready!");
-    }
-}
-```
-
-```java
-public class MessageListener extends ListenerAdapter
-{
-    public static void main(String[] args)
-    throws LoginException
-    {
-        JDA jda = JDABuilder.createDefault(args[0]).build();
-        jda.addEventListeners(new MessageListener());
-    }
-
-    @Override
-    public void onMessageReceived(MessageReceivedEvent event)
-    {
-        if (event.isFromType(ChannelType.TEXT))
+        public static void main(String[] args)
+        throws LoginException
         {
-            System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
-                event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
+            JDA jda = JDABuilder.createDefault(args[0])
+                .addEventListeners(new ReadyListener()).build();
         }
-        else
+
+        @Override
+        public void onEvent(GenericEvent event)
         {
-            System.out.printf("[PM] %#s: %s%n", event.getAuthor(), event.getMessage().getContentDisplay());
+            if(event instanceof ReadyEvent)
+                System.out.println("API is ready!");
         }
     }
-}
-```
+    ```
 
-## More Examples
-We provide a small set of Examples in the [Example Directory](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java).
+    ```java
+    public class MessageListener extends ListenerAdapter
+    {
+        public static void main(String[] args)
+        throws LoginException
+        {
+            JDA jda = JDABuilder.createDefault(args[0]).build();
+            jda.addEventListeners(new MessageListener());
+        }
+
+        @Override
+        public void onMessageReceived(MessageReceivedEvent event)
+        {
+            if (event.isFromType(ChannelType.TEXT))
+            {
+                System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
+                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
+            }
+            else
+            {
+                System.out.printf("[PM] %#s: %s%n", event.getAuthor(), event.getMessage().getContentDisplay());
+            }
+        }
+    }
+    ```
+
+    **More Examples**:
+    We provide a small set of Examples in the [Example Directory](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java).
 
 ## Download
 You can get the latest released builds here:
@@ -75,9 +76,8 @@ If you need help, or just want to talk with the JDA or other Devs, you can join 
 Alternatively you can also join the [Unofficial Discord API Guild](https://discord.gg/discord-api).
 Once you joined, you can find JDA-specific help in the `#java_jda` channel.
 
-For guides and setup help you can also take a look at the [wiki](https://github.com/DV8FromTheWorld/JDA/wiki)
-<br>Especially interesting are the [Getting Started](https://github.com/DV8FromTheWorld/JDA/wiki/3\)-Getting-Started)
-and [Setup](https://github.com/DV8FromTheWorld/JDA/wiki/2\)-Setup) Pages.
+For guides and setup help you can also take a look at this wiki.
+<br>Especially interesting are the [Getting Started](../using-jda/getting-started.md) Pages.
 
 ## Contributing to JDA
 If you want to contribute to JDA, make sure to base your branch off of our **development** branch (or a feature-branch)
@@ -86,8 +86,8 @@ and create your PR into that **same** branch. **We will be rejecting any PRs bet
 It is also highly recommended to get in touch with the Devs before opening Pull Requests (either through an issue or the Discord servers mentioned above).<br>
 It is very possible that your change might already be in development or you missed something.
 
-More information can be found at the wiki page [Contributing](https://github.com/DV8FromTheWorld/JDA/wiki/5\)-Contributing)
+More information can be found at the wiki page [Contributing](../contributing/contributing.md)
 
-## Dependencies:
+## Dependencies
 This project requires **Java 8**.<br>
 For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md)

@@ -129,7 +129,7 @@ If none of the above apply to you then you might have an issue in your listener'
 
 ### Missed 2 heartbeats! Trying to reconnect...
 
-This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](https://github.com/DV8FromTheWorld/JDA/wiki/10\)-FAQ#how-do-i-make-a-thread-dump) when you get this warning to see where the issue is.
+This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../introduction/faq.md) when you get this warning to see where the issue is.
 
 By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
 
@@ -179,7 +179,7 @@ public class MyListener extends EventListener {
 }
 ```
 
-[Read More](https://github.com/DV8FromTheWorld/JDA/wiki/1%29-Events)
+[Read More](../introduction/events.md)
 
 
 ### I can't get the previous message content from delete/update

@@ -86,7 +86,7 @@ As of **4.2.0** the JDABuilder constructor has been deprecated in favor of 3 fac
 - [`createLight`][createLight]
 - [`create`][create]
 
-Further details are explained in a dedicated wiki page here: [Gateway Intents and Member Cache Policy](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy)
+Further details are explained in a dedicated wiki page here: [Gateway Intents and Member Cache Policy](../using-jda/gateway-intents-and-member-cache-policy.md)
 
 ### Permission Lists
 

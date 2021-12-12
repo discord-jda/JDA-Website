@@ -18,9 +18,9 @@ Limitations:
 - Cannot be reacted to
 - Cannot be retrieved
 
-Example:
+!!! example
 
-![EphemeralMessage](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/interactions/EphemeralMessage.png)
+    ![EphemeralMessage](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/interactions/EphemeralMessage.png)
 
 You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
 
