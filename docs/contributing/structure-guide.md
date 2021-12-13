@@ -185,9 +185,6 @@ The `@return` for simple RestActions is as follows:
 
 ### Example Template
 
-!!! note inline end
-    We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name
-
 ```java
     /**
      * This description should inform the user about the basic function of the method (or class)
@@ -222,7 +219,7 @@ The `@return` for simple RestActions is as follows:
      *         </ul></li>
      * </ul>
      *
-     * @param  var0
+     * @param  var0 (1)
      *         The Description should be at the same level as the parameter name
      * @param  var1
      *         Multiple parameters are to be documented in one "block"
@@ -246,3 +243,5 @@ The `@return` for simple RestActions is as follows:
      *         it should start the block in the next line with the correct indentation.
      */
 ```
+
+1.  We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name
