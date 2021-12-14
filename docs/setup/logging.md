@@ -12,7 +12,7 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
 ```groovy
 dependencies {
-    implementation("ch.qos.logback:logback-classic:1.2.3")
+    implementation("ch.qos.logback:logback-classic:1.2.8")
 }
 ```
 
@@ -24,7 +24,7 @@ dependencies {
 <dependency>
   <groupId>ch.qos.logback</groupId>
   <artifactId>logback-classic</artifactId>
-  <version>1.2.3</version>
+  <version>1.2.8</version>
 </dependency>
 ```
 
