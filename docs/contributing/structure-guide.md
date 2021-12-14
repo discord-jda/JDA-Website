@@ -31,8 +31,8 @@ public void someMethod()
 
 ### Indentation
 
-We only use indentation of **4 spaces** consistently throughout JDA.  
-If a Pull Request does not use this indentation we will not accept it.
+We only use indentation of **4 spaces** consistently throughout JDA.
+<br>If a Pull Request does not use this indentation we will not accept it.
 
 ## Class Structure
 
@@ -50,14 +50,14 @@ When trying to order your fields, methods or nested classes we recommend using t
 3. Private Members
 4. Package Private Members (no access modifier)
 
-In addition it is recommended to always put `static` fields and methods (not [nested classes](#nested-classes)) first in your class.  
-Fields marked with the `final` keyword should come first and should be separated from other fields.  
-For better structure it is suggested to group fields by their declared types.
+In addition it is recommended to always put `static` fields and methods (not [nested classes](#nested-classes)) first in your class.
+<br>Fields marked with the `final` keyword should come first and should be separated from other fields.
+<br>For better structure it is suggested to group fields by their declared types.
 
 ### Methods
 
-Methods are always defined after fields and the constructor of your class.  
-There are 3 types of methods listed in logical order of appearance:
+Methods are always defined after fields and the constructor of your class.
+<br>There are 3 types of methods listed in logical order of appearance:
 
 1. Overriding or Implementing which make use of the `@Override` tag
 2. Internal (impl) setters which can be found in the impl classes of JDA.
@@ -65,13 +65,13 @@ There are 3 types of methods listed in logical order of appearance:
 
 ### Nested Classes
 
-Nested classes no matter if `static` or member should always be placed at the very bottom of your class.  
-These include enums and other class types. It is also recommended following the access modifier (see above sections) order here again.
+Nested classes no matter if `static` or member should always be placed at the very bottom of your class.
+<br>These include enums and other class types. It is also recommended following the access modifier (see above sections) order here again.
 
 ### Imports and Copyright
 
-Every class in JDA has a **Copyright Header** (see example).  
-Imports use wildcard `*` when they import 5+ classes from the same package.
+Every class in JDA has a **Copyright Header** (see example).
+<br>Imports use wildcard `*` when they import 5+ classes from the same package.
 
 ## JavaDoc
 
@@ -83,9 +83,9 @@ We put JavaDoc on the following targets:
 
 ### Paragraphs
 
-JDA has a specific JavaDoc structure that is unique to our repository.  
-We use a style in which we encapsulate each important part of the doc in a "block" for itself.  
-Each `<br>` tag is placed in-front of the new line: 
+JDA has a specific JavaDoc structure that is unique to our repository.
+<br>We use a style in which we encapsulate each important part of the doc in a "block" for itself.
+<br>Each `<br>` tag is placed in-front of the new line: 
 
 !!! note inline end
     `<br>` tags are not to be closed
@@ -97,8 +97,8 @@ Each `<br>` tag is placed in-front of the new line:
  */
 ```
 
-A new paragraph starts with `<p>` (not `<br><br>`!).  
-The `<p>` tag is supposed to be placed either between the previous and following paragraph or like the `<br>` tag directly
+A new paragraph starts with `<p>` (not `<br><br>`!).
+<br>The `<p>` tag is supposed to be placed either between the previous and following paragraph or like the `<br>` tag directly
 in-front of the first line of that following paragraph:
 
 !!! note inline end 
@@ -116,10 +116,10 @@ in-front of the first line of that following paragraph:
 
 ### Escaping
 
-When you want to use characters that are not available in JavaDoc source most people tend to go with escaped characters such as `&tm;`.  
-In JDA we usually stick -if possible- to `{@literal ™}` for readability sake. When using this JavaDoc tag you must remember
-that it does not allow other nested tags since it will replace them with their literal characters instead!  
-Another important tag you can use to achieve something that `<code>true</code>` does you can use `{@code true}`.
+When you want to use characters that are not available in JavaDoc source most people tend to go with escaped characters such as `&tm;`.
+<br>In JDA we usually stick -if possible- to `{@literal ™}` for readability sake. When using this JavaDoc tag you must remember
+that it does not allow other nested tags since it will replace them with their literal characters instead!
+<br>Another important tag you can use to achieve something that `<code>true</code>` does you can use `{@code true}`.
 If you however want to also have nested links or other JavaDoc tags in your code snippet you can fallback to using the `<code>` tag:
 ```java
 /**
@@ -135,17 +135,17 @@ If you however want to also have nested links or other JavaDoc tags in your code
 
 ### Linking
 
-If the class is not already imported, use the fully qualified name when you are linking to something through JavaDoc!  
-Bad: `{@link RestAction}`  
-Good: `{@link net.dv8tion.jda.core.requests.RestAction RestAction}`
+If the class is not already imported, use the fully qualified name when you are linking to something through JavaDoc!
+<br>Bad: `{@link RestAction}`
+<br>Good: `{@link net.dv8tion.jda.core.requests.RestAction RestAction}`
 
 !!! note
     We also highly recommend setting an alias name as you can see in the 2nd example snippet.
 
 When you link to an external resource (such as the official api docs) you can use the `<a>` tag to create
-a hyperlink.  
-It is recommended to use the `target="_blank"` tag.  
-Example: `<a href="https://ci.dv8tion.net/job/JDA" target="_blank">Download JDA</a>`
+a hyperlink.
+<br>It is recommended to use the `target="_blank"` tag.
+<br>Example: `<a href="https://ci.dv8tion.net/job/JDA" target="_blank">Download JDA</a>`
 
 **Hint**: Sometimes it helps to link other methods in the description and then also including an `@see #otherMethod` at the very bottom.
 

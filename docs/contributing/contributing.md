@@ -6,22 +6,22 @@ description: Help JDA improve by contributing to it.
 ## Setting up your Environment
 
 
-1. Create a Fork (If you already have a local repository skip to step 3)  
-    ![Create Fork](https://i.imgur.com/DqDWls4.png)
+1. Create a Fork (If you already have a local repository skip to step 3)
+    <br>![Create Fork](https://i.imgur.com/DqDWls4.png)
 
 2. Clone Repository
    
     ```sh
-    $ git clone https://github.com/ExampleName/JDA.git
+    $ git clone https://github.com/ExampleName/JDA.git # (1)
     Cloning into 'JDA'...
     remote: Counting objects: 15377, done.
     remote: Total 15377 (delta 0), reused 0 (delta 0), pack-reused 15377
     Receiving objects: 100% (15377/15377), 21.64 MiB | 2.36 MiB/s, done.
     Resolving deltas: 100% (8584/8584), done.
     Checking connectivity... done.
-    ```  
+    ```
    
-    > Replace `ExampleName` with your GitHub username, mine for example is `MinnDevelopment`
+    1.  Make sure to replace `ExampleName` with your GitHub Username.
 
 3. Move to your local repository (here `JDA`)
     
@@ -52,8 +52,8 @@ description: Help JDA improve by contributing to it.
 Depending on your changes there are certain rules you have to follow if you expect
 your Pull Request to be merged.
 
-**Note**: It is recommended to create a new remote branch for each Pull Request. 
-Based on the current `upstream/master` changes!
+**Note**: It is recommended to create a new remote branch for each Pull Request
+based on the current `upstream/master` changes!
 
 1. Adding a new Method or Class
     - If your addition is not internal (e.g. an impl class or private method) you have to write documentation.
