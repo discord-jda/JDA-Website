@@ -42,7 +42,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     When a bot reaches 2500 joined guilds, Discord will refuse to start a connection with it.
     <br>In order to connect bots of a size like that it has to **shard** the load. It is recommended to have 1000 guilds per shard.
-    More information can be found in our README.
+    More information can be found in our [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md).
 
 ??? question "How can I change the `Playing...`?"
 
@@ -59,7 +59,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     To make this distinction more clear, we refer to the standard (Unicode) emotes as "Emoji" and the Discord entities as "Emotes" in JDA.
 
-    Methods like `addReaction()` also have different parameters depending on whether the reaction is an Emoji ( [`addReaction(String)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction%28java.lang.String%29) ) or an Emote ( [`addReaction(Emote)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction(net.dv8tion.jda.api.entities.Emote)) ).
+    Methods like `addReaction()` also have different parameters depending on whether the reaction is an Emoji ([`addReaction(String)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction%28java.lang.String%29)) or an Emote ([`addReaction(Emote)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction(net.dv8tion.jda.api.entities.Emote))).
 
     To get the Unicode char(s) of some Emoji, you can either use a 3rd party library or just look them up online.
     You can add reactions with 3 different formats:
@@ -90,7 +90,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     We currently provide a fallback implementation to not lose logging completely in this case. This fallback does not allow for a lot of configuration and we suggest using a proper implementation instead.
 
-    I recommend [Logback](https://logback.qos.ch/). You can just add it to your gradle/maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
+    I recommend [Logback](https://logback.qos.ch/). You can just add it to your Gradle/Maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
 
 ??? question "What is the best way to delete messages from history?"
 
@@ -321,7 +321,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
         2. `JDABuilder#setGatewayPool(ScheduledExecutorService)`
         3. `JDABuilder#setRateLimitPool(ScheduledExecutorService)`
 
-    ??? question How do I make a thread dump?
+??? question "How do I make a thread dump?"
 
     The JDK provides a utility for creating a thread dump of a running JVM process: `jstack -l <pid>` (that's an L for "Long")
     Example: `jstack -l 1337 > dump.txt` This will list the thread dump and write it to a file called `dump.txt`.

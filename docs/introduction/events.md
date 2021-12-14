@@ -8,9 +8,7 @@ To switch between them, you can either use `JDABuilder#setEventManager(new Annot
 
 After that, you just need to call `JDABuilder#addEventListeners(Object...)` or `JDA#addEventListeners(Object...)` with your Listener implementation.
 
-### Using JDABuilder
-
-```java
+```java title="Using JDABuilder"
 // imports {...}
 public class Launcher
 {
@@ -24,9 +22,7 @@ public class Launcher
 }
 ```
 
-### Using JDA
-
-```java
+```java title="Using JDA"
 // imports {...}
 public class MyListeners
 {
@@ -43,8 +39,8 @@ When using the interfaced system (default), your Listener(s) have to implement t
 
 For convenience, we also included the class _ListenerAdapter_, which comes with a wide set of predefined functions targeted at specific event-types.
 
-!!! example "EventListener example"
-    ```java
+!!! example "Examples"
+    ```java title="Using EventListener"
     public class Test implements EventListener
     {
         @Override
@@ -55,9 +51,7 @@ For convenience, we also included the class _ListenerAdapter_, which comes with 
         }
     }
     ```
-
-!!! example "ListenerAdapter example"
-    ```java
+    ```java title="Using ListenerAdapter"
     public class Test extends ListenerAdapter
     {
         @Override

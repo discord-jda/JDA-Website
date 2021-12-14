@@ -31,7 +31,7 @@ Everything on `JDABot` has been moved into `JDA`.
 
 The flag to disable the audio system with `setAudioEnabled(false)` has been removed. This flag only enabled an exception for `Guild.getAudioManager()` which is unnecessary.
 
-The entire `net.dv8tion.jda.webhook` package has been moved to a dedicated library at https://github.com/MinnDevelopment/discord-webhooks
+The entire `net.dv8tion.jda.webhook` package has been moved to a dedicated library at <https://github.com/MinnDevelopment/discord-webhooks>
 
 The methods `buildBlocking` and `buildAsync` have been removed as they were already deprecated. To replace `buildBlocking` you should use `awaitReady()` on the `JDA` instance returned by `build()`.
 
