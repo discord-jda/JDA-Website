@@ -62,7 +62,7 @@ based on the current `upstream/master` changes!
         - Follow the [Structure Guide](structure-guide.md)
         - Compare your code style to the one used all over JDA and ensure you
           do not break the consistency (if you find issues in the JDA style you can include and update it)
-     
+
     !!! Example
         === ":octicons-x-circle-16: Bad Addition"
             ```diff
