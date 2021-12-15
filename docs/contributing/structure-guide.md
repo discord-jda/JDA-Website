@@ -176,7 +176,7 @@ you have to document possible `ErrorResponses` that can follow from this request
     <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/core/entities/MessageChannel.java#L169-L179)
 
 The `@return` for simple RestActions is as follows:
-<br>```java
+```java
 /**
  * @return {@link net.dv8tion.jda.core.requests.RestAction RestAction} - Type: String
  *         <br>This is an -optional- description of what this RestAction will provide in case the type isn't enough
