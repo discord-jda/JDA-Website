@@ -102,6 +102,8 @@ We also provide a few reasonable implementations to choose from and apply using 
     Will keep all voice members cached (requires `GUILD_VOICE_STATES` intent)
 - [Owner](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
     Will keep the guild owner cached
+- [Pending](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
+    Will keep the members cached, which have no passed membership screening yet (requires `GUILD_MEMBERS` intents)
 - [None](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
     Will only keep the self member cached and nobody else
 
