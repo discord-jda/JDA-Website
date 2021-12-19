@@ -84,7 +84,7 @@ The individual factory methods document which defaults will be used:
 
 ## MemberCachePolicy
 
-Together with intents, discord now wants to further restrict data access for bots by limiting how many members they can cache. To properly maintain a cache of all members you need the `GUILD_MEMBERS` intent, because it will enable the `GuildMemberRemoveEvent` to remove members from cache once they leave the guild. Without this intent, JDA would infinitely grow its cache without knowing when to remove members.
+Together with intents, Discord now wants to further restrict data access for bots by limiting how many members they can cache. To properly maintain a cache of all members you need the `GUILD_MEMBERS` intent, because it will enable the `GuildMemberRemoveEvent` to remove members from cache once they leave the guild. Without this intent, JDA would infinitely grow its cache without knowing when to remove members.
 
 To handle this new default we now have a [`MemberCachePolicy`][MemberCachePolicy] which can be configured using [`setMemberCachePolicy`][setMemberCachePolicy]. Each factory method will set a default cache policy which will only retain members under certain conditions:
 

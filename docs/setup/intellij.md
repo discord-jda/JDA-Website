@@ -5,7 +5,7 @@
 === "Newer versions of IntelliJ IDEA"
 
     1. Navigate to "New Project" from any view
-    2. Select Gradle -> Java as the type of Project and make sure the correct JDK is selected (Java8 or higher)
+    2. Select Gradle -> Java as the type of Project and make sure the correct JDK is selected (Java 8 or higher)
 
         ![new_project](https://i.imgur.com/cEOAzz2.png)
 
@@ -13,12 +13,12 @@
 
         ![artifact_setup](https://i.imgur.com/Vn1Ocm1.png)
 
-    4. Optionally enable Auto-Importing of the gradle file in the Gradle Settings. This is also the place where you could switch the runner for your project (By default, Gradle is used to run your application and tests)
+    4. Optionally enable Auto-Importing of the Gradle file in the Gradle settings. This is also the place where you could switch the runner for your project (By default, Gradle is used to run your application and tests)
 
         ![gradle_settings](https://i.imgur.com/a99Nj1G.png)
         ![auto_import](https://i.imgur.com/sT6sZof.png)
 
-    5. Let intellij index your project.
+    5. Let IntelliJ index your project.
     6. Open `build.gradle`
     7. Populate the build file with the following
         ```groovy
@@ -36,7 +36,7 @@
         
         repositories {
             mavenCentral()
-            maven { // on kotlin dsl use `maven("https://m2.dv8tion.net/releases")` instead
+            maven { // on Kotlin DSL use `maven("https://m2.dv8tion.net/releases")` instead
                 url "https://m2.dv8tion.net/releases"
             }
         }
@@ -64,8 +64,8 @@
                     -> settings.gradle
         ```
     11. Configure the `mainClassName` value in the `build.gradle` to your class. Example: `me.name.bot.Bot`
-    12. To build your finished project simply use the `shadowJar` task in your gradle tool window on right hand side of your editor. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
-        > You can also run your project with the `run` gradle task!
+    12. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
+        > You can also run your project with the `run` Gradle task!
     13. [Setup Logback](logging)
     14. Continue with [Getting Started](../using-jda/getting-started.md)
 

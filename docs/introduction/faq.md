@@ -1,10 +1,10 @@
 # Frequently Asked Questions
 
-Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
+Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
 
 ??? question "What is a Guild?"
 
-    In discord api terminology a "Guild" is often used to refer to discord servers with channels/roles/users
+    In Discord API terminology a "Guild" is often used to refer to Discord servers with channels/roles/users
 
 ??? question "How do I make a bot account and add it to my server?"
 
@@ -50,7 +50,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
     <br>When building you can do `JDABuilder.setActivity(Activity.playing("Thrones"))` and later change it using `JDA.getPresence().setActivity(...)`.
     In addition you may change the online status using `setStatus(OnlineStatus.INVISIBLE)` at the aforementioned locations.
 
-    This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by discord.
+    This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by Discord.
 
 ??? question "What is an Emote/Emoji and what is the difference between `addReaction(Emote)` and `addReaction(String)`?"
 
@@ -192,7 +192,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
 ??? question "How do I test other builds?"
 
-    Sometimes we are working experimental or feature branches which require testing. For this testing we use [jitpack](https://jitpack.io). If you are interested in testing one of those builds you have to use [gradle](https://gradle.org) or [maven](https://maven.apache.org).
+    Sometimes we are working experimental or feature branches which require testing. For this testing we use [JitPack](https://jitpack.io). If you are interested in testing one of those builds you have to use [Gradle](https://gradle.org) or [Maven](https://maven.apache.org).
     You require the repositories `https://jitpack.io`, and `https://m2.dv8tion.net/releases` as resolvers for these builds. The format used for the version is one of the following:
 
     - commit hash (7+ chars)
@@ -238,7 +238,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
 ??? question "How can I reduce the jar size of my bot?"
 
-    To reduce the jar size of your bot you can either use maven or gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
+    To reduce the jar size of your bot you can either use Maven or Gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
 
     === "Gradle"
 
@@ -248,7 +248,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
                 exclude module: "opus-java"
             }
             ```
-            For kotlin-dsl use `exclude(module="opus-java")`
+            For Kotlin DSL use `exclude(module="opus-java")`
 
         2. Minimize your Jar with the Shadow Plugin
             ```groovy

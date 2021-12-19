@@ -29,7 +29,7 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
 ## Configure Logback
 
-The logback configuration needs to be in your resources directory. This is `src/main/resources` in all standard gradle and maven projects.
+The logback configuration needs to be in your resources directory. This is `src/main/resources` in all standard Gradle and Maven projects.
 Add the following configuration into `src/main/resources/logback.xml`:
 
 ```xml

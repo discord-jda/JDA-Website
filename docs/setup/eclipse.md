@@ -9,7 +9,7 @@
 
     1. If you have *Eclipse IDE for Java Developers* installed, skip to **2.**, otherwise you need to install the *Buildship Gradle Integration plugin* first:
         1. Open up Eclipse and go to the Marketplace (located under the *Help* tab)
-        2. Search for *"gradle"* and install ***Buildship Gradle Integration*** ([Plugin-Page](http://marketplace.eclipse.org/content/buildship-gradle-integration))
+        2. Search for *"Gradle"* and install ***Buildship Gradle Integration*** ([Plugin-Page](http://marketplace.eclipse.org/content/buildship-gradle-integration))
         3. After the plugin is installed, relaunch Eclipse
 
     2. Right click within *Package/Project Explorer* and select **New > Other...**
@@ -61,7 +61,7 @@
         compileJava.options.encoding = "UTF-8"
         ```
 
-        1. On kotlin dsl use `maven("https://m2.dv8tion.net/releases")` instead
+        1. On Kotlin DSL use `maven("https://m2.dv8tion.net/releases")` instead
 
     9. Adjust the version of JDA you want to use (see dependencies-section of file) and fill in your Main-Class as soon as you have one (the one containing your `public static void main(String[] args)` method)
     10. Save the file and do the following: *Right click your project > Gradle > Refresh All*

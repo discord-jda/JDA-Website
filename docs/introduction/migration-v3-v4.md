@@ -37,7 +37,7 @@ The methods `buildBlocking` and `buildAsync` have been removed as they were alre
 
 The overloads for `sendFile` that accepted a `Message` as their last parameter have been removed in favor of `MessageAction.addFile`. For example `sendFile(file, message)` becomes `sendMessage(message).addFile(file)`.
 
-Both `getWebSocketTrace` and `getCloudflareRays` have been removed without replacements. These are not officially supported by the discord API and subject to change.
+Both `getWebSocketTrace` and `getCloudflareRays` have been removed without replacements. These are not officially supported by the Discord API and subject to change.
 
 ## Renamed Classes
 

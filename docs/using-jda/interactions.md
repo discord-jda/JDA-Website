@@ -7,7 +7,7 @@ This guide will give you a brief introduction to an API for adding and handling 
 
 ### Ephemeral Messages
 
-These ephemeral messages are only visible to the user who used your Slash-Command/Button. They are similar to the messages discord sends you when you update your nickname with `/nick`.
+These ephemeral messages are only visible to the user who used your Slash-Command/Button. They are similar to the messages Discord sends you when you update your nickname with `/nick`.
 
 Ephemeral messages have some limitations and will be removed once the user restarts their client.
 

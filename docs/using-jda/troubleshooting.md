@@ -2,7 +2,7 @@
 
 This is a collection of common issues and recommended solutions.
 
-Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
+Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
 
 -----------------
 
@@ -22,11 +22,11 @@ An error like `java.lang.NoClassDefFoundError: net/dv8tion/jda/api/JDABuilder` o
 
 === "Gradle (build.gradle)"
     
-    With gradle this can be fixed by using the [shadow plugin](https://github.com/johnrengelman/shadow) and building your jar with `shadowJar` instead. The jar will then be present in the `build/libs` directory with a name like `example-1.0-all.jar`
+    With Gradle this can be fixed by using the [shadow plugin](https://github.com/johnrengelman/shadow) and building your jar with `shadowJar` instead. The jar will then be present in the `build/libs` directory with a name like `example-1.0-all.jar`
 
 === "Maven (pom.xml)"
     
-    With maven you need the [shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/) in your pom to add dependencies to your package task. You can see the shade plugin being applied in this [example pom.xml](https://gist.github.com/MinnDevelopment/5d8c5965043bbe5315d47b690cd7a4d9)
+    With Maven you need the [shade plugin](https://maven.apache.org/plugins/maven-shade-plugin/) in your pom to add dependencies to your package task. You can see the shade plugin being applied in this [example pom.xml](https://gist.github.com/MinnDevelopment/5d8c5965043bbe5315d47b690cd7a4d9)
 
 === "Jar"
     
@@ -131,7 +131,7 @@ If none of the above apply to you then you might have an issue in your listener'
 
 This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../introduction/faq.md) when you get this warning to see where the issue is.
 
-By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
+By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by Discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
 
 ### Listener must implement EventListener
 
@@ -184,7 +184,7 @@ public class MyListener extends EventListener {
 
 ### I can't get the previous message content from delete/update
 
-When discord emits a `message_delete` or `message_update` they only provide the new content of the message. Since JDA does not keep a cache of messages it is unable to provide the previous content. Instead you will have to track content of messages yourself.
+When Discord emits a `message_delete` or `message_update` they only provide the new content of the message. Since JDA does not keep a cache of messages it is unable to provide the previous content. Instead you will have to track content of messages yourself.
 
 
 
@@ -218,7 +218,7 @@ Due to this reason we simply don't allow using `complete()` in any callback thre
 
 ### Hit the WebSocket RateLimit
 
-When you update your game or online status you emit a socket message to discord. If you do that often enough you hit a limit and JDA has to backoff for 60 seconds.
+When you update your game or online status you emit a socket message to Discord. If you do that often enough you hit a limit and JDA has to backoff for 60 seconds.
 
 Things that contribute to the WebSocket RateLimit include:
 
@@ -244,7 +244,7 @@ Encountering the global rate-limit is something JDA cannot predict or prevent. T
 
 ### Cannot get reference as it has already been Garbage Collected
 
-Due to how we structure cache we sometimes have to invalidate our entire cache (that's just how discord works).
+Due to how we structure cache we sometimes have to invalidate our entire cache (that's just how Discord works).
 When you store references to JDA entities for a long period of time such as a field you will suffer with the error `java.lang.IllegalStateException: Cannot get reference as it has already been Garbage Collected` once the entity was removed from the JDA cache. We highly recommend to store only the parts you actually need of the specific entity such as `id` and use something like `event.getJDA().getRoleById(id)`.
 
 Entities that should not be stored for a long period of time include:

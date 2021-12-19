@@ -1,5 +1,5 @@
 # JDA (Java Discord API)
-JDA strives to provide a clean and full wrapping of the Discord REST api and its Websocket-Events for Java.
+JDA strives to provide a clean and full wrapping of the Discord REST API and its Websocket-Events for Java.
 
 If you have any suggestions/questions/feedback for this wiki please contact Minn#6688 or DV8FromTheWorld#6297 via [Discord](https://discord.gg/0hMr4ce0tIk3pSjp)
 
