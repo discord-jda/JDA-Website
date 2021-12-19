@@ -13,12 +13,10 @@
 
         ![artifact_setup](https://i.imgur.com/Vn1Ocm1.png)
 
-    4. Optionally enable Auto-Importing of the gradle file in the Gradle Settings
+    4. Optionally enable Auto-Importing of the gradle file in the Gradle Settings. This is also the place where you could switch the runner for your project (By default, Gradle is used to run your application and tests)
 
         ![gradle_settings](https://i.imgur.com/a99Nj1G.png)
         ![auto_import](https://i.imgur.com/sT6sZof.png)
-
-    > Note: this is also the place where you could switch the runner for your project (By default, Gradle is used to run your application and tests)
 
     5. Let intellij index your project.
     6. Open `build.gradle`
@@ -29,10 +27,10 @@
             id'com.github.johnrengelman.shadow' version '5.2.0'
         }
         
-        mainClassName = 'com.example.jda.Bot'
+        mainClassName = 'com.example.jda.Bot' // (1)
         
         version '1.0'
-        def jdaVersion = 'JDA_VERSION_HERE'
+        def jdaVersion = 'JDA_VERSION_HERE' // (2)
         
         sourceCompatibility = targetCompatibility = 1.8
         
@@ -49,8 +47,10 @@
         
         compileJava.options.encoding = 'UTF-8'
         ```
-    > Note: Replace the `JDA_VERSION_HERE` with the one mentioned [here (release)](https://github.com/DV8FromTheWorld/JDA/releases/latest) or with the latest build [here](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)<br>
-    > Replace the `mainClassName` value with the path to your main class later on! 
+    
+        1. Replace the `mainClassName` value with the path to your main class later on! 
+
+        2. Replace the `JDA_VERSION_HERE` with the one mentioned [here (release)](https://github.com/DV8FromTheWorld/JDA/releases/latest) or with the latest build [here](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
 
     8. If IntelliJ IDEA didn't already do so automatically, set up a source folder as `src/main/java`
     9. Create your group package. Example: `me.name.bot`

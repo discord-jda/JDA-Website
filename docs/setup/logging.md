@@ -8,25 +8,25 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 
 I recommend logback-classic as it is my goto implementation. First add logback to your dependencies:
 
-### Gradle
+=== "Gradle"
 
-```groovy
-dependencies {
-    implementation("ch.qos.logback:logback-classic:1.2.8")
-}
-```
+    ```groovy
+    dependencies {
+        implementation("ch.qos.logback:logback-classic:1.2.8") // (1)
+    }
+    ```
 
-> Newer versions of gradle may use `implementation` instead of `compile`.
+    1. Newer versions of gradle may use `implementation` instead of `compile`.
 
-### Maven
+=== "Maven"
 
-```xml
-<dependency>
-  <groupId>ch.qos.logback</groupId>
-  <artifactId>logback-classic</artifactId>
-  <version>1.2.8</version>
-</dependency>
-```
+    ```xml
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.2.8</version>
+    </dependency>
+    ```
 
 
 ## Configure Logback
