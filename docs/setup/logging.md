@@ -12,11 +12,9 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
     ```groovy
     dependencies {
-        implementation("ch.qos.logback:logback-classic:1.2.8") // (1)
+        implementation("ch.qos.logback:logback-classic:1.2.8")
     }
     ```
-
-    1. Newer versions of gradle may use `implementation` instead of `compile`.
 
 === "Maven"
 
