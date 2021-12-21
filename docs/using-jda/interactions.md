@@ -115,7 +115,7 @@ These component interactions offer 4 response types:
 - Edit Message
 - Deferred Edit Message
 
-The reply and deferred reply responses are identical to the Slash-Commands response types. However, these new edit response types are used to update the existing message the component is attached to. If you simply want to acknowledge that the component was successfully interacted with, you can simply do a `deferEdit()` without any further updates, which will prevent the interaction from failing on the user side.
+The reply and deferred reply responses are identical to the Slash-Commands response types. However, these new edit response types are used to update the existing message the component is attached to. If you just want to acknowledge that the component was successfully interacted with, you can simply call `deferEdit()` without any further updates, which will prevent the interaction from failing on the user side.
 
 To properly use an interactive component, you need to use the **Component ID** (aka **Custom ID**).
 This ID can also be used to then *identify* which component was pressed by the user.
@@ -180,7 +180,7 @@ There can be multiple options selected and set as default.
 
 ### Handling SelectionMenuEvent
 
-When a user chooses options from a dropdown, you will receive a `SelectionMenuEvent` for the respective interaction with the selected values.
+When a user selects their options from a dropdown and submits their choices, you will receive a `SelectionMenuEvent` for the respective interaction with the selected values.
 
 !!! example
 
