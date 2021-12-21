@@ -72,7 +72,7 @@ Every class in JDA has a **Copyright Header** (see example).
 
 We put JavaDoc on the following targets:
 - Public Methods that directly confront the JDA user
-- Class level if the specific class has api features that the user can interact with such as an entity or manager
+- Class level if the specific class has API features that the user can interact with such as an entity or manager
 - Package docs, all not excluded packages require a `package-info.java` class with proper JavaDoc
 
 ### Paragraphs
@@ -135,7 +135,7 @@ If the class is not already imported, use the fully qualified name when you are 
 !!! note
     We also highly recommend setting an alias name as you can see in the 2nd example snippet.
 
-When you link to an external resource (such as the official api docs) you can use the `<a>` tag to create
+When you link to an external resource (such as the official API docs) you can use the `<a>` tag to create
 a hyperlink.
 <br>It is recommended to use the `target="_blank"` tag.
 <br>Example: `<a href="https://ci.dv8tion.net/job/JDA" target="_blank">Download JDA</a>`

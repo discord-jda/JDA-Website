@@ -31,13 +31,13 @@ Everything on `JDABot` has been moved into `JDA`.
 
 The flag to disable the audio system with `setAudioEnabled(false)` has been removed. This flag only enabled an exception for `Guild.getAudioManager()` which is unnecessary.
 
-The entire `net.dv8tion.jda.webhook` package has been moved to a dedicated library at https://github.com/MinnDevelopment/discord-webhooks
+The entire `net.dv8tion.jda.webhook` package has been moved to a dedicated library at <https://github.com/MinnDevelopment/discord-webhooks>
 
 The methods `buildBlocking` and `buildAsync` have been removed as they were already deprecated. To replace `buildBlocking` you should use `awaitReady()` on the `JDA` instance returned by `build()`.
 
 The overloads for `sendFile` that accepted a `Message` as their last parameter have been removed in favor of `MessageAction.addFile`. For example `sendFile(file, message)` becomes `sendMessage(message).addFile(file)`.
 
-Both `getWebSocketTrace` and `getCloudflareRays` have been removed without replacements. These are not officially supported by the discord API and subject to change.
+Both `getWebSocketTrace` and `getCloudflareRays` have been removed without replacements. These are not officially supported by the Discord API and subject to change.
 
 ## Renamed Classes
 
@@ -86,7 +86,7 @@ As of **4.2.0** the JDABuilder constructor has been deprecated in favor of 3 fac
 - [`createLight`][createLight]
 - [`create`][create]
 
-Further details are explained in a dedicated wiki page here: [Gateway Intents and Member Cache Policy](https://github.com/DV8FromTheWorld/JDA/wiki/Gateway-Intents-and-Member-Cache-Policy)
+Further details are explained in a dedicated wiki page here: [Gateway Intents and Member Cache Policy](../using-jda/gateway-intents-and-member-cache-policy.md)
 
 ### Permission Lists
 

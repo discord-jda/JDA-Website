@@ -1,10 +1,10 @@
 # Frequently Asked Questions
 
-Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
+Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
 
 ??? question "What is a Guild?"
 
-    In discord api terminology a "Guild" is often used to refer to discord servers with channels/roles/users
+    In Discord API terminology a "Guild" is often used to refer to Discord servers with channels/roles/users
 
 ??? question "How do I make a bot account and add it to my server?"
 
@@ -42,7 +42,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     When a bot reaches 2500 joined guilds, Discord will refuse to start a connection with it.
     <br>In order to connect bots of a size like that it has to **shard** the load. It is recommended to have 1000 guilds per shard.
-    More information can be found in our README.
+    More information can be found in our [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md).
 
 ??? question "How can I change the `Playing...`?"
 
@@ -50,7 +50,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
     <br>When building you can do `JDABuilder.setActivity(Activity.playing("Thrones"))` and later change it using `JDA.getPresence().setActivity(...)`.
     In addition you may change the online status using `setStatus(OnlineStatus.INVISIBLE)` at the aforementioned locations.
 
-    This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by discord.
+    This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by Discord.
 
 ??? question "What is an Emote/Emoji and what is the difference between `addReaction(Emote)` and `addReaction(String)`?"
 
@@ -59,7 +59,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     To make this distinction more clear, we refer to the standard (Unicode) emotes as "Emoji" and the Discord entities as "Emotes" in JDA.
 
-    Methods like `addReaction()` also have different parameters depending on whether the reaction is an Emoji ( [`addReaction(String)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction%28java.lang.String%29) ) or an Emote ( [`addReaction(Emote)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction(net.dv8tion.jda.api.entities.Emote)) ).
+    Methods like `addReaction()` also have different parameters depending on whether the reaction is an Emoji ([`addReaction(String)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction%28java.lang.String%29)) or an Emote ([`addReaction(Emote)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction(net.dv8tion.jda.api.entities.Emote))).
 
     To get the Unicode char(s) of some Emoji, you can either use a 3rd party library or just look them up online.
     You can add reactions with 3 different formats:
@@ -90,87 +90,87 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
     We currently provide a fallback implementation to not lose logging completely in this case. This fallback does not allow for a lot of configuration and we suggest using a proper implementation instead.
 
-    I recommend [Logback](https://logback.qos.ch/). You can just add it to your gradle/maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
+    I recommend [Logback](https://logback.qos.ch/). You can just add it to your Gradle/Maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
 
 ??? question "What is the best way to delete messages from history?"
 
     You can use [MessageChannel.getIterableHistory](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/MessageChannel.html#getIterableHistory()) to get an instance of [MessagePaginationAction](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/restaction/pagination/MessagePaginationAction.html) which can be used to load messages in various ways such as [takeAsync(amount)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/restaction/pagination/PaginationAction.html#takeAsync(int)) or [takeUntilAsync(condition)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/restaction/pagination/PaginationAction.html#takeUntilAsync(java.util.function.Predicate)). This can be combined with [MessageChannel.purgeMessages](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/MessageChannel.html#purgeMessages(java.util.List)) to bulk delete them from the channel. Keep in mind that `purgeMessages` will not delete all messages at once.
 
-    **Examples**:
+    !!! example "Examples"
 
-    ```java
-    // Delete a number of messages
-    void deleteMessages(MessageChannel channel, int amount) {
-    channel.getIterableHistory()
-        .takeAsync(amount) // CompletableFuture<List<Message>>
-        .thenAccept(channel::purgeMessages); // bulk deletes the messages from the channel (if possible)
-    }
+        ```java
+        // Delete a number of messages
+        void deleteMessages(MessageChannel channel, int amount) {
+        channel.getIterableHistory()
+            .takeAsync(amount) // CompletableFuture<List<Message>>
+            .thenAccept(channel::purgeMessages); // bulk deletes the messages from the channel (if possible)
+        }
 
-    // Delete messages up to the specified time
-    void deleteUntil(MessageChannel channel, OffsetDateTime time) {
-    channel.getIterableHistory()
-        .takeUntilAsync(message -> message.getTimeCreated().isBefore(time)) // Collect messages until they pass the time condition
-        .thenAccept(channel::purgeMessages); // bulk deletes the messages from the channel (if possible)
-    }
+        // Delete messages up to the specified time
+        void deleteUntil(MessageChannel channel, OffsetDateTime time) {
+        channel.getIterableHistory()
+            .takeUntilAsync(message -> message.getTimeCreated().isBefore(time)) // Collect messages until they pass the time condition
+            .thenAccept(channel::purgeMessages); // bulk deletes the messages from the channel (if possible)
+        }
 
-    // Delete a number of messages for a specific author (this can be abstracted to any condition)
-    void deleteFromUser(MessageChannel channel, User author, int amount) {
-    List<Message> messages = new ArrayList<>(); // First create a list for your messages
-    channel.getIterableHistory()
-        .forEachAsync(m -> { // Loop over the history and filter messages
-        if (m.getAuthor().equals(author)) messages.add(m); // Add these messages to a list (your collector)
-        return messages.size() < amount; // keep going until limit is reached (might be smart to also have a time condition here)
-        }) // This is also a CompletableFuture<Void> so you can chain a callback
-        .thenRun(() -> channel.purgeMessages(messages)); // Run after loop is over, delete the messages in your list
-    }
-    ```
+        // Delete a number of messages for a specific author (this can be abstracted to any condition)
+        void deleteFromUser(MessageChannel channel, User author, int amount) {
+        List<Message> messages = new ArrayList<>(); // First create a list for your messages
+        channel.getIterableHistory()
+            .forEachAsync(m -> { // Loop over the history and filter messages
+            if (m.getAuthor().equals(author)) messages.add(m); // Add these messages to a list (your collector)
+            return messages.size() < amount; // keep going until limit is reached (might be smart to also have a time condition here)
+            }) // This is also a CompletableFuture<Void> so you can chain a callback
+            .thenRun(() -> channel.purgeMessages(messages)); // Run after loop is over, delete the messages in your list
+        }
+        ```
 
 ??? question "How can I send a message to a specific channel without an event?"
 
-    Since you decided that you want to send a message to a specific channel you should already have either an **ID** or the **NAME and optionally GUILD (ID/NAME)** to locate this channel. Now all you need is access to the JDA instance of your bot session. This can easily be accomplished by passing the JDA instance as a parameter to the constructor of your class ([Example](#example-handling-the-jda-instance)).
+    Since you decided that you want to send a message to a specific channel you should already have either an **ID** or the **NAME and optionally GUILD (ID/NAME)** to locate this channel. Now all you need is access to the JDA instance of your bot session. This can easily be accomplished by passing the JDA instance as a parameter to the constructor of your class.
 
     With the JDA instance you can easily acquire the specific channel through your means. One example is the [getTextChannelById(id) method](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDA.html#getTextChannelById(long)) and the other is the [getTextChannelsByName(name, true) method](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDA.html#getTextChannelsByName(java.lang.String,boolean)). Note that names might not be unique to one channel (example "general") so the `getTextChannelsByName(...)` method returns a `List<TextChannel>` containing **all** matches for that specific name. If you desire a specific guild you can filter by first getting the guild via either [getGuildById(guildId)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDA.html#getGuildById(long)) or [getGuildsByName(guildName, true)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDA.html#getGuildsByName(java.lang.String,boolean)) and calling the same methods on the guilds rather than the JDA instance. It is not recommended to keep a reference to a Guild stored for long as the JDA cache might stop updating the specific instance in favor of a new one later on (for example when reconnecting).
 
-    #### Example - Handling the JDA instance
-
-    ```java
-    public class EventChannel {
-        private final JDA api;
-
-        public EventChannel(JDA api) {
-            this.api = api;
-        }
-
-        public void start() { ... }
-    }
-    ```
-
-    Once you have this structure you have two choices of passing the JDA instance:
-
-    === "Ready Event (recommended)"
+    !!! example "Example - Handling the JDA instance"
 
         ```java
-        public static void main(String[] args) {
-            JDABuilder.createDefault(TOKEN)
-                .addEventListeners(listener) // some other listeners/settings
-                .addEventListeners(new ListenerAdapter() {
-                    @Override public void onReady(ReadyEvent event) {
-                        new EventChannel(event.getJDA()).start(); // starts your channel with the ready event
-                    }
-                }).build();
+        public class EventChannel {
+            private final JDA api;
+
+            public EventChannel(JDA api) {
+                this.api = api;
+            }
+
+            public void start() { ... }
         }
         ```
 
-    === "Awaiting Ready"
+        Once you have this structure you have two choices of passing the JDA instance:
 
-        ```java
-        public static void main(String[] args) {
-            JDA api = JDABuilder.createDefault(TOKEN)
-                .addEventListeners(listener) // some other listeners/settings
-                .build();
-            new EventChannel(api.awaitReady()).start();
-        }
-        ```
+        === "Ready Event (recommended)"
+
+            ```java
+            public static void main(String[] args) {
+                JDABuilder.createDefault(TOKEN)
+                    .addEventListeners(listener) // some other listeners/settings
+                    .addEventListeners(new ListenerAdapter() {
+                        @Override public void onReady(ReadyEvent event) {
+                            new EventChannel(event.getJDA()).start(); // starts your channel with the ready event
+                        }
+                    }).build();
+            }
+            ```
+
+        === "Awaiting Ready"
+
+            ```java
+            public static void main(String[] args) {
+                JDA api = JDABuilder.createDefault(TOKEN)
+                    .addEventListeners(listener) // some other listeners/settings
+                    .build();
+                new EventChannel(api.awaitReady()).start();
+            }
+            ```
 
 ??? question "How can I wait for a user response?"
 
@@ -188,11 +188,11 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
     ```
 
     Doing this will result in performance loss so it is recommended to only go to this extreme when you need to debug errors.
-    To handle failures of a specific action, read this [RestAction queue returned failure](https://github.com/DV8FromTheWorld/JDA/wiki/19%29-Troubleshooting#restaction-queue-returned-failure).
+    To handle failures of a specific action, read this [RestAction queue returned failure](../using-jda/troubleshooting.md#restaction-queue-returned-failure).
 
 ??? question "How do I test other builds?"
 
-    Sometimes we are working experimental or feature branches which require testing. For this testing we use [jitpack](https://jitpack.io). If you are interested in testing one of those builds you have to use [gradle](https://gradle.org) or [maven](https://maven.apache.org).
+    Sometimes we are working experimental or feature branches which require testing. For this testing we use [JitPack](https://jitpack.io). If you are interested in testing one of those builds you have to use [Gradle](https://gradle.org) or [Maven](https://maven.apache.org).
     You require the repositories `https://jitpack.io`, and `https://m2.dv8tion.net/releases` as resolvers for these builds. The format used for the version is one of the following:
 
     - commit hash (7+ chars)
@@ -238,20 +238,20 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
 
 ??? question "How can I reduce the jar size of my bot?"
 
-    To reduce the jar size of your bot you can either use maven or gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
+    To reduce the jar size of your bot you can either use Maven or Gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
 
     === "Gradle"
 
         1. Exclude OPUS natives if you don't need encoding/decoding of audio (With LavaPlayer you don't need these natives)
-            ```gradle
+            ```groovy
             implementation("net.dv8tion:JDA:$VERSION") {
                 exclude module: "opus-java"
             }
             ```
-            For kotlin-dsl use `exclude(module="opus-java")`
+            For Kotlin DSL use `exclude(module="opus-java")`
 
         2. Minimize your Jar with the Shadow Plugin
-            ```gradle
+            ```groovy
             shadowJar { minimize() }
             ```
 
@@ -321,7 +321,7 @@ Didn't find an answer? Try asking in [our discord server](https://discord.gg/0hM
         2. `JDABuilder#setGatewayPool(ScheduledExecutorService)`
         3. `JDABuilder#setRateLimitPool(ScheduledExecutorService)`
 
-    ??? question How do I make a thread dump?
+??? question "How do I make a thread dump?"
 
     The JDK provides a utility for creating a thread dump of a running JVM process: `jstack -l <pid>` (that's an L for "Long")
     Example: `jstack -l 1337 > dump.txt` This will list the thread dump and write it to a file called `dump.txt`.
