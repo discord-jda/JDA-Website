@@ -4,6 +4,7 @@ This guide will give you a brief introduction to an API for adding and handling 
 
 - Slash Commands
 - Buttons
+- Selection Menus (Dropdowns)
 
 ### Ephemeral Messages
 
@@ -96,34 +97,42 @@ public class TagCommand extends ListenerAdapter {
 ```
 
 
-## Buttons
+# Component Interactions
 
-Every message supports a set of components within specific layouts. Currently, the only component is [Button](https://javadoc.jitpack.io/com/github/dv8fromtheworld/jda/fe6dc24/javadoc/net/dv8tion/jda/api/interactions/components/Button.html) and the only layout is [ActionRow](https://javadoc.jitpack.io/com/github/dv8fromtheworld/jda/fe6dc24/javadoc/net/dv8tion/jda/api/interactions/components/ActionRow.html).
-
-Each button can be enabled or disabled, have a specific style, label, and emoji:
-
-![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
-
-To add such buttons to a message you can use up to 5 ActionRows.
+To add components to a message you can use up to 5 ActionRows.
 
 You can add multiple ActionRows with either `setActionRows` or `addActionRows` (depending on whether you are sending or editing a message).
-For the common case of a single ActionRow you can also use `setActionRow(Button...)` or `addActionRow(Button...)`.
+For the common case of a single ActionRow you can also use `setActionRow(Component...)` or `addActionRow(Component...)`.
 
-### Handling ButtonClickEvent
+Each ActionRow can hold up to a certain amount of components:
+- 5 Buttons
+- 1 Selection Menu (Dropdown)
 
-To properly use an interactive Button, meaning any non-link button, you need to use the **Component ID** (aka **Custom ID**, **Button ID**).
-Each non-link button requires such an ID in order to be used and this ID can also be used to then *identify* which button was pressed by the user.
-
-When a user presses one of these buttons, you will receive a `ButtonClickEvent` for the respective interaction. This event provides the configured ID with `getComponentId()`.
-
-These button interactions, or component interactions, offer 4 response types:
+These component interactions offer 4 response types:
 
 - Reply
 - Deferred Reply
 - Edit Message
 - Deferred Edit Message
 
-The reply and deferred reply responses are identical to the Slash-Commands response types. However, these new edit response types are used to update the existing message the button is attached to. If you simply want to acknowledge that the button was pressed, you can simply do a `deferEdit()` without any further updates, which will prevent the interaction from failing on the user side.
+The reply and deferred reply responses are identical to the Slash-Commands response types. However, these new edit response types are used to update the existing message the component is attached to. If you simply want to acknowledge that the component was successfully interacted with, you can simply do a `deferEdit()` without any further updates, which will prevent the interaction from failing on the user side.
+
+To properly use an interactive component, you need to use the **Component ID** (aka **Custom ID**).
+This ID can also be used to then *identify* which component was pressed by the user.
+
+Such Component ID is provided by `getComponentId()` on every Component Interaction.
+
+## Buttons
+
+Each button can be enabled or disabled, have a specific style, label, and emoji:
+
+![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
+
+### Handling ButtonClickEvent
+
+When a user presses one of these buttons, you will receive a `ButtonClickEvent` for the respective interaction.
+
+Each non-link button requires such an ID in order to be used.
 
 **Example**:
 
@@ -155,5 +164,49 @@ The reply and deferred reply responses are identical to the Slash-Commands respo
            event.editMessage("That button didn't say click me").queue(); // update the message
        }
    }
+ }
+```
+
+## Selection Menus (Dropdowns)
+
+Every dropdown can be disabled and have up to 25 options.
+
+It's possible to set the minimum and maximum amount of options to be selected.
+
+Each option can have its own label, description, and emoji.
+There can be multiple options selected and set as default.
+
+![Example Selection Menu With A Default Value](https://i.imgur.com/44q006n.png)
+
+### Handling SelectionMenuEvent
+
+When a user chooses options from a dropdown, you will receive a `SelectionMenuEvent` for the respective interaction with the selected values.
+
+**Example**:
+
+```java
+ public class DropdownBot extends ListenerAdapter {
+	@Override
+	public void onSlashCommand(SlashCommandEvent event) {
+		if (event.getName().equals("food")) {
+			event.reply("Choose your favorite food")
+				.addActionRow(
+					SelectionMenu.create("choose-food")
+					  .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
+					  .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
+							.withDescription("Tasty") // this time with a description
+							.withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
+							.withDefault(true)) // while also being the default option
+					.build())
+				.queue();
+		}
+	}
+  
+	@Override
+	public void onSelectionMenu(SelectionMenuEvent event) {
+		if (event.getComponentId().equals("choose-food")) {
+			event.reply("You chose " + event.getValues().get(0)).queue();
+		}
+	}
  }
 ```
