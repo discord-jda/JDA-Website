@@ -37,7 +37,7 @@ extra:
       link: https://discord.gg/jda
 
 extra_css:
-- 'assets/css/colors.css'
+- 'assets/stylesheets/colors.css'
 
 markdown_extensions:
   - admonition
