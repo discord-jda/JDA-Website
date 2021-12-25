@@ -105,6 +105,7 @@ You can add multiple ActionRows with either `setActionRows` or `addActionRows` (
 For the common case of a single ActionRow you can also use `setActionRow(Component...)` or `addActionRow(Component...)`.
 
 Each ActionRow can hold up to a certain amount of components:
+
 - 5 Buttons
 - 1 Selection Menu (Dropdown)
 
