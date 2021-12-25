@@ -97,7 +97,7 @@ When you use `deferReply` the first message sent to this webhook will act identi
     ```
 
 
-# Component Interactions
+## Component Interactions
 
 To add components to a message you can use up to 5 ActionRows.
 
@@ -122,13 +122,13 @@ This ID can also be used to then *identify* which component was pressed by the u
 
 Such Component ID is provided by `getComponentId()` on every Component Interaction.
 
-## Buttons
+### Buttons
 
 Each button can be enabled or disabled, have a specific style, label, and emoji:
 
 ![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
 
-### Handling ButtonClickEvent
+#### Handling ButtonClickEvent
 
 When a user presses one of these buttons, you will receive a `ButtonClickEvent` for the respective interaction.
 
@@ -167,7 +167,7 @@ Each non-link button requires such an ID in order to be used.
  }
 ```
 
-## Selection Menus (Dropdowns)
+### Selection Menus (Dropdowns)
 
 Every dropdown can be disabled and have up to 25 options.
 
@@ -178,7 +178,7 @@ There can be multiple options selected and set as default.
 
 ![Example Selection Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-### Handling SelectionMenuEvent
+#### Handling SelectionMenuEvent
 
 When a user selects their options from a dropdown and submits their choices, you will receive a `SelectionMenuEvent` for the respective interaction with the selected values.
 
