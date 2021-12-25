@@ -186,27 +186,27 @@ When a user chooses options from a dropdown, you will receive a `SelectionMenuEv
 
 ```java
  public class DropdownBot extends ListenerAdapter {
-	@Override
-	public void onSlashCommand(SlashCommandEvent event) {
-		if (event.getName().equals("food")) {
-			event.reply("Choose your favorite food")
-				.addActionRow(
-					SelectionMenu.create("choose-food")
-					  .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
-					  .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
-							.withDescription("Tasty") // this time with a description
-							.withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
-							.withDefault(true)) // while also being the default option
-					.build())
-				.queue();
-		}
-	}
+    @Override
+    public void onSlashCommand(SlashCommandEvent event) {
+        if (event.getName().equals("food")) {
+            event.reply("Choose your favorite food")
+                .addActionRow(
+                    SelectionMenu.create("choose-food")
+                      .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
+                      .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
+                            .withDescription("Tasty") // this time with a description
+                            .withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
+                            .withDefault(true)) // while also being the default option
+                    .build())
+                .queue();
+        }
+    }
   
-	@Override
-	public void onSelectionMenu(SelectionMenuEvent event) {
-		if (event.getComponentId().equals("choose-food")) {
-			event.reply("You chose " + event.getValues().get(0)).queue();
-		}
-	}
+    @Override
+    public void onSelectionMenu(SelectionMenuEvent event) {
+        if (event.getComponentId().equals("choose-food")) {
+            event.reply("You chose " + event.getValues().get(0)).queue();
+        }
+    }
  }
 ```
