@@ -1,9 +1,13 @@
 # What do I need to get started?
 
-1. [[Setup your project|2)-Setup]]
-2. [[Setup JDA|3)-Getting-Started]]
-3. Once you have your project you will need an additional dependency for your [AudioSendHandler](/DV8FromTheWorld/JDA/tree/master/src/main/java/net/dv8tion/jda/core/audio/AudioSendHandler.java)
-    - If you don't want to implement it yourself use [LavaPlayer](#using-lavaplayer)
+1. Set up your project: 
+    - [IntelliJ IDEA](../setup/intellij.md)
+    - [Eclipse](../setup/eclipse.md)
+    - [Netbeans](../setup/netbeans.md)
+
+2. [Set up JDA](getting-started.md)
+3. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
+    - If you don't want to implement it yourself, use [LavaPlayer](#using-lavaplayer)
 
 ### Connecting to a VoiceChannel
 
@@ -19,14 +23,18 @@
 3. Open an audio connection [`audioManager.openAudioConnection()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.VoiceChannel)) 
     <br>`audioManager.openAudioConnection(myChannel);`
 
-> **Note**: It may be important to do certain permission checks before trying to open an audio connection! It may result in a PermissionException throw otherwise!
+!!! note
+    It may be important to do certain permission checks before trying to open an audio connection! It may result in a PermissionException throw otherwise!
+
 
 ### Sending Audio to an Open Audio Connection
+
+!!! note inline end
+    For LavaPlayer read [here](#using-lavaplayer)
 
 1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
    <br>`AudioManager audioManager = guild.getAudioManager();`
 2. Create a **new** [AudioSendHandler](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/audio/AudioSendHandler.html) instance for your implementation. 
-   (Note: For LavaPlayer read [[here|4)-Making-a-Music-Bot#using-lavaplayer]])
 3. Register your AudioSendHandler: 
   [`audioManager.setSendingHandler(myAudioSendHandler)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#setSendingHandler(net.dv8tion.jda.api.audio.AudioSendHandler))
     <br>You may only use __one__ AudioSendHandler per Guild and not use the same instance on another Guild! 
@@ -70,19 +78,26 @@ public class MusicBot extends ListenerAdapter
 }
 ```
 
-> Note: This example expects you to have your own AudioSendHandler implementation<br>
-> It is crucial you only use one AudioSendHandler per Guild!
+!!! Important
+    This example expects you to have your own AudioSendHandler implementation.  
+    It is crucial you only use one AudioSendHandler per Guild!
 
 ## Using LavaPlayer
 
-1. Setup LavaPlayer [guide](/sedmelluq/LavaPlayer#lavaplayer---audio-player-library-for-discord)
-2. Implement an AudioSendHandler -> [Example](/sedmelluq/LavaPlayer#jda-integration)
-3. Connect to a voice channel [[how?|4)-Making-a-Music-Bot#Connecting-to-a-VoiceChannel]]
-4. Register your AudioSendHandler [[how?|4)-Making-a-Music-Bot#Sending-Audio-to-an-Open-Audio-Connection]]
-5. Use the LavaPlayer resources [How To Use LavaPlayer](/sedmelluq/LavaPlayer#usage)
+1. [Set up LavaPlayer](https://github.com/sedmelluq/LavaPlayer#readme)
+2. Implement an AudioSendHandler 
+    - [Example](https://github.com/sedmelluq/LavaPlayer#jda-integration)
+3. [Connect to a voice channel](#connecting-to-a-voicechannel)
+4. [Register your AudioSendHandler](#sending-audio-to-an-open-audio-connection)
+5. Use the LavaPlayer resources: [How To Use LavaPlayer](https://github.com/sedmelluq/LavaPlayer#usage)
 
 
 ### More example implementations can be found in existing bots like:
-- AudioEchoExample [Source](https://github.com/DV8FromTheWorld/JDA/blob/development/src/examples/java/AudioEchoExample.java)
-- Clarity by @jagrosh [GitHub](/jagrosh/MusicBot) [Wiki](/jagrosh/MusicBot/wiki) 
-- FredBoat by @Frederikam [GitHub](/Frederikam/FredBoat) -> [relevant package](/Frederikam/FredBoat/tree/master/FredBoat/src/main/java/fredboat/audio)
+- AudioEchoExample
+    - [Source](https://github.com/DV8FromTheWorld/JDA/blob/development/src/examples/java/AudioEchoExample.java)
+- Clarity by [@jagrosh](https://github.com/jagrosh)
+    - [GitHub](https://github.com/jagrosh/MusicBot) 
+    - [Wiki](https://github.com/jagrosh/MusicBot/wiki) 
+- FredBoat by [@freyacodes](https://github.com/freyacodes)
+    - [GitHub](https://github.com/freyacodes/archived-bot/)
+    - [relevant package](https://github.com/freyacodes/archived-bot/tree/master/FredBoat/src/main/java/fredboat/audio)

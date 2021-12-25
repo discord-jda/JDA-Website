@@ -21,7 +21,7 @@ Discord now expects the bot to explicitly state which events the bot *intents* t
 - [`createLight`][createLight]
 - [`create`][create]
 
-## What Intents do I need?
+### What Intents do I need?
 
 The necessary intents directly correlate with the features you *intent* to deploy.
 Each [`GatewayIntent`][GatewayIntent] documents which events are enabled by it. Some caches in JDA also depend on these intents so take a close look at the documentation for [`CacheFlag`][CacheFlag] as well.
@@ -60,12 +60,12 @@ JDABuilder.createDefault(token) // enable all default intents
           .build();
 ```
 
-### Troubleshooting
+#### Troubleshooting
 
-- [I'm getting CloseCode(4014 / Disallowed intents...)](https://github.com/DV8FromTheWorld/JDA/wiki/19\)-Troubleshooting#im-getting-closecode4014--disallowed-intents)
-- [My event listener code is not executed](https://github.com/DV8FromTheWorld/JDA/wiki/19\)-Troubleshooting#my-event-listener-code-is-not-executed)
+- [I'm getting CloseCode(4014 / Disallowed intents...)](troubleshooting.md#im-getting-closecode4014-disallowed-intents)
+- [My event listener code is not executed](troubleshooting.md#my-event-listener-code-is-not-executed)
 
-# CacheFlags
+## CacheFlags
 
 JDA provides a number of different optional caches you can enable or disable.
 Most of these caches are configured using the [`CacheFlag`][CacheFlag] enum.
@@ -82,9 +82,9 @@ The individual factory methods document which defaults will be used:
 1. [`createLight`][createLight]
 1. [`create`][create]
 
-# MemberCachePolicy
+## MemberCachePolicy
 
-Together with intents, discord now wants to further restrict data access for bots by limiting how many members they can cache. To properly maintain a cache of all members you need the `GUILD_MEMBERS` intent, because it will enable the `GuildMemberRemoveEvent` to remove members from cache once they leave the guild. Without this intent, JDA would infinitely grow its cache without knowing when to remove members.
+Together with intents, Discord now wants to further restrict data access for bots by limiting how many members they can cache. To properly maintain a cache of all members you need the `GUILD_MEMBERS` intent, because it will enable the `GuildMemberRemoveEvent` to remove members from cache once they leave the guild. Without this intent, JDA would infinitely grow its cache without knowing when to remove members.
 
 To handle this new default we now have a [`MemberCachePolicy`][MemberCachePolicy] which can be configured using [`setMemberCachePolicy`][setMemberCachePolicy]. Each factory method will set a default cache policy which will only retain members under certain conditions:
 
@@ -102,6 +102,8 @@ We also provide a few reasonable implementations to choose from and apply using 
     Will keep all voice members cached (requires `GUILD_VOICE_STATES` intent)
 - [Owner](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
     Will keep the guild owner cached
+- [Pending](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
+    Will keep the members cached, which have no passed membership screening yet (requires `GUILD_MEMBERS` intents)
 - [None](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
     Will only keep the self member cached and nobody else
 

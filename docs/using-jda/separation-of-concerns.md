@@ -7,7 +7,7 @@ Each entity that can be updated directly has a [Manager](#managers) instance whi
 
 ## Managers
 
-The managers in JDA are useful to update entities without much complications, you can update all of the properties in a single [[RestAction|7)-Using-RestAction]] execution (http request).
+The managers in JDA are useful to update entities without much complications, you can update all of the properties in a single [RestAction](using-restaction.md) execution (HTTP request).
 
 ### Updating an Entity
 
@@ -20,7 +20,8 @@ public void updateChannel(TextChannel channel) {
     manager.queue(); // execute update, this updates both name and topic
 }
 ```
-> Note: `queue()` is async so the update is not done when this method returns!
+!!! note 
+    `queue()` is async so the update is not done when this method returns!
 
 ### Re-usability of Managers
 
@@ -35,11 +36,14 @@ All entities are deleted directly using its delete() method, for instance [Chann
 
 You can create copies of entities in the same fashion with one twist. Some `createCopy()` methods allow you to modify the new copy before execution of the **RestAction**
 
+!!! note inline end 
+    This will copy the provided `Channel` and set its name to the provided `newName`!
+
 ```java
 public void copyChannel(Channel channel, String newName) {
     channel.createCopy().setName(newName).queue();
 }
 ```
-> Note: This will copy the provided `Channel` and set its name to the provided `newName`!
+
 
 These things can be overlooked, so we do recommend to inspect the return type of these operations: `getManager()`, `create...()`, `delete()`, `ban(...)`, `kick(...)`, etc.

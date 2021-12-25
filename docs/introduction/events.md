@@ -8,9 +8,7 @@ To switch between them, you can either use `JDABuilder#setEventManager(new Annot
 
 After that, you just need to call `JDABuilder#addEventListeners(Object...)` or `JDA#addEventListeners(Object...)` with your Listener implementation.
 
-### Using JDABuilder
-
-```java
+```java title="Using JDABuilder"
 // imports {...}
 public class Launcher
 {
@@ -24,9 +22,7 @@ public class Launcher
 }
 ```
 
-### Using JDA
-
-```java
+```java title="Using JDA"
 // imports {...}
 public class MyListeners
 {
@@ -43,52 +39,53 @@ When using the interfaced system (default), your Listener(s) have to implement t
 
 For convenience, we also included the class _ListenerAdapter_, which comes with a wide set of predefined functions targeted at specific event-types.
 
-**Example (EventListener)**
-```java
-public class Test implements EventListener
-{
-    @Override
-    public void onEvent(GenericEvent event)
+!!! example "Examples"
+    ```java title="Using EventListener"
+    public class Test implements EventListener
     {
-        if(event instanceof MessageReceivedEvent)
+        @Override
+        public void onEvent(GenericEvent event)
+        {
+            if(event instanceof MessageReceivedEvent)
+                System.out.println(event.getMessage().getContentDisplay());
+        }
+    }
+    ```
+    ```java title="Using ListenerAdapter"
+    public class Test extends ListenerAdapter
+    {
+        @Override
+        public void onMessageReceived(MessageReceivedEvent event)
+        {
             System.out.println(event.getMessage().getContentDisplay());
+        }
     }
-}
-```
-**Example (ListenerAdapter)**
-```java
-public class Test extends ListenerAdapter
-{
-    @Override
-    public void onMessageReceived(MessageReceivedEvent event)
-    {
-        System.out.println(event.getMessage().getContentDisplay());
-    }
-}
-```
-_(don't forget actually registering this listener)_
+    ```
+    _Don't forget actually registering this listener_
+
+
 ## Using the Annotated System
 
 When using the annotated system, all listener methods have to have the `@SubscribeEvent` annotation present, and only accept a single parameter, which has to be a instance of _Event_.
 
-**Example**
-```java
-public class Test
-{
-    public static void main(String[] args)
-    throws LoginException
+!!! example
+    ```java
+    public class Test
     {
-        JDABuilder.createDefault(TOKEN)
-            .setEventManager(new AnnotatedEventManager())
-            .addEventListeners(new Test())
-            .build();
-    }
+        public static void main(String[] args)
+        throws LoginException
+        {
+            JDABuilder.createDefault(TOKEN)
+                .setEventManager(new AnnotatedEventManager())
+                .addEventListeners(new Test())
+                .build();
+        }
 
-    @SubscribeEvent
-    public void ohHeyAMessage(MessageReceivedEvent event)
-    {
-        System.out.println(event.getMessage().getContentDisplay());
+        @SubscribeEvent
+        public void ohHeyAMessage(MessageReceivedEvent event)
+        {
+            System.out.println(event.getMessage().getContentDisplay());
+        }
     }
-}
-```
-_(don't forget actually registering this listener)_
+    ```
+    _Don't forget actually registering this listener_
