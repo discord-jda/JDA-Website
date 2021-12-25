@@ -2,6 +2,7 @@ site_name: JDA Wiki
 copyright: Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß
 
 theme:
+  custom_dir: overrides
   favicon: assets/images/logo-round.png
   features:
     - navigation.instant
@@ -37,11 +38,12 @@ extra:
       link: https://discord.gg/jda
 
 extra_css:
-- 'assets/stylesheets/colors.css'
+- 'stylesheets/colors.css'
 
 markdown_extensions:
   - admonition
   - meta
+  - attr_list
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
