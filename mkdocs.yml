@@ -2,7 +2,6 @@ site_name: JDA Wiki
 copyright: Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß
 
 theme:
-  custom_dir: overrides
   favicon: assets/images/logo-round.png
   features:
     - navigation.instant
