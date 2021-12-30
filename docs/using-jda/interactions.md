@@ -123,6 +123,8 @@ This ID can also be used to then *identify* which component was pressed by the u
 
 Such Component ID is provided by `getComponentId()` on every Component Interaction.
 
+Keep in mind that these Component IDs **must be unique across all components in one message**.
+
 ### Buttons
 
 Each button can be enabled or disabled, have a specific style, label, and emoji:
