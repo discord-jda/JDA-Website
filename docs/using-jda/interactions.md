@@ -139,36 +139,36 @@ Each non-link button requires such an ID in order to be used.
 
 !!! example
 
-```java
- public class HelloBot extends ListenerAdapter {
-   @Override
-   public void onSlashCommand(SlashCommandEvent event) {
-       if (event.getName().equals("hello")) {
-           event.reply("Click the button to say hello")
-               .addActionRow(
-                 Button.primary("hello", "Click Me"), // Button with only a label
-                 Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
-               .queue();
-       } else if (event.getName().equals("info")) {
-           event.reply("Click the buttons for more info")
-               .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
-                   Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
-                     .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
-                   Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
-               .queue();
-       }
-   }
+    ```java
+    public class HelloBot extends ListenerAdapter {
+      @Override
+      public void onSlashCommand(SlashCommandEvent event) {
+          if (event.getName().equals("hello")) {
+              event.reply("Click the button to say hello")
+                  .addActionRow(
+                    Button.primary("hello", "Click Me"), // Button with only a label
+                    Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
+                  .queue();
+          } else if (event.getName().equals("info")) {
+              event.reply("Click the buttons for more info")
+                  .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                      Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
+                        .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
+                      Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                  .queue();
+          }
+      }
 
-   @Override
-   public void onButtonClick(ButtonClickEvent event) {
-       if (event.getComponentId().equals("hello")) {
-           event.reply("Hello :)").queue(); // send a message in the channel
-       } else if (event.getComponentId().equals("emoji")) {
-           event.editMessage("That button didn't say click me").queue(); // update the message
-       }
-   }
- }
-```
+      @Override
+      public void onButtonClick(ButtonClickEvent event) {
+          if (event.getComponentId().equals("hello")) {
+              event.reply("Hello :)").queue(); // send a message in the channel
+          } else if (event.getComponentId().equals("emoji")) {
+              event.editMessage("That button didn't say click me").queue(); // update the message
+          }
+      }
+    }
+    ```
 
 ### Selection Menus (Dropdowns)
 
@@ -187,29 +187,29 @@ When a user selects their options from a dropdown and submits their choices, you
 
 !!! example
 
-```java
- public class DropdownBot extends ListenerAdapter {
-    @Override
-    public void onSlashCommand(SlashCommandEvent event) {
-        if (event.getName().equals("food")) {
-            event.reply("Choose your favorite food")
-                .addActionRow(
-                    SelectionMenu.create("choose-food")
-                      .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
-                      .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
-                            .withDescription("Tasty") // this time with a description
-                            .withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
-                            .withDefault(true)) // while also being the default option
-                    .build())
-                .queue();
+    ```java
+    public class DropdownBot extends ListenerAdapter {
+        @Override
+        public void onSlashCommand(SlashCommandEvent event) {
+            if (event.getName().equals("food")) {
+                event.reply("Choose your favorite food")
+                    .addActionRow(
+                        SelectionMenu.create("choose-food")
+                          .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
+                          .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
+                                .withDescription("Tasty") // this time with a description
+                                .withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
+                                .withDefault(true)) // while also being the default option
+                        .build())
+                    .queue();
+            }
+        }
+
+        @Override
+        public void onSelectionMenu(SelectionMenuEvent event) {
+            if (event.getComponentId().equals("choose-food")) {
+                event.reply("You chose " + event.getValues().get(0)).queue();
+            }
         }
     }
-  
-    @Override
-    public void onSelectionMenu(SelectionMenuEvent event) {
-        if (event.getComponentId().equals("choose-food")) {
-            event.reply("You chose " + event.getValues().get(0)).queue();
-        }
-    }
- }
-```
+    ```
