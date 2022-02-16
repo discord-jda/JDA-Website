@@ -10,7 +10,7 @@ This guide will give you a brief introduction to an API for adding and handling 
 - [Slash Command Auto-Complete](#slash-command-auto-complete)
 - [Context Menus](#context-menus)
 - [Buttons](#buttons)
-- [Selection Menus (Dropdowns)](#selection-menus-dropdowns)
+- [Select Menus (Dropdowns)](#select-menus-dropdowns)
 - Modals*
 
 *Modals are currently in-development and will be available soon in v5-alpha.
@@ -22,7 +22,6 @@ Ephemeral messages are only visible to the user who used your Interaction. They 
 There are many limitations to ephemeral messages, a few of which are listed below:
 
 - Cannot be deleted by the bot
-- Cannot contain any files/attachments
 - Cannot be reacted to
 - Cannot be retrieved
 - Will be removed after a client restart
@@ -60,7 +59,15 @@ You can create commands through these methods in JDA:
             Commands.slash("echo", "Repeats messages back to you.")
                 .addOption(OptionType.STRING, "message", "The message to repeat.")
                 .addOption(OptionType.INTEGER, "times", "The number of times to repeat the message.")
-                .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message.")
+                .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message."),
+            Commands.slash("animal", "Finds a random animal")
+                 .addOptions(
+                     new OptionData(OptionType.STRING, "type", "The type of animal to find")
+                         .addChoice("Bird", "bird")
+                         .addChoice("Big Cat", "bigcat")
+                         .addChoice("Canine", "canine")
+                         .addChoice("Fish", "fish")
+                 )
     ).queue();
     ```
 
@@ -180,7 +187,7 @@ These commands take no arguments, and are useful for providing a quick way to pe
     ```java
     guild.updateCommands().addCommands(
             Commands.context(Command.Type.USER, "Get user avatar"),
-            Commands.context(Command.Type.MESSAGE, "Count words")
+            Commands.message("Count words")
     ).queue()
     ```
     
@@ -277,9 +284,9 @@ Each non-link button requires such an ID in order to be used.
     }
     ```
 
-### Selection Menus (Dropdowns)
+### Select Menus (Dropdowns)
 
-Selection Menus can be disabled and have up to 25 options.
+Select Menus can be disabled and have up to 25 options.
 
 It's possible to set the minimum and maximum number of options to be selected.
 
