@@ -54,22 +54,40 @@ You can create commands through these methods in JDA:
 - `upsertCommand(name, description)`
 
 !!! example
-    ```java
-    guild.updateCommands().addCommands(
-            Commands.slash("echo", "Repeats messages back to you.")
-                .addOption(OptionType.STRING, "message", "The message to repeat.")
-                .addOption(OptionType.INTEGER, "times", "The number of times to repeat the message.")
-                .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message."),
-            Commands.slash("animal", "Finds a random animal")
-                 .addOptions(
-                     new OptionData(OptionType.STRING, "type", "The type of animal to find")
-                         .addChoice("Bird", "bird")
-                         .addChoice("Big Cat", "bigcat")
-                         .addChoice("Canine", "canine")
-                         .addChoice("Fish", "fish")
-                 )
-    ).queue();
-    ```
+    === "Java"
+        ```java
+        guild.updateCommands().addCommands(
+                Commands.slash("echo", "Repeats messages back to you.")
+                    .addOption(OptionType.STRING, "message", "The message to repeat.")
+                    .addOption(OptionType.INTEGER, "times", "The number of times to repeat the message.")
+                    .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message."),
+                Commands.slash("animal", "Finds a random animal")
+                     .addOptions(
+                         new OptionData(OptionType.STRING, "type", "The type of animal to find")
+                             .addChoice("Bird", "bird")
+                             .addChoice("Big Cat", "bigcat")
+                             .addChoice("Canine", "canine")
+                             .addChoice("Fish", "fish")
+                     )
+        ).queue();
+        ```
+    === "Kotlin"
+        ```kotlin
+        guild.updateCommands().addCommands(
+                Commands.slash("echo", "Repeats messages back to you.")
+                    .addOption(OptionType.STRING, "message", "The message to repeat.")
+                    .addOption(OptionType.INTEGER, "times", "The number of times to repeat the message.")
+                    .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message."),
+                Commands.slash("animal", "Finds a random animal")
+                     .addOptions(
+                         OptionData(OptionType.STRING, "type", "The type of animal to find")
+                             .addChoice("Bird", "bird")
+                             .addChoice("Big Cat", "bigcat")
+                             .addChoice("Canine", "canine")
+                             .addChoice("Fish", "fish")
+                     )
+        ).queue()
+        ```
 
 To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands>
 
@@ -98,17 +116,27 @@ The flow of a slash command response is as follows:
 When you use `deferReply` the first message sent to this webhook will act identically to using `editOriginal(...)`. The message you send is also referred to as *deferred reply* in this case. Your deferred reply will **edit** your initial `Thinking...` message instead of sending an additional message to channel. This means you cannot use `setEphemeral` on this deferred reply since you already decided whether the message will be ephemeral through your initial acknowledgment.
 
 !!! example "Example Reply"
-
-    ```java
-    public class SayCommand extends ListenerAdapter {
-      @Override
-      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
-        if (event.getName().equals("say")) {
-          event.reply(event.getOption("content").getAsString()).queue(); // reply immediately
+    === "Java"
+        ```java
+        public class SayCommand extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("say")) {
+                  event.reply(event.getOption("content").getAsString()).queue(); // reply immediately
+                }
+            }
         }
-      }
-    }
-    ```
+        ```
+    === "Kotlin"
+        ```kotlin
+        object SayCommand : ListenerAdapter() {
+          override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+            if (event.name == "say") {
+              event.reply(event.getOption("content")!!.asString).queue()
+            }
+          }
+        }
+        ```
 
 
 !!! example "Example Deferred Reply"
@@ -221,7 +249,7 @@ For the common case of a single ActionRow you can also use `setActionRow(Compone
 Each ActionRow can hold up to a certain amount of components:
 
 - 5 Buttons
-- 1 Selection Menu (Dropdown)
+- 1 Select Menu (Dropdown)
 
 These component interactions offer 4 response types:
 
@@ -293,11 +321,11 @@ It's possible to set the minimum and maximum number of options to be selected.
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
 
-![Example Selection Menu With A Default Value](https://i.imgur.com/44q006n.png)
+![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling SelectionMenuEvent
+#### Handling SelectMenuEvent
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `SelectionMenuEvent` for the respective interaction with the selected values.
+When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuEvent` for the respective interaction with the selected values.
 
 !!! example
 
