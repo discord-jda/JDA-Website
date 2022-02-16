@@ -135,6 +135,8 @@ Any slash command arguments using the `String`, `Integer` or `Number` types can 
 As the user is typing an argument that has autocomplete enabled for it, the bot will receive an `CommandAutoCompleteInteractionEvent`.
 This event isn't fired for each keystroke, but is sent when Discord determines the user has paused typing for a bit.
 
+Auto-completions can suggest up to 25 options, and users do not have to send a command with one of the options.
+
 !!! example
     Creating the command:
     ```java
