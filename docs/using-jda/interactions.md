@@ -1,29 +1,37 @@
 # Interactions
 
+!!! note ""
+
+    Interactions differ between JDA v4 and JDA v5.  This page covers JDA v5.
+
 This guide will give you a brief introduction to an API for adding and handling interactions in Discord. Interactions are a way to integrate your bot features directly into the Discord User Interface. These things include features such as:
 
-- Slash Commands
-- Buttons
-- Selection Menus (Dropdowns)
+- [Slash Commands](#slash-commands)
+- [Slash Command Auto-Complete](#slash-command-auto-complete)
+- [Context Menus](#context-menus)
+- [Buttons](#buttons)
+- [Selection Menus (Dropdowns)](#selection-menus-dropdowns)
+- Modals*
+
+*Modals are currently in-development and will be available soon in v5-alpha.
 
 ### Ephemeral Messages
 
-These ephemeral messages are only visible to the user who used your Slash-Command/Button. They are similar to the messages Discord sends you when you update your nickname with `/nick`.
+Ephemeral messages are only visible to the user who used your Interaction. They are similar to the messages Discord sends you when you update your nickname with `/nick`.
 
-Ephemeral messages have some limitations and will be removed once the user restarts their client.
-
-Limitations:
+There are many limitations to ephemeral messages, a few of which are listed below:
 
 - Cannot be deleted by the bot
 - Cannot contain any files/attachments
 - Cannot be reacted to
 - Cannot be retrieved
+- Will be removed after a client restart
 
 !!! example
 
     ![EphemeralMessage](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/interactions/EphemeralMessage.png)
 
-You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
+You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience, you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
 
 
 ## Slash Commands
@@ -39,12 +47,28 @@ To create commands you need to make some API requests. There are 2 types of comm
 - **Global**: These commands are available in every server your bot is in (regardless of sharding!) and direct message (Private Channels). These commands can take up to 1 hour to show up. _It is recommended to use guild commands for testing purposes._
 - **Guild**: These commands are only in the specific guild that you created them in and cannot be used in direct messages. These commands show up immediately after creation.
 
+### Creating Slash Commands
+
 You can create commands through these methods in JDA:
 
 - `updateCommands()`
 - `upsertCommand(name, description)`
 
-To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands> <- here
+!!! example
+    ```java
+    guild.updateCommands().addCommands(
+            Commands.slash("echo", "Repeats messages back to you.")
+                .addOption(OptionType.STRING, "message", "The message to repeat.")
+                .addOption(OptionType.INTEGER, "times", "The number of times to repeat the message.")
+                .addOption(OptionType.BOOLEAN, "ephemeral", "Whether or not the message should be sent as an ephemeral message.")
+    ).queue();
+    ```
+
+To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands>
+
+!!! warning
+
+    If the `applications.commands` scope is not present, JDA will fail to create guild commands, and global commands will not be shown in the client.
 
 Once a command is created, it will continue persisting even when your bot restarts. Commands stay until the bot is either kicked or your bot explicitly deletes the command. **You don't need to create your commands every time your bot starts!**
 
@@ -71,7 +95,7 @@ When you use `deferReply` the first message sent to this webhook will act identi
     ```java
     public class SayCommand extends ListenerAdapter {
       @Override
-      public void onSlashCommand(SlashCommandEvent event) {
+      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
         if (event.getName().equals("say")) {
           event.reply(event.getOption("content").getAsString()).queue(); // reply immediately
         }
@@ -79,12 +103,13 @@ When you use `deferReply` the first message sent to this webhook will act identi
     }
     ```
 
+
 !!! example "Example Deferred Reply"
 
     ```java
     public class TagCommand extends ListenerAdapter {
       @Override
-      public void onSlashCommand(SlashCommandEvent event) {
+      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
         if (event.getName().equals("tag")) {
           event.deferReply().queue(); // Tell discord we received the command, send a thinking... message to the user
           String tagName = event.getOption("name").getAsString();
@@ -93,6 +118,86 @@ When you use `deferReply` the first message sent to this webhook will act identi
           );
         }
       }
+    }
+    ```
+
+
+### Slash Command Auto-Complete
+
+Slash command auto-completion is a feature that allows users to begin typing arguments to a command, and suggestions from the bot will be displayed to the user, in-client.
+
+Any slash command arguments using the `String`, `Integer` or `Number` types can be auto-completed.  By default, options are not auto-completed.  In order to make an option auto-completed, `OptionData#setAutoComplete(true)` may be used.
+
+![Example Auto-Complete](https://i.imgur.com/IUTRfwo.png)
+
+### Handling Auto-Complete
+
+As the user is typing an argument that has autocomplete enabled for it, the bot will receive an `CommandAutoCompleteInteractionEvent`.
+This event isn't fired for each keystroke, but is sent when Discord determines the user has paused typing for a bit.
+
+!!! example
+    Creating the command:
+    ```java
+    guild.updateCommands().addCommands(
+            Commands.slash("fruit", "find a given fruit")
+                .addOption(OptionType.STRING, "name", "fruit to find", true, true)
+    ).queue();
+    ```
+
+    Handling the event:
+    ```java title="AutoCompleteBot.java"
+    public class AutoCompleteBot extends ListenerAdapter {
+        private String[] words = new String[]{"apple", "apricot", "banana", "cherry", "coconut", "cranberry"};
+
+        @Override
+        public void onCommandAutoCompleteInteraction(CommandAutoCompleteInteractionEvent event) {
+            if (event.getName().equals("fruit") && event.getFocusedOption().getName().equals("name")) {
+                List<Command.Choice> options = Stream.of(words)
+                        .filter(word -> word.startsWith(event.getFocusedOption().getValue())) // only display words that start with the user's current input
+                        .map(word -> new Command.Choice(word, word)) // map the words to choices
+                        .collect(Collectors.toList());
+                event.replyChoices(options).queue();
+            }
+        }
+    }
+    ```
+
+
+### Context Menus
+
+Context Menu commands are a special type of command that can be invoked on a user or message by right-clicking on them.
+These commands take no arguments, and are useful for providing a quick way to perform actions on a user or message.
+
+![Example User Context Menu](https://i.imgur.com/hK2dU8K.png)
+
+![Example Message Context Menu](https://i.imgur.com/gOEHGCh.png)
+
+!!! example
+
+    Creating the commands:
+    ```java
+    guild.updateCommands().addCommands(
+            Commands.context(Command.Type.USER, "Get user avatar"),
+            Commands.context(Command.Type.MESSAGE, "Count words")
+    ).queue()
+    ```
+    
+    Handling the events:
+    ```java title="ContextMenuBot.java"
+    public class ContextMenuBot extends ListenerAdapter {
+        @Override
+        public void onUserContextInteraction(UserContextInteractionEvent event) {
+            if (event.getName().equals("Get user avatar")) {
+                event.reply("Avatar: " + event.getTarget().getEffectiveAvatarUrl()).queue();
+            }
+        }
+    
+        @Override
+        public void onMessageContextInteraction(MessageContextInteractionEvent event) {
+            if (event.getName().equals("Count words")) {
+                event.reply("Words: " + event.getTarget().getContentRaw().split("\\s+").length).queue();
+            }
+        }
     }
     ```
 
@@ -142,7 +247,7 @@ Each non-link button requires such an ID in order to be used.
     ```java
     public class HelloBot extends ListenerAdapter {
       @Override
-      public void onSlashCommand(SlashCommandEvent event) {
+      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
           if (event.getName().equals("hello")) {
               event.reply("Click the button to say hello")
                   .addActionRow(
@@ -160,7 +265,7 @@ Each non-link button requires such an ID in order to be used.
       }
 
       @Override
-      public void onButtonClick(ButtonClickEvent event) {
+      public void onButtonInteraction(ButtonInteractionEvent event) {
           if (event.getComponentId().equals("hello")) {
               event.reply("Hello :)").queue(); // send a message in the channel
           } else if (event.getComponentId().equals("emoji")) {
@@ -172,9 +277,9 @@ Each non-link button requires such an ID in order to be used.
 
 ### Selection Menus (Dropdowns)
 
-Every dropdown can be disabled and have up to 25 options.
+Selection Menus can be disabled and have up to 25 options.
 
-It's possible to set the minimum and maximum amount of options to be selected.
+It's possible to set the minimum and maximum number of options to be selected.
 
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
@@ -190,11 +295,11 @@ When a user selects their options from a dropdown and submits their choices, you
     ```java
     public class DropdownBot extends ListenerAdapter {
         @Override
-        public void onSlashCommand(SlashCommandEvent event) {
+        public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
             if (event.getName().equals("food")) {
                 event.reply("Choose your favorite food")
                     .addActionRow(
-                        SelectionMenu.create("choose-food")
+                        SelectMenu.create("choose-food")
                           .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                           .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                                 .withDescription("Tasty") // this time with a description
@@ -206,7 +311,7 @@ When a user selects their options from a dropdown and submits their choices, you
         }
 
         @Override
-        public void onSelectionMenu(SelectionMenuEvent event) {
+        public void onSelectMenuInteraction(SelectMenuInteractionEvent event) {
             if (event.getComponentId().equals("choose-food")) {
                 event.reply("You chose " + event.getValues().get(0)).queue();
             }
