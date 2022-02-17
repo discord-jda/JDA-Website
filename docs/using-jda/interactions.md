@@ -174,30 +174,53 @@ Auto-completions can suggest up to 25 options, and users do not have to send a c
 
 !!! example
     Creating the command:
-    ```java
-    guild.updateCommands().addCommands(
-            Commands.slash("fruit", "find a given fruit")
-                .addOption(OptionType.STRING, "name", "fruit to find", true, true)
-    ).queue();
-    ```
-
+    === "Java"
+        ```java
+        guild.updateCommands().addCommands(
+                Commands.slash("fruit", "find a given fruit")
+                    .addOption(OptionType.STRING, "name", "fruit to find", true, true)
+        ).queue();
+        ```    
+    === "Kotlin"
+        ```java
+        guild.updateCommands().addCommands(
+                Commands.slash("fruit", "find a given fruit")
+                    .addOption(OptionType.STRING, "name", "fruit to find", required=true, autocomplete=true)
+        ).queue()
+        ```
     Handling the event:
-    ```java title="AutoCompleteBot.java"
-    public class AutoCompleteBot extends ListenerAdapter {
-        private String[] words = new String[]{"apple", "apricot", "banana", "cherry", "coconut", "cranberry"};
-
-        @Override
-        public void onCommandAutoCompleteInteraction(CommandAutoCompleteInteractionEvent event) {
-            if (event.getName().equals("fruit") && event.getFocusedOption().getName().equals("name")) {
-                List<Command.Choice> options = Stream.of(words)
-                        .filter(word -> word.startsWith(event.getFocusedOption().getValue())) // only display words that start with the user's current input
-                        .map(word -> new Command.Choice(word, word)) // map the words to choices
-                        .collect(Collectors.toList());
-                event.replyChoices(options).queue();
+    === "Java"
+        
+        ```java title="AutoCompleteBot.java"
+        public class AutoCompleteBot extends ListenerAdapter {
+            private String[] words = new String[]{"apple", "apricot", "banana", "cherry", "coconut", "cranberry"};
+    
+            @Override
+            public void onCommandAutoCompleteInteraction(CommandAutoCompleteInteractionEvent event) {
+                if (event.getName().equals("fruit") && event.getFocusedOption().getName().equals("name")) {
+                    List<Command.Choice> options = Stream.of(words)
+                            .filter(word -> word.startsWith(event.getFocusedOption().getValue())) // only display words that start with the user's current input
+                            .map(word -> new Command.Choice(word, word)) // map the words to choices
+                            .collect(Collectors.toList());
+                    event.replyChoices(options).queue();
+                }
             }
         }
-    }
-    ```
+        ```
+    === "Kotlin"
+        ```kotlin title="AutoCompleteBot.kt"
+        object AutoCompleteBot : ListenerAdapter() {
+            private val words = arrayOf("apple", "apricot", "banana", "cherry", "coconut", "cranberry")
+            
+            override fun onCommandAutoCompleteInteraction(event: CommandAutoCompleteInteractionEvent) {
+                if (event.name == "fruit" && event.focusedOption.name == "name") {
+                    event.replyChoiceStrings(words.filter {
+                        it.startsWith(event.focusedOption.value)
+                    }).queue()
+                }
+            }
+        }
+        ```
 
 
 ### Context Menus
@@ -220,23 +243,40 @@ These commands take no arguments, and are useful for providing a quick way to pe
     ```
     
     Handling the events:
-    ```java title="ContextMenuBot.java"
-    public class ContextMenuBot extends ListenerAdapter {
-        @Override
-        public void onUserContextInteraction(UserContextInteractionEvent event) {
-            if (event.getName().equals("Get user avatar")) {
-                event.reply("Avatar: " + event.getTarget().getEffectiveAvatarUrl()).queue();
+    === "Java"
+        ```java title="ContextMenuBot.java"
+        public class ContextMenuBot extends ListenerAdapter {
+            @Override
+            public void onUserContextInteraction(UserContextInteractionEvent event) {
+                if (event.getName().equals("Get user avatar")) {
+                    event.reply("Avatar: " + event.getTarget().getEffectiveAvatarUrl()).queue();
+                }
+            }
+        
+            @Override
+            public void onMessageContextInteraction(MessageContextInteractionEvent event) {
+                if (event.getName().equals("Count words")) {
+                    event.reply("Words: " + event.getTarget().getContentRaw().split("\\s+").length).queue();
+                }
             }
         }
-    
-        @Override
-        public void onMessageContextInteraction(MessageContextInteractionEvent event) {
-            if (event.getName().equals("Count words")) {
-                event.reply("Words: " + event.getTarget().getContentRaw().split("\\s+").length).queue();
+        ```
+    === "Kotlin"
+        ```kotlin title="ContextMenuBot.kt"
+        object ContextMenuBot : ListenerAdapter() {
+            override fun onUserContextInteraction(event: UserContextInteractionEvent) {
+                if (event.name == "Get user avatar") {
+                    event.reply("Avatar: " + event.target.effectiveAvatarUrl).queue()
+                }
+            }
+        
+            override fun onMessageContextInteraction(event: MessageContextInteractionEvent) {
+                if (event.name == "Count words") {
+                    event.reply("Words: " + event.target.contentRaw.split(Regex("\\s+")).size).queue()
+                }
             }
         }
-    }
-    ```
+        ```
 
 
 ## Component Interactions
