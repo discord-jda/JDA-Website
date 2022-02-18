@@ -108,19 +108,21 @@ If you *do* have a `queue()` then maybe your code doesn't even run? Try putting 
 
 There are many reasons why your event listener might not be executed but here are the most common issues:
 
-1. You are using the wrong login token.
+1. You are using a deprecated or removed part of JDA, such as `new JDABuilder(...)`.
+    <br>Use the replacement that is documented, for example `createDefault(token)`.
+2. You are using the wrong login token.
     <br>If the token is for another bot which doesn't have access to the desired guilds then the event listener code cannot run.
-1. Your bot is not actually in the guild.
+3. Your bot is not actually in the guild.
     <br>Make sure your bot is online and has access to the resource you are trying to interact with.
-1. You never registered your listener.
+4. You never registered your listener.
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
-1. You did not override the correct method.
+5. You did not override the correct method.
     <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
-1. You don't actually extend `EventListener` or `ListenerAdapter`.
+6. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
-1. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
+7. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
     <br>Make sure that you `enableIntents(...)` on the `JDABuilder` to allow the events to be received.
-1. The event has other requirements that might not be satisfied such as the cache not being enabled.
+8. The event has other requirements that might not be satisfied such as the cache not being enabled.
     <br>Please check the requirements on the event documentation.
 
 If none of the above apply to you then you might have an issue in your listener's code, at that point you should use a debugger.
