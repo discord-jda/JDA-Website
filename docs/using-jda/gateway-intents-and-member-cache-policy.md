@@ -1,21 +1,21 @@
-[GatewayIntent]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html
-[createDefault]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#createDefault(java.lang.String)
-[createLight]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#createLight(java.lang.String)
-[create]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#create(java.lang.String,net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
-[CacheFlag]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/cache/CacheFlag.html
-[GatewayIntent.DEFAULT]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html#DEFAULT
-[enableCache]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
-[disableCache]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#disableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
-[enableIntents]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableIntents(net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
-[MemberCachePolicy]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html
-[setMemberCachePolicy]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#setMemberCachePolicy(net.dv8tion.jda.api.utils.MemberCachePolicy)
-[loadMembers]: https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#loadMembers()
+[GatewayIntent]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html
+[createDefault]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#createDefault(java.lang.String)
+[createLight]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#createLight(java.lang.String)
+[create]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#create(java.lang.String,net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
+[CacheFlag]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/cache/CacheFlag.html
+[GatewayIntent.DEFAULT]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html#DEFAULT
+[enableCache]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
+[disableCache]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#disableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
+[enableIntents]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableIntents(net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
+[MemberCachePolicy]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html
+[setMemberCachePolicy]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#setMemberCachePolicy(net.dv8tion.jda.api.utils.MemberCachePolicy)
+[loadMembers]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#loadMembers()
 
 # Gateway Intents
 
-In version **4.2.0** we have introduced the [`GatewayIntent`][GatewayIntent] enum. This marks a change in the way bots will work in the future.
+In version **4.2.0**, we introduced the [`GatewayIntent`][GatewayIntent] enum. This marks a change in the way bots will work in the future.
 
-Discord now expects the bot to explicitly state which events the bot *intends* to use for its session. We have deprecated the old `JDABuilder` constructors to prompt the user directly with this new opt-in style of using specific features. Instead, we have introduced a number of factory methods which will apply some default settings for you:
+Building JDA is done using one of the JDABuilder factory methods, each of which has some default intents:
 
 - [`createDefault`][createDefault]
 - [`createLight`][createLight]
@@ -23,7 +23,7 @@ Discord now expects the bot to explicitly state which events the bot *intends* t
 
 ### What Intents do I need?
 
-The necessary intents directly correlate with the features you *intend* to deploy.
+The necessary intents directly correlate with the features you intend to use.
 Each [`GatewayIntent`][GatewayIntent] documents which events are enabled by it. Some caches in JDA also depend on these intents, so take a close look at the documentation for [`CacheFlag`][CacheFlag] as well.
 
 For instance, a bot that only responds to messages and sends welcome messages will only need `GUILD_MESSAGES` and `GUILD_MEMBERS`. A bot like this doesn't rely on any members being cached, so the right solution is to use [`createLight`][createLight] which will disable all [`CacheFlags`][CacheFlag] and member caching.
@@ -103,7 +103,7 @@ We also provide a few reasonable implementations to choose from and apply using 
 - [Owner](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
     Will keep the guild owner cached
 - [Pending](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
-    Will keep the members cached, which have not passed membership screening yet (requires `GUILD_MEMBERS` intents)
+    Will cache the members which have not passed membership screening yet (requires `GUILD_MEMBERS` intents)
 - [None](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
     Will only keep the self member cached and nobody else
 
@@ -123,13 +123,15 @@ This cache will grow over time by loading members when they are active in the gu
 
 We offer a number of ways to load and cache members:
 
-- [Guild.retrieveMembersByPrefix(String, int)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByPrefix(java.lang.String,int))
-- [Guild.retrieveOwner()](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveOwner())
-- [Guild.retrieveMemberById(long|String)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMemberById(long))
-- [Guild.retrieveMembersByIds(long...|String..)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByIds(long...))
-- [Guild.retrieveMembers(Collection&lt;User>)](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembers(java.util.Collection))
-- [Message.getMember()](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getMember()) (from events)
+- [Guild.retrieveMembersByPrefix(String, int)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByPrefix(java.lang.String,int))
+- [Guild.retrieveOwner()](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveOwner())
+- [Guild.retrieveMemberById(long|String)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMemberById(long))
+- [Guild.retrieveMembersByIds(long...|String..)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByIds(long...))
+- [Guild.retrieveMembers(Collection&lt;User>)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembers(java.util.Collection))
+- [Message.getMember()](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Message.html#getMember()) (from events)
 
 All of these methods will load the members from cache or fallback to requesting them from the Discord API.
 
 You can also load the entire member list at runtime by using [`loadMembers`][loadMembers], however this requires the privileged `GUILD_MEMBERS` intent. This process is called *guild member chunking* (aka chunking).
+
+Chunking can also be performed for many guilds at startup automatically, by using `setChunkingFilter` on the JDABuilder.  This also requires the `GUILD_MEMBERS` intent

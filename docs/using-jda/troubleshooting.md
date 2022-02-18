@@ -69,7 +69,7 @@ NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 
 Methods such as [`Message.getEmotes()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotes()) and [`Message.getEmotesBag()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotesBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/vdurmont/emoji-java) to extract unicode emoji from a message.
 
-An example use-case including a code sample can be found in my answer to a related question on StackOverflow: https://stackoverflow.com/a/58353912/10630900
+An example use-case including a code sample can be found in my answer to a related question on [StackOverflow](https://stackoverflow.com/a/58353912/10630900)
 
 
 ## Event Handling and RestActions
@@ -108,15 +108,13 @@ If you *do* have a `queue()` then maybe your code doesn't even run? Try putting 
 
 There are many reasons why your event listener might not be executed but here are the most common issues:
 
-1. You are using a deprecated part of JDA? Such as `new JDABuilder(...)`
-    <br>Use the replacement that is documented. For example `createDefault(token)`
-1. You are using the wrong login token?
+1. You are using the wrong login token.
     <br>If the token is for another bot which doesn't have access to the desired guilds then the event listener code cannot run.
-1. Your bot is not actually in the guild?
+1. Your bot is not actually in the guild.
     <br>Make sure your bot is online and has access to the resource you are trying to interact with.
-1. You never registered your listener? 
+1. You never registered your listener.
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
-1. You did not override the correct method?
+1. You did not override the correct method.
     <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
