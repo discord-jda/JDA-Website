@@ -388,10 +388,9 @@ Each non-link button requires such an ID in order to be used.
             }
         
             override fun onButtonInteraction(event: ButtonInteractionEvent) {
-                if (event.componentId == "hello") {
-                    event.reply("Hello :)").queue() // send a message in the channel
-                } else if (event.componentId == "emoji") {
-                    event.editMessage("That button didn't say click me").queue() // update the message
+                when (event.componentId) {
+                    "hello" -> event.reply("Hello :)").queue() // send a message in the channel
+                    "emoji" -> event.editMessage("That button didn't say click me").queue() // update the message
                 }
             }
         }
