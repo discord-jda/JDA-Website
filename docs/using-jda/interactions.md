@@ -141,20 +141,35 @@ When you use `deferReply` the first message sent to this webhook will act identi
 
 !!! example "Example Deferred Reply"
 
-    ```java
-    public class TagCommand extends ListenerAdapter {
-      @Override
-      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
-        if (event.getName().equals("tag")) {
-          event.deferReply().queue(); // Tell discord we received the command, send a thinking... message to the user
-          String tagName = event.getOption("name").getAsString();
-          TagDatabase.fingTag(tagName,
-            (tag) -> event.getHook().sendMessage(tag).queue() // delayed response updates our inital "thinking..." message with the tag value
-          );
+    === "Java"
+        ```java
+        public class TagCommand extends ListenerAdapter {
+          @Override
+          public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+            if (event.getName().equals("tag")) {
+              event.deferReply().queue(); // Tell discord we received the command, send a thinking... message to the user
+              String tagName = event.getOption("name").getAsString();
+              TagDatabase.fingTag(tagName,
+                (tag) -> event.getHook().sendMessage(tag).queue() // delayed response updates our inital "thinking..." message with the tag value
+              );
+            }
+          }
         }
-      }
-    }
-    ```
+        ```
+    === "Kotlin"
+        ```kotlin
+        object TagCommand : ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "tag") {
+                    event.deferReply().queue() // Tell discord we received the command, send a thinking... message to the user
+                    val tagName = event.getOption("name")!!.asString
+                    TagDatabase.fingTag(tagName) { tag ->
+                        event.hook.sendMessage(tag).queue() // delayed response updates our inital "thinking..." message with the tag value
+                    }
+                }
+            }
+        }
+        ```
 
 
 ### Slash Command Auto-Complete
@@ -321,36 +336,66 @@ Each non-link button requires such an ID in order to be used.
 
 !!! example
 
-    ```java
-    public class HelloBot extends ListenerAdapter {
-      @Override
-      public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
-          if (event.getName().equals("hello")) {
-              event.reply("Click the button to say hello")
-                  .addActionRow(
-                    Button.primary("hello", "Click Me"), // Button with only a label
-                    Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
-                  .queue();
-          } else if (event.getName().equals("info")) {
-              event.reply("Click the buttons for more info")
-                  .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
-                      Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
-                        .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
-                      Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
-                  .queue();
-          }
-      }
-
-      @Override
-      public void onButtonInteraction(ButtonInteractionEvent event) {
-          if (event.getComponentId().equals("hello")) {
-              event.reply("Hello :)").queue(); // send a message in the channel
-          } else if (event.getComponentId().equals("emoji")) {
-              event.editMessage("That button didn't say click me").queue(); // update the message
-          }
-      }
-    }
-    ```
+    === "Java"
+        ```java
+        public class HelloBot extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("hello")) {
+                    event.reply("Click the button to say hello")
+                        .addActionRow(
+                          Button.primary("hello", "Click Me"), // Button with only a label
+                          Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
+                        .queue();
+                } else if (event.getName().equals("info")) {
+                    event.reply("Click the buttons for more info")
+                        .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                            Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
+                              .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")), // Link Button with label and emoji
+                            Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                        .queue();
+                }
+            }
+            
+            @Override
+            public void onButtonInteraction(ButtonInteractionEvent event) {
+                if (event.getComponentId().equals("hello")) {
+                    event.reply("Hello :)").queue(); // send a message in the channel
+                } else if (event.getComponentId().equals("emoji")) {
+                    event.editMessage("That button didn't say click me").queue(); // update the message
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object HelloBot: ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "hello") {
+                    event.reply("Click the button to say hello")
+                        .addActionRow(
+                            Button.primary("hello", "Click Me"),  // Button with only a label
+                            Button.success("emoji", Emoji.fromMarkdown(":minn:"))) // Button with only an emoji
+                        .queue()
+                } else if (event.name == "info") {
+                    event.reply("Click the buttons for more info")
+                        .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                            Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
+                                .withEmoji(Emoji.fromMarkdown(":github:")),  // Link Button with label and emoji
+                            Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                        .queue()
+                }
+            }
+        
+            override fun onButtonInteraction(event: ButtonInteractionEvent) {
+                if (event.componentId == "hello") {
+                    event.reply("Hello :)").queue() // send a message in the channel
+                } else if (event.componentId == "emoji") {
+                    event.editMessage("That button didn't say click me").queue() // update the message
+                }
+            }
+        }
+        ```
 
 ### Select Menus (Dropdowns)
 
