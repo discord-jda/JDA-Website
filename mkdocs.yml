@@ -37,12 +37,11 @@ extra:
       link: https://discord.gg/jda
 
 extra_css:
-- 'stylesheets/colors.css'
+- 'assets/stylesheets/colors.css'
 
 markdown_extensions:
   - admonition
   - meta
-  - attr_list
   - pymdownx.details
   - pymdownx.superfences
   - pymdownx.highlight
