@@ -7,7 +7,7 @@
 This guide will give you a brief introduction to an API for adding and handling interactions in Discord. Interactions are a way to integrate your bot features directly into the Discord User Interface. These things include features such as:
 
 - [Slash Commands](#slash-commands)
-- [Slash Command Auto-Complete](#slash-command-auto-complete)
+- [Slash Command Autocomplete](#slash-command-autocomplete)
 - [Context Menus](#context-menus)
 - [Buttons](#buttons)
 - [Select Menus (Dropdowns)](#select-menus-dropdowns)
@@ -32,8 +32,9 @@ There are many limitations to ephemeral messages, a few of which are listed belo
 
 You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience, you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
 
+## Command Interactions
 
-## Slash Commands
+### Slash Commands
 
 A slash command is something you might already be familiar with from the olden times of Discord. Commands such as `/shrug` or `/me` have existed for quite a long time. With Slash Command interactions you can now make your very own commands like this! But these commands come with some limitations, which I have explained in this gist: [Slash Command Limitations](https://gist.github.com/MinnDevelopment/b883b078fdb69d0e568249cc8bf37fe9)
 
@@ -46,7 +47,7 @@ To create commands you need to make some API requests. There are 2 types of comm
 - **Global**: These commands are available in every server your bot is in (regardless of sharding!) and direct message (Private Channels). These commands can take up to 1 hour to show up. _It is recommended to use guild commands for testing purposes._
 - **Guild**: These commands are only in the specific guild that you created them in and cannot be used in direct messages. These commands show up immediately after creation.
 
-### Creating Slash Commands
+#### Creating Slash Commands
 
 You can create commands through these methods in JDA:
 
@@ -97,7 +98,7 @@ You need to call these on a `JDA` instance to create global commands, and on a `
 
 Once a command is created, it will continue persisting even when your bot restarts. Commands stay until the bot is either kicked or your bot explicitly deletes the command. **You don't need to create your commands every time your bot starts!**
 
-### Responding to Slash Commands
+#### Responding to Slash Commands
 
 When a user tries to use one of your commands you will receive a `SlashCommandEvent`. This event needs to be handled by your event listener.
 The flow of a slash command response is as follows:
@@ -172,20 +173,20 @@ When you use `deferReply` the first message sent to this webhook will act identi
         ```
 
 
-### Slash Command Auto-Complete
+### Slash Command Autocomplete
 
-Slash command auto-completion is a feature that allows users to begin typing arguments to a command, and suggestions from the bot will be displayed to the user, in-client.
+Slash command autocompletion is a feature that allows users to begin typing arguments to a command, and suggestions from the bot will be displayed to the user, in-client.
 
-Any slash command arguments using the `String`, `Integer` or `Number` types can be auto-completed.  By default, options are not auto-completed.  In order to make an option auto-completed, `OptionData#setAutoComplete(true)` may be used.
+Any slash command arguments using the `String`, `Integer` or `Number` types can be autocompleted.  By default, options are not autocompleted.  In order to make an option autocompleted, `OptionData#setAutoComplete(true)` may be used.
 
-![Example Auto-Complete](https://i.imgur.com/IUTRfwo.png)
+![Example Autocomplete](https://i.imgur.com/IUTRfwo.png)
 
-#### Handling Auto-Complete
+#### Handling Autocomplete
 
 As the user is typing an argument that has autocomplete enabled for it, the bot will receive an `CommandAutoCompleteInteractionEvent`.
 This event isn't fired for each keystroke, but is sent when Discord determines the user has paused typing for a bit.
 
-Auto-completions can suggest up to 25 options, and users do not have to send a command with one of the options.
+Autocompletions can suggest up to 25 options, and users do not have to send a command with one of the options.
 
 !!! example
     Creating the command:
