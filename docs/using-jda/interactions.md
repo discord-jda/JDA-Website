@@ -89,7 +89,7 @@ You can create commands through these methods in JDA:
         ).queue()
         ```
 
-To create global commands you need to call these on a `JDA` instance and for guild commands on a `Guild` instance. Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands>
+You need to call these on a `JDA` instance to create global commands, and on a `Guild` instance to create guild commands . Your bot needs the `applications.commands` scope in addition to the `bot` scope for your bot invite link. Example: <https://discord.com/oauth2/authorize?client_id=123456789&scope=bot+applications.commands>
 
 !!! warning
 
@@ -180,7 +180,7 @@ Any slash command arguments using the `String`, `Integer` or `Number` types can 
 
 ![Example Auto-Complete](https://i.imgur.com/IUTRfwo.png)
 
-### Handling Auto-Complete
+#### Handling Auto-Complete
 
 As the user is typing an argument that has autocomplete enabled for it, the bot will receive an `CommandAutoCompleteInteractionEvent`.
 This event isn't fired for each keystroke, but is sent when Discord determines the user has paused typing for a bit.
