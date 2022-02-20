@@ -190,52 +190,6 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     Doing this will result in performance loss so it is recommended to only go to this extreme when you need to debug errors.
     To handle failures of a specific action, read this [RestAction queue returned failure](../using-jda/troubleshooting.md#restaction-queue-returned-failure).
 
-??? question "How do I test other builds?"
-
-    Sometimes we are working experimental or feature branches which require testing. For this testing we use [JitPack](https://jitpack.io). If you are interested in testing one of those builds you have to use [Gradle](https://gradle.org) or [Maven](https://maven.apache.org).
-    You require the repositories `https://jitpack.io`, and `https://m2.dv8tion.net/releases` as resolvers for these builds. The format used for the version is one of the following:
-
-    - commit hash (7+ chars)
-    - branch name (replaced `/` by `~` like `feature/thing` as `feature~thing-SNAPSHOT`)
-
-    The `groupId` is always `com.github.DV8FromTheWorld` (the github repository owner).
-    The `artifactId` is always `JDA`.
-
-
-    === "Gradle"
-
-        ```groovy
-        ext.jdaVersion = 'VERSION'
-        repositories {
-            mavenCentral()
-            maven { url 'https://m2.dv8tion.net/releases' }
-            maven { url 'https://jitpack.io' }
-        }
-        dependencies {
-            implementation("com.github.DV8FromTheWorld:JDA:$jdaVersion")
-        }
-        ```
-
-    === "Maven"
-
-        ```xml
-        <repository>
-            <id>m2-dv8tion</id>
-            <url>https://m2.dv8tion.net/releases</url>
-        </repository>
-        <repository>
-            <id>jitpack</id>
-            <url>https://jitpack.io</url>
-        </repository>
-        ```
-        ```xml
-        <dependency>
-            <groupId>com.github.DV8FromTheWorld</groupId>
-            <artifactId>JDA</artifactId>
-            <version>VERSION</version>
-        </dependency>
-        ```
-
 ??? question "How can I reduce the jar size of my bot?"
 
     To reduce the jar size of your bot you can either use Maven or Gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
