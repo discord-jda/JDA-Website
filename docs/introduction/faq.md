@@ -190,6 +190,10 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     Doing this will result in performance loss so it is recommended to only go to this extreme when you need to debug errors.
     To handle failures of a specific action, read this [RestAction queue returned failure](../using-jda/troubleshooting.md#restaction-queue-returned-failure).
 
+??? question "How do I test other builds?"
+
+    You can use JitPack for that, more details on [this wiki page](/using-jda/using-new-features)
+
 ??? question "How can I reduce the jar size of my bot?"
 
     To reduce the jar size of your bot you can either use Maven or Gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
