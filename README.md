@@ -2,6 +2,8 @@
 
 This website houses the official documentation for [JDA](https://github.com/DV8FromTheWorld/JDA). It is written in Markdown with [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), making it easy for everyone to edit and contribute.
 
+**Read the documentation at [jda.wiki](https://jda.wiki)**
+
 ## Building
 To view the wiki locally, you will first need to install Material for MkDocs locally:
 ```sh
