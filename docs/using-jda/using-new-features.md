@@ -1,12 +1,12 @@
-# Using new features
+# Using New Features
 
-When contributors are making new features, for example, introducing modals, 
-you might be interested in trying these features before they get released and/or test them.
+When contributors are making new features, like introducing modals, 
+you might be interested in trying out or testing these features before they get released.
 
 ## Using [JitPack](https://jitpack.io)
 
 Using JitPack, you can get a build of any fork of JDA, on any branch, on any commit.
-Of course, it is highly recommended that you use a build tool such as [Gradle](https://gradle.org) or [Maven](https://maven.apache.org)
+It is still highly recommended that you use a build tool such as [Gradle](https://gradle.org) or [Maven](https://maven.apache.org)
 
 ### Getting the necessary info
 
@@ -37,7 +37,7 @@ You can then pick the version that's second from top to bottom, so here it would
 
 ### Putting it together
 
-So far we got:
+So far we have:
 
 * Owner name: `xirado`
 * Version (commit hash): `ef20a4069e`

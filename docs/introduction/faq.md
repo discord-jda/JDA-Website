@@ -192,7 +192,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
 ??? question "How do I test other builds?"
 
-    You can use JitPack for that, more details on [this wiki page](/using-jda/using-new-features)
+    You can use JitPack to provide other branches of JDA as a dependency.  We have a tutorial on how to use it on [this wiki page](/using-jda/using-new-features)
 
 ??? question "How can I reduce the jar size of my bot?"
 
