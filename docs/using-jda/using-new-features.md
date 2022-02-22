@@ -8,7 +8,7 @@ you might be interested in trying out or testing these features before they get 
 Using JitPack, you can get a build of any fork of JDA, on any branch, on any commit.
 It is still highly recommended that you use a build tool such as [Gradle](https://gradle.org) or [Maven](https://maven.apache.org)
 
-### Getting the necessary info
+### Getting the Necessary Info
 
 Let's take the [PR for the Discord modals](https://github.com/DV8FromTheWorld/JDA/pull/2024) as an example
 
@@ -35,7 +35,7 @@ You have to then click the arrow, and select the branch you want, here we'll cho
 
 You can then pick the version that's second from top to bottom, so here it would be `ef20a4069e`, this is the **commit hash**
 
-### Putting it together
+### Putting It Together
 
 So far we have:
 
