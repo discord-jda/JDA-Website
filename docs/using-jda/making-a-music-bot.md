@@ -54,7 +54,7 @@ public class MusicBot extends ListenerAdapter
     }
     
     @Override
-    public void onGuildMessageReceived(MessageReceivedEvent event) 
+    public void onMessageReceived(MessageReceivedEvent event) 
     {
         // Make sure we only respond to events that occur in a guild
         if (!event.isFromGuild()) return;

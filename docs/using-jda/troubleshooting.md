@@ -69,7 +69,7 @@ NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 
 Methods such as [`Message.getEmotes()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotes()) and [`Message.getEmotesBag()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotesBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/vdurmont/emoji-java) to extract unicode emoji from a message.
 
-An example use-case including a code sample can be found in my answer to a related question on [StackOverflow](https://stackoverflow.com/a/58353912/10630900)
+An example use-case including a code sample can be found in [this answer to a related question on StackOverflow](https://stackoverflow.com/a/58353912/10630900)
 
 
 ## Event Handling and RestActions
