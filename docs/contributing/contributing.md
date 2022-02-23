@@ -1,14 +1,18 @@
+---
+title: Contribute towards JDA
+description: Help JDA improve by contributing to it.
+---
+
 ## Setting up your Environment
 
 
 1. Create a Fork (If you already have a local repository skip to step 3)
-    
-    ![Create Fork](https://i.imgur.com/DqDWls4.png)
+    <br>![Create Fork](https://i.imgur.com/DqDWls4.png)
 
 2. Clone Repository
    
     ```sh
-    $ git clone https://github.com/ExampleName/JDA.git
+    $ git clone https://github.com/ExampleName/JDA.git # (1)
     Cloning into 'JDA'...
     remote: Counting objects: 15377, done.
     remote: Total 15377 (delta 0), reused 0 (delta 0), pack-reused 15377
@@ -16,7 +20,8 @@
     Resolving deltas: 100% (8584/8584), done.
     Checking connectivity... done.
     ```
-> Replace `ExampleName` with your GitHub username, mine for example is `MinnDevelopment`
+   
+    1.  Make sure to replace `ExampleName` with your GitHub Username.
 
 3. Move to your local repository (here `JDA`)
     
@@ -30,15 +35,15 @@
     $ git remote add upstream https://github.com/DV8FromTheWorld/JDA.git
     ```
 
-5. Create branch based on `upstream/development` (or `upstream/docs/development` for documentation changes)
+5. Create branch based on `upstream/master`
     
     ```sh
-    $ git fetch upstream development
+    $ git fetch upstream master
     From https://github.com/DV8FromTheWorld/JDA
-     * branch              development -> FETCH_HEAD
-     * [new branch]        development -> upstream/development
+     * branch              master -> FETCH_HEAD
+     * [new branch]        master -> upstream/master
 
-    $ git checkout -b patch-1 upstream/development
+    $ git checkout -b patch-1 upstream/master
     Switched to a new branch 'patch-1'
     ```
 
@@ -47,8 +52,8 @@
 Depending on your changes there are certain rules you have to follow if you expect
 your Pull Request to be merged.
 
-**Note**: It is recommended to create a new remote branch for each Pull Request. 
-Based on the current `upstream/development` (or `upstream/docs/development`) changes!
+**Note**: It is recommended to create a new remote branch for each Pull Request
+based on the current `upstream/master` changes!
 
 1. Adding a new Method or Class
     - If your addition is not internal (e.g. an impl class or private method) you have to write documentation.
@@ -60,7 +65,6 @@ Based on the current `upstream/development` (or `upstream/docs/development`) cha
 
     !!! Example
         === ":octicons-x-circle-16: Bad Addition"
-
             ```diff
             +    public void reset() {
             +        name.reset();
@@ -139,4 +143,4 @@ Based on the current `upstream/development` (or `upstream/docs/development`) cha
 
 6. Done! Just click **Create pull request** and await a review by one of the maintainers!
 
-![Example Pull-Request](https://i.imgur.com/ELZJSn2.png)
+    ![Example Pull-Request](https://i.imgur.com/ELZJSn2.png)

@@ -1,3 +1,8 @@
+---
+title: Structure Guide
+description: A comprehensive guide on JDA's codebase and how it is structured.
+---
+
 # How does JDA stay consistent in its code style and structure?
 
 On this page we will try to concentrate all structure and code style guides that we ourself
@@ -15,14 +20,14 @@ We put each `{` curly bracket on its own respective line:
 public void someMethod()
 {
     this.works.well();
-    for (Each element : from())
+    for (Each element : from()) // (1)
     {
         System.out.println(element);
     }
 }
 ```
 
-
+1.  Always put a space in-between the scope usage and the opening bracket (i.e. `if (true)` and not `if(true)`)
 
 ### Indentation
 
@@ -31,7 +36,7 @@ We only use indentation of **4 spaces** consistently throughout JDA.
 
 ## Class Structure
 
-In this section we guide you through a logically ordered and structure class under JDA's point of view.
+In this section we guide you through a logically ordered and structured class under JDA's point of view.
 
 ### Access Modifiers
 
@@ -52,7 +57,7 @@ In addition it is recommended to always put `static` fields and methods (not [ne
 ### Methods
 
 Methods are always defined after fields and the constructor of your class.
-There are 3 types of methods listed in logical order of appearance:
+<br>There are 3 types of methods listed in logical order of appearance:
 
 1. Overriding or Implementing which make use of the `@Override` tag
 2. Internal (impl) setters which can be found in the impl classes of JDA.
@@ -71,6 +76,7 @@ Every class in JDA has a **Copyright Header** (see example).
 ## JavaDoc
 
 We put JavaDoc on the following targets:
+
 - Public Methods that directly confront the JDA user
 - Class level if the specific class has API features that the user can interact with such as an entity or manager
 - Package docs, all not excluded packages require a `package-info.java` class with proper JavaDoc
@@ -78,7 +84,7 @@ We put JavaDoc on the following targets:
 ### Paragraphs
 
 JDA has a specific JavaDoc structure that is unique to our repository.
-We use a style in which we encapsulate each important part of the doc in a "block" for itself.
+<br>We use a style in which we encapsulate each important part of the doc in a "block" for itself.
 <br>Each `<br>` tag is placed in-front of the new line: 
 
 !!! note inline end
@@ -92,7 +98,7 @@ We use a style in which we encapsulate each important part of the doc in a "bloc
 ```
 
 A new paragraph starts with `<p>` (not `<br><br>`!).
-The `<p>` tag is supposed to be placed either between the previous and following paragraph or like the `<br>` tag directly
+<br>The `<p>` tag is supposed to be placed either between the previous and following paragraph or like the `<br>` tag directly
 in-front of the first line of that following paragraph:
 
 !!! note inline end 
@@ -123,6 +129,7 @@ If you however want to also have nested links or other JavaDoc tags in your code
  * <p>Or even do <code>channel.sendMessage("hey").{@link net.dv8tion.jda.core.requests.RestAction#submit submit()}</code>!!
  */
 ```
+
 !!! note
     If you are using a tag like this, you **have** to close it!
 
@@ -163,6 +170,7 @@ you have to document possible `ErrorResponses` that can follow from this request
  * </ul>
  */
 ```
+
 !!! note
     Always make these your last description paragraph
     <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/core/entities/MessageChannel.java#L169-L179)
@@ -176,6 +184,7 @@ The `@return` for simple RestActions is as follows:
 ```
 
 ### Example Template
+
 ```java
     /**
      * This description should inform the user about the basic function of the method (or class)
@@ -210,7 +219,7 @@ The `@return` for simple RestActions is as follows:
      *         </ul></li>
      * </ul>
      *
-     * @param  var0
+     * @param  var0 (1)
      *         The Description should be at the same level as the parameter name
      * @param  var1
      *         Multiple parameters are to be documented in one "block"
@@ -234,5 +243,5 @@ The `@return` for simple RestActions is as follows:
      *         it should start the block in the next line with the correct indentation.
      */
 ```
-!!! note
-     We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name
+
+1.  We align each block with whitespace as you can see how `@param` is separated with 2 space characters from the actual parameter name
