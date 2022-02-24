@@ -100,7 +100,7 @@ Once a command is created, it will continue persisting even when your bot restar
 
 #### Responding to Slash Commands
 
-When a user tries to use one of your commands you will receive a `SlashCommandEvent`. This event needs to be handled by your event listener.
+When a user tries to use one of your commands you will receive a `SlashCommandInteractionEvent`. This event needs to be handled by your event listener.
 The flow of a slash command response is as follows:
 
 1. Acknowledge the command
@@ -329,9 +329,9 @@ Each button can be enabled or disabled, have a specific style, label, and emoji:
 
 ![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
 
-#### Handling ButtonClickEvent
+#### Handling ButtonInteractionEvent
 
-When a user presses one of these buttons, you will receive a `ButtonClickEvent` for the respective interaction.
+When a user presses one of these buttons, you will receive a `ButtonInteractionEvent` for the respective interaction.
 
 Each non-link button requires such an ID in order to be used.
 
