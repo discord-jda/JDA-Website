@@ -39,7 +39,7 @@
 
     5. [Setup Logback](logging.md)
 
-    6. **Start developing!**
+    6. Continue with [Getting Started](../using-jda/getting-started.md)
 
 === "Jar Setup"
 
@@ -67,4 +67,4 @@
         
         ![Browse](http://i.imgur.com/bm51esA.png)
     7. [Setup Logback](logging.md)
-    8. **Start developing!**
+    8. Continue with [Getting Started](../using-jda/getting-started.md)
