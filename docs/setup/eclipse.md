@@ -24,15 +24,15 @@
 
         ![Folder Structure](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/03-projectOverview.png)
 
-    6. Delete the classes within `src/main/java` and `src/test/java`
+    5. Delete the classes within `src/main/java` and `src/test/java`
 
         ![Files To Delete](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/04-deleteFiles.png)
 
-    7. Open up and edit the file `build.gradle`
+    6. Open up and edit the file `build.gradle`
 
         ![Build_Gradle Location](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/05-gradleBuildFile.png)
 
-    8. Replace its content with the following code:
+    7. Replace its content with the following code:
 
         ```groovy
         plugins {
@@ -63,14 +63,14 @@
 
         1. On Kotlin DSL use `maven("https://m2.dv8tion.net/releases")` instead
 
-    9. Adjust the version of JDA you want to use (see dependencies-section of file) and fill in your Main-Class as soon as you have one (the one containing your `public static void main(String[] args)` method)
-    10. Save the file and do the following: *Right click your project > Gradle > Refresh All*
+    8. Adjust the version of JDA you want to use (see dependencies-section of file) and fill in your Main-Class as soon as you have one (the one containing your `public static void main(String[] args)` method)
+    9. Save the file and do the following: *Right click your project > Gradle > Refresh All*
 
         ![Refresh Gradle Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/06-gradleRefresh.png)
 
-    11. Once all the dependencies have been downloaded, create your desired packages/classes in `src/main/java` and start coding!
-    12. To build your project you can run `gradlew shadowJar` in a terminal of your project root, and it will produce a jar filled with your compiled code and JDA included in a single jar file! The jar can be found in `build/libs`
-    13. [Setup Logback](logging.md)
+    10. Once all the dependencies have been downloaded, create your desired packages/classes in `src/main/java` and start coding!
+    11. To build your project you can run `gradlew shadowJar` in a terminal of your project root, and it will produce a jar filled with your compiled code and JDA included in a single jar file! The jar can be found in `build/libs`
+    12. [Setup Logback](logging.md)
 
 
 === "Maven Setup"
