@@ -14,33 +14,26 @@ Let's take the [PR for the Discord modals](https://github.com/DV8FromTheWorld/JD
 
 ![img.png](../assets/images/github_pr.png){width="720"}
 
-Here the important part is `from Xirado:feature/modals`
+Here the important part is `from Xirado:feature/modals`, you need to extract the PR author, which here is `xirado`
 
-* `Xirado` is the owner of the repository
-* `feature/modals` is the branch name of the PR
+### Getting the Latest Version
 
-### Going to JitPack
+You then want to go in the `Commits` tab
 
-You then want to go to the [JitPack website](https://jitpack.io/) and enter `OwnerName/RepositoryName`, which here it would be `xirado/JDA` (Owner name on JitPack is case-insensitive)
+![img.png](../assets/images/github_pr_commits_tab.png){width="720"}
 
-![img.png](../assets/images/jitpack_enter_repo.png){width="480"}
+You can now scroll down to the bottom, as to find the latest **commit hash**, it would look like this:
 
-Upon clicking `Look up`, you'll see something like this appear
+![img.png](../assets/images/github_pr_latest_commit.png){width="720"}
 
-![img.png](../assets/images/jitpack_selected_repo.png){width="480"}
-
-You have to then click the arrow, and select the branch you want, here we'll choose the `feature/modals` branch, you should have something like that
-
-![img.png](../assets/images/jitpack_selected_branch.png){width="480"}
-
-You can then pick the version that's second from top to bottom, so here it would be `ef20a4069e`, this is the **commit hash**
+Here you can see the 7 first chars of the latest commit are `36eea2a`
 
 ### Putting It Together
 
 So far we have:
 
-* Owner name: `xirado`
-* Version (commit hash): `ef20a4069e`
+* PR author name: `xirado`
+* Version (7 char commit hash): `36eea2a`
 
 You can now add the dependency to your favorite build tool, but before that you will have to remove your current JDA dependency
 
@@ -59,7 +52,7 @@ You can now add the dependency to your favorite build tool, but before that you 
 
     ```xml
     <dependency>
-        <groupId>com.github.OwnerName</groupId>
+        <groupId>com.github.AuthorName</groupId>
         <artifactId>JDA</artifactId>
         <version>CommitHash</version>
     </dependency>
@@ -73,6 +66,6 @@ You can now add the dependency to your favorite build tool, but before that you 
         maven { url 'https://jitpack.io' }
     }
     dependencies {
-        implementation("com.github.OwnerName:JDA:CommitHash")
+        implementation("com.github.AuthorName:JDA:CommitHash")
     }
     ```
