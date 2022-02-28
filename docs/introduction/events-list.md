@@ -138,7 +138,9 @@ GenericGuildEvent
 │   ├── GuildMemberUpdateEvent
 │   └── GenericGuildMemberUpdateEvent <sup>(1)</sup>
 │       ├── GuildMemberUpdateNicknameEvent
-|       └── GuildMemberUpdateBoostTimeEvent
+│       ├── GuildMemberUpdateAvatarEvent
+│       ├── GuildMemberUpdatePendingEvent
+│       └── GuildMemberUpdateBoostTimeEvent
 └── GenericGuildVoiceEvent
     ├── GuildVoiceDeafenEvent
     ├── GuildVoiceGuildDeafenEvent
