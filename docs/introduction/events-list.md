@@ -17,8 +17,6 @@ GenericEvent
 ├── RawGatewayEvent <sup>(2)</sup>
 ├── GatewayPingEvent
 ├── MessageBulkDeleteEvent <sup>(2)</sup>
-├── PrivateChannelCreateEvent
-├── PrivateChannelDeleteEvent
 ├── UnavailableGuildJoinedEvent
 ├── UnavailableGuildLeaveEvent
 └── UpdateEvent
@@ -32,12 +30,8 @@ Fires only in relation to the currently logged in account.
 GenericSelfUpdateEvent <sup>(1)</sup>
 ├── SelfUpdateAvatarEvent
 ├── SelfUpdateDiscriminatorEvent
-├── SelfUpdateEmailEvent
 ├── SelfUpdateMFAEvent
-├── SelfUpdateMobileEvent
 ├── SelfUpdateNameEvent
-├── SelfUpdateNitroEvent
-├── SelfUpdatePhoneNumberEvent
 └── SelfUpdateVerifiedEvent
 </pre>
 
@@ -49,8 +43,10 @@ GenericUserEvent
 ├── GenericUserUpdateEvent <sup>(1)</sup>
 │   ├── UserUpdateOnlineStatusEvent <sup>(3)</sup>
 |   ├── UserUpdateActivityOrderEvent <sup>(3)</sup>
+│   ├── UserUpdateActivitiesEvent <sup>(3)</sup>
 │   ├── UserUpdateAvatarEvent
 │   ├── UserUpdateDiscriminatorEvent
+│   ├── UserUpdateFlagsEvent
 │   └── UserUpdateNameEvent
 ├── UserActivityStartEvent <sup>(3)</sup>
 ├── UserActivityEndEvent <sup>(3)</sup>
@@ -65,25 +61,14 @@ GenericMessageEvent
 ├── MessageEmbedEvent
 ├── MessageReceivedEvent
 ├── MessageUpdateEvent
+├── MessageReactionRemoveAllEvent
+├── MessageReactionRemoveEmoteEvent
 └── GenericMessageReactionEvent
     ├── MessageReactionAddEvent
     └── MessageReactionRemoveEvent
 </pre>
 
 - **MessageBulkDeleteEvent** is a special event and does not extend `GenericMessageEvent`!
-
-### Private Message Events
-
-<pre>
-GenericPrivateMessageEvent
-├── PrivateMessageDeleteEvent
-├── PrivateMessageEmbedEvent
-├── PrivateMessageReceivedEvent
-├── PrivateMessageUpdateEvent
-└── GenericPrivateMessageReactionEvent
-    ├── PrivateMessageReactionAddEvent
-    └── PrivateMessageReactionRemoveEvent
-</pre>
 
 ## Guild Events
 
@@ -96,19 +81,20 @@ GenericGuildEvent
 ├── GuildLeaveEvent
 ├── GuildBanEvent
 ├── GuildUnbanEvent
+├── GuildMemberRemoveEvent
 ├── GenericGuildInviteEvent
 │   ├── GuildInviteCreateEvent
 │   └── GuildInviteDeleteEvent
-├── GenericGuildMessageEvent
-│   ├── GuildMessageDeleteEvent
-│   ├── GuildMessageEmbedEvent
-│   ├── GuildMessageReceivedEvent
-│   ├── GuildMessageUpdateEvent
-│   ├── GuildMessageReactionRemoveAllEvent
-│   ├── GuildMessageReactionRemoveEmoteEvent
-│   └── GenericGuildMessageReactionEvent
-│       ├── GuildMessageReactionAddEvent
-│       └── GuildMessageReactionRemoveEvent
+├── GenericPermissionOverrideEvent
+│   ├── PermissionOverrideCreateEvent
+│   ├── PermissionOverrideDeleteEvent
+│   └── PermissionOverrideUpdateEvent
+├── GenericStageInstanceEvent
+│   ├── StageInstanceCreateEvent
+│   ├── StageInstanceDeleteEvent
+│   └── GenericStageInstanceUpdateEvent <sup>(1)</sup>
+│       ├── StageInstanceUpdatePrivacyLevelEvent
+|       └── StageInstanceUpdateTopicEvent
 ├── GenericGuildUpdateEvent <sup>(1)</sup>
 │   ├── GuildUpdateAfkChannelEvent
 │   ├── GuildUpdateAfkTimeoutEvent
@@ -119,7 +105,6 @@ GenericGuildEvent
 │   ├── GuildUpdateNameEvent
 │   ├── GuildUpdateNotificationLevelEvent
 │   ├── GuildUpdateOwnerEvent
-│   ├── GuildUpdateRegionEvent
 │   ├── GuildUpdateSplashEvent
 │   ├── GuildUpdateSystemChannelEvent
 │   ├── GuildUpdateBannerEvent
@@ -129,10 +114,13 @@ GenericGuildEvent
 │   ├── GuildUpdateMaxMembersEvent
 │   ├── GuildUpdateMaxPresencesEvent
 │   ├── GuildUpdateVanityCodeEvent
+│   ├── GuildUpdateCommunityUpdatesChannelEvent
+│   ├── GuildUpdateLocaleEvent
+│   ├── GuildUpdateNSFWLevelEvent
+│   ├── GuildUpdateRulesChannelEvent
 │   └── GuildUpdateVerificationLevelEvent
 ├── GenericGuildMemberEvent
 │   ├── GuildMemberJoinEvent
-│   ├── GuildMemberRemoveEvent
 │   ├── GuildMemberRoleAddEvent
 │   ├── GuildMemberRoleRemoveEvent
 │   ├── GuildMemberUpdateEvent
@@ -150,6 +138,8 @@ GenericGuildEvent
     ├── GuildVoiceSelfDeafenEvent
     ├── GuildVoiceSelfMuteEvent
     ├── GuildVoiceStreamEvent
+    ├── GuildVoiceRequestToSpeakEvent
+    ├── GuildVoiceVideoEvent
     ├── GuildVoiceSuppressEvent
     └── GuildVoiceUpdateEvent <sup>(1)</sup>
         ├── GuildVoiceJoinEvent
@@ -161,64 +151,26 @@ GenericGuildEvent
 
 ## Channel Events
 
-### Text Channel Events
-
 <pre>
-GenericTextChannelEvent
-├── TextChannelCreateEvent
-├── TextChannelDeleteEvent
-└── GenericTextChannelUpdateEvent <sup>(1)</sup>
-    ├── TextChannelUpdateNameEvent
-    ├── TextChannelUpdateNSFWEvent
-    ├── TextChannelUpdateParentEvent
-    ├── TextChannelUpdatePositionEvent
-    ├── TextChannelUpdateSlowmodeEvent
-    └── TextChannelUpdateTopicEvent
-</pre>
-
-### Voice Channel Events
-
-<pre>
-GenericVoiceChannelEvent
-├── VoiceChannelCreateEvent
-├── VoiceChannelDeleteEvent
-└── GenericVoiceChannelUpdateEvent <sup>(1)</sup>
-    ├── VoiceChannelUpdateBitrateEvent
-    ├── VoiceChannelUpdateNameEvent
-    ├── VoiceChannelUpdateParentEvent
-    ├── VoiceChannelUpdatePositionEvent
-    └── VoiceChannelUpdateUserLimitEvent
-</pre>
-
-### Category Events
-
-<pre>
-GenericCategoryEvent
-├── CategoryCreateEvent
-├── CategoryDeleteEvent
-└── GenericCategoryUpdateEvent <sup>(1)</sup>
-    ├── CategoryUpdateNameEvent
-    └── CategoryUpdatePositionEvent
-</pre>
-
-### Store Channel Events
-
-<pre>
-GenericStoreChannelEvent
-├── StoreChannelCreateEvent
-├── StoreChannelDeleteEvent
-└── GenericStoreChannelUpdateEvent <sup>(1)</sup>
-    ├── StoreChannelUpdatePositionEvent
-    └── StoreChannelUpdateNameEvent
-</pre>
-
-### Private Channel Events
-
-Note: We don't use a generic event here because there are only 2 events.
-
-<pre>
-PrivateChannelCreateEvent
-PrivateChannelDeleteEvent
+GenericChannelEvent
+├── ChannelCreateEvent
+├── ChannelDeleteEvent
+└── GenericChannelUpdateEvent <sup>(1)</sup>
+    ├── ChannelUpdateArchivedEvent
+    ├── ChannelUpdateArchiveTimestampEvent
+    ├── ChannelUpdateAutoArchiveDurationEvent
+    ├── ChannelUpdateBitrateEvent
+    ├── ChannelUpdateInvitableEvent
+    ├── ChannelUpdateLockedEvent
+    ├── ChannelUpdateNameEvent
+    ├── ChannelUpdateNSFWEvent
+    ├── ChannelUpdateParentEvent
+    ├── ChannelUpdatePositionEvent
+    ├── ChannelUpdateRegionEvent
+    ├── ChannelUpdateSlowmodeEvent
+    ├── ChannelUpdateTopicEvent
+    ├── ChannelUpdateTypeEvent
+    └── ChannelUpdateUserLimitEvent
 </pre>
 
 ## Role Events
@@ -233,6 +185,7 @@ GenericRoleEvent
     ├── RoleUpdateMentionableEvent
     ├── RoleUpdateNameEvent
     ├── RoleUpdatePermissionsEvent
+    ├── RoleUpdateIconEvent
     └── RoleUpdatePositionEvent
 </pre>
 
