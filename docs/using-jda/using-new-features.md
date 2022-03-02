@@ -18,11 +18,11 @@ Here the important part is `from Xirado:feature/modals`, you need to extract the
 
 ### Getting the Latest Version
 
-You then want to go in the `Commits` tab
+Next, head to the `Commits` tab.
 
 ![img.png](../assets/images/github_pr_commits_tab.png){width="720"}
 
-You can now scroll down to the bottom, as to find the latest **commit hash**, it would look like this:
+You can now scroll down to the bottom, as to find the latest **commit hash**.  It should look like this:
 
 ![img.png](../assets/images/github_pr_latest_commit.png){width="720"}
 
