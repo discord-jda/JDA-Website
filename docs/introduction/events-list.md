@@ -1,6 +1,6 @@
 # List of Events
 
-All events mentioned in this list are a sub-type of [GenericEvent](https://github.com/DV8FromTheWorld/JDA/tree/master/src/main/java/net/dv8tion/jda/api/events/GenericEvent.java)
+All events mentioned in this list are a sub-type of [GenericEvent](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/GenericEvent.html)
 
 ## JDA Events
 
