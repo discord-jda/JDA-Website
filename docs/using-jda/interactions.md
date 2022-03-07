@@ -408,9 +408,9 @@ There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling SelectMenuEvent
+#### Handling SelectMenuInteractionEvent
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuEvent` for the respective interaction with the selected values.
+When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuInteractionEvent` for the respective interaction with the selected values.
 
 !!! example
     === "Java"
