@@ -26,16 +26,16 @@ You can now scroll down to the bottom, as to find the latest **commit hash**.  I
 
 ![img.png](../assets/images/github_pr_latest_commit.png){width="720"}
 
-Here you can see the 7 first chars of the latest commit are `36eea2a`.
+Here you can see the 7 first characters of the latest commit are `36eea2a`.
 
 ### Putting It Together
 
 So far we have:
 
 * PR author name: `xirado`
-* Version (7 char commit hash): `36eea2a`
+* Version (7 character commit hash): `36eea2a`
 
-You can now add the dependency to your favorite build tool, but before that, you will have to remove your current JDA dependency.
+You can now add the dependency to your project using your favorite build tool, but don't forget to remove your current JDA dependency first.
 
 Template:
 === "Gradle"
