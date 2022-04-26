@@ -66,7 +66,7 @@
     11. Configure the `mainClassName` value in the `build.gradle` to your class. Example: `me.name.bot.Bot`
     12. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
         > You can also run your project with the `run` Gradle task!
-    13. [Setup Logback](logging)
+    13. [Setup Logback](../logging.md)
     14. Continue with [Getting Started](../using-jda/getting-started.md)
 
 
