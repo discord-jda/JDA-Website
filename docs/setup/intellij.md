@@ -1,6 +1,6 @@
 # IntelliJ IDEA Setup
 
-[ ![Download](https://shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fm2.dv8tion.net%2Freleases%2Fnet%2Fdv8tion%2FJDA%2Fmaven-metadata.xml&color=informational&label=Download&style=for-the-badge) ](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
+[ ![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue) ](https://mvnrepository.com/artifact/net.dv8tion/JDA/latest)
 
 === "Newer versions of IntelliJ IDEA"
 
@@ -50,7 +50,7 @@
     
         1. Replace the `mainClassName` value with the path to your main class later on! 
 
-        2. Replace the `JDA_VERSION_HERE` with the one mentioned [here (release)](https://github.com/DV8FromTheWorld/JDA/releases/latest) or with the latest build [here](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
+        2. Replace the `JDA_VERSION_HERE` with the one mentioned in the [latest release](https://github.com/DV8FromTheWorld/JDA/releases/latest)
 
     8. If IntelliJ IDEA didn't already do so automatically, set up a source folder as `src/main/java`
     9. Create your group package. Example: `me.name.bot`
