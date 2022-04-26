@@ -37,7 +37,7 @@
         ```
         
 
-    5. [Setup Logback](logging.md)
+    5. [Setup Logback](../logging.md)
 
     6. **Start developing!**
 
@@ -66,5 +66,5 @@
     6. **Select `Browse...` and add the javadoc jar**
         
         ![Browse](http://i.imgur.com/bm51esA.png)
-    7. [Setup Logback](logging.md)
+    7. [Setup Logback](../logging.md)
     8. **Start developing!**
