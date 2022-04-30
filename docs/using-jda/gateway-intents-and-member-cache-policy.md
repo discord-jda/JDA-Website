@@ -48,7 +48,7 @@ Due to `GUILD_MEMBERS` being a **privileged** intent, you must also enable it in
 1. Open the **Bot** tab
 1. Under the **Privileged Gateway Intents** section, enable **SERVER MEMBERS INTENT**.
 
-If you use these intents, you are limited to 100 guilds on your bot. To allow the bot to join more guilds while using this intent, you have to [verify your bot](https://blog.discord.com/the-future-of-bots-on-discord-4e6e050ab52e). This will be available in your application dashboard when the bot joins at least 75 guilds.
+If you use these intents, you are limited to 100 guilds on your bot. To allow the bot to join more guilds while using this intent, you have to [verify your bot](https://blog.discord.com/the-future-of-bots-on-discord-4e6e050ab52e). This will be available in your application dashboard when the bot joins at least 76 guilds.
 
 You can also choose to just use [`createLight`][createLight] or [`createDefault`][createDefault] without specifying the intents you need. In that case, JDA will just use [GatewayIntent.DEFAULT][GatewayIntent.DEFAULT]. If you want to use the default but also include some additional intents like `GUILD_MEMBERS` then you can use [`enableIntents`][enableIntents]:
 
