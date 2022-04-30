@@ -234,7 +234,7 @@ There are many ways to retrieve members: [Loading Members](gateway-intents-and-m
 
 I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
 
-To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests. Which can be a significant boost to reduce startup time and potentially reduce these warnings.
+To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests, which can be a significant boost to reduce startup time and potentially reduce these warnings.
 
 ### Encountered 429 or Encountered global rate limit
 
