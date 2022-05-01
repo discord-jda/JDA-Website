@@ -234,6 +234,8 @@ There are many ways to retrieve members: [Loading Members](gateway-intents-and-m
 
 I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
 
+To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests, which can be a significant boost to reduce startup time and potentially reduce these warnings.
+
 ### Encountered 429 or Encountered global rate limit
 
 When the internal jda rate-limiter fails to predict a rate limit bucket the HTTP response is `429: TOO MANY REQUESTS`. This means the request has to be retried. If you see this a lot (many times per minute), then JDA might have an issue with the rate limit handling of that route. If you use `setRelativeRateLimit(false)` it could also mean that your clock is not properly synchronizing with NTP.
