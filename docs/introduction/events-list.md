@@ -200,6 +200,19 @@ GenericEmoteEvent
     └── EmoteUpdateRolesEvent
 </pre>
 
+## Sticker Events
+
+<pre>
+GenericGuildStickerEvent
+├── GuildStickerAddedEvent
+├── GuildStickerRemovedEvent
+└── GenericGuildStickerUpdateEvent <sup>(1)</sup>
+    ├── GuildStickerUpdateAvailableEvent
+    ├── GuildStickerUpdateDescriptionEvent
+    ├── GuildStickerUpdateNameEvent
+    └── GuildStickerUpdateTagsEvent
+</pre>
+
 [^1]: This extends UpdateEvent<br>
 [^2]: This event needs to be explicitly enabled in the JDABuilder/DefaultShardManagerBuilder<br>
 [^3]: This extends GenericUserPresenceEvent
