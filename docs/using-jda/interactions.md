@@ -11,9 +11,7 @@ This guide will give you a brief introduction to an API for adding and handling 
 - [Context Menus](#context-menus)
 - [Buttons](#buttons)
 - [Select Menus (Dropdowns)](#select-menus-dropdowns)
-- Modals*
-
-*Modals are currently in-development and will be available soon in v5-alpha.
+- [Modals](#modals)
 
 ### Ephemeral Messages
 
@@ -462,6 +460,116 @@ When a user selects their options from a dropdown and submits their choices, you
             override fun onSelectMenuInteraction(event: SelectMenuInteractionEvent) {
                 if (event.componentId == "choose-food") {
                     event.reply("You chose " + event.values[0]).queue()
+                }
+            }
+        }
+        ```
+
+## Modals
+
+Modals are pop-ups that appear in a user's Discord-Client.
+
+![Example Modal](https://i.imgur.com/5r0fEWO.png)
+
+Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
+
+### Replying with a Modal
+
+!!! example
+    === "Java"
+        ```java
+        public class SupportCommand extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("support")) {
+                    TextInput email = TextInput.create("email", "Email", TextInputStyle.SHORT)
+                            .setPlaceholder("Enter your E-mail")
+                            .setMinLength(10)
+                            .setMaxLength(100) // or setRequiredRange(10, 100)
+                            .build();
+
+                    TextInput body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                            .setPlaceholder("Your concerns go here")
+                            .setMinLength(30)
+                            .setMaxLength(1000)
+                            .build();
+
+                    Modal modal = Modal.create("support", "Support")
+                            .addActionRows(ActionRow.of(email), ActionRow.of(body))
+                            .build();
+
+                    event.replyModal(modal).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object SupportCommand : ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "support") {
+                    val email = TextInput.create("email", "Email", TextInputStyle.SHORT)
+                        .setPlaceholder("Enter your E-mail")
+                        .setMinLength(10)
+                        .setMaxLength(100) // or setRequiredRange(10, 100)
+                        .build()
+
+                    val body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                        .setPlaceholder("Your concerns go here")
+                        .setMinLength(30)
+                        .setMaxLength(1000)
+                        .build()
+
+                    val modal = Modal.create("support", "Support")
+                        .addActionRows(ActionRow.of(email), ActionRow.of(body))
+                        .build()
+
+                    event.replyModal(modal).queue()
+                }
+            }
+        }
+        ```
+
+### Handling ModalInteractionEvent
+
+When the user clicks the "Submit" button on the Modal, you will receive an `ModalInteractionEvent`, containing all the values the user put in it.
+
+!!! warning
+
+    Successfully responding to a `ModalInteractionEvent` is necessary. Not responding to the event will not close it on the user's client, and show an error.
+
+!!! info
+
+    If the Modal originated from a Component-Interaction (Buttons, SelectMenus), it is possible to acknowledge the interaction using an edit to the original Message using `editMessage()` or similar.
+
+!!! example
+    === "Java"
+        ```java
+        public class ModalListener extends ListenerAdapter {
+            @Override
+            public void onModalInteraction(@Nonnull ModalInteractionEvent event) {
+                if (event.getModalId().equals("support")) {
+                    String email = event.getValue("email").getAsString();
+                    String body = event.getValue("body").getAsString();
+
+                    createSupportTicket(email, body);
+
+                    event.reply("Thanks for your request!").setEphemeral(true).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object ModalListener : ListenerAdapter() {
+            override fun onModalInteraction(event: ModalInteractionEvent) {
+                if (event.modalId == "support") {
+                    val email = event.getValue("email")?: return
+                    val body = event.getValue("body")?: return
+
+                    createSupportTicket(email, body)
+
+                    event.reply("Thanks for your request!").setEphemeral(true).queue()
                 }
             }
         }
