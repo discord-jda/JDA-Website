@@ -469,7 +469,7 @@ When a user selects their options from a dropdown and submits their choices, you
 
 Modals are pop-ups that appear in a user's Discord-Client.
 
-![Example Modal](https://i.imgur.com/5r0fEWO.png)
+![Example Modal](https://i.imgur.com/fjqQNrm.png)
 
 Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
 
@@ -480,10 +480,10 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
         ```java
         public class SupportCommand extends ListenerAdapter {
             @Override
-            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
-                if (event.getName().equals("support")) {
-                    TextInput email = TextInput.create("email", "Email", TextInputStyle.SHORT)
-                            .setPlaceholder("Enter your E-mail")
+            public void onSlashCommandInteraction(@Nonnull SlashCommandInteractionEvent event) {
+                if (event.getName().equals("modmail")) {
+                    TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                            .setPlaceholder("Subject of this ticket")
                             .setMinLength(10)
                             .setMaxLength(100) // or setRequiredRange(10, 100)
                             .build();
@@ -494,8 +494,8 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
                             .setMaxLength(1000)
                             .build();
 
-                    Modal modal = Modal.create("support", "Support")
-                            .addActionRows(ActionRow.of(email), ActionRow.of(body))
+                    Modal modal = Modal.create("modmail", "Modmail")
+                            .addActionRows(ActionRow.of(subject), ActionRow.of(body))
                             .build();
 
                     event.replyModal(modal).queue();
@@ -507,9 +507,9 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
         ```kotlin
         object SupportCommand : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
-                if (event.name == "support") {
-                    val email = TextInput.create("email", "Email", TextInputStyle.SHORT)
-                        .setPlaceholder("Enter your E-mail")
+                if (event.name == "modmail") {
+                    val subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                        .setPlaceholder("Subject of this ticket")
                         .setMinLength(10)
                         .setMaxLength(100) // or setRequiredRange(10, 100)
                         .build()
@@ -520,8 +520,8 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
                         .setMaxLength(1000)
                         .build()
 
-                    val modal = Modal.create("support", "Support")
-                        .addActionRows(ActionRow.of(email), ActionRow.of(body))
+                    val modal = Modal.create("modmail", "Modmail")
+                        .addActionRows(ActionRow.of(subject), ActionRow.of(body))
                         .build()
 
                     event.replyModal(modal).queue()
@@ -548,11 +548,11 @@ When the user clicks the "Submit" button on the Modal, you will receive an `Moda
         public class ModalListener extends ListenerAdapter {
             @Override
             public void onModalInteraction(@Nonnull ModalInteractionEvent event) {
-                if (event.getModalId().equals("support")) {
-                    String email = event.getValue("email").getAsString();
+                if (event.getModalId().equals("modmail")) {
+                    String subject = event.getValue("subject").getAsString();
                     String body = event.getValue("body").getAsString();
 
-                    createSupportTicket(email, body);
+                    createSupportTicket(subject, body);
 
                     event.reply("Thanks for your request!").setEphemeral(true).queue();
                 }
@@ -563,11 +563,11 @@ When the user clicks the "Submit" button on the Modal, you will receive an `Moda
         ```kotlin
         object ModalListener : ListenerAdapter() {
             override fun onModalInteraction(event: ModalInteractionEvent) {
-                if (event.modalId == "support") {
-                    val email = event.getValue("email") ?: return
+                if (event.modalId == "modmail") {
+                    val subject = event.getValue("subject") ?: return
                     val body = event.getValue("body") ?: return
 
-                    createSupportTicket(email, body)
+                    createSupportTicket(subject, body)
 
                     event.reply("Thanks for your request!").setEphemeral(true).queue()
                 }
