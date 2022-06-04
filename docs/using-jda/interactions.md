@@ -564,8 +564,8 @@ When the user clicks the "Submit" button on the Modal, you will receive an `Moda
         object ModalListener : ListenerAdapter() {
             override fun onModalInteraction(event: ModalInteractionEvent) {
                 if (event.modalId == "support") {
-                    val email = event.getValue("email")?: return
-                    val body = event.getValue("body")?: return
+                    val email = event.getValue("email") ?: return
+                    val body = event.getValue("body") ?: return
 
                     createSupportTicket(email, body)
 
