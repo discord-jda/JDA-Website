@@ -480,7 +480,7 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
         ```java
         public class SupportCommand extends ListenerAdapter {
             @Override
-            public void onSlashCommandInteraction(@Nonnull SlashCommandInteractionEvent event) {
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("modmail")) {
                     TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
                             .setPlaceholder("Subject of this ticket")
