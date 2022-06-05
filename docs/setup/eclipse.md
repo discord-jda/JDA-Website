@@ -70,7 +70,7 @@
 
     1. Once all the dependencies have been downloaded, create your desired packages/classes in `src/main/java` and start coding!
     1. To build your project you can run `gradlew shadowJar` in a terminal of your project root, and it will produce a jar filled with your compiled code and JDA included in a single jar file! The jar can be found in `build/libs`
-    1. [Setup Logback](logging.md)
+    1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 
 
@@ -168,7 +168,7 @@
         ![Maven Update](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/13-mvnUpdate.png)  
 
     1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA/javadoc/) or see examples at the [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java) page.
-    1. [Setup Logback](logging.md)
+    1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 
 
@@ -205,5 +205,5 @@
         ![Javadoc](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/25-javaDocs.png)
 
     1. Here, add your **JDA-x.x.x_xxx-javadoc.jar** and click on **OK**
-    1. [Setup Logback](logging.md)
+    1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)

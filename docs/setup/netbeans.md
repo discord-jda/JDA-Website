@@ -37,7 +37,7 @@
         ```
         
 
-    1. [Setup Logback](logging.md)
+    1. [Setup Logback](./logging.md)
 
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 
@@ -66,5 +66,5 @@
     1. **Select `Browse...` and add the javadoc jar**
         
         ![Browse](http://i.imgur.com/bm51esA.png)
-    1. [Setup Logback](logging.md)
+    1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
