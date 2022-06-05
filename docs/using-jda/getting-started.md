@@ -27,8 +27,11 @@
     
     ![client id](https://i.imgur.com/lsygf0X.png)
 
-2. Create an OAuth2 authorization URL (reference [docs](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow))
-    **Example**: `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot`
+2. Create an OAuth2 authorization URL (reference [docs](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow)).
+    Users who want to use Interaction Commands should also add the `applications.commands` scope.
+    Some example URLs:
+      - `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot`
+      - `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot+applications.commands`
 
     !!! note 
         This can be done from the **Bot** tab at the very bottom. Here you can select the scope **bot** and some permissions required for your bots functionality (optional).
@@ -55,7 +58,7 @@
     
     [ ![Download](https://shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fm2.dv8tion.net%2Freleases%2Fnet%2Fdv8tion%2FJDA%2Fmaven-metadata.xml&color=informational&label=Download&style=for-the-badge) ](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
 
-3. Create [`JDABuilder`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html) instance with token
+3. Create [`JDABuilder`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html) instance with token
 4. Build JDA using `JDABuilder.build()`
     
     ```java
@@ -64,6 +67,8 @@
         JDA api = JDABuilder.createDefault(BOT_TOKEN).build();
     }
     ```
+    !!! tip
+        It is often better to load your token in from an external file or environment variable, especially if you plan on publishing the source code.
 
 ## Making a Ping-Pong Protocol
 
@@ -91,7 +96,7 @@
     }
     ```
     !!! info
-        More information about [RestAction](using-restaction.md)
+        More information about RestActions can be found [here](using-restaction.md)
 
 
 3. Register your listener with either `JDABuilder.addEventListeners(new MyListener())` or `JDA.addEventListeners(new MyListener())` (see [Events](../introduction/events.md))

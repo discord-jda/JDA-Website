@@ -69,7 +69,7 @@ NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 
 Methods such as [`Message.getEmotes()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotes()) and [`Message.getEmotesBag()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#getEmotesBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/vdurmont/emoji-java) to extract unicode emoji from a message.
 
-An example use-case including a code sample can be found in my answer to a related question on StackOverflow: https://stackoverflow.com/a/58353912/10630900
+An example use-case including a code sample can be found in [this answer to a related question on StackOverflow](https://stackoverflow.com/a/58353912/10630900)
 
 
 ## Event Handling and RestActions
@@ -108,15 +108,15 @@ If you *do* have a `queue()` then maybe your code doesn't even run? Try putting 
 
 There are many reasons why your event listener might not be executed but here are the most common issues:
 
-1. You are using a deprecated part of JDA? Such as `new JDABuilder(...)`
-    <br>Use the replacement that is documented. For example `createDefault(token)`
-1. You are using the wrong login token?
+1. You are using a deprecated or removed part of JDA, such as `new JDABuilder(...)`.
+    <br>Use the replacement that is documented, for example `createDefault(token)`.
+1. You are using the wrong login token.
     <br>If the token is for another bot which doesn't have access to the desired guilds then the event listener code cannot run.
-1. Your bot is not actually in the guild?
+1. Your bot is not actually in the guild.
     <br>Make sure your bot is online and has access to the resource you are trying to interact with.
-1. You never registered your listener? 
+1. You never registered your listener.
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
-1. You did not override the correct method?
+1. You did not override the correct method.
     <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
@@ -234,6 +234,8 @@ There are many ways to retrieve members: [Loading Members](gateway-intents-and-m
 
 I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
 
+To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests, which can be a significant boost to reduce startup time and potentially reduce these warnings.
+
 ### Encountered 429 or Encountered global rate limit
 
 When the internal jda rate-limiter fails to predict a rate limit bucket the HTTP response is `429: TOO MANY REQUESTS`. This means the request has to be retried. If you see this a lot (many times per minute), then JDA might have an issue with the rate limit handling of that route. If you use `setRelativeRateLimit(false)` it could also mean that your clock is not properly synchronizing with NTP.
@@ -280,9 +282,9 @@ There are many ways you can retrieve members dynamically: [Loading Members](gate
 This means you tried to use `GatewayIntent.GUILD_MEMBERS` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
 
 1. Open the [application dashboard](https://discord.com/developers/applications)
-2. Select your bot application
-3. Open the **Bot** tab
-4. Under the **Privileged Gateway Intents** section, enable either **SERVER MEMBERS INTENT** or **PRESENCE INTENT** depending on your needs.
+1. Select your bot application
+1. Open the **Bot** tab
+1. Under the **Privileged Gateway Intents** section, enable either **SERVER MEMBERS INTENT** or **PRESENCE INTENT** depending on your needs.
 
 If you use these intents you are limited to 100 guilds on your bot. To allow the bot to join more guilds while using this intent you have to [verify your bot](https://blog.discord.com/the-future-of-bots-on-discord-4e6e050ab52e). This will be available in your application dashboard when the bot joins at least 75 guilds.
 

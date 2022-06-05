@@ -52,11 +52,12 @@ public class MusicBot extends ListenerAdapter
             .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
             .build(); // Build JDA - connect to discord
     }
-
-    // Note that we are using GuildMessageReceivedEvent to only include messages from a Guild!
+    
     @Override
-    public void onGuildMessageReceived(GuildMessageReceivedEvent event) 
+    public void onMessageReceived(MessageReceivedEvent event) 
     {
+        // Make sure we only respond to events that occur in a guild
+        if (!event.isFromGuild()) return;
         // This makes sure we only execute our code when someone sends a message with "!play"
         if (!event.getMessage().getContentRaw().startsWith("!play")) return;
         // Now we want to exclude messages from bots since we want to avoid command loops in chat!
