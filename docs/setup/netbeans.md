@@ -7,10 +7,10 @@
     1. **Make a new Maven Java Application**
         
         ![MavenApp](https://i.imgur.com/smGUSi6.png)
-    2. **Open up the pom.xml in the Project Files**
+    1. **Open up the pom.xml in the Project Files**
         
         ![Pom](https://i.imgur.com/f58Dbjy.png)
-    3. **Add S3 as a repository**
+    1. **Add S3 as a repository**
         ```xml
         <repositories>
             <repository>
@@ -21,7 +21,7 @@
         </repositories>
         ```
 
-    4. **Add JDA as a dependency**
+    1. **Add JDA as a dependency**
 
         !!! note inline end
             These can go anywhere within the `<project></project>` tags.
@@ -37,9 +37,9 @@
         ```
         
 
-    5. [Setup Logback](../logging.md)
+    1. [Setup Logback](./logging.md)
 
-    6. **Start developing!**
+    1. Continue with [Getting Started](../using-jda/getting-started.md)
 
 === "Jar Setup"
 
@@ -49,22 +49,22 @@
         
         ![Downloads](http://i.imgur.com/fNN4vOf.png)
 
-    2. **Make a new Java Application**
+    1. **Make a new Java Application**
         
         ![JavaApp](http://i.imgur.com/9mOkwmA.png)
 
-    3. **Right-click the `Libraries` folder in your project, and select `Add JAR/Folder...`**
+    1. **Right-click the `Libraries` folder in your project, and select `Add JAR/Folder...`**
         
         ![Jar](http://i.imgur.com/5CZIJYF.png)
 
-    4. **Find the `JDA...withDependencies.jar` and add it.**
+    1. **Find the `JDA...withDependencies.jar` and add it.**
 
-    5. **Right-click on the newly-added Jar file, and select `Edit...`**
+    1. **Right-click on the newly-added Jar file, and select `Edit...`**
         
         ![Edit](http://i.imgur.com/Jvt8574.png)
 
-    6. **Select `Browse...` and add the javadoc jar**
+    1. **Select `Browse...` and add the javadoc jar**
         
         ![Browse](http://i.imgur.com/bm51esA.png)
-    7. [Setup Logback](../logging.md)
-    8. **Start developing!**
+    1. [Setup Logback](./logging.md)
+    1. Continue with [Getting Started](../using-jda/getting-started.md)
