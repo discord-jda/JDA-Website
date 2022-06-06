@@ -467,7 +467,7 @@ When a user selects their options from a dropdown and submits their choices, you
 
 ## Modals
 
-Modals are pop-ups that appear in a user's Discord-Client.
+Modals are pop-ups that appear in a user's Discord client.
 
 ![Example Modal](https://i.imgur.com/fjqQNrm.png)
 
@@ -536,7 +536,7 @@ When the user clicks the "Submit" button on the Modal, you will receive an `Moda
 
 !!! warning
 
-    Successfully responding to a `ModalInteractionEvent` is necessary. Not responding to the event will not close it on the user's client, and show an error.
+    Acknowledging a `ModalInteractionEvent` is necessary. Failing to respond to the event will not close it on the user's client, and will show them an error.
 
 !!! info
 
