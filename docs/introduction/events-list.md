@@ -192,12 +192,12 @@ GenericRoleEvent
 ## Emote Events
 
 <pre>
-GenericEmoteEvent
-├── EmoteAddedEvent
-├── EmoteRemovedEvent
-└── GenericEmoteUpdateEvent <sup>(1)</sup>
-    ├── EmoteUpdateNameEvent
-    └── EmoteUpdateRolesEvent
+GenericEmojiEvent
+├── EmojiAddedEvent
+├── EmojiRemovedEvent
+└── GenericEmojiUpdateEvent <sup>(1)</sup>
+    ├── EmojiUpdateNameEvent
+    └── EmojiUpdateRolesEvent
 </pre>
 
 [^1]: This extends UpdateEvent<br>
