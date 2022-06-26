@@ -62,7 +62,7 @@ GenericMessageEvent
 ├── MessageReceivedEvent
 ├── MessageUpdateEvent
 ├── MessageReactionRemoveAllEvent
-├── MessageReactionRemoveEmoteEvent
+├── MessageReactionRemoveEmojiEvent
 └── GenericMessageReactionEvent
     ├── MessageReactionAddEvent
     └── MessageReactionRemoveEvent
@@ -189,7 +189,7 @@ GenericRoleEvent
     └── RoleUpdatePositionEvent
 </pre>
 
-## Emote Events
+## Emoji Events
 
 <pre>
 GenericEmojiEvent
