@@ -52,28 +52,28 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by Discord.
 
-??? question "What is an Emote/Emoji and what is the difference between `addReaction(Emote)` and `addReaction(String)`?"
+??? question "What is an Custom Emoji and Unicode Emoji?"
 
-    While there are a lot of standardized emotes (defined through Unicode spec), Discord allows Guilds to add their own emotes to be available.
-    Those emotes are not just a plain Unicode character, but rather their own entity with id, name, ...
+    While there are a lot of standardized emojis (defined through Unicode spec), Discord allows Guilds to add their own emojis to be available.
+    Those custom emojis are not just a plain Unicode character, but rather their own entity with id, name, ...
 
-    To make this distinction more clear, we refer to the standard (Unicode) emotes as "Emoji" and the Discord entities as "Emotes" in JDA.
+    To make this distinction more clear, we refer to the standard (Unicode) emojis as `UnicodeEmoji` and the Discord entities as `CustomEmoji` in JDA.
 
-    Methods like `addReaction()` also have different parameters depending on whether the reaction is an Emoji ([`addReaction(String)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction%28java.lang.String%29)) or an Emote ([`addReaction(Emote)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Message.html#addReaction(net.dv8tion.jda.api.entities.Emote))).
+    You can create instances of this for use in various methods, such as reactions, using the factory methods of the `Emoji` interface. For instance, to create a unicode emoji instance, you use `Emoji.fromUnicode("...")` with the string of **unicode characters**.
 
-    To get the Unicode char(s) of some Emoji, you can either use a 3rd party library or just look them up online.
+    To get the Unicode char(s) of some Emoji, you can either use a 3rd party library (such as [emoji-java](https://github.com/MinnDevelopment/emoji-java)) or just look them up online.
     You can add reactions with 3 different formats:
 
     ```java
     // custom
-    message.addReaction("minn:245267426227388416").queue();
+    message.addReaction(Emoji.fromFormatted("<:minn:245267426227388416>")).queue();
     // unicode escape
-    message.addReaction("\uD83D\uDE02").queue();
+    message.addReaction(Emoji.fromUnicode("\uD83D\uDE02")).queue();
     // codepoint notation
-    message.addReaction("U+1F602").queue(); 
+    message.addReaction(Emoji.fromUnicode("U+1F602")).queue(); 
     ```
 
-    - Custom Emote (`name:id`)
+    - Custom Emoji (`<:name:id>`)
     - Unicode escape as UTF-16 characters (`\uXXXX\uXXXX`)
     - Codepoint Notation as UTF-32 characters (`U+XXXXXXXXU+XXXXXXXX`)
 
