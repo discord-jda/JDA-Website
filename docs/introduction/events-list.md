@@ -62,7 +62,7 @@ GenericMessageEvent
 ├── MessageReceivedEvent
 ├── MessageUpdateEvent
 ├── MessageReactionRemoveAllEvent
-├── MessageReactionRemoveEmoteEvent
+├── MessageReactionRemoveEmojiEvent
 └── GenericMessageReactionEvent
     ├── MessageReactionAddEvent
     └── MessageReactionRemoveEvent
@@ -189,15 +189,15 @@ GenericRoleEvent
     └── RoleUpdatePositionEvent
 </pre>
 
-## Emote Events
+## Emoji Events
 
 <pre>
-GenericEmoteEvent
-├── EmoteAddedEvent
-├── EmoteRemovedEvent
-└── GenericEmoteUpdateEvent <sup>(1)</sup>
-    ├── EmoteUpdateNameEvent
-    └── EmoteUpdateRolesEvent
+GenericEmojiEvent
+├── EmojiAddedEvent
+├── EmojiRemovedEvent
+└── GenericEmojiUpdateEvent <sup>(1)</sup>
+    ├── EmojiUpdateNameEvent
+    └── EmojiUpdateRolesEvent
 </pre>
 
 ## Sticker Events
