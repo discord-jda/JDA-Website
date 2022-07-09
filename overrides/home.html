@@ -4,17 +4,47 @@
 {% extends "main.html" %}
 {% block tabs %}
   {{ super() }}
-  <style>.md-header{position:initial}.md-main__inner{margin:0}.md-content{display:none}@media screen and (min-width:60em){.md-sidebar--secondary{display:none}}@media screen and (min-width:76.25em){.md-sidebar--primary{display:none}}</style>
+  <style>
+    .md-header {
+      position: initial;
+    }
+    .md-main__inner {
+      margin: 0;
+    }
+    .md-content {
+      display: none;
+    }
+    @media screen and (min-width:60em){
+      .md-sidebar--secondary {
+        display: none;
+      }
+    }
+    @media screen and (min-width:76.25em){
+      .md-sidebar--primary{
+        display: none;
+      }
+    }
+    .md-tabs {
+      display: none;
+    }
+    @media only screen and (max-width: 600px) {
+      .md-typeset pre {
+        display: grid;
+      }
+      
+      .md-typeset .tabbed-set {
+        display: grid;
+      }
+    }
+  </style>
   <section class="mdx-container">
     <div class="md-grid md-typeset">
       <header class="mdx-hero">
         <img src="/assets/images/logo-round.png" alt="" width="200" height="200" draggable="false">
         <p class="mdx-description">
-          A clean and highly-effective Java Wrapper for the Discord REST API
+          A clean and highly-effective Java Wrapper for the Discord API
         </p>
-          <a href="introduction/jda/" title="Using JDA" class="md-button md-button--primary">Using JDA</a>
-          <a href="https://ci.dv8tion.net/job/JDA/javadoc/" title="Documentation" class="md-button">Documentation</a>
-          <a href="https://github.com/DV8FromTheWorld/JDA" title="Source Code" class="md-button">Source Code</a>
+          <a href="introduction/jda/" title="Using JDA" class="md-button md-button--primary">Get Started</a>
         <p>
       </header>
       <div class="mdx-description">
@@ -24,4 +54,6 @@
   </section>
 {% endblock %}
 {% block content %}{% endblock %}
-{% block footer %}{% endblock %}
+{% block footer %}
+  {{ super() }}
+{% endblock %}
