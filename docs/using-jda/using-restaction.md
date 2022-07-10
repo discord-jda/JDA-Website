@@ -38,10 +38,6 @@ Since **4.1.1** you can use a few RestAction operators to avoid callback hell wi
 Some operations return a special `RestAction` implementation called `AuditableRestAction`.
 <br>This extension allows to set a reason field for that action.
 
-These reasons are only available for accounts with __AccountType.BOT__ but will silently be ignored
-for any non-bot accounts.
-<br>However any account can use reasons on kick/ban with the special overloads provided that allow setting a reason.
-
 !!! example
     ```java
     public class ModerationUtil

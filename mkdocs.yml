@@ -43,7 +43,7 @@ markdown_extensions:
   - pymdownx.highlight
   - footnotes
   - def_list
-  - md_in_html
+  - attr_list
   - pymdownx.tasklist:
       custom_checkbox: true
   - toc:
@@ -78,6 +78,7 @@ nav:
     - Gateway Intents and Member Cache Policy: using-jda/gateway-intents-and-member-cache-policy.md
     - Webhooks: https://github.com/MinnDevelopment/discord-webhooks
     - Managers and Moderation: using-jda/separation-of-concerns.md
+    - Using New Features: using-jda/using-new-features.md
     - Troubleshooting: using-jda/troubleshooting.md
   - Contributing:
     - Contributing: contributing/contributing.md

@@ -11,9 +11,7 @@ This guide will give you a brief introduction to an API for adding and handling 
 - [Context Menus](#context-menus)
 - [Buttons](#buttons)
 - [Select Menus (Dropdowns)](#select-menus-dropdowns)
-- Modals*
-
-*Modals are currently in-development and will be available soon in v5-alpha.
+- [Modals](#modals)
 
 ### Ephemeral Messages
 
@@ -376,13 +374,13 @@ Each non-link button requires such an ID in order to be used.
                     event.reply("Click the button to say hello")
                         .addActionRow(
                             Button.primary("hello", "Click Me"),  // Button with only a label
-                            Button.success("emoji", Emoji.fromMarkdown(":minn:"))) // Button with only an emoji
+                            Button.success("emoji", Emoji.fromMarkdown("<:minn:245267426227388416>"))) // Button with only an emoji
                         .queue()
                 } else if (event.name == "info") {
                     event.reply("Click the buttons for more info")
                         .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
                             Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
-                                .withEmoji(Emoji.fromMarkdown(":github:")),  // Link Button with label and emoji
+                                .withEmoji(Emoji.fromMarkdown("<:github:849286315580719104>")),  // Link Button with label and emoji
                             Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
                         .queue()
                 }
@@ -408,9 +406,9 @@ There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling SelectMenuEvent
+#### Handling SelectMenuInteractionEvent
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuEvent` for the respective interaction with the selected values.
+When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuInteractionEvent` for the respective interaction with the selected values.
 
 !!! example
     === "Java"
@@ -462,6 +460,116 @@ When a user selects their options from a dropdown and submits their choices, you
             override fun onSelectMenuInteraction(event: SelectMenuInteractionEvent) {
                 if (event.componentId == "choose-food") {
                     event.reply("You chose " + event.values[0]).queue()
+                }
+            }
+        }
+        ```
+
+## Modals
+
+Modals are pop-ups that appear in a user's Discord client.
+
+![Example Modal](https://i.imgur.com/fjqQNrm.png)
+
+Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
+
+### Replying with a Modal
+
+!!! example
+    === "Java"
+        ```java
+        public class SupportCommand extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("modmail")) {
+                    TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                            .setPlaceholder("Subject of this ticket")
+                            .setMinLength(10)
+                            .setMaxLength(100) // or setRequiredRange(10, 100)
+                            .build();
+
+                    TextInput body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                            .setPlaceholder("Your concerns go here")
+                            .setMinLength(30)
+                            .setMaxLength(1000)
+                            .build();
+
+                    Modal modal = Modal.create("modmail", "Modmail")
+                            .addActionRows(ActionRow.of(subject), ActionRow.of(body))
+                            .build();
+
+                    event.replyModal(modal).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object SupportCommand : ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "modmail") {
+                    val subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                        .setPlaceholder("Subject of this ticket")
+                        .setMinLength(10)
+                        .setMaxLength(100) // or setRequiredRange(10, 100)
+                        .build()
+
+                    val body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                        .setPlaceholder("Your concerns go here")
+                        .setMinLength(30)
+                        .setMaxLength(1000)
+                        .build()
+
+                    val modal = Modal.create("modmail", "Modmail")
+                        .addActionRows(ActionRow.of(subject), ActionRow.of(body))
+                        .build()
+
+                    event.replyModal(modal).queue()
+                }
+            }
+        }
+        ```
+
+### Handling ModalInteractionEvent
+
+When the user clicks the "Submit" button on the Modal, you will receive an `ModalInteractionEvent`, containing all the values the user put in it.
+
+!!! warning
+
+    Acknowledging a `ModalInteractionEvent` is necessary. Failing to respond to the event will not close it on the user's client, and will show them an error.
+
+!!! info
+
+    If the Modal originated from a Component-Interaction (Buttons, SelectMenus), it is possible to acknowledge the interaction using an edit to the original Message using `editMessage()` or similar.
+
+!!! example
+    === "Java"
+        ```java
+        public class ModalListener extends ListenerAdapter {
+            @Override
+            public void onModalInteraction(@Nonnull ModalInteractionEvent event) {
+                if (event.getModalId().equals("modmail")) {
+                    String subject = event.getValue("subject").getAsString();
+                    String body = event.getValue("body").getAsString();
+
+                    createSupportTicket(subject, body);
+
+                    event.reply("Thanks for your request!").setEphemeral(true).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object ModalListener : ListenerAdapter() {
+            override fun onModalInteraction(event: ModalInteractionEvent) {
+                if (event.modalId == "modmail") {
+                    val subject = event.getValue("subject") ?: return
+                    val body = event.getValue("body") ?: return
+
+                    createSupportTicket(subject, body)
+
+                    event.reply("Thanks for your request!").setEphemeral(true).queue()
                 }
             }
         }
