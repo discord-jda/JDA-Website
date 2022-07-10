@@ -1,7 +1,22 @@
+.home__logo {
+    width: 100px;
+}
+
+@media (min-width: 1024px) {
+    .home__logo {
+        width: 150px;
+    }
+}
+
 .mdx-container {
     display: block;
     padding-left: 2rem;
     padding-right: 2rem;
+    padding-top: 1.5rem;
+}
+
+.mdx-description {
+    margin-top: 2rem;
 }
 
 .mdx-container .mdx-hero {
@@ -15,7 +30,7 @@
 }
 
 .mdx-container .mdx-hero .mdx-description, .mdx-container .mdx-hero .mdx-button {
-    margin: 1.8rem auto;
+    margin: .5rem auto 1rem;
 }
 
 /* Grid stuff */
@@ -44,7 +59,7 @@
         grid-template-columns: 1fr;
         gap: 1rem;
     }
-    
+
     .mdx-grid-size {
         grid-auto-rows: auto;
     }
