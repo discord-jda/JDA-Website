@@ -1,0 +1,57 @@
+<style>
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* Float to the middle */
+    padding: 10px;
+  }
+  .footer__columns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%
+  }
+  .footer__column h3 {
+    margin: 0
+  }
+  .footer__column ul {
+    list-style: none;
+    margin-left: 0 !important; /* overriding theme CSS overly-strong selectors */
+  }
+  .footer__column li {
+    margin-left: 0 !important; /* overriding theme CSS overly-strong selectors */
+  }
+  .footer__copyright {
+    text-align: center;
+  }
+</style>
+
+<div class="footer__container">
+  <div class="md-copyright footer__columns">
+    <div class="footer__column">
+      <h3>Resources</h3>
+      <div class="md-copyright__highlight">
+        <ul>
+          <li><a href="https://ci.dv8tion.net/job/JDA5/javadoc/" target="_blank" rel="noopener">Javadocs</a></li>
+          <li><a href="https://github.com/DV8FromTheWorld/JDA" target="_blank" rel="noopener">GitHub (JDA)</a></li>
+          <li><a href="https://github.com/DV8FromTheWorld/JDA-Website" target="_blank" rel="noopener">GitHub (Wiki)</a></li>
+          <li><a href="https://discord.dev" target="_blank" rel="noopener">Discord API Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__column">
+      <h3>Community</h3>
+      <div class="md-copyright__highlight">
+        <ul>
+          <li><a href="https://discord.gg/JDA" target="_blank" rel="noopener">Discord Server</a></li>
+          <li><a href="https://opencollective.com/java-jda" target="_blank" rel="noopener">Open Collective</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="md-copyright">
+    <div class="md-copyright__highlight footer__copyright">
+      {{ config.copyright }}
+    </div>
+  </div>
+</div>

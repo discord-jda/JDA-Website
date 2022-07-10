@@ -1,7 +1,8 @@
 site_name: JDA Wiki
-copyright: Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß
+copyright: 'Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/DV8FromTheWorld/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>'
 
 theme:
+  custom_dir: overrides
   favicon: assets/images/logo-round.png
   features:
     - navigation.instant
@@ -29,15 +30,10 @@ theme:
 repo_name: JDA
 repo_url: https://github.com/DV8FromTheWorld/JDA
 edit_uri: ../JDA-Website/edit/master/docs/
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/DV8FromTheWorld/JDA
-    - icon: fontawesome/brands/discord
-      link: https://discord.gg/jda
 
 extra_css:
 - 'assets/stylesheets/colors.css'
+- 'assets/stylesheets/frontpage.css'
 
 markdown_extensions:
   - admonition
@@ -48,6 +44,7 @@ markdown_extensions:
   - footnotes
   - def_list
   - attr_list
+  - md_in_html
   - pymdownx.tasklist:
       custom_checkbox: true
   - toc:
@@ -58,8 +55,10 @@ markdown_extensions:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
+watch:
+  - overrides
+
 nav:
-  - Home: index.md
   - Getting Started:
     - JDA: introduction/jda.md
     - Using Events: introduction/events.md
