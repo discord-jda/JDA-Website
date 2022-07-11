@@ -170,7 +170,7 @@ When you use `deferReply` the first message sent to this webhook will act identi
         }
         ```
 
-#### Managing Slash Command Permissions
+#### Managing Slash Command Permissions 
 
 Restricting slash commands to specific roles or members is up to the admins of the guild.  However, bots can specify a set of permissions that sets who can use those commands by default.
 
