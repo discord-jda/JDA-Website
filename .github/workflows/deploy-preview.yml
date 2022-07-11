@@ -67,7 +67,7 @@ jobs:
             | ------ | ------------------------------------------------------------------------------------------------------------------ |
             | Commit | ${{ github.event.pull_request.head.sha }}                                                                          |
             | Link   | https://gh-pages-deploy.github.io/Deploy-Previews/${{ github.repository }}/${{ github.event.pull_request.number }} |
-            | Logs   | ${{ github.server_url }}/${{ github.repository }}/actions/run/${{ github.run_id }}                                 |
+            | Logs   | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}                                |
           comment-id: ${{ steps.comment.outputs.comment-id }}
           edit-mode: replace
           token: ${{ secrets.BOT }}
@@ -83,7 +83,7 @@ jobs:
             | Name   | Link                                                                                               |
             | ------ | -------------------------------------------------------------------------------------------------- |
             | Commit | ${{ github.event.pull_request.head.sha }}                                                          |
-            | Logs   | ${{ github.server_url }}/${{ github.repository }}/actions/run/${{ github.run_id }}                 |
+            | Logs   | ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}                |
           comment-id: ${{ steps.comment.outputs.comment-id }}
           edit-mode: replace
           token: ${{ secrets.BOT }}
