@@ -90,7 +90,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     We currently provide a fallback implementation to not lose logging completely in this case. This fallback does not allow for a lot of configuration and we suggest using a proper implementation instead.
 
-    I recommend [Logback](https://logback.qos.ch/). You can just add it to your Gradle/Maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
+    I recommend [Logback](https://logback.qos.ch/). You can just add it to your Gradle/Maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](./logging.md)
 
 ??? question "What is the best way to delete messages from history?"
 
