@@ -21,7 +21,7 @@
 1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
     <br>`AudioManager audioManager = guild.getAudioManager();`
 
-[//]: # (Note that JDA5 has moved to AudioChannel to include things like Stages, and this may need to be changed in the future)
+[//]: # (todo: Note that JDA5 has moved to AudioChannel to include things like Stages, and this may need to be changed in the future)
 
 1. Open an audio connection [`audioManager.openAudioConnection()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.AudioChannel)) 
     <br>`audioManager.openAudioConnection(myChannel);`
