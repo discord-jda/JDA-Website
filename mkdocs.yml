@@ -61,8 +61,6 @@ watch:
 nav:
   - Getting Started:
     - Quick Start: getting-started/quickstart.md
-#    - Using Events: introduction/events.md
-#    - List of Events: introduction/events-list.md
     - IDE Setup:
         - IntelliJ (Recommended): getting-started/intellij.md
         - Eclipse: getting-started/eclipse.md
@@ -75,12 +73,14 @@ nav:
     - Getting Started: using-jda/getting-started.md
     - Making a Music Bot: using-jda/making-a-music-bot.md
     - Using RestAction: using-jda/using-restaction.md
+    - Using Events: using-jda/events.md
     - Interactions: using-jda/interactions.md
     - Paginating Entities: using-jda/paginating-entities.md
     - Gateway Intents and Member Cache Policy: using-jda/gateway-intents-and-member-cache-policy.md
     - Webhooks: https://github.com/MinnDevelopment/discord-webhooks
     - Managers and Moderation: using-jda/separation-of-concerns.md
     - Using New Features: using-jda/using-new-features.md
+    - List of Events: using-jda/events-list.md
     - Troubleshooting: using-jda/troubleshooting.md
   - Contributing:
     - Contributing: contributing/contributing.md

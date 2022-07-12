@@ -117,7 +117,7 @@ There are many reasons why your event listener might not be executed but here ar
 1. You never registered your listener.
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
 1. You did not override the correct method.
-    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../getting-started/events.md).
+    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
 1. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
@@ -179,7 +179,7 @@ public class MyListener extends EventListener {
 }
 ```
 
-[Read More](../getting-started/events.md)
+[Read More](events.md)
 
 
 ### I can't get the previous message content from delete/update

@@ -109,10 +109,10 @@
     }
     ```
     !!! info
-        More information about RestActions can be found [here](using-restaction.md)
+        More information about RestActions can be found [here](using-restaction.md), and more information about listening to events can be found [here](events.md).
 
 
-1. Register your listener with either `JDABuilder.addEventListeners(new MyListener())` or `JDA.addEventListeners(new MyListener())` (see [Events](../getting-started/events.md))
+1. Register your listener with either `JDABuilder.addEventListeners(new MyListener())` or `JDA.addEventListeners(new MyListener())` (see [Events](events.md))
 
 ## Making a Slash Command Bot
 For additional information on slash commands and interactions in general, please visit the [Interactions page](interactions.md).
