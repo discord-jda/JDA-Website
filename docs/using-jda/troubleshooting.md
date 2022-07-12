@@ -117,7 +117,7 @@ There are many reasons why your event listener might not be executed but here ar
 1. You never registered your listener.
     <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
 1. You did not override the correct method.
-    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
+    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../getting-started/events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
 1. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
@@ -129,7 +129,7 @@ If none of the above apply to you then you might have an issue in your listener'
 
 ### Missed 2 heartbeats! Trying to reconnect...
 
-This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../introduction/faq.md) when you get this warning to see where the issue is.
+This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../getting-started/faq.md) when you get this warning to see where the issue is.
 
 By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by Discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
 
@@ -179,7 +179,7 @@ public class MyListener extends EventListener {
 }
 ```
 
-[Read More](../introduction/events.md)
+[Read More](../getting-started/events.md)
 
 
 ### I can't get the previous message content from delete/update
