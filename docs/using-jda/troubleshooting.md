@@ -276,7 +276,7 @@ There are many ways you can retrieve members dynamically: [Loading Members](gate
 
 ### Cannot get message content / Attempting to access message content without GatewayIntent
 
-When you receive this warning in your code, that means you tried to acccess the content of a message without the privileged `GatewayIntent.MESSAGE_CONTENT`.
+When you receive this warning, that means you tried to access the content of a message without the privileged `GatewayIntent.MESSAGE_CONTENT`.
 
 ```
 Attempting to access message content without GatewayIntent.MESSAGE_CONTENT.
