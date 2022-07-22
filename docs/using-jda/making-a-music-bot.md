@@ -50,9 +50,10 @@ public class MusicBot extends ListenerAdapter
     public static void main(String[] args)
     throws IllegalArgumentException, LoginException, RateLimitedException
     {
-        JDABuilder.createDefault(args[0]) // Use token provided as JVM argument
-            .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
-            .build(); // Build JDA - connect to discord
+        JDABuilder.createDefault(BOT_TOKEN)
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT) // Allow this bot to read messages - this will also need to be enabled on the dev portal
+                .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
+                .build(); // Build JDA - connect to discord
     }
     
     @Override
