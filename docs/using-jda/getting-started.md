@@ -77,6 +77,7 @@
     !!! tip
         It is often better to load your token in from an external file or environment variable, especially if you plan on publishing the source code.
         This makes it harder to accidentally leak your token either in asking for help or when pushing code to your VCS.
+        It is not recommended to use program arguments to handle any sensitive data, as program arguments are visible to other users of the system.
 
 ## Making a Ping-Pong Protocol
 
@@ -127,8 +128,8 @@
 For additional information on slash commands and interactions in general, please visit the [Interactions page](interactions.md).
 
 1. As with above, set up your IDE, bot and JDA instance.
-2. Find the ID of the guild you want to test with. If you have Discord's developer mode active, you can right-click the guild and copy its ID.
-3. To use slash commands, they have to be registered in advance.  We'll use a ready listener to find out when JDA is ready.  
+1. Find the ID of the guild you want to test with. If you have Discord's developer mode active, you can right-click the guild and copy its ID.
+1. To use slash commands, they have to be registered in advance.  We'll use a ready listener to find out when JDA is ready.  
 In this listener we will get the testing guild from JDA and register a simple command with it.
 
     ```java
@@ -154,7 +155,7 @@ In this listener we will get the testing guild from JDA and register a simple co
         `updateCommands()` will overwrite the current commands with the ones you provide.  Calling `updateCommands().queue()` will clear all of this bot's commands from that guild.
 
 
-5. Next up, you should see your command in the client.  However, nothing happens when you run your command, and Discord tells you that the application did not respond. To fix this, we need our bot to tell Discord that we know something happened.
+1. Next up, you should see your command in the client.  However, nothing happens when you run your command, and Discord tells you that the application did not respond. To fix this, we need our bot to tell Discord that we know something happened.
 You can read more about interactions on the [Interactions page](interactions.md) for more information about how interactions are acknowledged.
 To respond to our command here, we will be listening for the SlashCommandInteractionEvent.
     ```java
