@@ -81,9 +81,8 @@
 ## Making a Ping-Pong Protocol
 
 !!! warning "Privileged Message Content Intent"
-    Be aware that the ability for bots to read the text of messages is soon being gated behind a privileged intent.
-    This means that bots will not by default have access to it. Bots in under 100 servers can manually enable it in their bot dashboard.
-    This change is scheduled for the 1st of September 2022.
+    Be aware that the ability for bots to read the text of messages is gated behind a privileged intent.
+    This means that bots will not have access to it by default. Bots in under 100 servers can manually enable it in their bot dashboard.
 
 1. Setup your JDA instance (see [Connecting To Discord](#connecting-to-discord-with-a-bot-account))
 1. Implement an `EventListener` or extend `ListenerAdapter`
