@@ -115,7 +115,7 @@ There are many reasons why your event listener might not be executed but here ar
 1. Your bot is not actually in the guild.
     <br>Make sure your bot is online and has access to the resource you are trying to interact with.
 1. You never registered your listener.
-    <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
+    <br>Use `jda.addEventListeners(new MyListener())` on either the `JDABuilder` or `JDA` instance
 1. You did not override the correct method.
     <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
@@ -279,7 +279,7 @@ There are many ways you can retrieve members dynamically: [Loading Members](gate
 
 ### I'm getting CloseCode(4014 / Disallowed intents...)
 
-This means you tried to use `GatewayIntent.GUILD_MEMBERS` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
+This means you tried to use `GatewayIntent.GUILD_MEMBERS`, `GatewayIntent.MESSAGE_CONTENT` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
 
 1. Open the [application dashboard](https://discord.com/developers/applications)
 1. Select your bot application
