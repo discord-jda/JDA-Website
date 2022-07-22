@@ -68,7 +68,7 @@ nav:
     - Logger Setup: getting-started/logging.md
     - FAQ: getting-started/faq.md
     - Migration:
-      - V3 - V4: getting-started/migration-v3-v4.md
+      - v3 to v4: getting-started/migration-v3-v4.md
   - Using JDA:
     - Getting Started: using-jda/getting-started.md
     - Making a Music Bot: using-jda/making-a-music-bot.md
