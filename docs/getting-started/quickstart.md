@@ -136,6 +136,8 @@ It's recommended to ask (preferably in the JDA Guild) about a PR before starting
 
 More information can be found on our [Contributing](../contributing/contributing.md) page.
 
+We have dedicated library development and wiki development channels on our [Discord server](https://discord.gg/0hMr4ce0tIl3SLv5), where you can ask questions or suggest ideas.
+
 ## Dependencies
 This project requires **Java 8**.<br>
 For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA5/tree/master/README.md)
