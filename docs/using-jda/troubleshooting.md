@@ -274,7 +274,30 @@ I explained this in [this wiki page](gateway-intents-and-member-cache-policy.md)
 There are many ways you can retrieve members dynamically: [Loading Members](gateway-intents-and-member-cache-policy.md#loading-members)
 
 
+### Cannot get message content / Attempting to access message content without GatewayIntent
 
+When you receive this warning, that means you tried to access the content of a message without the privileged `GatewayIntent.MESSAGE_CONTENT`.
+
+```
+Attempting to access message content without GatewayIntent.MESSAGE_CONTENT.
+Discord now requires to explicitly enable access to this using the MESSAGE_CONTENT intent.
+Useful resources to learn more:
+	- https://support-dev.discord.com/hc/en-us/articles/4404772028055-Message-Content-Privileged-Intent-FAQ
+	- https://jda.wiki/using-jda/gateway-intents-and-member-cache-policy/
+	- https://jda.wiki/using-jda/troubleshooting/#im-getting-closecode4014-disallowed-intents
+Or suppress this warning if this is intentional with Message.suppressContentIntentWarning()
+```
+
+As of JDA version **5.0.0-alpha.14**, you are **required** to enabled this intent explicitly with `enableIntents(GatewayIntent.MESSAGE_CONTENT)` on your `JDABuilder` or `DefaultShardManagerBuilder`.
+
+This affects anyone who accesses these methods on messages:
+
+ -   `getContentRaw`, `getContentDisplay`, `getContentStripped`, and `getMentions().getCustomEmojis()`
+ -   `getActionRows`, and `getButtons`
+ -   `getAttachments`
+ -   `getEmbeds`
+
+You are also required to enable this in your [application dashboard](https://discord.com/developers/applications). Note, however, that this is a **privileged** intent and will require a valid use-case for your bot to be verified in over 75 servers.
 
 
 ### I'm getting CloseCode(4014 / Disallowed intents...)

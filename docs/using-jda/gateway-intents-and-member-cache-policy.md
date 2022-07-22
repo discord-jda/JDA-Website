@@ -26,27 +26,28 @@ Building JDA is done using one of the JDABuilder factory methods, each of which 
 The necessary intents directly correlate with the features you intend to use.
 Each [`GatewayIntent`][GatewayIntent] documents which events are enabled by it. Some caches in JDA also depend on these intents, so take a close look at the documentation for [`CacheFlag`][CacheFlag] as well.
 
-For instance, a bot that only responds to messages and sends welcome messages will only need `GUILD_MESSAGES` and `GUILD_MEMBERS`. A bot like this doesn't rely on any members being cached, so the right solution is to use [`createLight`][createLight] which will disable all [`CacheFlags`][CacheFlag] and member caching.
+For instance, a bot that only responds to messages and sends welcome messages will only need `GUILD_MESSAGES`, `MESSAGE_CONTENT`, and `GUILD_MEMBERS`. A bot like this doesn't rely on any members being cached, so the right solution is to use [`createLight`][createLight] which will disable all [`CacheFlags`][CacheFlag] and member caching.
 
 ```java
 public static void main(String[] args) {
   // createLight disables unused cache flags
   // GUILD_MESSAGES enables events for messages sent in guilds
+  // MESSAGE_CONTENT enables access to the content of messages sent by other users
   // GUILD_MEMBERS gives you access to guild member join events so you can send welcome messages
   // The resulting JDA instance will not cache any members since createLight disables it.
-  JDABuilder.createLight(BOT_TOKEN, GatewayIntent.GUILD_MESSAGES, GatewayIntent.GUILD_MEMBERS)
+  JDABuilder.createLight(BOT_TOKEN, GatewayIntent.GUILD_MESSAGES, GatewayIntent.MESSAGE_CONTENT, GatewayIntent.GUILD_MEMBERS)
             .addEventListeners(new JoinListener())
             .addEventListeners(new CommandHandler())
             .build();
 }
 ```
 
-Due to `GUILD_MEMBERS` being a **privileged** intent, you must also enable it in your developer dashboard:
+Due to `GUILD_MEMBERS` and `MESSAGE_CONTENT` being a **privileged** intents, you must also enable it in your developer dashboard:
 
 1. Open the [application dashboard](https://discord.com/developers/applications)
 1. Select your bot application
 1. Open the **Bot** tab
-1. Under the **Privileged Gateway Intents** section, enable **SERVER MEMBERS INTENT**.
+1. Under the **Privileged Gateway Intents** section, enable **SERVER MEMBERS INTENT** and **MESSAGE CONTENT INTENT**.
 
 If you use these intents, you are limited to 100 guilds on your bot. To allow the bot to join more guilds while using this intent, you have to [verify your bot](https://blog.discord.com/the-future-of-bots-on-discord-4e6e050ab52e). This will be available in your application dashboard when the bot joins at least 76 guilds.
 
@@ -64,6 +65,7 @@ JDABuilder.createDefault(token) // enable all default intents
 
 - [I'm getting CloseCode(4014 / Disallowed intents...)](troubleshooting.md#im-getting-closecode4014-disallowed-intents)
 - [My event listener code is not executed](troubleshooting.md#my-event-listener-code-is-not-executed)
+- [Cannot get message content / Attempting to access message content without GatewayIntent](troubleshooting.md#cannot-get-message-content-attempting-to-access-message-content-without-gatewayintent)
 
 ## CacheFlags
 
