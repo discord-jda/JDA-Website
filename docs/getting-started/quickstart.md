@@ -1,58 +1,6 @@
 # JDA (Java Discord API)
-JDA strives to provide a clean and full wrapping of the Discord REST API and its websocket events for Java.
-
-If you have any suggestions/questions/feedback for this wiki, please visit the #wiki-dev channel in the [JDA Discord Server](https://discord.gg/0hMr4ce0tIk3pSjp).
 
 This page provides a fast introduction to JDA.  For a more comprehensive guide, please view [the setup guide](../using-jda/getting-started.md). 
-
-## Minimal Examples
-!!! example "Simple Ready Listener Example"
-    ```java
-    public class ReadyListener implements ListenerAdapter
-    {
-        public static void main(String[] args)
-        throws LoginException
-        {
-            JDA jda = JDABuilder.createDefault(BOT_TOKEN)
-                .addEventListeners(new ReadyListener()).build();
-        }
-
-        @Override
-        public void onReady(ReadyEvent event)
-        {
-            System.out.println("JDA has started!");
-        }
-    }
-    ```
-
-!!! example "Simple Message Logging Example"
-    ```java
-    public class MessageListener extends ListenerAdapter
-    {
-        public static void main(String[] args)
-        throws LoginException
-        {
-            JDA jda = JDABuilder.createDefault(BOT_TOKEN).build();
-            jda.addEventListeners(new MessageListener());
-        }
-
-        @Override
-        public void onMessageReceived(MessageReceivedEvent event)
-        {
-            if (event.isFromType(ChannelType.TEXT))
-            {
-                System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
-                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
-            }
-            else
-            {
-                System.out.printf("[PM] %#s: %s%n", event.getAuthor(), event.getMessage().getContentDisplay());
-            }
-        }
-    }
-    ```
-!!! information "More Examples"
-    We provide a small set of Examples in the [Example Directory](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java).
 
 ## Download
 Whilst downloads are available on the [Jenkins Server](https://ci.dv8tion.net/job/JDA5/) and the [JDA GitHub releases](https://github.com/DV8FromTheWorld/JDA/releases) pages, 
@@ -108,6 +56,58 @@ it is highly recommended to use a build tool like Gradle or Maven to manage JDA 
     [Maven Central](https://mvnrepository.com/artifact/net.dv8tion/JDA/).
     
     [![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)](https://ci.dv8tion.net/job/JDA5/lastSuccessfulBuild/)
+
+
+## Minimal Examples
+!!! example "Simple Ready Listener Example"
+    ```java
+    public class ReadyListener implements ListenerAdapter
+    {
+        public static void main(String[] args)
+        throws LoginException
+        {
+            JDA jda = JDABuilder.createDefault(BOT_TOKEN)
+                .addEventListeners(new ReadyListener()).build();
+        }
+
+        @Override
+        public void onReady(ReadyEvent event)
+        {
+            System.out.println("JDA has started!");
+        }
+    }
+    ```
+
+!!! example "Simple Message Logging Example"
+    ```java
+    public class MessageListener extends ListenerAdapter
+    {
+        public static void main(String[] args)
+        throws LoginException
+        {
+            JDA jda = JDABuilder.createDefault(BOT_TOKEN)
+                                .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                                .build();
+            jda.addEventListeners(new MessageListener());
+        }
+
+        @Override
+        public void onMessageReceived(MessageReceivedEvent event)
+        {
+            if (event.isFromType(ChannelType.TEXT))
+            {
+                System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
+                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
+            }
+            else
+            {
+                System.out.printf("[PM] %#s: %s%n", event.getAuthor(), event.getMessage().getContentDisplay());
+            }
+        }
+    }
+    ```
+!!! information "More Examples"
+    We provide a small set of Examples in the [Example Directory](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java).
 
 
 ## Docs
