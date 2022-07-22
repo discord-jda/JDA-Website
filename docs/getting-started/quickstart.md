@@ -8,20 +8,19 @@ This page provides a fast introduction to JDA.  For a more comprehensive guide, 
 ## Minimal Examples
 !!! example "Simple Ready Listener Example"
     ```java
-    public class ReadyListener implements EventListener
+    public class ReadyListener implements ListenerAdapter
     {
         public static void main(String[] args)
         throws LoginException
         {
-            JDA jda = JDABuilder.createDefault(args[0])
+            JDA jda = JDABuilder.createDefault(BOT_TOKEN)
                 .addEventListeners(new ReadyListener()).build();
         }
 
         @Override
-        public void onEvent(GenericEvent event)
+        public void onReady(ReadyEvent event)
         {
-            if(event instanceof ReadyEvent)
-                System.out.println("API is ready!");
+            System.out.println("JDA has started!");
         }
     }
     ```
@@ -33,7 +32,7 @@ This page provides a fast introduction to JDA.  For a more comprehensive guide, 
         public static void main(String[] args)
         throws LoginException
         {
-            JDA jda = JDABuilder.createDefault(args[0]).build();
+            JDA jda = JDABuilder.createDefault(BOT_TOKEN).build();
             jda.addEventListeners(new MessageListener());
         }
 
