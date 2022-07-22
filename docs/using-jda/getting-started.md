@@ -83,11 +83,21 @@
 !!! warning "Privileged Message Content Intent"
     Be aware that the ability for bots to read the text of messages is gated behind a privileged intent.
     This means that bots will not have access to it by default. Bots in under 100 servers can manually enable it in their bot dashboard.
+    In order to access the `GatewayIntent.MESSAGE_CONTENT` intent, it needs to be explicitly enabled in the JDABuilder.
 
 1. Setup your JDA instance (see [Connecting To Discord](#connecting-to-discord-with-a-bot-account))
 1. Implement an `EventListener` or extend `ListenerAdapter`
 
-    ```java
+    ```java title="Main.java"
+    public static void main(String[] arguments) throws Exception
+    {
+        JDA api = JDABuilder.createDefault(BOT_TOKEN)
+                            .enableIntents(GatewayIntent.GUILD_MESSAGES)
+                            .addEventListeners(new MyListener())
+                            .build();
+    }
+    ```
+    ```java title="MyListener.java"
     public class MyListener extends ListenerAdapter 
     {
         @Override
