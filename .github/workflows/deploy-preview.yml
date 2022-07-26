@@ -1,3 +1,11 @@
+#
+# Original Action made by @andrewstech (https://github.com/andrewstech)
+# and slightly modified by Andre601 (https://github.com/Andre601)
+#
+# Original Action file:
+# https://github.com/blueedgetechno/win11React/blob/master/.github/workflows/PR-Preview.yml
+#
+
 name: Pull request Deploy preview
 
 on:
@@ -6,6 +14,11 @@ on:
       - opened
       - reopened
       - synchronize
+    paths:
+      - 'docs/**'
+      - 'overrides/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
 
 jobs:
   deploy-preview:
@@ -62,6 +75,7 @@ jobs:
             ## Deploy Preview
             
             Deploy-Preview complete!
+            *If you get 404 from the link, wait a few minutes and try again.*
             
             | Name   | Link                                                                                                               |
             | ------ | ------------------------------------------------------------------------------------------------------------------ |
@@ -79,6 +93,7 @@ jobs:
             ## Deploy Preview
             
             Deploy-Preview failed!
+            Please check the below linked Logs for further information.
             
             | Name   | Link                                                                                               |
             | ------ | -------------------------------------------------------------------------------------------------- |
