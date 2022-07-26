@@ -170,6 +170,32 @@ When you use `deferReply` the first message sent to this webhook will act identi
         }
         ```
 
+#### Managing Slash Command Permissions
+
+Restricting slash commands to specific roles or members is up to the admins of the guild.  However, bots can specify a set of permissions that sets who can use those commands by default.
+
+Note that members with `Permission.ADMINISTRATOR` can always use commands, and they can override which roles or members can run the command.  JDA only changes the _default_ members and roles that can access it.
+
+In order to set this default, `.setDefaultPermissions()` can be called on the command before you register it. 
+`DefaultMemberPermissions.DISABLED` can be used to only allow administrators by default, and `DefaultMemberPermissions.ENABLED` can be used to allow all members by default.
+
+!!! example
+    This will restrict the command so that only members with the `Permission.MANAGE_CHANNEL` and `Permission.MODERATE_MEMBERS` permissions can use the command:
+    === "Java"
+        ```java
+        guild.updateCommands().addCommands(
+            Commands.slash("meeting", "Creates a new channel for an emergency meeting")
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_CHANNEL, Permission.MODERATE_MEMBERS))
+        ).queue();
+        ```
+    === "Kotlin"
+        ```java
+        guild.updateCommands().addCommands(
+            Commands.slash("meeting", "Creates a new channel for an emergency meeting")
+                .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.MANAGE_CHANNEL, Permission.MODERATE_MEMBERS))
+        ).queue()
+        ```
+
 
 ### Slash Command Autocomplete
 
