@@ -1,9 +1,9 @@
 # What do I need to get started?
 
 1. Set up your project: 
-    - [IntelliJ IDEA](../setup/intellij.md)
-    - [Eclipse](../setup/eclipse.md)
-    - [Netbeans](../setup/netbeans.md)
+    - [IntelliJ IDEA](../getting-started/intellij.md)
+    - [Eclipse](../getting-started/eclipse.md)
+    - [Netbeans](../getting-started/netbeans.md)
 
 2. [Set up JDA](getting-started.md)
 3. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
@@ -12,15 +12,18 @@
 ### Connecting to a VoiceChannel
 
 1. Getting a VoiceChannel (`guild` references an instance of `Guild`)
-    - By the channel id: [`guild.getVoiceChannelById(CHANNEL_ID)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#getVoiceChannelById(long))
+    - By the channel id: [`guild.getVoiceChannelById(CHANNEL_ID)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/IGuildChannelContainer.html#getVoiceChannelById(long))
     <br>`VoiceChannel myChannel = guild.getVoiceChannelById(CHANNEL_ID);`
-    - By the channel name: [`guild.getVoiceChannelsByName(CHANNEL_NAME, true)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#getVoiceChannelsByName(java.lang.String,boolean))
+    - By the channel name: [`guild.getVoiceChannelsByName(CHANNEL_NAME, true)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/IGuildChannelContainer.html#getVoiceChannelsByName(java.lang.String,boolean))
     <br>`VoiceChannel myChannel = guild.getVoiceChannelsByName(CHANNEL_NAME, true).get(0);`
-    - By the voice state of a member [`member.getVoiceState().getChannel()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/GuildVoiceState.html#getChannel())
+    - By the voice state of a member [`member.getVoiceState().getChannel()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/GuildVoiceState.html#getChannel())
     <br>`VoiceChannel myChannel = member.getVoiceState().getChannel();`
-2. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
+1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
     <br>`AudioManager audioManager = guild.getAudioManager();`
-3. Open an audio connection [`audioManager.openAudioConnection()`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.VoiceChannel)) 
+
+[//]: # (todo: Note that JDA5 has moved to AudioChannel to include things like Stages, and this may need to be changed in the future)
+
+1. Open an audio connection [`audioManager.openAudioConnection()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.AudioChannel)) 
     <br>`audioManager.openAudioConnection(myChannel);`
 
 !!! note
@@ -32,13 +35,12 @@
 !!! note inline end
     For LavaPlayer read [here](#using-lavaplayer)
 
-1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
+1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
    <br>`AudioManager audioManager = guild.getAudioManager();`
-2. Create a **new** [AudioSendHandler](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/audio/AudioSendHandler.html) instance for your implementation. 
-3. Register your AudioSendHandler: 
-  [`audioManager.setSendingHandler(myAudioSendHandler)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#setSendingHandler(net.dv8tion.jda.api.audio.AudioSendHandler))
-    <br>You may only use __one__ AudioSendHandler per Guild and not use the same instance on another Guild! 
-    <br>Doing that will result in speedup due to multiple send threads pulling from the same instance!
+1. Create a **new** [AudioSendHandler](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/audio/AudioSendHandler.html) instance for your implementation. 
+1. Register your AudioSendHandler: 
+  [`audioManager.setSendingHandler(myAudioSendHandler)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#setSendingHandler(net.dv8tion.jda.api.audio.AudioSendHandler))
+    <br>Using the same AudioSendHandler for multiple guilds will cause the audio to speed up, as each guild consumes the audio from the AudioSendHandler, effectively using up the audio track faster. 
 
 ### A Working Example
 
@@ -48,9 +50,10 @@ public class MusicBot extends ListenerAdapter
     public static void main(String[] args)
     throws IllegalArgumentException, LoginException, RateLimitedException
     {
-        JDABuilder.createDefault(args[0]) // Use token provided as JVM argument
-            .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
-            .build(); // Build JDA - connect to discord
+        JDABuilder.createDefault(BOT_TOKEN)
+                .enableIntents(GatewayIntent.MESSAGE_CONTENT) // Allow this bot to read messages - this will also need to be enabled on the dev portal
+                .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
+                .build(); // Build JDA - connect to discord
     }
     
     @Override

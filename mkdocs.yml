@@ -60,26 +60,27 @@ watch:
 
 nav:
   - Getting Started:
-    - JDA: introduction/jda.md
-    - Using Events: introduction/events.md
-    - List of Events: introduction/events-list.md
-    - FAQ: introduction/faq.md
-    - Migration V3 -> V4: introduction/migration-v3-v4.md
-  - Setup:
-    - IntelliJ IDEA Setup: setup/intellij.md
-    - Eclipse Setup: setup/eclipse.md
-    - Netbeans Setup: setup/netbeans.md
-    - Logging (SLF4J): setup/logging.md
+    - Quick Start: getting-started/quickstart.md
+    - IDE Setup:
+        - IntelliJ (Recommended): getting-started/intellij.md
+        - Eclipse: getting-started/eclipse.md
+        - Netbeans: getting-started/netbeans.md
+    - Logger Setup: getting-started/logging.md
+    - FAQ: getting-started/faq.md
+    - Migration:
+      - v3 to v4: getting-started/migration-v3-v4.md
   - Using JDA:
     - Getting Started: using-jda/getting-started.md
     - Making a Music Bot: using-jda/making-a-music-bot.md
     - Using RestAction: using-jda/using-restaction.md
+    - Using Events: using-jda/events.md
     - Interactions: using-jda/interactions.md
     - Paginating Entities: using-jda/paginating-entities.md
     - Gateway Intents and Member Cache Policy: using-jda/gateway-intents-and-member-cache-policy.md
     - Webhooks: https://github.com/MinnDevelopment/discord-webhooks
     - Managers and Moderation: using-jda/separation-of-concerns.md
     - Using New Features: using-jda/using-new-features.md
+    - List of Events: using-jda/events-list.md
     - Troubleshooting: using-jda/troubleshooting.md
   - Contributing:
     - Contributing: contributing/contributing.md

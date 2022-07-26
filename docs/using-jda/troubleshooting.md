@@ -115,9 +115,9 @@ There are many reasons why your event listener might not be executed but here ar
 1. Your bot is not actually in the guild.
     <br>Make sure your bot is online and has access to the resource you are trying to interact with.
 1. You never registered your listener.
-    <br>Use `jda.addEventListener(new MyListener())` on either the `JDABuilder` or `JDA` instance
+    <br>Use `jda.addEventListeners(new MyListener())` on either the `JDABuilder` or `JDA` instance
 1. You did not override the correct method.
-    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](../introduction/events.md).
+    <br>Use `@Override` and see if it fails. Your method has to use the correct name and parameter list defined in `ListenerAdapter`. [Read More](events.md).
 1. You don't actually extend `EventListener` or `ListenerAdapter`.
     <br>Your class should **either** use `extends ListenerAdapter` or `implements EventListener`.
 1. You are missing a required [`GatewayIntent`](gateway-intents-and-member-cache-policy.md) for this event.
@@ -129,7 +129,7 @@ If none of the above apply to you then you might have an issue in your listener'
 
 ### Missed 2 heartbeats! Trying to reconnect...
 
-This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../introduction/faq.md) when you get this warning to see where the issue is.
+This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../getting-started/faq.md) when you get this warning to see where the issue is.
 
 By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by Discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
 
@@ -179,7 +179,7 @@ public class MyListener extends EventListener {
 }
 ```
 
-[Read More](../introduction/events.md)
+[Read More](events.md)
 
 
 ### I can't get the previous message content from delete/update
@@ -302,7 +302,7 @@ You are also required to enable this in your [application dashboard](https://dis
 
 ### I'm getting CloseCode(4014 / Disallowed intents...)
 
-This means you tried to use `GatewayIntent.GUILD_MEMBERS` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
+This means you tried to use `GatewayIntent.GUILD_MEMBERS`, `GatewayIntent.MESSAGE_CONTENT` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
 
 1. Open the [application dashboard](https://discord.com/developers/applications)
 1. Select your bot application
