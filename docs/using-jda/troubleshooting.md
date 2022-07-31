@@ -288,7 +288,7 @@ Useful resources to learn more:
 Or suppress this warning if this is intentional with Message.suppressContentIntentWarning()
 ```
 
-As of JDA version **5.0.0-alpha.14**, you are **required** to enabled this intent explicitly with `enableIntents(GatewayIntent.MESSAGE_CONTENT)` on your `JDABuilder` or `DefaultShardManagerBuilder`.
+As of JDA version **5.0.0-alpha.14**, you are **required** to enable this intent explicitly with `enableIntents(GatewayIntent.MESSAGE_CONTENT)` on your `JDABuilder` or `DefaultShardManagerBuilder`.
 
 This affects anyone who accesses these methods on messages:
 
@@ -302,12 +302,12 @@ You are also required to enable this in your [application dashboard](https://dis
 
 ### I'm getting CloseCode(4014 / Disallowed intents...)
 
-This means you tried to use `GatewayIntent.GUILD_MEMBERS` or `GatewayIntent.GUILD_PRESENCES` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
+This means you tried to use `GatewayIntent.GUILD_MEMBERS`, `GatewayIntent.GUILD_PRESENCES` or `GatewayIntent.MESSAGE_CONTENT` without enabling it in your application dashboard. To use these privileged intents you first have to enable them.
 
 1. Open the [application dashboard](https://discord.com/developers/applications)
 1. Select your bot application
 1. Open the **Bot** tab
-1. Under the **Privileged Gateway Intents** section, enable either **SERVER MEMBERS INTENT** or **PRESENCE INTENT** depending on your needs.
+1. Under the **Privileged Gateway Intents** section, enable the intents that you are using in your bot. Toggle on **SERVER MEMBERS INTENT**, **PRESENCE INTENT** or **MESSAGE CONTENT INTENT** depending on your needs.
 
 If you use these intents you are limited to 100 guilds on your bot. To allow the bot to join more guilds while using this intent you have to [verify your bot](https://blog.discord.com/the-future-of-bots-on-discord-4e6e050ab52e). This will be available in your application dashboard when the bot joins at least 75 guilds.
 
