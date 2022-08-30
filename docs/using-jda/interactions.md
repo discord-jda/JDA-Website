@@ -42,7 +42,7 @@ All of these commands are used through the interactions API. They do not require
 
 To create commands you need to make some API requests. There are 2 types of commands you can create called **global commands** and **guild commands**.
 
-- **Global**: These commands are available in every server your bot is in (regardless of sharding!) and direct message (Private Channels). These commands can take up to 1 hour to show up. _It is recommended to use guild commands for testing purposes._
+- **Global**: These commands are available in every server your bot is in (regardless of sharding!) and direct message (Private Channels).
 - **Guild**: These commands are only in the specific guild that you created them in and cannot be used in direct messages. These commands show up immediately after creation.
 
 #### Creating Slash Commands
