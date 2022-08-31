@@ -20,6 +20,10 @@ on:
       - 'mkdocs.yml'
       - 'requirements.txt'
 
+concurrency:
+  group: "deploy-preview"
+  cancel-in-progress: true
+
 jobs:
   deploy-preview:
     name: Create Deploy-Preview
