@@ -1,6 +1,6 @@
 # Eclipse Setup
 
-[ ![Download](https://shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fm2.dv8tion.net%2Freleases%2Fnet%2Fdv8tion%2FJDA%2Fmaven-metadata.xml&color=informational&label=Download&style=for-the-badge) ](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
+[ ![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue) ](https://mvnrepository.com/artifact/net.dv8tion/JDA/latest)
 
 
 
@@ -49,9 +49,6 @@
 
         repositories {
             mavenCentral()
-            maven { 
-                url "https://m2.dv8tion.net/releases" // (1)
-            }
         }
 
         dependencies {
@@ -60,8 +57,6 @@
 
         compileJava.options.encoding = "UTF-8"
         ```
-
-        1. On Kotlin DSL use `maven("https://m2.dv8tion.net/releases")` instead
 
     1. Adjust the version of JDA you want to use (see dependencies-section of file) and fill in your Main-Class as soon as you have one (the one containing your `public static void main(String[] args)` method)
     1. Save the file and do the following: *Right click your project > Gradle > Refresh All*
@@ -99,24 +94,13 @@
     ```
     - This will make your project support UTF-8 characters (So you can have it on Japanese servers for example) and also force Java 8, which is needed.
 
-    1. Now let's add JDA's repository, so we can fetch the jar (Place this after `</properties>`)
-    ```xml
-    <repositories>
-        <repository>
-            <id>dv8tion</id>
-            <name>m2-dv8tion</name>
-            <url>https://m2.dv8tion.net/releases</url>
-        </repository>
-    </repositories>
-    ```
-
-    1. Now, add the dependency, make sure you change `X.X.X_XXX` to the latest version number (Check out at https://ci.dv8tion.net/job/JDA/)
+    1. Now, add the dependency, make sure you change `X.Y.Z-beta.W` to the latest version number (You can find it in the releases: https://github.com/DV8FromTheWorld/JDA/releases)
         ```xml
         <dependencies>
             <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>X.X.X_XXX</version>
+            <version>X.Y.Z-beta.W</version>
             </dependency>
         </dependencies>
         ```
@@ -176,7 +160,7 @@
 
     1. Download the latest (Binary) version of JDA (with Dependencies):
         - (Recommended) <https://github.com/DV8FromTheWorld/JDA/releases/>
-        - (Latest/Dev) <https://ci.dv8tion.net/job/JDA/>
+        - (Latest/Dev) <https://ci.dv8tion.net/job/JDA5/>
     1. Create a new Java Project
 
         ![New Java Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/20-newJavaProject.png)
@@ -204,6 +188,6 @@
 
         ![Javadoc](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/25-javaDocs.png)
 
-    1. Here, add your **JDA-x.x.x_xxx-javadoc.jar** and click on **OK**
+    1. Here, add your **JDA-x.y.z-www.p-javadoc.jar** and click on **OK**
     1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
