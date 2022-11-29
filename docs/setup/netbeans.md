@@ -1,6 +1,6 @@
 # Netbeans Setup
 
-[ ![Download](https://shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fm2.dv8tion.net%2Freleases%2Fnet%2Fdv8tion%2FJDA%2Fmaven-metadata.xml&color=informational&label=Download&style=for-the-badge) ](https://ci.dv8tion.net/job/JDA/lastSuccessfulBuild/)
+[ ![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue) ](https://mvnrepository.com/artifact/net.dv8tion/JDA/latest)
 
 === "Maven Setup"
 
@@ -10,17 +10,6 @@
     1. **Open up the pom.xml in the Project Files**
         
         ![Pom](https://i.imgur.com/f58Dbjy.png)
-    1. **Add S3 as a repository**
-        ```xml
-        <repositories>
-            <repository>
-                <id>dv8tion</id>
-                <name>m2-dv8tion</name>
-                <url>https://m2.dv8tion.net/releases</url>
-            </repository>
-        </repositories>
-        ```
-
     1. **Add JDA as a dependency**
 
         !!! note inline end
@@ -31,7 +20,7 @@
             <dependency>
                 <groupId>net.dv8tion</groupId>
                 <artifactId>JDA</artifactId>
-                <version>3.8.3_464</version>
+                <version>5.0.0-beta.1</version>
             </dependency>
         </dependencies>
         ```
@@ -45,7 +34,7 @@
 
     1. **Download the latest (binary) version of JDA (with dependencies), as well as the javadocs**
         
-        - <https://ci.dv8tion.net/job/JDA/>
+        - <https://ci.dv8tion.net/job/JDA5/>
         
         ![Downloads](http://i.imgur.com/fNN4vOf.png)
 
