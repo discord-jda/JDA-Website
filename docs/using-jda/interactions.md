@@ -19,7 +19,6 @@ Ephemeral messages are only visible to the user who used your Interaction. They 
 
 There are many limitations to ephemeral messages, a few of which are listed below:
 
-- Cannot be deleted by the bot
 - Cannot be reacted to
 - Cannot be retrieved
 - Will be removed after a client restart
@@ -43,7 +42,7 @@ All of these commands are used through the interactions API. They do not require
 To create commands you need to make some API requests. There are 2 types of commands you can create called **global commands** and **guild commands**.
 
 - **Global**: These commands are available in every server your bot is in (regardless of sharding!) and direct message (Private Channels).
-- **Guild**: These commands are only in the specific guild that you created them in and cannot be used in direct messages. These commands show up immediately after creation.
+- **Guild**: These commands are only in the specific guild that you created them in and cannot be used in direct messages.
 
 #### Creating Slash Commands
 
@@ -323,13 +322,14 @@ These commands take no arguments, and are useful for providing a quick way to pe
 
 To add components to a message you can use up to 5 ActionRows.
 
-You can add multiple ActionRows with either `setActionRows` or `addActionRows` (depending on whether you are sending or editing a message).
+You can add multiple ActionRows with either `setComponents` or `addComponents`.
 For the common case of a single ActionRow you can also use `setActionRow(Component...)` or `addActionRow(Component...)`.
 
 Each ActionRow can hold up to a certain amount of components:
 
 - 5 Buttons
 - 1 Select Menu (Dropdown)
+- 1 Text Input (Restricted to Modals)
 
 These component interactions offer 4 response types:
 
@@ -521,7 +521,7 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
                             .build();
 
                     Modal modal = Modal.create("modmail", "Modmail")
-                            .addActionRows(ActionRow.of(subject), ActionRow.of(body))
+                            .addComponents(ActionRow.of(subject), ActionRow.of(body))
                             .build();
 
                     event.replyModal(modal).queue();
@@ -547,7 +547,7 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
                         .build()
 
                     val modal = Modal.create("modmail", "Modmail")
-                        .addActionRows(ActionRow.of(subject), ActionRow.of(body))
+                        .addComponents(ActionRow.of(subject), ActionRow.of(body))
                         .build()
 
                     event.replyModal(modal).queue()
