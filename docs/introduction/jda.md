@@ -102,4 +102,4 @@ More information can be found at the wiki page [Contributing](../contributing/co
 
 ## Dependencies
 This project requires **Java 8**.<br>
-For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA5/tree/master/README.md)
+For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md)
