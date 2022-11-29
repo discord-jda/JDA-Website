@@ -36,9 +36,6 @@
         
         repositories {
             mavenCentral()
-            maven { // on Kotlin DSL use `maven("https://m2.dv8tion.net/releases")` instead
-                url "https://m2.dv8tion.net/releases"
-            }
         }
         
         dependencies {
