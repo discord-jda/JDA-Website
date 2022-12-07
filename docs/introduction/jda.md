@@ -8,16 +8,21 @@ If you have any suggestions/questions/feedback for this wiki, please visit the #
     public class ReadyListener implements EventListener
     {
         public static void main(String[] args)
-        throws LoginException
+                throws InterruptedException
         {
-            JDA jda = JDABuilder.createDefault(args[0])
-                .addEventListeners(new ReadyListener()).build();
+            // Note: It is important to register your ReadyListener before building
+            JDA jda = JDABuilder.createDefault("token")
+                .addEventListeners(new ReadyListener())
+                .build();
+
+            // optionally block until JDA is ready
+            jda.awaitReady();
         }
 
         @Override
         public void onEvent(GenericEvent event)
         {
-            if(event instanceof ReadyEvent)
+            if (event instanceof ReadyEvent)
                 System.out.println("API is ready!");
         }
     }
@@ -27,23 +32,29 @@ If you have any suggestions/questions/feedback for this wiki, please visit the #
     public class MessageListener extends ListenerAdapter
     {
         public static void main(String[] args)
-        throws LoginException
         {
-            JDA jda = JDABuilder.createDefault(args[0]).build();
-            jda.addEventListeners(new MessageListener());
+            JDA jda = JDABuilder.createDefault("token")
+                    .enableIntents(GatewayIntent.MESSAGE_CONTENT) // enables explicit access to message.getContentDisplay()
+                    .build();
+            //You can also add event listeners to the already built JDA instance
+            // Note that some events may not be received if the listener is added after calling build()
+            // This includes events such as the ReadyEvent
+            jda.addEventListener(new MessageListener());
         }
 
         @Override
         public void onMessageReceived(MessageReceivedEvent event)
         {
-            if (event.isFromType(ChannelType.TEXT))
+            if (event.isFromType(ChannelType.PRIVATE))
             {
-                System.out.printf("[%s][%s] %#s: %s%n", event.getGuild().getName(),
-                    event.getChannel().getName(), event.getAuthor(), event.getMessage().getContentDisplay());
+                System.out.printf("[PM] %s: %s\n", event.getAuthor().getName(),
+                                        event.getMessage().getContentDisplay());
             }
             else
             {
-                System.out.printf("[PM] %#s: %s%n", event.getAuthor(), event.getMessage().getContentDisplay());
+                System.out.printf("[%s][%s] %s: %s\n", event.getGuild().getName(),
+                            event.getTextChannel().getName(), event.getMember().getEffectiveName(),
+                            event.getMessage().getContentDisplay());
             }
         }
     }
@@ -65,8 +76,8 @@ build pages of the [legacy v4 Downloads](https://ci.dv8tion.net/job/JDA/) or [v5
 <br>
 The web format allows for viewing of the [Latest Docs](https://ci.dv8tion.net/job/JDA5/javadoc/) or [legacy Docs](https://ci.dv8tion.net/job/JDA/javadoc/) 
 and also viewing of each individual build's javadoc. To view the javadoc for a specific build, you will need to go to that build's page
-on [the build server](https://ci.dv8tion.net/job/JDA/) and download the javadoc jar for the specific build.<br>
-A shortcut would be: `https://ci.dv8tion.net/job/JDA/BUILD_NUMBER_GOES_HERE`, you just need to replace the 
+on [the build server](https://ci.dv8tion.net/job/JDA5/) and download the javadoc jar for the specific build.<br>
+A shortcut would be: `https://ci.dv8tion.net/job/JDA5/BUILD_NUMBER_GOES_HERE`, you just need to replace the 
 "BUILD_NUMBER_GOES_HERE" with the build you want.<br>
 Once you have the jar extract the files with the zip tool of your preference (winrar or 7zip, etc.) and open the `index.html` file with your internet browser.
 
@@ -91,4 +102,4 @@ More information can be found at the wiki page [Contributing](../contributing/co
 
 ## Dependencies
 This project requires **Java 8**.<br>
-For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA5/tree/master/README.md)
+For other dependencies, see [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md)
