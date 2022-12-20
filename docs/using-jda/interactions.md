@@ -432,9 +432,9 @@ There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling SelectMenuInteractionEvent
+#### Handling StringSelectInteractionEvent
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuInteractionEvent` for the respective interaction with the selected values.
+When a user selects their options from a dropdown and submits their choices, you will receive a `StringSelectInteractionEvent` for the respective interaction with the selected values.
 
 !!! example
     === "Java"
@@ -455,9 +455,9 @@ When a user selects their options from a dropdown and submits their choices, you
                         .queue();
                 }
             }
-    
+
             @Override
-            public void onSelectMenuInteraction(SelectMenuInteractionEvent event) {
+            public void onStringSelectInteraction(StringSelectInteractionEvent event) {
                 if (event.getComponentId().equals("choose-food")) {
                     event.reply("You chose " + event.getValues().get(0)).queue();
                 }
@@ -483,7 +483,7 @@ When a user selects their options from a dropdown and submits their choices, you
                 }
             }
         
-            override fun onSelectMenuInteraction(event: SelectMenuInteractionEvent) {
+            override fun onStringSelectInteraction(event: StringSelectInteractionEvent) {
                 if (event.componentId == "choose-food") {
                     event.reply("You chose " + event.values[0]).queue()
                 }
