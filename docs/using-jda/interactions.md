@@ -500,6 +500,15 @@ When a user selects their options from a dropdown and submits their choices, you
         }
         ```
 
+#### Entity Select Menus
+
+Entity Select Menus do not support custom choices. Instead, they derive their choices from mentionable Discord entities
+such as `User`s, `Channel`s, etc.
+
+You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`.
+
+You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
+
 ## Modals
 
 Modals are pop-ups that appear in a user's Discord client.
