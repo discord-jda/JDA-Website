@@ -432,7 +432,7 @@ There are two implementations for SelectMenus:
 - `StringSelectMenu` supports custom string choices
 - `EntitySelectMenu` derives its choices from mentionable entities (such as `User`s, `Channel`s, etc)
 
-### String Select Menus
+#### String Select Menus
 
 String Select Menus support up to 25 options.
 
@@ -441,7 +441,7 @@ There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling StringSelectInteractionEvent
+##### Handling StringSelectInteractionEvent
 
 When a user selects their options from a dropdown and submits their choices, you will receive a `StringSelectInteractionEvent` for the respective interaction with the selected values.
 
