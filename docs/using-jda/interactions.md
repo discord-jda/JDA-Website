@@ -423,9 +423,18 @@ Each non-link button requires such an ID in order to be used.
 
 ### Select Menus (Dropdowns)
 
-Select Menus can be disabled and have up to 25 options.
+Select Menus can be disabled.
 
 It's possible to set the minimum and maximum number of options to be selected.
+
+There are two implementations for SelectMenus:
+
+- `StringSelectMenu` supports custom string choices
+- `EntitySelectMenu` derives its choices from mentionable entities (such as `User`s, `Channel`s, etc)
+
+### String Select Menus
+
+String Select Menus support up to 25 options.
 
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
