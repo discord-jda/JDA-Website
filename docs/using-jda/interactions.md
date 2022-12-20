@@ -509,6 +509,10 @@ You can specify which entity types you wish to appear as choices by specifying t
 
 You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
 
+!!! info
+
+    You can only specify the entity and channel types to be shown as entity select options. Further customization is not supported.
+
 ##### Handling EntitySelectInteractionEvent
 
 When a user submits their choices from an Entity Select Menu, you will receive an `EntitySelectInteractionEvent` for the respective interaction with the selected values.
