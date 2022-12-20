@@ -533,7 +533,7 @@ When a user submits their choices from an Entity Select Menu, you will receive a
             }
 
             @Override
-            public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+            public void onEntitySelectInteraction(EntitySelectInteractionEvent event) {
                 if (event.getComponentId().equals("choose-user")) {
                     List<User> users = event.getMentions().getUsers();
                     event.reply("You high-fived " + users.get(0).getAsMention()).queue();
@@ -555,7 +555,7 @@ When a user submits their choices from an Entity Select Menu, you will receive a
                 }
             }
         
-            override fun onStringSelectInteraction(event: StringSelectInteractionEvent) {
+            override fun onEntitySelectInteraction(event: EntitySelectInteractionEvent) {
                 if (event.componentId == "choose-user") {
                     val users = event.getMentions().getUsers();
                     event.reply("You high-fived " + users.get(0).getAsMention()).queue()
