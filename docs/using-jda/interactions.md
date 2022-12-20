@@ -509,6 +509,57 @@ You can specify which entity types you wish to appear as choices by specifying t
 
 You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
 
+##### Handling EntitySelectInteractionEvent
+
+When a user submits their choices from an Entity Select Menu, you will receive an `EntitySelectInteractionEvent` for the respective interaction with the selected values.
+
+!!! example
+    === "Java"
+        ```java
+        public class EntityDropdownBot extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("highfive")) {
+                    event.reply("Choose the user to high-five")
+                        .addActionRow(
+                            EntitySelectMenu.create("choose-user", SelectTarget.USER)
+                            .build())
+                        .queue();
+                }
+            }
+
+            @Override
+            public void onStringSelectInteraction(StringSelectInteractionEvent event) {
+                if (event.getComponentId().equals("choose-user")) {
+                    List<User> users = event.getMentions().getUsers();
+                    event.reply("You high-fived " + users.get(0).getAsMention()).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object DropdownBot : ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "food") {
+                    val selectMenu = EntitySelectMenu.create("choose-user", SelectTarget.USER)
+                        .build()
+                    
+                    event.reply("Choose the user to high-five")
+                        .addActionRow(selectMenu)
+                        .queue()
+                }
+            }
+        
+            override fun onStringSelectInteraction(event: StringSelectInteractionEvent) {
+                if (event.componentId == "choose-user") {
+                    val users = event.getMentions().getUsers();
+                    event.reply("You high-fived " + users.get(0).getAsMention()).queue()
+                }
+            }
+        }
+        ```
+
 ## Modals
 
 Modals are pop-ups that appear in a user's Discord client.
