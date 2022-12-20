@@ -445,7 +445,7 @@ When a user selects their options from a dropdown and submits their choices, you
                 if (event.getName().equals("food")) {
                     event.reply("Choose your favorite food")
                         .addActionRow(
-                            SelectMenu.create("choose-food")
+                            StringSelectMenu.create("choose-food")
                               .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                               .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                                     .withDescription("Tasty") // this time with a description
@@ -469,7 +469,7 @@ When a user selects their options from a dropdown and submits their choices, you
         object DropdownBot : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "food") {
-                    val selectMenu = SelectMenu.create("choose-food")
+                    val selectMenu = StringSelectMenu.create("choose-food")
                         .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                         .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                             .withDescription("Tasty") // this time with a description
