@@ -557,8 +557,8 @@ When a user submits their choices from an Entity Select Menu, you will receive a
         
             override fun onEntitySelectInteraction(event: EntitySelectInteractionEvent) {
                 if (event.componentId == "choose-user") {
-                    val users = event.getMentions().getUsers();
-                    event.reply("You high-fived " + users.get(0).getAsMention()).queue()
+                    val users = event.mentions.users;
+                    event.reply("You high-fived " + users.first().asMention).queue()
                 }
             }
         }
