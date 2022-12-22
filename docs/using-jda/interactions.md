@@ -429,8 +429,8 @@ It's possible to set the minimum and maximum number of options to be selected.
 
 There are two implementations for SelectMenus:
 
-- `StringSelectMenu` supports custom string choices
-- `EntitySelectMenu` derives its choices from mentionable entities (such as `User`s, `Channel`s, etc)
+- [`StringSelectMenu`](#string-select-menus) supports custom string choices
+- [`EntitySelectMenu`](#entity-select-menus) derives its choices from mentionable entities (such as `User`s, `Channel`s, etc)
 
 #### String Select Menus
 
