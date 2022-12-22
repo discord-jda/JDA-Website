@@ -441,14 +441,34 @@ There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-##### Handling StringSelectInteractionEvent
+#### Entity Select Menus
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `StringSelectInteractionEvent` for the respective interaction with the selected values.
+Entity Select Menus do not support custom choices. Instead, they derive their choices from mentionable Discord entities
+such as `User`s, `Channel`s, etc.
 
-!!! example
+![Example Entity Select Menu for Roles](../assets/images/entity_select_example.png)
+
+You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`.
+
+You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
+
+!!! info
+
+    You can only specify the entity and channel types to be shown as entity select options. Further customization is not supported.
+
+#### Handling Select Menus
+
+When a user selects their options from a dropdown and submits their choices, you will receive either one of the following for the respective interaction:
+
+- A `StringSelectInteractionEvent` for a String Select Menu interaction
+- An `EntitySelectInteractionEvent` for an Entity Select Menu interaction
+
+Both interaction events will contain the values that were selected by the user.
+
+!!! example "Example String Select Handling"
     === "Java"
         ```java
-        public class DropdownBot extends ListenerAdapter {
+        public class StringDropdownBot extends ListenerAdapter {
             @Override
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("food")) {
@@ -500,26 +520,7 @@ When a user selects their options from a dropdown and submits their choices, you
         }
         ```
 
-#### Entity Select Menus
-
-Entity Select Menus do not support custom choices. Instead, they derive their choices from mentionable Discord entities
-such as `User`s, `Channel`s, etc.
-
-![Example Entity Select Menu for Roles](../assets/images/entity_select_example.png)
-
-You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`.
-
-You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
-
-!!! info
-
-    You can only specify the entity and channel types to be shown as entity select options. Further customization is not supported.
-
-##### Handling EntitySelectInteractionEvent
-
-When a user submits their choices from an Entity Select Menu, you will receive an `EntitySelectInteractionEvent` for the respective interaction with the selected values.
-
-!!! example
+!!! example "Example Entity Select Handling"
     === "Java"
         ```java
         public class EntityDropdownBot extends ListenerAdapter {
