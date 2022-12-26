@@ -495,7 +495,7 @@ Both interaction events will contain the values that were selected by the user.
         ```
     === "Kotlin"
         ```kotlin
-        object DropdownBot : ListenerAdapter() {
+        object StringDropdownBot : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "food") {
                     val selectMenu = StringSelectMenu.create("choose-food")
@@ -546,7 +546,7 @@ Both interaction events will contain the values that were selected by the user.
         ```
     === "Kotlin"
         ```kotlin
-        object DropdownBot : ListenerAdapter() {
+        object EntityDropdownBot : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "food") {
                     val selectMenu = EntitySelectMenu.create("choose-user", SelectTarget.USER)
