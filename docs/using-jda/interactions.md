@@ -450,7 +450,7 @@ such as `User`s, `Channel`s, etc.
 
 You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`.
 
-You can specify which channel types you wish to appear as channel choices by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
+You can limit channel selections to specific channel types by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
 
 !!! info
 
@@ -463,7 +463,7 @@ When a user selects their options from a dropdown and submits their choices, you
 - A `StringSelectInteractionEvent` for a String Select Menu interaction
 - An `EntitySelectInteractionEvent` for an Entity Select Menu interaction
 
-Both interaction events will contain the values that were selected by the user.
+Both interaction events provide the values that were selected by the user.
 
 !!! example "Example String Select Handling"
     === "Java"
