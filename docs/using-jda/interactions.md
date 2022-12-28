@@ -538,6 +538,7 @@ Both interaction events provide the values that were selected by the user.
             @Override
             public void onEntitySelectInteraction(EntitySelectInteractionEvent event) {
                 if (event.getComponentId().equals("choose-user")) {
+                    // Mentions provide the selected values using familiar getters
                     List<User> users = event.getMentions().getUsers();
                     event.reply("You high-fived " + users.get(0).getAsMention()).queue();
                 }
@@ -560,6 +561,7 @@ Both interaction events provide the values that were selected by the user.
         
             override fun onEntitySelectInteraction(event: EntitySelectInteractionEvent) {
                 if (event.componentId == "choose-user") {
+                    // Mentions provide the selected values using familiar getters
                     val users = event.mentions.users;
                     event.reply("You high-fived " + users.first().asMention).queue()
                 }
