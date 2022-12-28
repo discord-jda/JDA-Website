@@ -454,7 +454,7 @@ You can limit channel selections to specific channel types by using the `setChan
 
 !!! info
 
-    You can only specify the entity and channel types to be shown as entity select options. Further customization is not supported.
+    These Select Menus do not support setting a custom list of options or customizing the appearance in any way. They always show the complete list of possible entities for the specified types.
 
 #### Handling Select Menus
 
