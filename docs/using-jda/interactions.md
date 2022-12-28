@@ -448,7 +448,7 @@ such as `User`s, `Channel`s, etc.
 
 ![Example Entity Select Menu for Roles](../assets/images/entity_select_example.png)
 
-You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`.
+You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`. If you create an entity select menu with channel type targets, the same menu may not utilize user or role select targets, and vice versa.
 
 You can limit channel selections to specific channel types by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
 
