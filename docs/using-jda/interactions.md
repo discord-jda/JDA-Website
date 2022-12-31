@@ -423,29 +423,58 @@ Each non-link button requires such an ID in order to be used.
 
 ### Select Menus (Dropdowns)
 
-Select Menus can be disabled and have up to 25 options.
+Select Menus can be disabled.
 
 It's possible to set the minimum and maximum number of options to be selected.
+
+There are two implementations for SelectMenus:
+
+- [`StringSelectMenu`](#string-select-menus) supports custom string choices
+- [`EntitySelectMenu`](#entity-select-menus) derives its choices from mentionable entities (such as `User`s, `Channel`s, etc)
+
+#### String Select Menus
+
+String Select Menus support up to 25 options.
 
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
 
 ![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
 
-#### Handling SelectMenuInteractionEvent
+#### Entity Select Menus
 
-When a user selects their options from a dropdown and submits their choices, you will receive a `SelectMenuInteractionEvent` for the respective interaction with the selected values.
+Entity Select Menus do not support custom choices. Instead, they derive their choices from mentionable Discord entities
+such as `User`s, `Channel`s, etc.
 
-!!! example
+![Example Entity Select Menu for Roles](../assets/images/entity_select_example.png)
+
+You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`. If you create an entity select menu with channel type targets, the same menu may not utilize user or role select targets, and vice versa.
+
+You can limit channel selections to specific channel types by using the `setChannelTypes` method on `EntitySelectMenu.Builder`.
+
+!!! info
+
+    These Select Menus do not support setting a custom list of options or customizing the appearance in any way. They always show the complete list of possible entities for the specified types.
+
+#### Handling Select Menus
+
+When a user selects their options from a dropdown and submits their choices, you will receive either one of the following for the respective interaction:
+
+- A `StringSelectInteractionEvent` for a String Select Menu interaction
+- An `EntitySelectInteractionEvent` for an Entity Select Menu interaction
+
+Both interaction events provide the values that were selected by the user.
+
+!!! example "Example String Select Handling"
     === "Java"
         ```java
-        public class DropdownBot extends ListenerAdapter {
+        public class StringDropdownBot extends ListenerAdapter {
             @Override
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("food")) {
                     event.reply("Choose your favorite food")
                         .addActionRow(
-                            SelectMenu.create("choose-food")
+                            StringSelectMenu.create("choose-food")
                               .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                               .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                                     .withDescription("Tasty") // this time with a description
@@ -455,9 +484,9 @@ When a user selects their options from a dropdown and submits their choices, you
                         .queue();
                 }
             }
-    
+
             @Override
-            public void onSelectMenuInteraction(SelectMenuInteractionEvent event) {
+            public void onStringSelectInteraction(StringSelectInteractionEvent event) {
                 if (event.getComponentId().equals("choose-food")) {
                     event.reply("You chose " + event.getValues().get(0)).queue();
                 }
@@ -466,10 +495,10 @@ When a user selects their options from a dropdown and submits their choices, you
         ```
     === "Kotlin"
         ```kotlin
-        object DropdownBot : ListenerAdapter() {
+        object StringDropdownBot : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "food") {
-                    val selectMenu = SelectMenu.create("choose-food")
+                    val selectMenu = StringSelectMenu.create("choose-food")
                         .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                         .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                             .withDescription("Tasty") // this time with a description
@@ -483,9 +512,58 @@ When a user selects their options from a dropdown and submits their choices, you
                 }
             }
         
-            override fun onSelectMenuInteraction(event: SelectMenuInteractionEvent) {
+            override fun onStringSelectInteraction(event: StringSelectInteractionEvent) {
                 if (event.componentId == "choose-food") {
                     event.reply("You chose " + event.values[0]).queue()
+                }
+            }
+        }
+        ```
+
+!!! example "Example Entity Select Handling"
+    === "Java"
+        ```java
+        public class EntityDropdownBot extends ListenerAdapter {
+            @Override
+            public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
+                if (event.getName().equals("highfive")) {
+                    event.reply("Choose the user to high-five")
+                        .addActionRow(
+                            EntitySelectMenu.create("choose-user", SelectTarget.USER)
+                            .build())
+                        .queue();
+                }
+            }
+
+            @Override
+            public void onEntitySelectInteraction(EntitySelectInteractionEvent event) {
+                if (event.getComponentId().equals("choose-user")) {
+                    // Mentions provide the selected values using familiar getters
+                    List<User> users = event.getMentions().getUsers();
+                    event.reply("You high-fived " + users.get(0).getAsMention()).queue();
+                }
+            }
+        }
+        ```
+    === "Kotlin"
+        ```kotlin
+        object EntityDropdownBot : ListenerAdapter() {
+            override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
+                if (event.name == "food") {
+                    val selectMenu = EntitySelectMenu.create("choose-user", SelectTarget.USER)
+                        .build()
+                    
+                    event.reply("Choose the user to high-five")
+                        .addActionRow(selectMenu)
+                        .queue()
+                }
+            }
+        
+            override fun onEntitySelectInteraction(event: EntitySelectInteractionEvent) {
+                if (event.componentId == "choose-user") {
+                    // Mentions provide the selected values using familiar getters
+                    val users = event.mentions.users;
+                    event.reply("You high-fived " + users.first().asMention).queue()
                 }
             }
         }
