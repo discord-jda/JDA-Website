@@ -33,3 +33,14 @@ Specific channel attributes, such as slow mode, permissions, etc have been split
 - `TextChannel#crosspostMessage` was removed in favor of `NewsChannel#crosspostMessage`
 - `TextChannel#follow` has been removed in favor of `NewsChannel#follow`
 - `TextChannel#isNews` has been removed
+
+## Permission Changes
+
+A number of permissions have been renamed, with one permission being removed entirely.
+
+- `Permission.MANAGE_EMOTES` was renamed to `Permission.MANAGE_EMOTES_AND_STICKERS`
+- `Permission.MESSAGE_READ` has been removed in favor of `Permission.VIEW_CHANNEL`
+- `Permission.MESSAGE_WRITE` was renamed to `Permission.MESSAGE_SEND`
+- `Permission.USE_SLASH_COMMANDS` was renamed to `Permission.USE_APPLICATION_COMMANDS`
+- `Permission.USE_PUBLIC_THREADS` was renamed to `Permission.CREATE_PUBLIC_THREADS`
+- `Permission.USE_PRIVATE_THREADS` was renamed to `Permission.CREATE_PRIVATE_THREADS`
