@@ -11,5 +11,3 @@ The ones that are not checked do not support it yet. You should check that every
 - [ ] [LavaPlayer](https://github.com/sedmelluq/lavaplayer)
 - [ ] [jda-nas](https://github.com/sedmelluq/jda-nas)
 - [ ] [JDA-Utilities](https://github.com/JDA-Applications/JDA-Utilities)
-- [ ] [Lavalink Client](https://github.com/FredBoat/Lavalink-Client)
-- [ ] [JDAction](https://github.com/sedmelluq/jdaction)
