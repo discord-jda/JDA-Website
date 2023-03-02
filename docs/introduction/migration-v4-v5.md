@@ -23,6 +23,12 @@ There are several breaking changes to `GuildChannel` and `ChannelManager`
 
 Specific channel attributes, such as slow mode, permissions, etc have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
 
+### Permission Access Changes
+
+With JDA v5 introducing a more butchered down `GuildChannel` interface, `GuildChannel#getPermissionContainer() : IPermissionContainer` has been introduced to make accessing permissions easier. This allows for users to confidently access the entity that dictates the permissions for a given channel without having to check whether the channel actually supports permissions, such as in the case of threads.
+
+Of course, if you have a channel type that already supports `IPermissionContainer`, you don't need this getter.
+
 ### Type-Trimmed Channel Managers
 
 In JDA v4, `GuildChannel#getManager` returned a `ChannelManager` that gave every possible setter for every channel type. This caused for `UnsupportedOperationException` or `IllegalStateException` to be thrown in some cases, such as calling `setBitrate` on a `TextChannel`.
