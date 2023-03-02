@@ -34,6 +34,12 @@ Specific channel attributes, such as slow mode, permissions, etc have been split
 - `TextChannel#follow` has been removed in favor of `NewsChannel#follow`
 - `TextChannel#isNews` has been removed
 
+### Other Changes
+
+- `StoreChannel` has been removed
+- `PrivateChannel#getUser` is now nullable
+- `MessageChannel#getLatestMessageId` and `MessageChannel#getLatestMessageIdLong` no longer change to null if the message was deleted
+
 ## Permission Changes
 
 A number of permissions have been renamed, with one permission being removed entirely.
