@@ -74,3 +74,50 @@ A number of permissions have been renamed, with one permission being removed ent
 - `Permission.USE_SLASH_COMMANDS` was renamed to `Permission.USE_APPLICATION_COMMANDS`
 - `Permission.USE_PUBLIC_THREADS` was renamed to `Permission.CREATE_PUBLIC_THREADS`
 - `Permission.USE_PRIVATE_THREADS` was renamed to `Permission.CREATE_PRIVATE_THREADS`
+
+## Event Changes
+
+There are several changes related to events.
+
+### Removal of Guild Context Message Events
+
+All message event types for guild messages have been removed. Examples of these are:
+
+- Generic<Context>MessageEvent (ex: GenericGuildMessageEvent)
+- <Context>MessageReceivedEvent (ex: GuildMessageReceivedEvent)
+- <Context>MessageUpdateEvent (ex: GuildMessageUpdateEvent)
+- <Context>MessageDeleteEvent (ex: GuildMessageDeleteEvent)
+- <Context>MessageEmbedEvent (ex: GuildMessageEmbedEvent)
+- <Context>MessageReaction<X>Event (ex: GuildMessageReactionAddEvent)
+- etc
+
+Instead, you should use the unified versions of these events:
+
+- GenericMessageEvent
+- MessageReceivedEvent
+- MessageUpdatedEvent
+- MessageDeletedEvent
+- MessageReaction<X>Event (ex: MessageReactionAddEvent)
+- etc
+
+You can check if a message is from a `Guild` by using `Message#isFromGuild()`.
+
+### Changes to Specifying GatewayIntents from Event Types
+
+With context-specific events being removed (such as `GuildMessageReceivedEvent`), you can no longer use these events to specify `GatewayIntent.GUILD_MESSAGES` or `GatewayIntent.DIRECT_MESSAGE_REACTIONS`. You may supply any of the unified message events, but the functionality will be slightly different. It is not recommended to use `GatewayIntent#fromEvents` if you wish to have finer grain control around intents for messages.
+
+### Session Events
+
+All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` pakage](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
+
+Some events relating to sessions have been renamed:
+
+- `DisconnectEvent` has been renamed to `SessionDisconnectEvent`
+- `ReconnectedEvent` has been renamed to `SessionRecreateEvent`
+- `ResumedEvent` has been renamed to `SessionResumeEvent`
+
+### Voice State Events
+
+`GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
+
+As an example, to detect when a user leaves a voice channel, you can use `GuildVoiceUpdateEvent#getChannelLeft`. This method will return the channel that the user left, or `null` if the user joined a channel instead.
