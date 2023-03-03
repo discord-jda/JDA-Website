@@ -1,6 +1,6 @@
 # Migration Guide 4.X to 5.X
 
-This version includes several breaking changes and improvements.
+This version utilizes Discord API v10, and includes several breaking changes and improvements.
 
 ## Extensions That Support 5.X
 
@@ -12,6 +12,18 @@ The ones that are not checked do not support it yet. You should check that every
 - [x] [jda-nas](https://github.com/sedmelluq/jda-nas)
     - [x] [udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) (for minimal Rust bindings)
 - [ ] [JDA-Utilities](https://github.com/JDA-Applications/JDA-Utilities)
+
+## Introduction of Message Content Privileged Intent
+
+As part of upgrading to API v10, accessing the following user-generated content in messages now requires the Message Content privileged intent (`GatewayIntent.MESSAGE_CONTENT`):
+
+- Text content (`Message#getContentRaw`, `Message#getContentDisplay`, `Message#getContentStripped`)
+- Embeds (`Message#getEmbeds`)
+- Attachments (`Message#getAttachments`)
+- Message Components (`Message#getActionRows`, `Message#getButtons`)
+- Custom Emoji Mentions (`Message#getMentions()#getCustomEmojis()`)
+
+You must enable this intent in your `JDABuilder` **AND** in the Discord Developer Portal for your app if you utilize any of the above methods.
 
 ## Channel Rework
 
