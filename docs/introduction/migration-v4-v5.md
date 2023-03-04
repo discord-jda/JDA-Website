@@ -149,3 +149,44 @@ The following intents have been renamed to align with the API name convention:
 ### Chunking and Caching
 
 If you used `ChunkingFilter.ALL` in the past, JDA would atomatically also cache all those members it chunked. However, this is not a very flexible rule and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
+
+## Sticker and Emoji Rework
+
+We now fully support the sticker API in JDA. You can send up to 3 stickers in messages and receive both guild and nitro-only stickers. To improve the user experience with emotes/emoji we also changed this API.
+
+### Sticker Changes
+
+The old `MessageSticker` class has been removed in favor of an assortment of new interfaces located in `net.dv8tion.api.entities.sticker`. Instead, `Message#getStickers` now returns the new `StickerItem` interface. You can create a sendable sticker instance with `Sticker.fromId(stickerId)` and then pass it to `GuildMessageChannel#sendStickers`.
+
+### Emote/Emoji Changes
+
+In old versions we always made a distinction between **Emote** and **Emoji** to differentiate **Custom Emoji** from **Unicode Emoji**. This naming scheme was not ideal and caused a bit of confusion. In our redesign we instead simplify this to the names `CustomEmoji` and `UnicodeEmoji`. Some classes/interfaces had to be renamed for this new design:
+
+- `Emote` renamed to `RichCustomEmoji`
+- `EmoteManager` renamed to `CustomEmojiManager`
+- `MessageReactionRemoveEmoteEvent` renamed to `MessageReactionRemoveEmojiEvent`
+
+All methods/enums/types using `emote` have also been adjusted to say `emoji`, for example `Guild#retrieveEmotes` is now `Guild#retrieveEmojis` and `CacheFlag.EMOTE` is now `CacheFlag.EMOJI`.
+
+This new design also had the goal to unify all usages of emoji in the API, allowing you to use them for anything that makes use of emoji. For instance, previously there was a distinction between reaction emoji (`MessageReaction.ReactionEmote`) and buttom emoji (`Emoji`), which now both use the same `Emoji` type:
+
+```java
+public void onMessageReactionAdd(MessageReactionAddEvent event) {
+  event.getChannel().sendMessage("User reacted")
+    .setActionRow(Button.primary("buttonid", event.getEmoji()))
+    .queue();
+}
+```
+
+To check which emoji was used in a reaction, you can use `emoji.equals(otherEmoji)` instead of checking for id/name. This has the advantage for also checking the correct type for you. For example: `event.getEmoji().equals(Emoji.fromFormatted("😃"))`.
+
+You also now use `Emoji` instances for reactions. What was previously `message.addReaction("...")` is now `message.addReaction(Emoji.fromFormatted("..."))`. And in general you can use the following factory methods to create emoji instances:
+
+- `Emoji.fromUnicode`<br>
+    Parses codepoint notation like `"U+1F602"` or simply uses the provided unicode characters `"😃"`. This returns a concrete `UnicodeEmoji` type instance.
+- `Emoji.fromCustom`<br>
+    Creates a `CustomEmoji` instance from the provided name and id.
+- `Emoji.fromFormatted`<br>
+    parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
+
+You can see the full list of breaking changes in [#2117](https://github.com/DV8FromTheWorld/JDA/pull/2117).
