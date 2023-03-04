@@ -237,7 +237,7 @@ In JDA 5 we are separating the handling of message sending and editing, while al
 - `MessageEditBuilder`
 - `MessageEditAction`
 
-This change should only affect few people who made use of `MessageBuilder` in the past. You need to update your code to either the edit or create builders. If you don't know whether the resulting operation is an edit or send request, you can simply always use `MessageEditBuilder` and then use `MessageCreateData.fromEdit(MessageEditData)` to convert it at call-site. You can also use similar factory methods to create a sendable message from the `Message` interface (`MessageCreateData.fromMessage(message)`).
+This change should only affect people who made use of `MessageBuilder` in the past. You need to update your code to either the edit or create builders. If you don't know whether the resulting operation is an edit or send request, you can simply always use `MessageEditBuilder` and then use `MessageCreateData.fromEdit(MessageEditData)` to convert it at call-site. You can also use similar factory methods to create a sendable message from the `Message` interface (`MessageCreateData.fromMessage(message)`).
 
 Previously, edit requests had a method called `override(boolean)` to *replace* the entire message. This was used to remove content or embeds from a message. You can now simply use `setEmbeds(emptyList())` or `setContent("")` to remove specific parts of the message, or use `setReplace(true)` to achieve the same functionality of replacing everything.
 
