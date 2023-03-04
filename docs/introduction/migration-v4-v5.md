@@ -4,33 +4,29 @@ This version utilizes Discord API v10, and includes several breaking changes and
 
 ## Dependency Installation
 
-Before continuing, we should mention that JDA versions are now distributed via [Maven Central](https://mvnrepository.com/artifact/net.dv8tion/JDA/5.0.0-beta.5). You can remove the old `m2.dv8tion.net` resolver from your build files.
+Before continuing, we should mention that JDA versions are now distributed via [Maven Central](https://mvnrepository.com/artifact/net.dv8tion/JDA/latest). You can remove the old `m2.dv8tion.net` resolver from your build files.
 
-### Gradle
+Replace `VERSION` with the latest version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
 
-Replace `$latest` with this version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
+=== "Gradle"
+    ```groovy
+    repositories {
+        mavenCentral()
+    }
+    
+    dependencies {
+        implementation("net.dv8tion:JDA:VERSION")
+    }
+    ```
 
-```gradle
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation("net.dv8tion:JDA:$latest")
-}
-```
-
-### Maven
-
-Replace `$latest` with this version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
-
-```xml
-<dependency>
-    <groupId>net.dv8tion</groupId>
-    <artifactId>JDA</artifactId>
-    <version>$latest</version>
-</dependency>
-```
+=== "Maven"
+    ```xml
+    <dependency>
+      <groupId>net.dv8tion</groupId>
+      <artifactId>JDA</artifactId>
+      <version>VERSION</version>
+    </dependency>
+    ```
 
 ## Additional Resources
 
