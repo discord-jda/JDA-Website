@@ -2,6 +2,14 @@
 
 This version utilizes Discord API v10, and includes several breaking changes and improvements.
 
+## Additional Resources
+
+This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as [ThreadChannels](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html). Here are some useful resources to learn more if you are curious about all the new things we added:
+
+- [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java)
+- [JDA 5 Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/)
+- [Releases](https://github.com/DV8FromTheWorld/JDA/releases)
+
 ## Extensions That Support 5.X
 
 Here is a list of known extensions that support 5.X.
@@ -11,6 +19,7 @@ The ones that are not checked do not support it yet. You should check that every
 - [x] [LavaPlayer](https://github.com/sedmelluq/lavaplayer)
 - [x] [jda-nas](https://github.com/sedmelluq/jda-nas)
     - [x] [udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) (for minimal Rust bindings)
+- [x] [jda-ktx](https://github.com/MinnDevelopment/jda-ktx)
 - [ ] [JDA-Utilities](https://github.com/JDA-Applications/JDA-Utilities)
 
 ## Introduction of Message Content Privileged Intent
