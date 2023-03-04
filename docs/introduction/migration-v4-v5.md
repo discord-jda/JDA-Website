@@ -306,3 +306,23 @@ Handling commands only changed slightly with regards to the way you reply. Previ
 If you relied on the abstract `Interaction` type to provide any of these methods, you will have to adjust your code to use these new interfaces instead.
 
 You can find more explanations and examples in the dedicated [Interactions Wiki Page](/using-jda/interactions/).
+
+### Command Permissions/Privileges
+
+Discord has changed how command permissions work. Instead of limiting commands to specific roles and users on a per-guild basis, you set required permissions on each command. For instance, a ban command would require `Permission.BAN_MEMBERS`:
+
+```java
+commands.addCommands(
+    Commands.slash("ban", "Ban a user from this server. Requires permission to ban users.")
+        .addOption(USER, "user", "The user to ban", true)
+        .addOptions(new OptionData(INTEGER, "del_days", "Delete messages from the past days.")
+            .setRequiredRange(0, 7)) // Only allow values between 0 and 7 (inclusive)
+        .addOptions(new OptionData(STRING, "reason", "The ban reason to use (default: Banned by <user>)"))
+        // This way the command can only be executed from a guild, and not DMs
+        .setGuildOnly(true)
+        // Only members with the BAN_MEMBERS permission are going to see this command
+        .setDefaultPermissions(DefaultMemberPermissions.enabledFor(Permission.BAN_MEMBERS))
+)
+```
+
+You can also limit it to administrators with `DefaultMemberPermissions.DISABLED`.
