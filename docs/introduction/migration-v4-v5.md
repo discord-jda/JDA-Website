@@ -134,3 +134,18 @@ Some events relating to sessions have been renamed:
 `GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
 
 As an example, to detect when a user leaves a voice channel, you can use `GuildVoiceUpdateEvent#getChannelLeft`. This method will return the channel that the user left, or `null` if the user joined a channel instead.
+
+## Intent and Member Cache Changes
+
+A few changes to intents and member caching were also made to improve the user experience.
+
+### Renamed Intents
+
+The following intents have been renamed to align with the API name convention:
+
+- `GatewayIntent.GUILD_BANS` renamed to `GatewayIntent.GUILD_MODERATION`
+- `GatewayIntent.GUILD_EMOJIS` renamed to `GatewayIntent.GUILD_EMOJIS_AND_STICKERS`
+
+### Chunking and Caching
+
+If you used `ChunkingFilter.ALL` in the past, JDA would atomatically also cache all those members it chunked. However, this is not a very flexible rule and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
