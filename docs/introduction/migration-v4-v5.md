@@ -343,3 +343,41 @@ commands.addCommands(
 ```
 
 You can also limit it to administrators with `DefaultMemberPermissions.DISABLED`.
+
+## UserSnowflake Type
+
+We have started to cut down on overloads which accept 3 different inputs to specify a user. Previously methods like `Guild#ban` had many overloads to account for different types such as `String`/`long`/`User`/`Member`. We removed all of these in favor of a single `UserSnowflake` input, which can be constructed with `User.fromId(long/String)`. Both `User` and `Member` also implement this interface. This is a far more elegant handling and reduces the number of overloads in various parts of the API drastically.
+
+This applies to the following methods:
+
+- `Guild#ban(long/String)`, `Guild#ban(long/String, int)`, `Guild#ban(long/String, int, String)`<br>
+    Now just `Guild#ban(UserSnowflake, int, TimeUnit)`
+- `Guild#kick(long/String)`, `Guild#kick(long/String, String)`<br>
+    Now just `Guild#kick(UserSnowflake)`
+- `Guild#unban(long/String)` is now `Guild#unban(UserSnowflake)`
+- `Guild#retrieveBanById(long/String)` is now `Guild#retrieveBan(UserSnowflake)`
+- `Guild#addMember(String, long/String)` is now `Guild#addMember(UserSnowflake)`
+- `Guild#timeoutForById(long/String, Duration)` is now `Guild#timeoutFor(UserSnowflake, Duration)`
+- `Guild#timeoutUntilById(long/String, TemporalAccessor)` is now `Guild#timeoutUntil(UserSnowflake, TemporalAccessor)`
+- `Guild#removeTimeoutById(long/String)` is now `Guild#removeTimeout(UserSnowflake)`
+- `Guild#addRoleToMember(long/String, Role)` is now `Guild#addRoleToMember(UserSnowflake)`
+- `Guild#removeRoleFromMember(long/String, Role)` is now `Guild#removeRoleFromMember(UserSnowflake)`
+- `AuditLogPaginationAction#user(long/String)` is now `AuditLogPaginationAction#user(UserSnowflake)`
+
+### Ban Precision
+
+You can now specify the age of messages to delete in seconds precision. To adjust your code simply add `TimeUnit.DAYS` to the end and move the ban reason into the `reason(...)` method:
+
+**Old:**
+
+```java
+guild.ban(user, 7, "Naughty words").queue()
+```
+
+**New:**
+
+```java
+guild.ban(user, 7, TimeUnit.DAYS).reason("Naughty words").queue()
+```
+
+Kick reasons have also been moved into the `reason(...)` method, for example `guild.kick(user, reason)` turns into `guild.kick(user).reason(reason)`.
