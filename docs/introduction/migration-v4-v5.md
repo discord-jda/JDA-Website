@@ -287,6 +287,7 @@ To properly handle **Context Menu** and **Auto-complete** interactions, we rewor
 - Introduced **new** `Component` interface to abstract both layouts and items.
 - `MessageType.APPLICATION_COMMAND` renamed to `MessageType.SLASH_COMMAND` (we now also have `MessageType.CONTEXT_COMMAND`)
 - `InteractionType.SLASH_COMMAND` renamed to `InteractionType.COMMAND` (we now also have `InteractionType.COMMAND_AUTOCOMPLETE`)
+- `SlashCommandEvent#getCommandPath` renamed to `CommandInteractionPayload#getFullCommandName` (it also now uses spaces instead of slashes, e.g. `mod/ban` is now `mod ban`)
 
 ### Creating and Handling Commands
 
