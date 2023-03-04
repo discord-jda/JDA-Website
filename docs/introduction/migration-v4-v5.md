@@ -235,16 +235,16 @@ Due to changes in the Discord API v10, you can no longer add files to messages w
 ```java
 // Here "message" is an instance of the Message interface
 
- // Take the first attachment of the message, all others will be removed
- AttachedFile attachment = message.getAttachments().get(0);
+// Take the first attachment of the message, all others will be removed
+AttachedFile attachment = message.getAttachments().get(0);
 
- // The name here will be "cat.png" to discord, what the file is called on your computer is irrelevant and only used to read the data of the image.
- FileUpload file = FileUpload.fromData(new File("mycat-final-copy.png"), "cat.png"); // Opens the file called "cat.png" and provides the data used for sending
+// The name here will be "cat.png" to discord, what the file is called on your computer is irrelevant and only used to read the data of the image.
+FileUpload file = FileUpload.fromData(new File("mycat-final-copy.png"), "cat.png"); // Opens the file called "cat.png" and provides the data used for sending
 
- // Edit request to keep the first attachment, and add one more file to the message
- message.editMessage("New content")
-        .setAttachments(attachment, file)
-        .queue();
+// Edit request to keep the first attachment, and add one more file to the message
+message.editMessage("New content")
+       .setAttachments(attachment, file)
+       .queue();
 ```
 
 
