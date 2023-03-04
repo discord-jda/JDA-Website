@@ -42,6 +42,10 @@ There are several breaking changes to `GuildChannel` and `ChannelManager`. First
 - `net.dv8tion.jda.api.entities.channel.unions`<br>
     Interfaces used for return values, allowing for downcasting into specific types. They also provided shared features of the specific interface they extend.
 
+### Channel Return Types
+
+A lot of classes in JDA used to have specific getters for each channel type, for instance messages had `getTextChannel()` and `getPrivateChannel()`. The goal was to allow easy conversion to concrete types that have more functionality than their abstract counterpart (such as `MessageChannel`). We've introduced new **Channel Union** interfaces to deal with this problem in a more elegant way. Instead of using `foo.getTextChannel()`, you now use `foo.getChannel().asTextChannel()`. The `getChannel()` method now often returns a specific **Union** type such as `MessageChannelUnion`, which doubles as the abstract implementation for `MessageChannel` (allows to send messages) and also downcasting via various `asX()` methods.
+
 ### New Channel Attribute Interfaces
 
 `GuildChannel` now implements `getGuild` and `getManager` *only*. It's meant to serve as a generic type to hold channels from guilds.
