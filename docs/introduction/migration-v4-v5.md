@@ -272,6 +272,22 @@ List<String> contents = SplitUtil.split(
 List<MessageCreateData> messages = contents.stream().map(MessageCreateData::fromContent).toList();
 ```
 
+## Mentions Rework
+
+We made the handling of mentions consistent across both messages and interactions. You can now access mentions inside string options of slash commands through `OptionMapping#getMentions`. The old methods on `Message` have also been moved to a new `Mentions` interface, accessible via `Message#getMentions`.
+
+- `Message#getMentionedUsers` moved to `Mentions#getUsers`
+- `Message#getMentionedMembers` moved to `Mentions#getMembers`
+- `Message#getMentionedChannels` moved to `Mentions#getChannels`
+- `Message#getEmotes` moved to `Mentions#getCustomEmojis`
+- `Message#getMentions(MentionType...)` moved to `Mentions#getMentions(MentionType...)`
+- `Message#isMentioned` moved to `Mentions#isMentioned`
+- `Message#getMentionedMembers(Guild)` has been removed with no replacement
+- `Message#mentionsEveryone` moved to `Mentions#mentionsEveryone`
+- Analogously for all bag getters.
+
+Additionally, the return type of `Mentions#getChannels` has been adjusted to return `List<GuildChannel>` since all channel types can now be mentioned. You can use `Mentions#getChannels(Class)` to limit it to specific types, for example `List<TextChannel> channels = mentions.getChannels(TextChannel.class)`.
+
 ## Interaction Rework
 
 To properly handle **Context Menu** and **Auto-complete** interactions, we reworked some of the interaction types. This includes numerous breaking changes to naming conventions and package layouts.
