@@ -191,6 +191,6 @@ You also now use `Emoji` instances for reactions. What was previously `message.a
 - `Emoji.fromCustom`<br>
     Creates a `CustomEmoji` instance from the provided name and id.
 - `Emoji.fromFormatted`<br>
-    parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
+    Parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
 
 You can see the full list of breaking changes in [#2117](https://github.com/DV8FromTheWorld/JDA/pull/2117).
