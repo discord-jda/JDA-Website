@@ -194,3 +194,80 @@ You also now use `Emoji` instances for reactions. What was previously `message.a
     Parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
 
 You can see the full list of breaking changes in [#2117](https://github.com/DV8FromTheWorld/JDA/pull/2117).
+
+## Message Send/Edit Rework
+
+In JDA 5 we are separating the handling of message sending and editing, while also unifying all send and edit functionality in the API. The old `MessageBuilder` and `MessageAction` have been split up:
+
+- `MessageCreateBuilder`
+- `MessageCreateAction`
+- `MessageEditBuilder`
+- `MessageEditAction`
+
+This change should only affect few people who made use of `MessageBuilder` in the past. You need to update your code to either the edit or create builders. If you don't know whether the resulting operation is an edit or send request, you can simply always use `MessageEditBuilder` and then use `MessageCreateData.fromEdit(MessageEditData)` to convert it at call-site. You can also use similar factory methods to create a sendable message from the `Message` interface (`MessageCreateData.fromMessage(message)`).
+
+Previously, edit requests had a method called `override(boolean)` to *replace* the entire message. This was used to remove content or embeds from a message. You can now simply use `setEmbeds(emptyList())` or `setContent("")` to remove specific parts of the message, or use `setReplace(true)` to achieve the same functionality of replacing everything.
+
+### Method Renames
+
+Some methods were renamed to allow for consistency between all requests.
+
+- `setActionRows`/`addActionRows` renamed to `setComponents`/`addComponents`
+- `MessageAction#tts` renamed to `MessageCreateRequest#setTTS`
+- `MessageAction#content` renamed to `MessageCreateRequest#setContent`
+- `MessageAction#allowedMentions` renamed to `MessageRequest#setAllowedMentions`
+- `addFile` removed in favor of `addFiles` and `setAttachments` (see **File Sending** section below)
+
+### Unifying Message Requests
+
+All message send and edit requests now use a unified `MessageRequest` interface. This allows you to make very abstracted implementations that use high level interfaces.
+
+![Message Rework Hierarchy](https://cdn.discordapp.com/attachments/875797959072161843/1009139444772782130/unknown.png)
+
+This also means that all methods from `message.editMessage(...)` are consistent with the methods from `interaction.editMessage(...)`, and analogously for sending. You can now use `addActionRow` when sending a message to a channel.
+
+### File Sending
+
+The old `sendFile(...)`/`replyFile(...)` overloads available on `MessageChannel` and interactions has been replaced by a single `sendFiles(...)` method. This new method accepts the `FileUpload` type, which also supports file descriptions (alt text) via `setDescription(...)`. For example, old code such as `sendFile(data, name, AttachmentOption.SPOILER)` is replaced with `sendFiles(FileUpload.fromData(data, name).asSpoiler())`.
+
+Due to changes in the Discord API v10, you can no longer add files to messages without replacing all existing attachments. We could previously support methods such as `MessageAction#addFile` for editing messages, which is no longer possible in API v10. Instead you **must** replace the entire list of attachments, using `MessageEditAction#setAttachments`. Here is an example:
+
+```java
+// Here "message" is an instance of the Message interface
+
+ // Take the first attachment of the message, all others will be removed
+ AttachedFile attachment = message.getAttachments().get(0);
+
+ // The name here will be "cat.png" to discord, what the file is called on your computer is irrelevant and only used to read the data of the image.
+ FileUpload file = FileUpload.fromData(new File("mycat-final-copy.png"), "cat.png"); // Opens the file called "cat.png" and provides the data used for sending
+
+ // Edit request to keep the first attachment, and add one more file to the message
+ message.editMessage("New content")
+        .setAttachments(attachment, file)
+        .queue();
+```
+
+
+### Message Splitting
+
+The old `MessageBuilder#buildAll` has been removed from the builder classes. Instead you can now use the new `SplitUtil` utility class to split any string. For example:
+
+**Old:**
+
+```java
+List<Message> messages = new MessageBuilder().setContent(someLargeString).buildAll();
+```
+
+**New:**
+
+```java
+List<String> contents = SplitUtil.split(
+    someLargeString,  // input string of arbitrary length
+    2000,             // the split limit, can be arbitrary (>0)
+    true,             // whether to trim the strings (empty will be discarded)
+    Strategy.NEWLINE, // split on '\n' characters if possible
+    Strategy.ANYWHERE // otherwise split on the limit
+);
+// Convert to instance of MessageCreateData (optional, you can just send strings directly!)
+List<MessageCreateData> messages = contents.stream().map(MessageCreateData::fromContent).toList();
+```
