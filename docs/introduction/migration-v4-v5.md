@@ -271,3 +271,38 @@ List<String> contents = SplitUtil.split(
 // Convert to instance of MessageCreateData (optional, you can just send strings directly!)
 List<MessageCreateData> messages = contents.stream().map(MessageCreateData::fromContent).toList();
 ```
+
+## Interaction Rework
+
+To properly handle **Context Menu** and **Auto-complete** interactions, we reworked some of the interaction types. This includes numerous breaking changes to naming conventions and package layouts.
+
+### Naming Changes
+
+- `SlashCommandEvent` renamed to `SlashCommandInteractionEvent`
+- `ButtonClickEvent` renamed to `ButtonInteractionEvent`
+- `SelectionMenu` renamed to `StringSelectMenu`
+- `SelectionMenuEvent` renamed to `StringSelectEvent`
+- `Component` renamed to `ActionComponent` and `ItemComponent` (abstraction for things like `Button`)
+- `ComponentLayout` renamed to `LayoutComponent` (abstraction for things like `ActionRow`)
+- Introduced **new** `Component` interface to abstract both layouts and items.
+- `MessageType.APPLICATION_COMMAND` renamed to `MessageType.SLASH_COMMAND` (we now also have `MessageType.CONTEXT_COMMAND`)
+- `InteractionType.SLASH_COMMAND` renamed to `InteractionType.COMMAND` (we now also have `InteractionType.COMMAND_AUTOCOMPLETE`)
+
+### Creating and Handling Commands
+
+With the introduction of **Context Menu Commands**, we changed how commands are created. Instead of `new CommandData(...)`, you now create a slash command using the factory method `Commands.slash(...)`, which returns a `SlashCommandData` instance that has the familiar methods. You can now also use `Commands.user(...)` and `Commands.message(...)` to create new context menu commands which appear in the right-click menu option named **Apps** in the Discord Client.
+
+Handling commands only changed slightly with regards to the way you reply. Previously, all `Interaction` types had a `reply(...)` or `deferReply(...)` method. This has been changed due to new interaction types like **AutoCompleteInteraction** and **ModalInteraction**. Now, each concrete interaction type implements specific **callback** interfaces such as:
+
+- `IReplyCallback`<br>
+    Which supports direct message replies and deferred message replies via `reply(String)` and `deferReply()`
+- `IMessageEditCallback`<br>
+    Which supports direct message edits and deferred message edits (or no-operation) via `editMessage(String)` and `deferEdit()`
+- `IModalCallback`<br>
+    Which supports choice suggestions for auto-complete interactions via `replyChoices(Command.Choice...)`
+- `IAutoCompleteCallback`<br>
+    Which supports replying using a Modal via `replyModal(Modal)`
+
+If you relied on the abstract `Interaction` type to provide any of these methods, you will have to adjust your code to use these new interfaces instead.
+
+You can find more explanations and examples in the dedicated [Interactions Wiki Page](/using-jda/interactions/).
