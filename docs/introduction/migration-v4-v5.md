@@ -100,21 +100,21 @@ There are several changes related to events.
 
 All message event types for guild messages have been removed. Examples of these are:
 
-- Generic<Context>MessageEvent (ex: GenericGuildMessageEvent)
-- <Context>MessageReceivedEvent (ex: GuildMessageReceivedEvent)
-- <Context>MessageUpdateEvent (ex: GuildMessageUpdateEvent)
-- <Context>MessageDeleteEvent (ex: GuildMessageDeleteEvent)
-- <Context>MessageEmbedEvent (ex: GuildMessageEmbedEvent)
-- <Context>MessageReaction<X>Event (ex: GuildMessageReactionAddEvent)
+- `Generic<Context>MessageEvent` (ex: `GenericGuildMessageEvent`)
+- `<Context>MessageReceivedEvent` (ex: `GuildMessageReceivedEvent`)
+- `<Context>MessageUpdateEvent` (ex: `GuildMessageUpdateEvent`)
+- `<Context>MessageDeleteEvent` (ex: `GuildMessageDeleteEvent`)
+- `<Context>MessageEmbedEvent` (ex: `GuildMessageEmbedEvent`)
+- `<Context>MessageReaction<X>Event` (ex: `GuildMessageReactionAddEvent`)
 - etc
 
 Instead, you should use the unified versions of these events:
 
-- GenericMessageEvent
-- MessageReceivedEvent
-- MessageUpdatedEvent
-- MessageDeletedEvent
-- MessageReaction<X>Event (ex: MessageReactionAddEvent)
+- `GenericMessageEvent`
+- `MessageReceivedEvent`
+- `MessageUpdatedEvent`
+- `MessageDeletedEvent`
+- `MessageReaction<X>Event` (ex: `MessageReactionAddEvent`)
 - etc
 
 You can check if a message is from a `Guild` by using `Message#isFromGuild()`.
