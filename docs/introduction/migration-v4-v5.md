@@ -2,6 +2,36 @@
 
 This version utilizes Discord API v10, and includes several breaking changes and improvements.
 
+## Dependency Installation
+
+Before continuing, we should mention that JDA versions are now distributed via [Maven Central](https://mvnrepository.com/artifact/net.dv8tion/JDA/5.0.0-beta.5). You can remove the old `m2.dv8tion.net` resolver from your build files.
+
+### Gradle
+
+Replace `$latest` with this version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
+
+```gradle
+repositores {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("net.dv8tion:JDA:$latest")
+}
+```
+
+### Maven
+
+Replace `$latest` with this version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
+
+```xml
+<dependency>
+    <groupId>net.dv8tion</groupId>
+    <artifactId>JDA</artifactId>
+    <version>$latest</version>
+</dependency>
+```
+
 ## Additional Resources
 
 This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as [ThreadChannels](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html). Here are some useful resources to learn more if you are curious about all the new things we added:
@@ -59,7 +89,7 @@ A lot of classes in JDA used to have specific getters for each channel type, for
 
 `GuildChannel` now implements `getGuild` and `getManager` *only*. It's meant to serve as a generic type to hold channels from guilds.
 
-Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
+Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
 
 ### Permission Access Changes
 
@@ -71,11 +101,11 @@ Of course, if you have a channel type that already supports `IPermissionContaine
 
 In JDA v4, `GuildChannel#getManager` returned a `ChannelManager` that gave every possible setter for every channel type. This caused for `UnsupportedOperationException` or `IllegalStateException` to be thrown in some cases, such as calling `setBitrate` on a `TextChannel`.
 
-JDA v5 provides type-trimmed channel managers, which provide only the setters that we know *for sure* can work on the given channel. Each of these managers can be found in [the `net.dv8tion.jda.api.managers.channel` package](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/managers/channel/package-summary.html). These all follow the same implement/extension hierarchy as the channels do and map 1:1.
+JDA v5 provides type-trimmed channel managers, which provide only the setters that we know *for sure* can work on the given channel. Each of these managers can be found in [the `net.dv8tion.jda.api.managers.channel` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/channel/package-summary.html). These all follow the same implement/extension hierarchy as the channels do and map 1:1.
 
 ### Independant Stage Channel and News Channel Entities
 
-[`StageChannel`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independant entities. This comes with a number of changes:
+[`StageChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independant entities. This comes with a number of changes:
 
 - `ChannelAction#setNews` has been removed in favor of `ChannelAction.setType`
 - `ChannelManager#getType` was removed in favor of `ChannelManager#getChannel()#getType`
@@ -134,7 +164,7 @@ With context-specific events being removed (such as `GuildMessageReceivedEvent`)
 
 ### Session Events
 
-All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` pakage](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
+All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` pakage](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
 
 Some events relating to sessions have been renamed:
 
@@ -144,7 +174,7 @@ Some events relating to sessions have been renamed:
 
 ### Voice State Events
 
-`GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
+`GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
 
 As an example, to detect when a user leaves a voice channel, you can use `GuildVoiceUpdateEvent#getChannelLeft`. This method will return the channel that the user left, or `null` if the user joined a channel instead.
 
