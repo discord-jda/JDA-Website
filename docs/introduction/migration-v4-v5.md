@@ -11,7 +11,7 @@ Before continuing, we should mention that JDA versions are now distributed via [
 Replace `$latest` with this version ![Maven Version](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue)
 
 ```gradle
-repositores {
+repositories {
     mavenCentral()
 }
 
@@ -164,7 +164,7 @@ With context-specific events being removed (such as `GuildMessageReceivedEvent`)
 
 ### Session Events
 
-All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` pakage](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
+All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
 
 Some events relating to sessions have been renamed:
 
@@ -191,7 +191,7 @@ The following intents have been renamed to align with the API name convention:
 
 ### Chunking and Caching
 
-If you used `ChunkingFilter.ALL` in the past, JDA would atomatically also cache all those members it chunked. However, this is not a very flexible rule and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
+If you used `ChunkingFilter.ALL` in the past, JDA would automatically also cache all those members it chunked. However, this is not a very flexible rule and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
 
 ## Sticker and Emoji Rework
 
@@ -211,7 +211,7 @@ In old versions we always made a distinction between **Emote** and **Emoji** to 
 
 All methods/enums/types using `emote` have also been adjusted to say `emoji`, for example `Guild#retrieveEmotes` is now `Guild#retrieveEmojis` and `CacheFlag.EMOTE` is now `CacheFlag.EMOJI`.
 
-This new design also had the goal to unify all usages of emoji in the API, allowing you to use them for anything that makes use of emoji. For instance, previously there was a distinction between reaction emoji (`MessageReaction.ReactionEmote`) and buttom emoji (`Emoji`), which now both use the same `Emoji` type:
+This new design also had the goal to unify all usages of emoji in the API, allowing you to use them for anything that makes use of emoji. For instance, previously there was a distinction between reaction emoji (`MessageReaction.ReactionEmote`) and button emoji (`Emoji`), which now both use the same `Emoji` type:
 
 ```java
 public void onMessageReactionAdd(MessageReactionAddEvent event) {
