@@ -79,7 +79,7 @@ There are several breaking changes to `GuildChannel` and `ChannelManager`. First
 
 ### Channel Return Types
 
-A lot of classes in JDA used to have specific getters for each channel type, for instance messages had `getTextChannel()` and `getPrivateChannel()`. The goal was to allow easy conversion to concrete types that have more functionality than their abstract counterpart (such as `MessageChannel`). We've introduced new **Channel Union** interfaces to deal with this problem in a more elegant way. Instead of using `foo.getTextChannel()`, you now use `foo.getChannel().asTextChannel()`. The `getChannel()` method now often returns a specific **Union** type such as `MessageChannelUnion`, which doubles as the abstract implementation for `MessageChannel` (allows to send messages) and also downcasting via various `asX()` methods.
+Many classes in JDA had specific getters for each channel type. For example, messages had `getTextChannel()` and `getPrivateChannel()`. The goal was to allow easy conversion to concrete types that have more functionality than their abstract counterpart (such as `MessageChannel`). In JDA v5, we've introduced new **Channel Union** interfaces to deal with this problem in a more elegant way. Instead of using `foo.getTextChannel()`, you now use `foo.getChannel().asTextChannel()`. The `getChannel()` method now often returns a specific **Union** type such as `MessageChannelUnion`, which doubles as the abstract implementation for `MessageChannel` (allows to send messages) and also downcasting via various `asX()` methods.
 
 ### New Channel Attribute Interfaces
 
@@ -89,7 +89,7 @@ Specific channel attributes, such as slowmode and permissions, have been split i
 
 ### Permission Access Changes
 
-With JDA v5 introducing a more butchered down `GuildChannel` interface, `GuildChannel#getPermissionContainer() : IPermissionContainer` has been introduced to make accessing permissions easier. This allows for users to confidently access the entity that dictates the permissions for a given channel without having to check whether the channel actually supports permissions, such as in the case of threads.
+With JDA v5 we reduced the capabilities of the `GuildChannel` interface. The method `GuildChannel#getPermissionContainer` has been introduced to make accessing permissions easier. This allows for users to confidently access the entity that dictates the permissions for a given channel without having to check whether the channel actually supports permissions, such as in the case of threads.
 
 Of course, if you have a channel type that already supports `IPermissionContainer`, you don't need this getter.
 
@@ -103,16 +103,16 @@ JDA v5 provides type-trimmed channel managers, which provide only the setters th
 
 [`StageChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independant entities. This comes with a number of changes:
 
-- `ChannelAction#setNews` has been removed in favor of `ChannelAction.setType`
-- `ChannelManager#getType` was removed in favor of `ChannelManager#getChannel()#getType`
-- `ChannelManager#setNews` has been removed in favor of `ChannelManager#setType`
-- `TextChannel#crosspostMessage` was removed in favor of `NewsChannel#crosspostMessage`
-- `TextChannel#follow` has been removed in favor of `NewsChannel#follow`
-- `TextChannel#isNews` has been removed
+- `ChannelAction#setNews` is replaced by `ChannelAction.setType`
+- `ChannelManager#getType` is replaced by `ChannelManager#getChannel()#getType`
+- `ChannelManager#setNews` is replaced by `ChannelManager#setType`
+- `TextChannel#crosspostMessage` is replaced by `NewsChannel#crosspostMessage`
+- `TextChannel#follow` is replaced by `NewsChannel#follow`
+- `TextChannel#isNews` was removed
 
 ### Other Changes
 
-- `StoreChannel` has been removed
+- `StoreChannel` was removed
 - `PrivateChannel#getUser` is now nullable
 - `MessageChannel#getLatestMessageId` and `MessageChannel#getLatestMessageIdLong` no longer change to null if the message was deleted
 
@@ -120,12 +120,12 @@ JDA v5 provides type-trimmed channel managers, which provide only the setters th
 
 A number of permissions have been renamed, with one permission being removed entirely.
 
-- `Permission.MANAGE_EMOTES` was renamed to `Permission.MANAGE_EMOTES_AND_STICKERS`
-- `Permission.MESSAGE_READ` has been removed in favor of `Permission.VIEW_CHANNEL`
-- `Permission.MESSAGE_WRITE` was renamed to `Permission.MESSAGE_SEND`
-- `Permission.USE_SLASH_COMMANDS` was renamed to `Permission.USE_APPLICATION_COMMANDS`
-- `Permission.USE_PUBLIC_THREADS` was renamed to `Permission.CREATE_PUBLIC_THREADS`
-- `Permission.USE_PRIVATE_THREADS` was renamed to `Permission.CREATE_PRIVATE_THREADS`
+- `Permission.MANAGE_EMOTES` renamed to `Permission.MANAGE_EMOTES_AND_STICKERS`
+- `Permission.MESSAGE_WRITE` renamed to `Permission.MESSAGE_SEND`
+- `Permission.USE_SLASH_COMMANDS` renamed to `Permission.USE_APPLICATION_COMMANDS`
+- `Permission.USE_PUBLIC_THREADS` renamed to `Permission.CREATE_PUBLIC_THREADS`
+- `Permission.USE_PRIVATE_THREADS` renamed to `Permission.CREATE_PRIVATE_THREADS`
+- `Permission.MESSAGE_READ` was removed in favor of `Permission.VIEW_CHANNEL`
 
 ## Event Changes
 
@@ -141,7 +141,6 @@ All message event types for guild messages have been removed. Examples of these 
 - `<Context>MessageDeleteEvent` (ex: `GuildMessageDeleteEvent`)
 - `<Context>MessageEmbedEvent` (ex: `GuildMessageEmbedEvent`)
 - `<Context>MessageReaction<X>Event` (ex: `GuildMessageReactionAddEvent`)
-- etc
 
 Instead, you should use the unified versions of these events:
 
@@ -150,9 +149,8 @@ Instead, you should use the unified versions of these events:
 - `MessageUpdatedEvent`
 - `MessageDeletedEvent`
 - `MessageReaction<X>Event` (ex: `MessageReactionAddEvent`)
-- etc
 
-You can check if a message is from a `Guild` by using `Message#isFromGuild()`.
+You can check if a message is from a `Guild` by using `Message#isFromGuild`.
 
 ### Changes to Specifying GatewayIntents from Event Types
 
@@ -164,9 +162,9 @@ All events that update the gateway session of a bot now extend a common [`Generi
 
 Some events relating to sessions have been renamed:
 
-- `DisconnectEvent` has been renamed to `SessionDisconnectEvent`
-- `ReconnectedEvent` has been renamed to `SessionRecreateEvent`
-- `ResumedEvent` has been renamed to `SessionResumeEvent`
+- `DisconnectEvent` renamed to `SessionDisconnectEvent`
+- `ReconnectedEvent` renamed to `SessionRecreateEvent`
+- `ResumedEvent` renamed to `SessionResumeEvent`
 
 ### Voice State Events
 
@@ -351,9 +349,9 @@ Handling commands only changed slightly with regards to the way you reply. Previ
 - `IMessageEditCallback`<br>
     Which supports direct message edits and deferred message edits (or no-operation) via `editMessage(String)` and `deferEdit()`
 - `IModalCallback`<br>
-    Which supports choice suggestions for auto-complete interactions via `replyChoices(Command.Choice...)`
-- `IAutoCompleteCallback`<br>
     Which supports replying using a Modal via `replyModal(Modal)`
+- `IAutoCompleteCallback`<br>
+    Which supports choice suggestions for auto-complete interactions via `replyChoices(Command.Choice...)`
 
 If you relied on the abstract `Interaction` type to provide any of these methods, you will have to adjust your code to use these new interfaces instead.
 
