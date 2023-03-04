@@ -23,17 +23,30 @@ As part of upgrading to API v10, accessing the following user-generated content 
 - Message Components (`Message#getActionRows`, `Message#getButtons`)
 - Custom Emoji Mentions (`Message#getMentions()#getCustomEmojis()`)
 
-You must enable this intent in your `JDABuilder` **AND** in the Discord Developer Portal for your app if you utilize any of the above methods.
+You must enable this intent in your `JDABuilder` **AND** in the Discord Developer Portal for your app if you utilize any of the above methods. For more information on intents, read the [dedicated wiki page](/using-jda/gateway-intents-and-member-cache-policy).
 
 ## Channel Rework
 
-There are several breaking changes to `GuildChannel` and `ChannelManager`
+There are several breaking changes to `GuildChannel` and `ChannelManager`. Firstly, the packages of most channel interfaces have changed. What was previously simply found in `net.dv8tion.jda.api.entities` is now split over the following packages:
+
+- `net.dv8tion.jda.api.entities.channel`<br>
+    Top level channel enums and the new `Channel` type interface.
+- `net.dv8tion.jda.api.entities.channel.attribute`<br>
+    Interfaces dedicated to specific fields, such as slowmode or permissions. This also has some interfaces for *concepts*, such as copying or categorizing.
+- `net.dv8tion.jda.api.entities.channel.concrete`<br>
+    The bottom level interfaces for exact concrete types, such as `VoiceChannel` and `TextChannel`.
+- `net.dv8tion.jda.api.entities.channel.forums`<br>
+    Types related to `ForumChannel`, such as tags.
+- `net.dv8tion.jda.api.entities.channel.middleman`<br>
+    Abstractions that apply to multiple concrete types, such as `MessageChannel` which covers all message related methods.
+- `net.dv8tion.jda.api.entities.channel.unions`<br>
+    Interfaces used for return values, allowing for downcasting into specific types. They also provided shared features of the specific interface they extend.
 
 ### New Channel Attribute Interfaces
 
 `GuildChannel` now implements `getGuild` and `getManager` *only*. It's meant to serve as a generic type to hold channels from guilds.
 
-Specific channel attributes, such as slow mode, permissions, etc have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
+Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://javadoc.io/doc/net.dv8tion/JDA/latest/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
 
 ### Permission Access Changes
 
