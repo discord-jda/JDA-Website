@@ -103,9 +103,9 @@ In JDA v4, `GuildChannel#getManager` returned a `ChannelManager` that gave every
 
 JDA v5 provides type-trimmed channel managers, which provide only the setters that we know *for sure* can work on the given channel. Each of these managers can be found in [the `net.dv8tion.jda.api.managers.channel` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/channel/package-summary.html). These all follow the same implement/extension hierarchy as the channels do and map 1:1.
 
-### Independant Stage Channel and News Channel Entities
+### Independent Stage Channel and News Channel Entities
 
-[`StageChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independant entities. This comes with a number of changes:
+[`StageChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independent entities. This comes with a number of changes:
 
 - `ChannelAction#setNews` is replaced by `ChannelAction.setType`
 - `ChannelManager#getType` is replaced by `ChannelManager#getChannel()#getType`
@@ -418,3 +418,25 @@ guild.ban(user, 7, TimeUnit.DAYS).reason("Naughty words").queue()
 ```
 
 Kick reasons have also been moved into the `reason(...)` method, for example `guild.kick(user, reason)` turns into `guild.kick(user).reason(reason)`.
+
+## Managers are no longer persistent
+
+All getters for managers in JDA used to be lazy-idempotent, such that calling `getManager()` twice would return the same instance. This has been removed to reduce memory usage an complexity. If you previously relied on this behavior, you will need to adjust your code.
+
+**Old:**
+
+```java
+channel.getManager().setName("new-name");
+channel.getManager().setTitle("here is my title");
+channel.getManager().queue();
+```
+
+**New:**
+
+```java
+// Use method chaining or declare a variable to re-use the manager
+channel.getManager()
+       .setName("new-name")
+       .setTitle("here is my title")
+       .queue();
+```
