@@ -1,7 +1,3 @@
----
-template: migration-v5.html
----
-
 # Migration Guide 4.X to 5.X
 
 This version utilizes Discord API v10, and includes several breaking changes and improvements.

@@ -34,6 +34,7 @@ edit_uri: ../JDA-Website/edit/master/docs/
 extra_css:
 - 'assets/stylesheets/colors.css'
 - 'assets/stylesheets/frontpage.css'
+- 'assets/stylesheets/tasklists.css'
 
 markdown_extensions:
   - admonition
