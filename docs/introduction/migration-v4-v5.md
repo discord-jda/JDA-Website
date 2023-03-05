@@ -189,7 +189,7 @@ The following intents have been renamed to align with the API name convention:
 
 ### Chunking and Caching
 
-If you used `ChunkingFilter.ALL` in the past, JDA would automatically also cache all those members it chunked. However, this is not a very flexible rule and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
+If you used `ChunkingFilter.ALL` in the past, JDA would automatically also cache all those members it chunked. However, this is not a very flexible rule, and we changed this behavior. Instead, the `MemberCachePolicy` will control which members to keep cached after chunking.
 
 ## Sticker and Emoji Rework
 
@@ -267,7 +267,7 @@ This also means that all methods from `message.editMessage(...)` are consistent 
 
 The old `sendFile(...)`/`replyFile(...)` overloads available on `MessageChannel` and interactions has been replaced by a single `sendFiles(...)` method. This new method accepts the `FileUpload` type, which also supports file descriptions (alt text) via `setDescription(...)`. For example, old code such as `sendFile(data, name, AttachmentOption.SPOILER)` is replaced with `sendFiles(FileUpload.fromData(data, name).asSpoiler())`.
 
-Due to changes in the Discord API v10, you can no longer add files to messages without replacing all existing attachments. We could previously support methods such as `MessageAction#addFile` for editing messages, which is no longer possible in API v10. Instead you **must** replace the entire list of attachments, using `MessageEditAction#setAttachments`. Here is an example:
+Due to changes in the Discord API v10, you can no longer add files to messages without replacing all existing attachments. We could previously support methods such as `MessageAction#addFile` for editing messages, which is no longer possible in API v10. Instead, you **must** replace the entire list of attachments, using `MessageEditAction#setAttachments`. Here is an example:
 
 ```java
 // Here "message" is an instance of the Message interface
@@ -287,7 +287,7 @@ message.editMessage("New content")
 
 ### Message Splitting
 
-The old `MessageBuilder#buildAll` has been removed from the builder classes. Instead you can now use the new `SplitUtil` utility class to split any string. For example:
+The old `MessageBuilder#buildAll` has been removed from the builder classes. Instead, you can now use the new `SplitUtil` utility class to split any string. For example:
 
 **Old:**
 
@@ -327,7 +327,7 @@ Additionally, the return type of `Mentions#getChannels` has been adjusted to ret
 
 ## Interaction Rework
 
-To properly handle **Context Menu** and **Auto-complete** interactions, we reworked some of the interaction types. This includes numerous breaking changes to naming conventions and package layouts.
+To properly handle **Context Menu** and **Auto-complete** interactions, we reworked some interaction types. This includes numerous breaking changes to naming conventions and package layouts.
 
 ### Naming Changes
 
@@ -346,7 +346,7 @@ To properly handle **Context Menu** and **Auto-complete** interactions, we rewor
 
 With the introduction of **Context Menu Commands**, we changed how commands are created. Instead of `new CommandData(...)`, you now create a slash command using the factory method `Commands.slash(...)`, which returns a `SlashCommandData` instance that has the familiar methods. You can now also use `Commands.user(...)` and `Commands.message(...)` to create new context menu commands which appear in the right-click menu option named **Apps** in the Discord Client.
 
-Handling commands only changed slightly with regards to the way you reply. Previously, all `Interaction` types had a `reply(...)` or `deferReply(...)` method. This has been changed due to new interaction types like **AutoCompleteInteraction** and **ModalInteraction**. Now, each concrete interaction type implements specific **callback** interfaces such as:
+Handling commands only changed slightly with regard to the way you reply. Previously, all `Interaction` types had a `reply(...)` or `deferReply(...)` method. This has been changed due to new interaction types like **AutoCompleteInteraction** and **ModalInteraction**. Now, each concrete interaction type implements specific **callback** interfaces such as:
 
 - `IReplyCallback`<br>
     Which supports direct message replies and deferred message replies via `reply(String)` and `deferReply()`
@@ -421,7 +421,7 @@ Kick reasons have also been moved into the `reason(...)` method, for example `gu
 
 ## Managers are no longer persistent
 
-All getters for managers in JDA used to be lazy-idempotent, such that calling `getManager()` twice would return the same instance. This has been removed to reduce memory usage an complexity. If you previously relied on this behavior, you will need to adjust your code.
+All getters for managers in JDA used to be lazy-idempotent, such that calling `getManager()` twice would return the same instance. This has been removed to reduce memory usage and complexity. If you previously relied on this behavior, you will need to adjust your code.
 
 **Old:**
 
