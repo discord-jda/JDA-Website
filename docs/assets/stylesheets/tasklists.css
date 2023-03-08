@@ -5,12 +5,12 @@
     --md-custom-color--unverified: #e45050;
 }
 
-.md-typeset [type="checkbox"]:checked + .task-list-indicator:before {
+.md-typeset [type="checkbox"]:checked + span.task-list-indicator:before {
     background-color: var(--md-custom-color--verified);
     mask-image: var(--md-custom-tasklist-icon--checked);
 }
 
-.md-typeset [type="checkbox"]:not(:checked) + .task-list-indicator:before {
+.md-typeset [type="checkbox"]:not(:checked) + span.task-list-indicator:before {
     background-color: var(--md-custom-color--unverified);
     mask-image: var(--md-custom-tasklist-icon--unchecked);
 }
