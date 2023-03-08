@@ -1,0 +1,20 @@
+:root {
+    --md-custom-tasklist-icon--unchecked: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m330 768 150-150 150 150 42-42-150-150 150-150-42-42-150 150-150-150-42 42 150 150-150 150 42 42Zm150 208q-82 0-155-31.5t-127.5-86Q143 804 111.5 731T80 576q0-83 31.5-156t86-127Q252 239 325 207.5T480 176q83 0 156 31.5T763 293q54 54 85.5 127T880 576q0 82-31.5 155T763 858.5q-54 54.5-127 86T480 976Z"/></svg>');
+    --md-custom-tasklist-icon--checked: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" height="48" viewBox="0 96 960 960" width="48"><path d="m346 996-76-130-151-31 17-147-96-112 96-111-17-147 151-31 76-131 134 62 134-62 77 131 150 31-17 147 96 111-96 112 17 147-150 31-77 130-134-62-134 62Zm91-287 227-225-45-41-182 180-95-99-46 45 141 140Z"/></svg>');
+    --md-custom-color--verified: #00e676;
+    --md-custom-color--unverified: #e45050;
+}
+
+.md-typeset [type="checkbox"]:checked + .task-list-indicator:before {
+    background-color: var(--md-custom-color--verified);
+    mask-image: var(--md-custom-tasklist-icon--checked);
+}
+
+.md-typeset [type="checkbox"]:not(:checked) + .task-list-indicator:before {
+    background-color: var(--md-custom-color--unverified);
+    mask-image: var(--md-custom-tasklist-icon--unchecked);
+}
+
+.tabbed-set label.task-list-control {
+    margin: 0 0em;
+}
