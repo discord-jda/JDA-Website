@@ -201,6 +201,7 @@ if (!jda.awaitShutdown(Duration.ofSeconds(10))) {
 
 Alternatively, you can also use `shutdownNow()` immediately and then use `awaitShutdown()`. This will prevent any currently queued requests from executing and immediately stop the threads.
 
+In general, using `/reload` is frowned upon due to its unsafe and buggy nature. It is recommended to use alternative measures to reload your plugin, as recommended in [this article by the WorldEdit author](https://madelinemiller.dev/blog/problem-with-reload/).
 
 
 ### I can't get the previous message content from delete/update
