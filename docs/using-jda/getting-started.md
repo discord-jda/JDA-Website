@@ -13,9 +13,7 @@
     
     ![create bot](https://i.imgur.com/nmOR89M.png)
 
-6. Click **Add Bot** and confirm
-
-7. Make sure to make your bot public, this allows others to invite your bot to your server.
+6. Make sure to make your bot public, this allows others to invite your bot to your server.
 
     ![public bot](https://i.imgur.com/la0JbJi.png)
 
