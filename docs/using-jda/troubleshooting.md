@@ -182,6 +182,28 @@ public class MyListener extends EventListener {
 [Read More](../introduction/events.md)
 
 
+
+### IllegalStateException: zip file closed
+
+This error can occur when trying to reload a plugin in various minecraft frameworks. The cause of this error is a quirk with how plugin loading works, where it disables class loading when disabling the plugin. This causes problems when JDA hasn't finished shutting down all of its internal threads yet.
+
+The best way to handle this is to use [`awaitShutdown`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDA.html#awaitShutdown(java.time.Duration)):
+
+```java
+// Initial shutdown, allowing for some RestActions to still go through
+jda.shutdown();
+// Wait up to 10 seconds for requests to finish
+if (!jda.awaitShutdown(Duration.ofSeconds(10))) {
+   jda.shutdownNow(); // Cancel request queue
+   jda.awaitShutdown(); // Wait until shutdown is complete (indefinitely)
+}
+```
+
+Alternatively, you can also use `shutdownNow()` immediately and then use `awaitShutdown()`. This will prevent any currently queued requests from executing and immediately stop the threads.
+
+In general, using `/reload` is frowned upon due to its unsafe and buggy nature. It is recommended to use alternative measures to reload your plugin, as recommended in [this article by the WorldEdit author](https://madelinemiller.dev/blog/problem-with-reload/).
+
+
 ### I can't get the previous message content from delete/update
 
 When Discord emits a `message_delete` or `message_update` they only provide the new content of the message. Since JDA does not keep a cache of messages it is unable to provide the previous content. Instead you will have to track content of messages yourself.
