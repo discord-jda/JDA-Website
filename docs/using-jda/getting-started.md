@@ -6,16 +6,16 @@
 2. Create an Application
 3. Give the application an awesome name (this will be used as the bots initial username)
     
-    ![name](../assets/images/dashboard_application_name.png)
+    ![name](../assets/images/dashboard/dashboard_application_name.png)
 
 4. Click **Save Changes**
 5. Open the **Bot** tab
     
-    ![create bot](../assets/images/dashboard_bot_tab.png)
+    ![create bot](../assets/images/dashboard/dashboard_bot_tab.png)
 
 6. Make sure to make your bot public, this allows others to invite your bot to your server.
 
-    ![public bot](../assets/images/dashboard_public_bot.png)
+    ![public bot](../assets/images/dashboard/dashboard_public_bot.png)
 
     You only want require code grant enabled if you plan to use an oauth2 flow, the general user will not need this.
 
@@ -23,7 +23,7 @@
 
 1. Retrieve your application/client ID from the **General Information** tab
     
-    ![client id](../assets/images/dashboard_client_id.png)
+    ![client id](../assets/images/dashboard/dashboard_client_id.png)
 
 2. Create an OAuth2 authorization URL (reference [docs](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow)).
     Users who want to use Interaction Commands should also add the `applications.commands` scope.
@@ -44,7 +44,7 @@
 
 1. Retrieve your **Bot Token** from your application dashboard (https://discord.com/developers/applications)
     
-    ![get token](../assets/images/dashboard_get_token.png)
+    ![get token](../assets/images/dashboard/dashboard_get_token.png)
     
     !!! caution
         Note that it is very important not to show this token to anyone, ever.

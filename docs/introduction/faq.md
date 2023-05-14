@@ -286,9 +286,9 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     You can also create a thread dump directly in IntelliJ:
 
-    ![](../assets/images/thread_dump_1.png)
+    ![](../assets/images/ide/thread_dump_1.png)
 
-    ![](../assets/images/thread_dump_2.png)
+    ![](../assets/images/ide/thread_dump_2.png)
 
     This will copy the thread dump to your clipboard and you can save it to a text file.
 
