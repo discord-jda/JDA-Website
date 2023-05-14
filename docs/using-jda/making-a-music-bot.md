@@ -95,7 +95,7 @@ public class MusicBot extends ListenerAdapter
 
 ### More example implementations can be found in existing bots like:
 - AudioEchoExample
-    - [Source](https://github.com/DV8FromTheWorld/JDA/blob/development/src/examples/java/AudioEchoExample.java)
+    - [Source](https://github.com/DV8FromTheWorld/JDA/blob/master/src/examples/java/AudioEchoExample.java)
 - Clarity by [@jagrosh](https://github.com/jagrosh)
     - [GitHub](https://github.com/jagrosh/MusicBot) 
     - [Wiki](https://github.com/jagrosh/MusicBot/wiki) 

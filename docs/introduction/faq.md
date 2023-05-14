@@ -42,7 +42,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     When a bot reaches 2500 joined guilds, Discord will refuse to start a connection with it.
     <br>In order to connect bots of a size like that it has to **shard** the load. It is recommended to have 1000 guilds per shard.
-    More information can be found in our [README](https://github.com/DV8FromTheWorld/JDA/tree/master/README.md).
+    More information can be found in our [README](https://github.com/DV8FromTheWorld/JDA/blob/master/README.md#sharding-a-bot).
 
 ??? question "How can I change the `Playing...`?"
 
