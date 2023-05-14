@@ -202,7 +202,7 @@ Slash command autocompletion is a feature that allows users to begin typing argu
 
 Any slash command arguments using the `String`, `Integer` or `Number` types can be autocompleted.  By default, options are not autocompleted.  In order to make an option autocompleted, `OptionData#setAutoComplete(true)` may be used.
 
-![Example Autocomplete](https://i.imgur.com/IUTRfwo.png)
+![Example Autocomplete](../assets/images/autocomplete_example.png)
 
 #### Handling Autocomplete
 
@@ -267,9 +267,9 @@ Autocompletions can suggest up to 25 options, and users do not have to send a co
 Context Menu commands are a special type of command that can be invoked on a user or message by right-clicking on them.
 These commands take no arguments, and are useful for providing a quick way to perform actions on a user or message.
 
-![Example User Context Menu](https://i.imgur.com/hK2dU8K.png)
+![Example User Context Menu](../assets/images/user_context_menu_example.png)
 
-![Example Message Context Menu](https://i.imgur.com/gOEHGCh.png)
+![Example Message Context Menu](../assets/images/message_context_menu_example.png)
 
 !!! example
 
@@ -439,7 +439,7 @@ String Select Menus support up to 25 options.
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
 
-![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
+![Example Select Menu With A Default Value](../assets/images/string_select_menu_example.png)
 
 #### Entity Select Menus
 
@@ -573,7 +573,7 @@ Both interaction events provide the values that were selected by the user.
 
 Modals are pop-ups that appear in a user's Discord client.
 
-![Example Modal](https://i.imgur.com/fjqQNrm.png)
+![Example Modal](../assets/images/modal_example.png)
 
 Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
 
