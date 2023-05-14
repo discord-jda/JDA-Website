@@ -151,7 +151,7 @@
 
         ![Maven Update](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/13-mvnUpdate.png)  
 
-    1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA/javadoc/) or see examples at the [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java) page.
+    1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/) or see examples at the [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java) page.
     1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 

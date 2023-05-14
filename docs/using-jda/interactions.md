@@ -377,7 +377,7 @@ Each non-link button requires such an ID in order to be used.
                         .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
                             Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
                               .withEmoji(Emoji.fromFormatted("<:github:849286315580719104>")), // Link Button with label and emoji
-                            Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                            Button.link("https://ci.dv8tion.net/job/JDA5/javadoc/", "Javadocs")) // Link Button with only a label
                         .queue();
                 }
             }
@@ -407,7 +407,7 @@ Each non-link button requires such an ID in order to be used.
                         .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
                             Button.link("https://github.com/DV8FromTheWorld/JDA", "GitHub")
                                 .withEmoji(Emoji.fromFormatted("<:github:849286315580719104>")),  // Link Button with label and emoji
-                            Button.link("https://ci.dv8tion.net/job/JDA/javadoc/", "Javadocs")) // Link Button with only a label
+                            Button.link("https://ci.dv8tion.net/job/JDA5/javadoc/", "Javadocs")) // Link Button with only a label
                         .queue()
                 }
             }

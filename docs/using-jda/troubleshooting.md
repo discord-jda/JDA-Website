@@ -91,7 +91,7 @@ When JDA encounters an issue while executing a `RestAction` it will emit an erro
     }
     ```
 
-You can use [ErrorHandler](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/exceptions/ErrorHandler.html) to handle or ignore specific [ErrorResponse](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/ErrorResponse.html) failures.
+You can use [ErrorHandler](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/exceptions/ErrorHandler.html) to handle or ignore specific [ErrorResponse](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/requests/ErrorResponse.html) failures.
 
 ### Nothing happens when using X
 

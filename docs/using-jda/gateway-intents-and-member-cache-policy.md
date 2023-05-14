@@ -96,17 +96,17 @@ To handle this new default, we now have a [`MemberCachePolicy`][MemberCachePolic
 
 We also provide a few reasonable implementations to choose from and apply using [`setMemberCachePolicy`][setMemberCachePolicy]:
 
-- [All](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ALL)
+- [All](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ALL)
     Will keep all members cached (requires `GUILD_MEMBERS` intents)
-- [Online](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ONLINE)
+- [Online](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ONLINE)
     Will keep all online members cached (requires `GUILD_PRESENCES` intent)
-- [Voice](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#VOICE)
+- [Voice](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#VOICE)
     Will keep all voice members cached (requires `GUILD_VOICE_STATES` intent)
-- [Owner](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
+- [Owner](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
     Will keep the guild owner cached
-- [Pending](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
+- [Pending](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
     Will cache the members which have not passed membership screening yet (requires `GUILD_MEMBERS` intents)
-- [None](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
+- [None](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
     Will only keep the self member cached and nobody else
 
 It is important to understand the difference between *cache* and *load* in this system.
