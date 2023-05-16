@@ -25,7 +25,7 @@ There are many limitations to ephemeral messages, a few of which are listed belo
 
 !!! example
 
-    ![EphemeralMessage](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/interactions/EphemeralMessage.png)
+    ![EphemeralMessage](../assets/images/interactions/EphemeralMessage.png)
 
 You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience, you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
 
@@ -35,7 +35,7 @@ You can only create ephemeral messages with interactions. For example with `defe
 
 A slash command is something you might already be familiar with from the olden times of Discord. Commands such as `/shrug` or `/me` have existed for quite a long time. With Slash Command interactions you can now make your very own commands like this! But these commands come with some limitations, which I have explained in this gist: [Slash Command Limitations](https://gist.github.com/MinnDevelopment/b883b078fdb69d0e568249cc8bf37fe9)
 
-![Example Slash Commands](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/SlashCommands.png)
+![Example Slash Commands](../assets/images/interactions/SlashCommands.png)
 
 All of these commands are used through the interactions API. They do not require the user to send an actual message in the channel and you don't have to do string parsing either.
 
@@ -105,7 +105,7 @@ The flow of a slash command response is as follows:
     This means you need to either **reply** or **deferReply**. You only have ***3 SECONDS*** to acknowledge a command.
     Since some commands may take longer than 3 seconds you may want to use `deferReply` to have more time for handling. This will instead send a `Thinking...` message to channel which is later updated by a followup message (see step 2).
 
-    ![Example Thinking](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/DeferredReply.gif)
+    ![Example Thinking](../assets/images/interactions/DeferredReply.gif)
 
 2. Send followup messages
 
@@ -351,7 +351,7 @@ Keep in mind that these Component IDs **must be unique across all components in 
 
 Each button can be enabled or disabled, have a specific style, label, and emoji:
 
-![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
+![Example Button Styles](../assets/images/interactions/ButtonExamples.png)
 
 #### Handling ButtonInteractionEvent
 
