@@ -25,7 +25,7 @@ There are many limitations to ephemeral messages, a few of which are listed belo
 
 !!! example
 
-    ![EphemeralMessage](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/interactions/EphemeralMessage.png)
+    ![EphemeralMessage](../assets/images/interactions/EphemeralMessage.png)
 
 You can only create ephemeral messages with interactions. For example with `deferReply(true)`, `reply(content).setEphemeral(true)`, or `getHook().sendMessage(content).setEphemeral(true)`. For convenience, you can also configure the `InteractionHook` to default to ephemeral messages with `hook.setEphemeral(true)`.
 
@@ -35,7 +35,7 @@ You can only create ephemeral messages with interactions. For example with `defe
 
 A slash command is something you might already be familiar with from the olden times of Discord. Commands such as `/shrug` or `/me` have existed for quite a long time. With Slash Command interactions you can now make your very own commands like this! But these commands come with some limitations, which I have explained in this gist: [Slash Command Limitations](https://gist.github.com/MinnDevelopment/b883b078fdb69d0e568249cc8bf37fe9)
 
-![Example Slash Commands](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/SlashCommands.png)
+![Example Slash Commands](../assets/images/interactions/SlashCommands.png)
 
 All of these commands are used through the interactions API. They do not require the user to send an actual message in the channel and you don't have to do string parsing either.
 
@@ -105,7 +105,7 @@ The flow of a slash command response is as follows:
     This means you need to either **reply** or **deferReply**. You only have ***3 SECONDS*** to acknowledge a command.
     Since some commands may take longer than 3 seconds you may want to use `deferReply` to have more time for handling. This will instead send a `Thinking...` message to channel which is later updated by a followup message (see step 2).
 
-    ![Example Thinking](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/DeferredReply.gif)
+    ![Example Thinking](../assets/images/interactions/DeferredReply.gif)
 
 2. Send followup messages
 
@@ -202,7 +202,7 @@ Slash command autocompletion is a feature that allows users to begin typing argu
 
 Any slash command arguments using the `String`, `Integer` or `Number` types can be autocompleted.  By default, options are not autocompleted.  In order to make an option autocompleted, `OptionData#setAutoComplete(true)` may be used.
 
-![Example Autocomplete](https://i.imgur.com/IUTRfwo.png)
+![Example Autocomplete](../assets/images/interactions/autocomplete_example.png)
 
 #### Handling Autocomplete
 
@@ -267,9 +267,9 @@ Autocompletions can suggest up to 25 options, and users do not have to send a co
 Context Menu commands are a special type of command that can be invoked on a user or message by right-clicking on them.
 These commands take no arguments, and are useful for providing a quick way to perform actions on a user or message.
 
-![Example User Context Menu](https://i.imgur.com/hK2dU8K.png)
+![Example User Context Menu](../assets/images/interactions/user_context_menu_example.png)
 
-![Example Message Context Menu](https://i.imgur.com/gOEHGCh.png)
+![Example Message Context Menu](../assets/images/interactions/message_context_menu_example.png)
 
 !!! example
 
@@ -351,7 +351,7 @@ Keep in mind that these Component IDs **must be unique across all components in 
 
 Each button can be enabled or disabled, have a specific style, label, and emoji:
 
-![Example Button Styles](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/52377f69d1f3bfba909c51a449ac6b258f606956/assets/wiki/interactions/ButtonExamples.png)
+![Example Button Styles](../assets/images/interactions/ButtonExamples.png)
 
 #### Handling ButtonInteractionEvent
 
@@ -439,14 +439,14 @@ String Select Menus support up to 25 options.
 Each option can have its own label, description, and emoji.
 There can be multiple options selected and set as default.
 
-![Example Select Menu With A Default Value](https://i.imgur.com/44q006n.png)
+![Example Select Menu With A Default Value](../assets/images/interactions/string_select_menu_example.png)
 
 #### Entity Select Menus
 
 Entity Select Menus do not support custom choices. Instead, they derive their choices from mentionable Discord entities
 such as `User`s, `Channel`s, etc.
 
-![Example Entity Select Menu for Roles](../assets/images/entity_select_example.png)
+![Example Entity Select Menu for Roles](../assets/images/interactions/entity_select_example.png)
 
 You can specify which entity types you wish to appear as choices by specifying the `SelectTarget`s in `EntitySelectMenu.create`. If you create an entity select menu with channel type targets, the same menu may not utilize user or role select targets, and vice versa.
 
@@ -573,7 +573,7 @@ Both interaction events provide the values that were selected by the user.
 
 Modals are pop-ups that appear in a user's Discord client.
 
-![Example Modal](https://i.imgur.com/fjqQNrm.png)
+![Example Modal](../assets/images/interactions/modal_example.png)
 
 Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
 

@@ -7,16 +7,16 @@
     1. Navigate to "New Project" from any view
     1. Select Gradle -> Java as the type of Project and make sure the correct JDK is selected (Java 8 or higher)
 
-        ![new_project](https://i.imgur.com/cEOAzz2.png)
+        ![new_project](../assets/images/ide/new_ij/new_ij_new_project.png)
 
     1. Provide a title for your project and define your GroupId and optionally the ArtifactId and initial Version in the "Artifact Coordinates" subsection
 
-        ![artifact_setup](https://i.imgur.com/Vn1Ocm1.png)
+        ![artifact_setup](../assets/images/ide/new_ij/new_ij_artifact_setup.png)
 
     1. Optionally enable Auto-Importing of the Gradle file in the Gradle settings. This is also the place where you could switch the runner for your project (By default, Gradle is used to run your application and tests)
 
-        ![gradle_settings](https://i.imgur.com/a99Nj1G.png)
-        ![auto_import](https://i.imgur.com/sT6sZof.png)
+        ![gradle_settings](../assets/images/ide/new_ij/new_ij_gradle_settings.png)
+        ![auto_import](../assets/images/ide/new_ij/new_ij_auto_import.png)
 
     1. Let IntelliJ index your project.
     1. Open `build.gradle`
@@ -72,18 +72,18 @@
     1. Open the Project view
     1. Create a new Project
 
-        ![project](https://i.imgur.com/webTCoy.png)
+        ![project](../assets/images/ide/old_ij/old_ij_new_project.png)
 
     1. Select `Gradle` > `Java`
     1. Configure your SDK to use Java 1.8
 
-        ![gradle](https://i.imgur.com/qpdkFph.png)
+        ![gradle](../assets/images/ide/old_ij/old_ij_gradle.png)
 
     1. Click `Next` and fill in your groupId and your artifactId. Example: `me.name` and `bot`
 
-        ![artifact](https://i.imgur.com/wK89v0C.png)
+        ![artifact](../assets/images/ide/old_ij/old_ij_artifact.png)
 
     1. Check `Use auto-import` and click `Next` > `Finish`
 
-        ![settings](https://i.imgur.com/ANSIjtw.png)
+        ![settings](../assets/images/ide/old_ij/old_ij_settings.png)
         
