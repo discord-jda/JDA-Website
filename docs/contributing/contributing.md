@@ -137,7 +137,7 @@ based on the current `upstream/master` changes!
     ![open pull request](../assets/images/open_pull_request.png)
 
 4. Set base branch to 
-    `base fork: DV8FromTheWorld/JDA` `base: development` (OR `base: docs/development`)
+    `base fork: DV8FromTheWorld/JDA` `base: master`
 
 5. Allow edits from Maintainers
 
