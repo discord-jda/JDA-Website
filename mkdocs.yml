@@ -1,5 +1,5 @@
 site_name: JDA Wiki
-copyright: 'Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/DV8FromTheWorld/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>'
+copyright: 'Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/discord-jda/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>'
 
 theme:
   custom_dir: overrides
