@@ -145,7 +145,7 @@ If the class is not already imported, use the fully qualified name when you are 
 When you link to an external resource (such as the official API docs) you can use the `<a>` tag to create
 a hyperlink.
 <br>It is recommended to use the `target="_blank"` tag.
-<br>Example: `<a href="https://ci.dv8tion.net/job/JDA" target="_blank">Download JDA</a>`
+<br>Example: `<a href="https://github.com/discord-jda/JDA/releases/latest" target="_blank">Download JDA</a>`
 
 **Hint**: Sometimes it helps to link other methods in the description and then also including an `@see #otherMethod` at the very bottom.
 

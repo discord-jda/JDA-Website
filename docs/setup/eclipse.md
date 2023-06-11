@@ -159,8 +159,7 @@
 === "Jar Setup"
 
     1. Download the latest (Binary) version of JDA (with Dependencies):
-        - (Recommended) <https://github.com/discord-jda/JDA/releases/>
-        - (Latest/Dev) <https://ci.dv8tion.net/job/JDA5/>
+        - <https://github.com/discord-jda/JDA/releases/>
     1. Create a new Java Project
 
         ![New Java Project](../assets/images/ide/eclipse/20-newJavaProject.png)

@@ -67,18 +67,15 @@ If you have any suggestions/questions/feedback for this wiki, please visit the #
 You can get the latest released builds here:
 [Promoted Downloads](https://github.com/discord-jda/JDA/releases)
 
-If you want the most up-to-date builds, you can get them here: [Latest Build Downloads](https://ci.dv8tion.net/job/JDA5/)
+If you want the most up-to-date builds, you can get them here: [Latest Build Downloads](https://github.com/discord-jda/JDA/releases/latest)
 
 ## Docs
 Javadocs are available in both jar format and web format.<br>
 The jar format is available on the [Promoted Downloads](https://github.com/discord-jda/JDA/releases) page or on any of the
-build pages of the [legacy v4 Downloads](https://ci.dv8tion.net/job/JDA/) or [v5 Downloads](https://ci.dv8tion.net/job/JDA5/).<br>
+build pages of the [legacy v4 Downloads](https://ci.dv8tion.net/job/JDA/) or [v5 Downloads](https://github.com/discord-jda/JDA/releases/latest).<br>
 <br>
 The web format allows for viewing of the [Latest Docs](https://docs.jda.wiki/) or [legacy Docs](https://ci.dv8tion.net/job/JDA/javadoc/) 
-and also viewing of each individual build's javadoc. To view the javadoc for a specific build, you will need to go to that build's page
-on [the build server](https://ci.dv8tion.net/job/JDA5/) and download the javadoc jar for the specific build.<br>
-A shortcut would be: `https://ci.dv8tion.net/job/JDA5/BUILD_NUMBER_GOES_HERE`, you just need to replace the 
-"BUILD_NUMBER_GOES_HERE" with the build you want.<br>
+and also viewing of each individual build's javadoc. To view the javadoc for a specific build, you will need to go to [the GitHub release](https://github.com/discord-jda/JDA/releases) for your version and download the javadoc jar for the specific build.<br>
 Once you have the jar extract the files with the zip tool of your preference (winrar or 7zip, etc.) and open the `index.html` file with your internet browser.
 
 ## Getting Help
