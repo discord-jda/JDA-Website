@@ -6,7 +6,7 @@
     - [Netbeans](../setup/netbeans.md)
 
 2. [Set up JDA](getting-started.md)
-3. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
+3. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/discord-jda/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
     - If you don't want to implement it yourself, use [LavaPlayer](#using-lavaplayer)
 
 ### Connecting to a VoiceChannel
@@ -95,7 +95,7 @@ public class MusicBot extends ListenerAdapter
 
 ### More example implementations can be found in existing bots like:
 - AudioEchoExample
-    - [Source](https://github.com/DV8FromTheWorld/JDA/blob/master/src/examples/java/AudioEchoExample.java)
+    - [Source](https://github.com/discord-jda/JDA/blob/master/src/examples/java/AudioEchoExample.java)
 - Clarity by [@jagrosh](https://github.com/jagrosh)
     - [GitHub](https://github.com/jagrosh/MusicBot) 
     - [Wiki](https://github.com/jagrosh/MusicBot/wiki) 

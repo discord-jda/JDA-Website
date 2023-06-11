@@ -254,7 +254,7 @@ It is also possible that you get spammed by this warning if you use `ChunkingFil
 
 There are many ways to retrieve members: [Loading Members](gateway-intents-and-member-cache-policy.md#loading-members)
 
-I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
+I explained this in a bit more detail in issue [#1290](https://github.com/discord-jda/JDA/issues/1290)
 
 To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests, which can be a significant boost to reduce startup time and potentially reduce these warnings.
 

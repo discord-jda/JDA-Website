@@ -10,7 +10,7 @@ It is still highly recommended that you use a build tool such as [Gradle](https:
 
 ### Getting the Necessary Info
 
-Let's take the [PR for the Discord modals](https://github.com/DV8FromTheWorld/JDA/pull/2024) as an example.
+Let's take the [PR for the Discord modals](https://github.com/discord-jda/JDA/pull/2024) as an example.
 
 ![img.png](../assets/images/github_pr.png){width="720"}
 

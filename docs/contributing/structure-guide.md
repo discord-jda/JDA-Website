@@ -151,7 +151,7 @@ a hyperlink.
 
 ### Case: RestAction return type
 
-When your method makes use of [RestAction](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/api/requests/RestAction.java)
+When your method makes use of [RestAction](https://github.com/discord-jda/JDA/blob/master/src/main/java/net/dv8tion/jda/api/requests/RestAction.java)
 you have to document possible `ErrorResponses` that can follow from this request:
 
 ```java
@@ -173,7 +173,7 @@ you have to document possible `ErrorResponses` that can follow from this request
 
 !!! note
     Always make these your last description paragraph
-    <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/ad66a6939398e0c60ff01dd5e0ec7bc465c89209/src/main/java/net/dv8tion/jda/api/entities/channel/middleman/MessageChannel.java#L733-L749)
+    <br>Taken from: [MessageChannel](https://github.com/discord-jda/JDA/blob/ad66a6939398e0c60ff01dd5e0ec7bc465c89209/src/main/java/net/dv8tion/jda/api/entities/channel/middleman/MessageChannel.java#L733-L749)
 
 The `@return` for simple RestActions is as follows:
 ```java

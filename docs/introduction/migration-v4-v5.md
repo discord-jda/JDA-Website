@@ -32,9 +32,9 @@ Replace `VERSION` with the latest version ![Maven Version](https://img.shields.i
 
 This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as [ThreadChannels](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html). Here are some useful resources to learn more if you are curious about all the new things we added:
 
-- [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java)
+- [Examples](https://github.com/discord-jda/JDA/tree/master/src/examples/java)
 - [JDA 5 Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/)
-- [Releases](https://github.com/DV8FromTheWorld/JDA/releases)
+- [Releases](https://github.com/discord-jda/JDA/releases)
 
 ## Extensions That Support 5.X
 
@@ -226,7 +226,7 @@ You also now use `Emoji` instances for reactions. What was previously `message.a
 - `Emoji.fromFormatted`<br>
     Parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
 
-You can see the full list of breaking changes in [#2117](https://github.com/DV8FromTheWorld/JDA/pull/2117).
+You can see the full list of breaking changes in [#2117](https://github.com/discord-jda/JDA/pull/2117).
 
 ## Message Send/Edit Rework
 

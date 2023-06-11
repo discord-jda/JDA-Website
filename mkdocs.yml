@@ -28,7 +28,7 @@ theme:
       name: Switch to light mode
 
 repo_name: JDA
-repo_url: https://github.com/DV8FromTheWorld/JDA
+repo_url: https://github.com/discord-jda/JDA
 edit_uri: ../JDA-Website/edit/master/docs/
 
 extra_css:
