@@ -7,7 +7,7 @@ description: Help JDA improve by contributing to it.
 
 
 1. Create a Fork (If you already have a local repository skip to step 3)
-    <br>![Create Fork](https://i.imgur.com/DqDWls4.png)
+    <br>![Create Fork](../assets/images/create_fork.png)
 
 2. Clone Repository
    
@@ -134,13 +134,13 @@ based on the current `upstream/master` changes!
 
 3. Open Pull-Request
 
-    ![open pull request](https://i.imgur.com/YpRISyh.png)
+    ![open pull request](../assets/images/open_pull_request.png)
 
 4. Set base branch to 
-    `base fork: DV8FromTheWorld/JDA` `base: development` (OR `base: docs/development`)
+    `base fork: DV8FromTheWorld/JDA` `base: master`
 
 5. Allow edits from Maintainers
 
 6. Done! Just click **Create pull request** and await a review by one of the maintainers!
 
-    ![Example Pull-Request](https://i.imgur.com/ELZJSn2.png)
+    ![Example Pull-Request](../assets/images/example_pull_request.png)

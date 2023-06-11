@@ -250,7 +250,7 @@ able to continue with other tasks in the meantime.
         // note how we used queue in the end because we don't need it sequenced anymore.
     }
     ```
-    This is called a [callback hell](https://i.imgur.com/6cfYoU3.png)
+    This is called a [callback hell](../assets/images/callback_hell.png)
     ```java
     public Message sendAndLog(MessageChannel channel, String message)
     {

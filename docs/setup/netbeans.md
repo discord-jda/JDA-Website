@@ -6,10 +6,10 @@
 
     1. **Make a new Maven Java Application**
         
-        ![MavenApp](https://i.imgur.com/smGUSi6.png)
+        ![MavenApp](../assets/images/ide/netbeans/netbeans_maven_app.png)
     1. **Open up the pom.xml in the Project Files**
         
-        ![Pom](https://i.imgur.com/f58Dbjy.png)
+        ![Pom](../assets/images/ide/netbeans/netbeans_pom.png)
     1. **Add JDA as a dependency**
 
         !!! note inline end
@@ -36,24 +36,24 @@
         
         - <https://ci.dv8tion.net/job/JDA5/>
         
-        ![Downloads](http://i.imgur.com/fNN4vOf.png)
+        ![Downloads](../assets/images/ide/netbeans/netbeans_jda_downloads.png)
 
     1. **Make a new Java Application**
         
-        ![JavaApp](http://i.imgur.com/9mOkwmA.png)
+        ![JavaApp](../assets/images/ide/netbeans/netbeans_java_app.png)
 
     1. **Right-click the `Libraries` folder in your project, and select `Add JAR/Folder...`**
         
-        ![Jar](http://i.imgur.com/5CZIJYF.png)
+        ![Jar](../assets/images/ide/netbeans/netbeans_jar.png)
 
     1. **Find the `JDA...withDependencies.jar` and add it.**
 
     1. **Right-click on the newly-added Jar file, and select `Edit...`**
         
-        ![Edit](http://i.imgur.com/Jvt8574.png)
+        ![Edit](../assets/images/ide/netbeans/netbeans_edit.png)
 
     1. **Select `Browse...` and add the javadoc jar**
         
-        ![Browse](http://i.imgur.com/bm51esA.png)
+        ![Browse](../assets/images/ide/netbeans/netbeans_browse.png)
     1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)

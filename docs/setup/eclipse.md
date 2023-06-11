@@ -14,23 +14,23 @@
 
     1. Right click within *Package/Project Explorer* and select **New > Other...**
 
-        ![New Gradle Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/01-newProject.png)
+        ![New Gradle Project](../assets/images/ide/eclipse/01-newProject.png)
 
     1. In the *Gradle* folder, select **Gradle Project**
 
-        ![Gradle Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/02-gradleProject.png)
+        ![Gradle Project](../assets/images/ide/eclipse/02-gradleProject.png)
 
     1. Type a name for your Project and click on *Finish*. Your setup should look like this at this point:
 
-        ![Folder Structure](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/03-projectOverview.png)
+        ![Folder Structure](../assets/images/ide/eclipse/03-projectOverview.png)
 
     1. Delete the classes within `src/main/java` and `src/test/java`
 
-        ![Files To Delete](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/04-deleteFiles.png)
+        ![Files To Delete](../assets/images/ide/eclipse/04-deleteFiles.png)
 
     1. Open up and edit the file `build.gradle`
 
-        ![Build_Gradle Location](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/05-gradleBuildFile.png)
+        ![Build_Gradle Location](../assets/images/ide/eclipse/05-gradleBuildFile.png)
 
     1. Replace its content with the following code:
 
@@ -61,7 +61,7 @@
     1. Adjust the version of JDA you want to use (see dependencies-section of file) and fill in your Main-Class as soon as you have one (the one containing your `public static void main(String[] args)` method)
     1. Save the file and do the following: *Right click your project > Gradle > Refresh All*
 
-        ![Refresh Gradle Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/06-gradleRefresh.png)
+        ![Refresh Gradle Project](../assets/images/ide/eclipse/06-gradleRefresh.png)
 
     1. Once all the dependencies have been downloaded, create your desired packages/classes in `src/main/java` and start coding!
     1. To build your project you can run `gradlew shadowJar` in a terminal of your project root, and it will produce a jar filled with your compiled code and JDA included in a single jar file! The jar can be found in `build/libs`
@@ -75,15 +75,15 @@
 
     1. Create a new Maven project. (File -> New -> Other -> Maven -> Maven Project)
 
-        ![New Maven Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/10-newProject.png)
+        ![New Maven Project](../assets/images/ide/eclipse/10-newProject.png)
 
     1. Check the `Create a simple project` box on the next page as we don't need to worry about archetypes.
 
-        ![Check Simple Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/11-checkSimpleProject.png)
+        ![Check Simple Project](../assets/images/ide/eclipse/11-checkSimpleProject.png)
 
     1. Add a groupId, artifactId and a name. Make sure you try to follow the [naming conventions](https://maven.apache.org/guides/mini/guide-naming-conventions.html) while you are at this step. The result could look like the image below.
 
-        ![Project Values](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/12-mvnValues.png)
+        ![Project Values](../assets/images/ide/eclipse/12-mvnValues.png)
 
     1. Now let's start configuring it, first off, open up your pom.xml and add the following lines right after `</description>`
     ```xml
@@ -149,7 +149,7 @@
 
     1. After that, the project must be updated to download the dependencies. *Right click > Maven > Update Project*
 
-        ![Maven Update](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/13-mvnUpdate.png)  
+        ![Maven Update](../assets/images/ide/eclipse/13-mvnUpdate.png)  
 
     1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/) or see examples at the [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java) page.
     1. [Setup Logback](./logging.md)
@@ -163,30 +163,30 @@
         - (Latest/Dev) <https://ci.dv8tion.net/job/JDA5/>
     1. Create a new Java Project
 
-        ![New Java Project](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/20-newJavaProject.png)
+        ![New Java Project](../assets/images/ide/eclipse/20-newJavaProject.png)
 
     1. Fill out the bot name, and set it to Java 8 (or above if available). This option might be set automatically when the `Use default location` box is checked.
 
-        ![Java 8](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/21-java8.png)
+        ![Java 8](../assets/images/ide/eclipse/21-java8.png)
 
     1. Right click the project, go to **Properties**
     1. Click on **Java Build Path**, then click on **Libraries**, then on **Classpath**, **Add External JARs...**
 
-        ![Add External Jars](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/22-addExternalJars.png)
+        ![Add External Jars](../assets/images/ide/eclipse/22-addExternalJars.png)
 
     1. Add your downloaded **JDA-withDependencies-x.x.x_xxx.jar** and expand its properties
     - If you don't want Javadoc and source annotations, skip to 11 (not recommended).
 
-        ![Add External Jars](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/23-sourceAttachment.png)
+        ![Add External Jars](../assets/images/ide/eclipse/23-sourceAttachment.png)
 
     1. Click on **Source Attachment**, then on **Edit...**, then mark **External Locations** and click on **External File**
 
-        ![External File](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/24-externalFile.png)
+        ![External File](../assets/images/ide/eclipse/24-externalFile.png)
 
     1. Here, add your **JDA-x.x.x_xxx-sources.jar** and click on **OK**
     1. Next, click on **Javadoc Location**, then on **Edit...**, then mark **Javadoc in archive** and click on **Browse**
 
-        ![Javadoc](https://raw.githubusercontent.com/DV8FromTheWorld/JDA/assets/assets/wiki/setup/eclipse/25-javaDocs.png)
+        ![Javadoc](../assets/images/ide/eclipse/25-javaDocs.png)
 
     1. Here, add your **JDA-x.y.z-www.p-javadoc.jar** and click on **OK**
     1. [Setup Logback](./logging.md)
