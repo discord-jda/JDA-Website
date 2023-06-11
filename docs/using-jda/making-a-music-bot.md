@@ -12,15 +12,15 @@
 ### Connecting to a VoiceChannel
 
 1. Getting a VoiceChannel (`guild` references an instance of `Guild`)
-    - By the channel id: [`guild.getVoiceChannelById(CHANNEL_ID)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/attribute/IGuildChannelContainer.html#getVoiceChannelById(long))
+    - By the channel id: [`guild.getVoiceChannelById(CHANNEL_ID)`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/attribute/IGuildChannelContainer.html#getVoiceChannelById(long))
     <br>`VoiceChannel myChannel = guild.getVoiceChannelById(CHANNEL_ID);`
-    - By the channel name: [`guild.getVoiceChannelsByName(CHANNEL_NAME, true)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/attribute/IGuildChannelContainer.html#getVoiceChannelsByName(java.lang.String,boolean))
+    - By the channel name: [`guild.getVoiceChannelsByName(CHANNEL_NAME, true)`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/attribute/IGuildChannelContainer.html#getVoiceChannelsByName(java.lang.String,boolean))
     <br>`VoiceChannel myChannel = guild.getVoiceChannelsByName(CHANNEL_NAME, true).get(0);`
-    - By the voice state of a member [`member.getVoiceState().getChannel()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/GuildVoiceState.html#getChannel())
+    - By the voice state of a member [`member.getVoiceState().getChannel()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/GuildVoiceState.html#getChannel())
     <br>`VoiceChannel myChannel = member.getVoiceState().getChannel();`
-2. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
+2. Retrieve the [`AudioManager`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
     <br>`AudioManager audioManager = guild.getAudioManager();`
-3. Open an audio connection [`audioManager.openAudioConnection()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.VoiceChannel)) 
+3. Open an audio connection [`audioManager.openAudioConnection()`](https://docs.jda.wiki/net/dv8tion/jda/api/managers/AudioManager.html#openAudioConnection(net.dv8tion.jda.api.entities.VoiceChannel)) 
     <br>`audioManager.openAudioConnection(myChannel);`
 
 !!! note
@@ -32,11 +32,11 @@
 !!! note inline end
     For LavaPlayer read [here](#using-lavaplayer)
 
-1. Retrieve the [`AudioManager`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
+1. Retrieve the [`AudioManager`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#getAudioManager()) 
    <br>`AudioManager audioManager = guild.getAudioManager();`
-2. Create a **new** [AudioSendHandler](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/audio/AudioSendHandler.html) instance for your implementation. 
+2. Create a **new** [AudioSendHandler](https://docs.jda.wiki/net/dv8tion/jda/api/audio/AudioSendHandler.html) instance for your implementation. 
 3. Register your AudioSendHandler: 
-  [`audioManager.setSendingHandler(myAudioSendHandler)`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/AudioManager.html#setSendingHandler(net.dv8tion.jda.api.audio.AudioSendHandler))
+  [`audioManager.setSendingHandler(myAudioSendHandler)`](https://docs.jda.wiki/net/dv8tion/jda/api/managers/AudioManager.html#setSendingHandler(net.dv8tion.jda.api.audio.AudioSendHandler))
     <br>You may only use __one__ AudioSendHandler per Guild and not use the same instance on another Guild! 
     <br>Doing that will result in speedup due to multiple send threads pulling from the same instance!
 

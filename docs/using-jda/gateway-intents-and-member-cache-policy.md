@@ -1,15 +1,15 @@
-[GatewayIntent]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html
-[createDefault]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#createDefault(java.lang.String)
-[createLight]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#createLight(java.lang.String)
-[create]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#create(java.lang.String,net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
-[CacheFlag]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/cache/CacheFlag.html
-[GatewayIntent.DEFAULT]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/requests/GatewayIntent.html#DEFAULT
-[enableCache]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
-[disableCache]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#disableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
-[enableIntents]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#enableIntents(net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
-[MemberCachePolicy]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html
-[setMemberCachePolicy]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html#setMemberCachePolicy(net.dv8tion.jda.api.utils.MemberCachePolicy)
-[loadMembers]: https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#loadMembers()
+[GatewayIntent]: https://docs.jda.wiki/net/dv8tion/jda/api/requests/GatewayIntent.html
+[createDefault]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#createDefault(java.lang.String)
+[createLight]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#createLight(java.lang.String)
+[create]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#create(java.lang.String,net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
+[CacheFlag]: https://docs.jda.wiki/net/dv8tion/jda/api/utils/cache/CacheFlag.html
+[GatewayIntent.DEFAULT]: https://docs.jda.wiki/net/dv8tion/jda/api/requests/GatewayIntent.html#DEFAULT
+[enableCache]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#enableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
+[disableCache]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#disableCache(net.dv8tion.jda.api.utils.cache.CacheFlag,net.dv8tion.jda.api.utils.cache.CacheFlag...)
+[enableIntents]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#enableIntents(net.dv8tion.jda.api.requests.GatewayIntent,net.dv8tion.jda.api.requests.GatewayIntent...)
+[MemberCachePolicy]: https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html
+[setMemberCachePolicy]: https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#setMemberCachePolicy(net.dv8tion.jda.api.utils.MemberCachePolicy)
+[loadMembers]: https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#loadMembers()
 
 # Gateway Intents
 
@@ -96,17 +96,17 @@ To handle this new default, we now have a [`MemberCachePolicy`][MemberCachePolic
 
 We also provide a few reasonable implementations to choose from and apply using [`setMemberCachePolicy`][setMemberCachePolicy]:
 
-- [All](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ALL)
+- [All](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ALL)
     Will keep all members cached (requires `GUILD_MEMBERS` intents)
-- [Online](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ONLINE)
+- [Online](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#ONLINE)
     Will keep all online members cached (requires `GUILD_PRESENCES` intent)
-- [Voice](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#VOICE)
+- [Voice](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#VOICE)
     Will keep all voice members cached (requires `GUILD_VOICE_STATES` intent)
-- [Owner](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
+- [Owner](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#OWNER)
     Will keep the guild owner cached
-- [Pending](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
+- [Pending](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#PENDING)
     Will cache the members which have not passed membership screening yet (requires `GUILD_MEMBERS` intents)
-- [None](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
+- [None](https://docs.jda.wiki/net/dv8tion/jda/api/utils/MemberCachePolicy.html#NONE)
     Will only keep the self member cached and nobody else
 
 It is important to understand the difference between *cache* and *load* in this system.
@@ -125,12 +125,12 @@ This cache will grow over time by loading members when they are active in the gu
 
 We offer a number of ways to load and cache members:
 
-- [Guild.retrieveMembersByPrefix(String, int)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByPrefix(java.lang.String,int))
-- [Guild.retrieveOwner()](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveOwner())
-- [Guild.retrieveMemberById(long|String)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMemberById(long))
-- [Guild.retrieveMembersByIds(long...|String..)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByIds(long...))
-- [Guild.retrieveMembers(Collection&lt;User>)](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Guild.html#retrieveMembers(java.util.Collection))
-- [Message.getMember()](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Message.html#getMember()) (from events)
+- [Guild.retrieveMembersByPrefix(String, int)](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByPrefix(java.lang.String,int))
+- [Guild.retrieveOwner()](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#retrieveOwner())
+- [Guild.retrieveMemberById(long|String)](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#retrieveMemberById(long))
+- [Guild.retrieveMembersByIds(long...|String..)](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#retrieveMembersByIds(long...))
+- [Guild.retrieveMembers(Collection&lt;User>)](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Guild.html#retrieveMembers(java.util.Collection))
+- [Message.getMember()](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Message.html#getMember()) (from events)
 
 All of these methods will load the members from cache or fallback to requesting them from the Discord API.
 

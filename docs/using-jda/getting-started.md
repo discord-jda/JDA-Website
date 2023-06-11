@@ -56,7 +56,7 @@
     
     [ ![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue) ](https://ci.dv8tion.net/job/JDA5/lastSuccessfulBuild/)
 
-3. Create [`JDABuilder`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDABuilder.html) instance with token
+3. Create [`JDABuilder`](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html) instance with token
 4. Build JDA using `JDABuilder.build()`
     
     ```java

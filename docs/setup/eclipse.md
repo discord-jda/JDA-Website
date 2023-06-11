@@ -151,7 +151,7 @@
 
         ![Maven Update](../assets/images/ide/eclipse/13-mvnUpdate.png)  
 
-    1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/) or see examples at the [Examples](https://github.com/discord-jda/JDA/tree/master/src/examples/java) page.
+    1. You are done! Now you can head to the [Javadocs](https://docs.jda.wiki/) or see examples at the [Examples](https://github.com/discord-jda/JDA/tree/master/src/examples/java) page.
     1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 

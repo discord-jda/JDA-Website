@@ -74,7 +74,7 @@ Javadocs are available in both jar format and web format.<br>
 The jar format is available on the [Promoted Downloads](https://github.com/discord-jda/JDA/releases) page or on any of the
 build pages of the [legacy v4 Downloads](https://ci.dv8tion.net/job/JDA/) or [v5 Downloads](https://ci.dv8tion.net/job/JDA5/).<br>
 <br>
-The web format allows for viewing of the [Latest Docs](https://ci.dv8tion.net/job/JDA5/javadoc/) or [legacy Docs](https://ci.dv8tion.net/job/JDA/javadoc/) 
+The web format allows for viewing of the [Latest Docs](https://docs.jda.wiki/) or [legacy Docs](https://ci.dv8tion.net/job/JDA/javadoc/) 
 and also viewing of each individual build's javadoc. To view the javadoc for a specific build, you will need to go to that build's page
 on [the build server](https://ci.dv8tion.net/job/JDA5/) and download the javadoc jar for the specific build.<br>
 A shortcut would be: `https://ci.dv8tion.net/job/JDA5/BUILD_NUMBER_GOES_HERE`, you just need to replace the 

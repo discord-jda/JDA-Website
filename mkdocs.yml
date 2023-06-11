@@ -87,4 +87,4 @@ nav:
     - Contributing: contributing/contributing.md
     - Structure Guide: contributing/structure-guide.md
     - Repository Structure: contributing/repository-structure.md
-  - Javadocs: https://ci.dv8tion.net/job/JDA5/javadoc/
+  - Javadocs: https://docs.jda.wiki/

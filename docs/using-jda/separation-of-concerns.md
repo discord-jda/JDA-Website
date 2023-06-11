@@ -12,7 +12,7 @@ Without many complications, you can update many of properties in a single [RestA
 
 ### Updating an Entity
 
-We will make a small example here on how to update the name and the topic of a [TextChannel](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/TextChannel.html).
+We will make a small example here on how to update the name and the topic of a [TextChannel](https://docs.jda.wiki/net/dv8tion/jda/api/entities/TextChannel.html).
 
 ```java
 public void updateChannel(TextChannel channel) {
@@ -115,7 +115,7 @@ Every manager in JDA is cached for re-use and can be updated for an interval and
 ## Exceptions to SoC Pattern
 
 The only exceptions we have are deletion and creation.
-All entities are deleted directly using its delete() method, for instance [Channel.delete()](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Channel.html#delete()).
+All entities are deleted directly using its delete() method, for instance [Channel.delete()](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Channel.html#delete()).
 
 You can create copies of entities in the same fashion with one twist. Some `createCopy()` methods allow you to modify the new copy before execution of the **RestAction**
 
