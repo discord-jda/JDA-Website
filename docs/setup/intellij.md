@@ -40,7 +40,7 @@
             options.isIncremental = true
 
             // Set this to the version of java you want to use,
-            // the minimum requried for JDA is 1.8
+            // the minimum required for JDA is 1.8
             sourceCompatibility = "1.8"
         }
         ```
@@ -113,7 +113,7 @@
             options.isIncremental = true
 
             // Set this to the version of java you want to use,
-            // the minimum requried for JDA is 1.8
+            // the minimum required for JDA is 1.8
             sourceCompatibility = "1.8"
         }
         ```
