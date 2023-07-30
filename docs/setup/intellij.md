@@ -65,10 +65,13 @@
                     -> settings.gradle.kts
         ```
     1. Configure the `mainClass` value in the `build.gradle.kts` to your class. Example: `com.example.discordbot.Bot`
-    1. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
+    1. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor.
         > You can also run your project with the `run` Gradle task!
 
         ![shadowjar](../assets/images/ide/new_ij/new_ij_shadowjar.png)
+    
+    1. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
+
         ![jar location](../assets/images/ide/new_ij/new_ij_jar.png)
 
     1. [Setup Logback](./logging.md)
@@ -138,10 +141,13 @@
                     -> settings.gradle.kts
         ```
     1. Configure the `mainClass` value in the `build.gradle.kts` to your class. Example: `com.example.discordbot.Bot`
-    1. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
+    1. To build your finished project simply use the `shadowJar` task in your Gradle tool window on right hand side of your editor.
         > You can also run your project with the `run` Gradle task!
 
         ![shadowjar](../assets/images/ide/old_ij/old_ij_shadowjar.png)
+
+    1. This will build a jar in `build/libs`. The one with the `-all` suffix is the shadow jar.
+
         ![jar location](../assets/images/ide/old_ij/old_ij_jar.png)
 
     1. [Setup Logback](./logging.md)
