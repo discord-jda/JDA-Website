@@ -255,7 +255,8 @@ Some methods were renamed to allow for consistency between all requests.
 
 All message send and edit requests now use a unified `MessageRequest` interface. This allows you to make very abstracted implementations that use high level interfaces.
 
-![Message Rework Hierarchy](https://cdn.discordapp.com/attachments/875797959072161843/1009139444772782130/unknown.png)
+![Message Rework Hierarchy](https://github.com/discord-jda/JDA-Website/assets/18090140/7662acf2-6cb8-4b34-aaa8-65176bc153dc)
+
 
 This also means that all methods from `message.editMessage(...)` are consistent with the methods from `interaction.editMessage(...)`, and analogously for sending. You can now use `addActionRow` when sending a message to a channel.
 
