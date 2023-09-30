@@ -85,12 +85,12 @@ public class MusicBot extends ListenerAdapter
 
 ## Using LavaPlayer
 
-1. [Set up LavaPlayer](https://github.com/Walkyst/lavaplayer-fork#readme)
+1. [Set up LavaPlayer](https://github.com/lavalink-devs/lavaplayer#readme)
 2. Implement an AudioSendHandler 
-    - [Example](https://github.com/Walkyst/lavaplayer-fork#jda-integration)
+    - [Example](https://github.com/lavalink-devs/lavaplayer#jda-integration)
 3. [Connect to a voice channel](#connecting-to-a-voicechannel)
 4. [Register your AudioSendHandler](#sending-audio-to-an-open-audio-connection)
-5. Use the LavaPlayer resources: [How To Use LavaPlayer](https://github.com/Walkyst/lavaplayer-fork#usage)
+5. Use the LavaPlayer resources: [How To Use LavaPlayer](https://github.com/lavalink-devs/lavaplayer#usage)
 
 
 ### More example implementations can be found in existing bots like:

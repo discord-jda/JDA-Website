@@ -42,7 +42,7 @@ Here is a list of known extensions that support 5.X.
 The ones that are not checked do not support it yet. You should check that everything used in your project supports 5.X before starting migration.
 
 - [x] [jda-reactor](https://github.com/MinnDevelopment/jda-reactor)
-- [x] [LavaPlayer](https://github.com/Walkyst/lavaplayer-fork)
+- [x] [LavaPlayer](https://github.com/lavalink-devs/lavaplayer)
 - [x] [jda-nas](https://github.com/sedmelluq/jda-nas)
     - [x] [udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) (for minimal Rust bindings)
 - [x] [jda-ktx](https://github.com/MinnDevelopment/jda-ktx)
