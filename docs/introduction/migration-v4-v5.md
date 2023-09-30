@@ -30,11 +30,11 @@ Replace `VERSION` with the latest version ![Maven Version](https://img.shields.i
 
 ## Additional Resources
 
-This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as [ThreadChannels](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html). Here are some useful resources to learn more if you are curious about all the new things we added:
+This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as [ThreadChannels](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html). Here are some useful resources to learn more if you are curious about all the new things we added:
 
-- [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java)
-- [JDA 5 Javadocs](https://ci.dv8tion.net/job/JDA5/javadoc/)
-- [Releases](https://github.com/DV8FromTheWorld/JDA/releases)
+- [Examples](https://github.com/discord-jda/JDA/tree/master/src/examples/java)
+- [JDA 5 Javadocs](https://docs.jda.wiki/)
+- [Releases](https://github.com/discord-jda/JDA/releases)
 
 ## Extensions That Support 5.X
 
@@ -42,7 +42,7 @@ Here is a list of known extensions that support 5.X.
 The ones that are not checked do not support it yet. You should check that everything used in your project supports 5.X before starting migration.
 
 - [x] [jda-reactor](https://github.com/MinnDevelopment/jda-reactor)
-- [x] [LavaPlayer](https://github.com/sedmelluq/lavaplayer)
+- [x] [LavaPlayer](https://github.com/lavalink-devs/lavaplayer)
 - [x] [jda-nas](https://github.com/sedmelluq/jda-nas)
     - [x] [udpqueue.rs](https://github.com/MinnDevelopment/udpqueue.rs) (for minimal Rust bindings)
 - [x] [jda-ktx](https://github.com/MinnDevelopment/jda-ktx)
@@ -85,7 +85,7 @@ Many classes in JDA had specific getters for each channel type. For example, mes
 
 `GuildChannel` now implements `getGuild` and `getManager` *only*. It's meant to serve as a generic type to hold channels from guilds.
 
-Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
+Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in [the `net.dv8tion.jda.api.entities.channel.attribute` package](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html). Each interface in this package extends `GuildChannel`.
 
 ### Permission Access Changes
 
@@ -97,11 +97,11 @@ Of course, if you have a channel type that already supports `IPermissionContaine
 
 In JDA v4, `GuildChannel#getManager` returned a `ChannelManager` that gave every possible setter for every channel type. This caused for `UnsupportedOperationException` or `IllegalStateException` to be thrown in some cases, such as calling `setBitrate` on a `TextChannel`.
 
-JDA v5 provides type-trimmed channel managers, which provide only the setters that we know *for sure* can work on the given channel. Each of these managers can be found in [the `net.dv8tion.jda.api.managers.channel` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/managers/channel/package-summary.html). These all follow the same implement/extension hierarchy as the channels do and map 1:1.
+JDA v5 provides type-trimmed channel managers, which provide only the setters that we know *for sure* can work on the given channel. Each of these managers can be found in [the `net.dv8tion.jda.api.managers.channel` package](https://docs.jda.wiki/net/dv8tion/jda/api/managers/channel/package-summary.html). These all follow the same implement/extension hierarchy as the channels do and map 1:1.
 
 ### Independent Stage Channel and News Channel Entities
 
-[`StageChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independent entities. This comes with a number of changes:
+[`StageChannel`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html) and [`NewsChannel`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html) were previously variants of `VoiceChannel` and `TextChannel`. These are now their own independent entities. This comes with a number of changes:
 
 - `ChannelAction#setNews` is replaced by `ChannelAction.setType`
 - `ChannelManager#getType` is replaced by `ChannelManager#getChannel()#getType`
@@ -158,7 +158,7 @@ With context-specific events being removed (such as `GuildMessageReceivedEvent`)
 
 ### Session Events
 
-All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` package](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
+All events that update the gateway session of a bot now extend a common [`GenericSessionEvent`](https://docs.jda.wiki/net/dv8tion/jda/api/events/session/GenericSessionEvent.html). Such events are located within [the `net.dv8tion.jda.api.events.session` package](https://docs.jda.wiki/net/dv8tion/jda/api/events/session/package-summary.html). This also includes `ReadyEvent` and `ShutdownEvent`.
 
 Some events relating to sessions have been renamed:
 
@@ -168,7 +168,7 @@ Some events relating to sessions have been renamed:
 
 ### Voice State Events
 
-`GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
+`GuildVoiceJoinEvent` and `GuildVoiceLeaveEvent` have both been removed in favor of the unified [`GuildVoiceUpdateEvent`](https://docs.jda.wiki/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html).
 
 As an example, to detect when a user leaves a voice channel, you can use `GuildVoiceUpdateEvent#getChannelLeft`. This method will return the channel that the user left, or `null` if the user joined a channel instead.
 
@@ -226,7 +226,7 @@ You also now use `Emoji` instances for reactions. What was previously `message.a
 - `Emoji.fromFormatted`<br>
     Parses emoji instances from markdown such as `"<:minn:12345581261712671>"` and also supports unicode such as `"😃"` or codepoint notation `"U+1F602"`. This returns a `EmojiUnion` instance, which can be either custom or unicode.
 
-You can see the full list of breaking changes in [#2117](https://github.com/DV8FromTheWorld/JDA/pull/2117).
+You can see the full list of breaking changes in [#2117](https://github.com/discord-jda/JDA/pull/2117).
 
 ## Message Send/Edit Rework
 

@@ -67,4 +67,4 @@ There are a few built-in [MDC](https://www.slf4j.org/api/org/slf4j/MDC.html) opt
 - `jda.shard.id` The shard id
 - `jda.shard.total` The shard total
 
-You can further configure other MDC variables for JDA threads with [JDABuilder.setContextMap](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/JDABuilder.html#setContextMap(java.util.concurrent.ConcurrentMap))!
+You can further configure other MDC variables for JDA threads with [JDABuilder.setContextMap](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#setContextMap(java.util.concurrent.ConcurrentMap))!

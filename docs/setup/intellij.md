@@ -47,7 +47,7 @@
     
         1. Replace the `mainClass` value with the path to your main class later on! 
 
-        1. Replace the `JDA_VERSION_HERE` with the one mentioned in the [latest release](https://github.com/DV8FromTheWorld/JDA/releases/latest)
+        1. Replace the `JDA_VERSION_HERE` with the one mentioned in the [latest release](https://github.com/discord-jda/JDA/releases/latest)
 
     1. Reload Gradle and wait for it to finish
 

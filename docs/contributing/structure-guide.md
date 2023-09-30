@@ -145,13 +145,13 @@ If the class is not already imported, use the fully qualified name when you are 
 When you link to an external resource (such as the official API docs) you can use the `<a>` tag to create
 a hyperlink.
 <br>It is recommended to use the `target="_blank"` tag.
-<br>Example: `<a href="https://ci.dv8tion.net/job/JDA" target="_blank">Download JDA</a>`
+<br>Example: `<a href="https://github.com/discord-jda/JDA/releases/latest" target="_blank">Download JDA</a>`
 
 **Hint**: Sometimes it helps to link other methods in the description and then also including an `@see #otherMethod` at the very bottom.
 
 ### Case: RestAction return type
 
-When your method makes use of [RestAction](https://github.com/DV8FromTheWorld/JDA/tree/master/src/main/java/net/dv8tion/jda/core/requests/RestAction.java)
+When your method makes use of [RestAction](https://github.com/discord-jda/JDA/blob/master/src/main/java/net/dv8tion/jda/api/requests/RestAction.java)
 you have to document possible `ErrorResponses` that can follow from this request:
 
 ```java
@@ -173,7 +173,7 @@ you have to document possible `ErrorResponses` that can follow from this request
 
 !!! note
     Always make these your last description paragraph
-    <br>Taken from: [MessageChannel](https://github.com/DV8FromTheWorld/JDA/blob/master/src/main/java/net/dv8tion/jda/core/entities/MessageChannel.java#L169-L179)
+    <br>Taken from: [MessageChannel](https://github.com/discord-jda/JDA/blob/ad66a6939398e0c60ff01dd5e0ec7bc465c89209/src/main/java/net/dv8tion/jda/api/entities/channel/middleman/MessageChannel.java#L733-L749)
 
 The `@return` for simple RestActions is as follows:
 ```java

@@ -67,7 +67,7 @@ NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 
 ### Can't get emoji from message
 
-Methods such as [`Mentions.getCustomEmojis()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojis()) and [`Mentions.getCustomEmojisBag()`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojisBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/MinnDevelopment/emoji-java) to extract unicode emoji from a message.
+Methods such as [`Mentions.getCustomEmojis()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojis()) and [`Mentions.getCustomEmojisBag()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojisBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/MinnDevelopment/emoji-java) to extract unicode emoji from a message.
 
 An example use-case including a code sample can be found in [this answer to a related question on StackOverflow](https://stackoverflow.com/a/58353912/10630900)
 
@@ -91,7 +91,7 @@ When JDA encounters an issue while executing a `RestAction` it will emit an erro
     }
     ```
 
-You can use [ErrorHandler](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/exceptions/ErrorHandler.html) to handle or ignore specific [ErrorResponse](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/ErrorResponse.html) failures.
+You can use [ErrorHandler](https://docs.jda.wiki/net/dv8tion/jda/api/exceptions/ErrorHandler.html) to handle or ignore specific [ErrorResponse](https://docs.jda.wiki/net/dv8tion/jda/api/requests/ErrorResponse.html) failures.
 
 ### Nothing happens when using X
 
@@ -187,7 +187,7 @@ public class MyListener extends EventListener {
 
 This error can occur when trying to reload a plugin in various minecraft frameworks. The cause of this error is a quirk with how plugin loading works, where it disables class loading when disabling the plugin. This causes problems when JDA hasn't finished shutting down all of its internal threads yet.
 
-The best way to handle this is to use [`awaitShutdown`](https://ci.dv8tion.net/job/JDA5/javadoc/net/dv8tion/jda/api/JDA.html#awaitShutdown(java.time.Duration)):
+The best way to handle this is to use [`awaitShutdown`](https://docs.jda.wiki/net/dv8tion/jda/api/JDA.html#awaitShutdown(java.time.Duration)):
 
 ```java
 // Initial shutdown, allowing for some RestActions to still go through
@@ -254,7 +254,7 @@ It is also possible that you get spammed by this warning if you use `ChunkingFil
 
 There are many ways to retrieve members: [Loading Members](gateway-intents-and-member-cache-policy.md#loading-members)
 
-I explained this in a bit more detail in issue [#1290](https://github.com/DV8FromTheWorld/JDA/issues/1290)
+I explained this in a bit more detail in issue [#1290](https://github.com/discord-jda/JDA/issues/1290)
 
 To make chunking a little more efficient, you can additionally enable the `GatewayIntent.GUILD_PRESENCES`. This will load all online members for each guild directly, instead of relying on additional member chunk requests, which can be a significant boost to reduce startup time and potentially reduce these warnings.
 

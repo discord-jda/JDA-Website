@@ -1,5 +1,5 @@
 site_name: JDA Wiki
-copyright: 'Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/DV8FromTheWorld/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>'
+copyright: 'Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/discord-jda/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>'
 
 theme:
   custom_dir: overrides
@@ -28,7 +28,7 @@ theme:
       name: Switch to light mode
 
 repo_name: JDA
-repo_url: https://github.com/DV8FromTheWorld/JDA
+repo_url: https://github.com/discord-jda/JDA
 edit_uri: ../JDA-Website/edit/master/docs/
 
 extra_css:
@@ -87,4 +87,4 @@ nav:
     - Contributing: contributing/contributing.md
     - Structure Guide: contributing/structure-guide.md
     - Repository Structure: contributing/repository-structure.md
-  - Javadocs: https://ci.dv8tion.net/job/JDA5/javadoc/
+  - Javadocs: https://docs.jda.wiki/

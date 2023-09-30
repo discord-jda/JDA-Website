@@ -32,14 +32,14 @@ description: Help JDA improve by contributing to it.
 4. Configure upstream remote to keep your fork updated
     
     ```sh
-    $ git remote add upstream https://github.com/DV8FromTheWorld/JDA.git
+    $ git remote add upstream https://github.com/discord-jda/JDA.git
     ```
 
 5. Create branch based on `upstream/master`
     
     ```sh
     $ git fetch upstream master
-    From https://github.com/DV8FromTheWorld/JDA
+    From https://github.com/discord-jda/JDA
      * branch              master -> FETCH_HEAD
      * [new branch]        master -> upstream/master
 
@@ -137,7 +137,7 @@ based on the current `upstream/master` changes!
     ![open pull request](../assets/images/open_pull_request.png)
 
 4. Set base branch to 
-    `base fork: DV8FromTheWorld/JDA` `base: master`
+    `base fork: discord-jda/JDA` `base: master`
 
 5. Allow edits from Maintainers
 

@@ -34,7 +34,7 @@
 
     1. **Download the latest (binary) version of JDA (with dependencies), as well as the javadocs**
         
-        - <https://ci.dv8tion.net/job/JDA5/>
+        - <https://github.com/discord-jda/JDA/releases/latest>
         
         ![Downloads](../assets/images/ide/netbeans/netbeans_jda_downloads.png)
 

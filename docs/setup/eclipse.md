@@ -94,7 +94,7 @@
     ```
     - This will make your project support UTF-8 characters (So you can have it on Japanese servers for example) and also force Java 8, which is needed.
 
-    1. Now, add the dependency, make sure you change `X.Y.Z-beta.W` to the latest version number (You can find it in the releases: https://github.com/DV8FromTheWorld/JDA/releases)
+    1. Now, add the dependency, make sure you change `X.Y.Z-beta.W` to the latest version number (You can find it in the releases: https://github.com/discord-jda/JDA/releases)
         ```xml
         <dependencies>
             <dependency>
@@ -151,7 +151,7 @@
 
         ![Maven Update](../assets/images/ide/eclipse/13-mvnUpdate.png)  
 
-    1. You are done! Now you can head to the [Javadocs](https://ci.dv8tion.net/job/JDA/javadoc/) or see examples at the [Examples](https://github.com/DV8FromTheWorld/JDA/tree/master/src/examples/java) page.
+    1. You are done! Now you can head to the [Javadocs](https://docs.jda.wiki/) or see examples at the [Examples](https://github.com/discord-jda/JDA/tree/master/src/examples/java) page.
     1. [Setup Logback](./logging.md)
     1. Continue with [Getting Started](../using-jda/getting-started.md)
 
@@ -159,8 +159,7 @@
 === "Jar Setup"
 
     1. Download the latest (Binary) version of JDA (with Dependencies):
-        - (Recommended) <https://github.com/DV8FromTheWorld/JDA/releases/>
-        - (Latest/Dev) <https://ci.dv8tion.net/job/JDA5/>
+        - <https://github.com/discord-jda/JDA/releases/>
     1. Create a new Java Project
 
         ![New Java Project](../assets/images/ide/eclipse/20-newJavaProject.png)

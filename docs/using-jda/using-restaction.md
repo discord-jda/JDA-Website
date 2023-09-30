@@ -8,7 +8,7 @@ deal with their `Request`.
 
 However this only works if you actually tell the `RestAction` to do _something_. That is why we recommend checking out whether or not something in JDA returns a `RestAction`. If that is the case you **have** to execute it using one of the `RestAction` execution operations:
 
-[`queue()`](#using-queue), [`queue(Consumer)`](#using-queue), [`queue(Consumer, Consumer)`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html#queue(java.util.function.Consumer,java.util.function.Consumer))
+[`queue()`](#using-queue), [`queue(Consumer)`](#using-queue), [`queue(Consumer, Consumer)`](https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html#queue(java.util.function.Consumer,java.util.function.Consumer))
 :   These operations are __asynchronous__ and will not execute within the same Thread.
     <br>This means that you cannot use procedural logic when you use `queue()`, unless you use the callback Consumers.
     <br>Only similar requests are internally executed in sequence such as sending messages in the same channel or adding reactions to the same message.
@@ -24,14 +24,14 @@ However this only works if you actually tell the `RestAction` to do _something_.
 
 Since **4.1.1** you can use a few RestAction operators to avoid callback hell with queue:
 
-- [`map`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html#map%28java.util.function.Function%29)
+- [`map`](https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html#map%28java.util.function.Function%29)
     Convert the result of the `RestAction` to a different value
-- [`flatMap`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html#flatMap%28java.util.function.Function%29)
+- [`flatMap`](https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html#flatMap%28java.util.function.Function%29)
     Chain another `RestAction` on the result
-- [`delay`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html#delay%28java.time.Duration%29)
+- [`delay`](https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html#delay%28java.time.Duration%29)
     Delay the element of the previous step
 
-**JavaDocs**: <https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html>
+**JavaDocs**: <https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html>
 
 ## AuditLog Reasons
 
@@ -172,7 +172,7 @@ If you don't need to use the `CompletableFuture` you may use `queue()` instead!
     }
     ```
     !!! note
-        You can do the same with [`RestAction#flatMap`](https://ci.dv8tion.net/job/JDA/javadoc/net/dv8tion/jda/api/requests/RestAction.html#flatMap(java.util.function.Function)) in 4.1.1
+        You can do the same with [`RestAction#flatMap`](https://docs.jda.wiki/net/dv8tion/jda/api/requests/RestAction.html#flatMap(java.util.function.Function)) in 4.1.1
 
     ```java
     public class RateLimitListener extends ListenerAdapter
