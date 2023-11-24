@@ -47,7 +47,7 @@ Template:
     }
 
     dependencies {
-        implementation("com.github.AuthorName:JDA:CommitHash")
+        implementation("io.github.AuthorName:JDA:CommitHash")
     }
     ```
 
@@ -66,7 +66,7 @@ Template:
 
     ```xml
     <dependency>
-        <groupId>com.github.AuthorName</groupId>
+        <groupId>io.github.AuthorName</groupId>
         <artifactId>JDA</artifactId>
         <version>CommitHash</version>
     </dependency>
@@ -82,7 +82,7 @@ With our example:
     }
 
     dependencies {
-        implementation("com.github.xirado:JDA:36eea2a")
+        implementation("io.github.xirado:JDA:36eea2a")
     }
     ```
 
@@ -101,7 +101,7 @@ With our example:
 
     ```xml
     <dependency>
-        <groupId>com.github.xirado</groupId>
+        <groupId>io.github.xirado</groupId>
         <artifactId>JDA</artifactId>
         <version>36eea2a</version>
     </dependency>
