@@ -32,9 +32,9 @@ repo_url: https://github.com/discord-jda/JDA
 edit_uri: ../JDA-Website/edit/master/docs/
 
 extra_css:
-- 'assets/stylesheets/colors.css'
-- 'assets/stylesheets/frontpage.css'
-- 'assets/stylesheets/tasklists.css'
+  - 'assets/stylesheets/colors.css'
+  - 'assets/stylesheets/frontpage.css'
+  - 'assets/stylesheets/tasklists.css'
 
 markdown_extensions:
   - admonition
@@ -53,8 +53,8 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
 
 watch:
   - overrides
