@@ -53,7 +53,7 @@ If you have any suggestions/questions/feedback for this wiki, please visit the #
             else
             {
                 System.out.printf("[%s][%s] %s: %s\n", event.getGuild().getName(),
-                            event.getTextChannel().getName(), event.getMember().getEffectiveName(),
+                            event.getChannel().getName(), event.getMember().getEffectiveName(),
                             event.getMessage().getContentDisplay());
             }
         }
