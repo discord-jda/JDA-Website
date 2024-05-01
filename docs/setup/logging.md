@@ -6,12 +6,16 @@ SLF4J: Defaulting to no-operation (NOP) logger implementation
 SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
 ```
 
-I recommend logback-classic as it is my goto implementation. First add logback to your dependencies:
+I recommend logback-classic as it is my goto implementation. Add both, SLF4J and Logback, to your dependencies:
+
+[ ![Download](https://img.shields.io/maven-central/v/org.slf4j/slf4j-api?color=blue&label=slf4j-api) ](https://mvnrepository.com/artifact/org.slf4j/slf4j-api/latest)
+[ ![Download](https://img.shields.io/maven-central/v/ch.qos.logback/logback-classic?color=blue&label=logback-classic) ](https://mvnrepository.com/artifact/ch.qos.logback/logback-classic/latest)
 
 === "Gradle"
 
     ```groovy
     dependencies {
+        implementation("org.slf4j:slf4j-api:%VERSION%")
         implementation("ch.qos.logback:logback-classic:%VERSION%")
     }
     ```
@@ -20,12 +24,16 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
     ```xml
     <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>%VERSION%</version>
+    </dependency>
+    <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
         <version>%VERSION%</version>
     </dependency>
     ```
-
 
 ## Configure Logback
 
@@ -67,4 +75,4 @@ There are a few built-in [MDC](https://www.slf4j.org/api/org/slf4j/MDC.html) opt
 - `jda.shard.id` The shard id
 - `jda.shard.total` The shard total
 
-You can further configure other MDC variables for JDA threads with [JDABuilder.setContextMap](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#setContextMap(java.util.concurrent.ConcurrentMap))!
+You can further configure other MDC variables for JDA threads with [JDABuilder.setContextMap](<https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#setContextMap(java.util.concurrent.ConcurrentMap)>)!
