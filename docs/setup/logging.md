@@ -1,9 +1,9 @@
 When you setup a JDA project you should also setup a logging implementation for SLF4J. This is only necessary if you get a warning like this on startup:
 
 ```none
-SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+SLF4J(W): No SLF4J providers were found.
+SLF4J(W): Defaulting to no-operation (NOP) logger implementation
+SLF4J(W): See https://www.slf4j.org/codes.html#noProviders for further details.
 ```
 
 I recommend logback-classic as it is my goto implementation. First add logback to your dependencies:
@@ -12,7 +12,7 @@ I recommend logback-classic as it is my goto implementation. First add logback t
 
     ```groovy
     dependencies {
-        implementation("ch.qos.logback:logback-classic:1.2.8")
+        implementation("ch.qos.logback:logback-classic:1.5.6")
     }
     ```
 
@@ -22,7 +22,7 @@ I recommend logback-classic as it is my goto implementation. First add logback t
     <dependency>
         <groupId>ch.qos.logback</groupId>
         <artifactId>logback-classic</artifactId>
-        <version>1.2.8</version>
+        <version>1.5.6</version>
     </dependency>
     ```
 
