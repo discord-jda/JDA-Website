@@ -165,7 +165,7 @@ public class MyListener extends ListenerAdapter {
 }
 ```
 
-When using **EventListner** make sure you actually imported the correct interface from JDA and **not** `java.util.EventListner`:
+When using **EventListener** make sure you actually imported the correct interface from JDA and **not** `java.util.EventListener`:
 
 ```java
 import net.dv8tion.jda.api.events.GenericEvent;
