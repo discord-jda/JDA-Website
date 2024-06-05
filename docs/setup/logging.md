@@ -26,6 +26,9 @@ I recommend logback-classic as it is my goto implementation. First add logback t
     </dependency>
     ```
 
+!!! info
+    The minimum required java version for logback-classic is Java 11 since 1.4.0. To use logback with Java 8, you can use the latest 1.3.x release instead. See [logback news](https://logback.qos.ch/news.html) for details.
+
 
 ## Configure Logback
 
