@@ -335,11 +335,40 @@ If you use these intents you are limited to 100 guilds on your bot. To allow the
 
 ## Interactions and Slash Commands
 
-### This interaction failed / Unknown Interaction
+### The application did not respond
 
 This means you didn't acknowledge or reply to an interaction in time. You only have **3 seconds** to reply or acknowledge.
-You have to use `event.deferReply().queue()`, `event.deferEdit().queue()`, `event.editMessage(...).queue()`, or `event.reply(...).queue()`. (If you don't `queue()` it won't do it)
+You have to use `event.deferReply().queue()`, `event.deferEdit().queue()`, `event.editMessage(...).queue()`,
+or `event.reply(...).queue()`. (If you don't `queue()` it won't do it)
 <br>**Make sure your event listener code is executed.**
+
+### Unknown Interaction
+
+This exception can happen due to two reasons:
+
+#### The interaction took longer than **3 seconds** to be acknowledged
+
+Possible reasons why your response was too slow:
+
+- JDA's WebSocket thread was blocked for too long, when you see the `This application did not respond` on Discord, 
+make a thread dump and look at the stack trace around `JDA MainWS-ReadThread` to see where it may have blocked
+- Your interaction took too long to acknowledge, you can use `event.deferReply(boolean).queue()` to extend the response time to 15 minutes
+
+!!! tip "Making a thread dump"
+
+    See `How do I make a thread dump?` in the [FAQ](../introduction/faq.md).
+
+#### The interaction was acknowledged by another process running the same bot
+
+You can confirm this by checking if your bot replied,
+or the three dots in a button disappeared without saying `This interaction failed`,
+or you see '[Bot] is thinking...' for more than 3 seconds.
+
+To resolve this, try stopping all current processes for the bot that could be responsible, or resetting your bot token.
+
+!!! tip "Resetting your token"
+
+    You can reset your token in your [application dashboard](https://discord.com/developers/applications).
 
 ### Interaction Followup Messages Timed out 
 

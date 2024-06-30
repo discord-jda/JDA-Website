@@ -284,6 +284,10 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     The JDK provides a utility for creating a thread dump of a running JVM process: `jstack -l <pid>` (that's an L for "Long")
     Example: `jstack -l 1337 > dump.txt` This will list the thread dump and write it to a file called `dump.txt`.
 
+    !!! tip
+
+        You can get the PID using `jps -l`.
+
     You can also create a thread dump directly in IntelliJ:
 
     ![](../assets/images/ide/thread_dump_1.png)
