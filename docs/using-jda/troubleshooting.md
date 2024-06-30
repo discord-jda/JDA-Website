@@ -345,7 +345,7 @@ or `event.reply(...).queue()`. (If you don't `queue()` it won't do it)
 This exception can happen due to two reasons:
 
 #### The interaction took longer than **3 seconds** to be acknowledged
-Reasons this took too long include:
+Possible reasons why your response was too slow:
 
 - JDA's WebSocket thread was blocked for too long, when you see the `This application did not respond` on Discord, 
 make a thread dump and look at the stack trace around `JDA MainWS-ReadThread` to see where it may have blocked
@@ -366,7 +366,7 @@ To resolve this, try stopping all current processes for the bot that could be re
 
 !!! tip "Resetting your token"
 
-    You can reset your token on [your dashboard](https://discord.com/developers/applications).
+    You can reset your token in your [application dashboard](https://discord.com/developers/applications).
 
 ### Interaction Followup Messages Timed out 
 
