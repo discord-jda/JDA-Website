@@ -356,9 +356,7 @@ make a thread dump and look at the stack trace around `JDA MainWS-ReadThread` to
 
 !!! tip "Making a thread dump"
 
-    You can make a thread dump by first getting your "Process ID" using `jps -l`,
-    which should be next to your main class/jar,
-    and use it with `jstack -l <pid>`.
+    See `How do I make a thread dump?` in the [FAQ](../introduction/faq.md).
 
 #### The interaction was acknowledged by another process running the same bot
 
