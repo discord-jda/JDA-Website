@@ -364,18 +364,9 @@ or you see '[Bot] is thinking...' for more than 3 seconds.
 
 To resolve this, try stopping all current processes for the bot that could be responsible, or resetting your bot token.
 
-??? tip "Resetting your token"
+!!! tip "Resetting your token"
 
     You can reset your token on [your dashboard](https://discord.com/developers/applications).
-
-??? tip "Finding processes running the same bot"
-
-    You can find processes by using `jps -l` in your terminal,
-    find the one which matches your main class/jar,
-    then kill the process using the PID on the left:
-
-    - Windows: `taskkill /F /PID <pid>`
-    - Linux/Mac: `kill -9 <pid>`
 
 ### Interaction Followup Messages Timed out 
 
