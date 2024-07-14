@@ -11,8 +11,6 @@
 
     1. Let IntelliJ index your project.
 
-        ![indexing](../assets/images/ide/new_ij/new_ij_indexing.png)
-
     1. Open `build.gradle.kts`
     1. Populate the build file with the following
         ```kotlin
