@@ -61,7 +61,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     You can create instances of this for use in various methods, such as reactions, using the factory methods of the `Emoji` interface. For instance, to create a unicode emoji instance, you use `Emoji.fromUnicode("...")` with the string of **unicode characters**.
 
-    To get the Unicode char(s) of some Emoji, you can either use a 3rd party library (such as [emoji-java](https://github.com/MinnDevelopment/emoji-java)) or just look them up online.
+    To get the Unicode char(s) of some Emoji, you can either use a 3rd party library (such as [JEmoji](https://github.com/felldo/JEmoji)) or just look them up online.
     You can add reactions with 3 different formats:
 
     ```java
