@@ -38,7 +38,7 @@
         plugins {
             id("java")
             id("application")
-            id("com.github.johnrengelman.shadow") version "8.3.1"
+            id("com.gradleup.shadow") version "8.3.1"
         }
 
         mainClassName = "com.example.jda.Bot"
