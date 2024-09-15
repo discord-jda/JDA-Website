@@ -16,7 +16,7 @@
         ```kotlin
         plugins {
             application
-            id("com.github.johnrengelman.shadow") version "7.1.2"
+            id("com.gradleup.shadow") version "8.3.1"
         }
 
         application.mainClass = "com.example.discordbot.Bot" // (1)
@@ -92,7 +92,7 @@
         ```kotlin
         plugins {
             application
-            id("com.github.johnrengelman.shadow") version "7.1.2"
+            id("com.gradleup.shadow") version "8.3.1"
         }
 
         application.mainClass = "com.example.discordbot.Bot" // (1)
