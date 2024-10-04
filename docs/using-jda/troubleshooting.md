@@ -129,7 +129,7 @@ If none of the above apply to you then you might have an issue in your listener'
 
 ### Missed 2 heartbeats! Trying to reconnect...
 
-This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump](../introduction/faq.md) when you get this warning to see where the issue is.
+This warning implies your event thread is too busy and will block critical events from being received. You should try to limit blocking calls and make sure your event handlers don't take up too much time. Do profiling to figure out what takes so long or create a [thread dump][faq-thread-dump] when you get this warning to see where the issue is.
 
 By default, all events are handled on the same thread they get received and handled on. If you block this thread for too long then JDA cannot keep up with important lifecycle events sent by Discord. Either you start writing non-blocking code (replace `complete()` with `queue()` etc.) or you use a thread pool for your event handling.
 
@@ -356,7 +356,7 @@ make a thread dump and look at the stack trace around `JDA MainWS-ReadThread` to
 
 !!! tip "Making a thread dump"
 
-    See `How do I make a thread dump?` in the [FAQ](../introduction/faq.md).
+    See `How do I make a thread dump?` in the [FAQ][faq-thread-dump].
 
 #### The interaction was acknowledged by another process running the same bot
 
