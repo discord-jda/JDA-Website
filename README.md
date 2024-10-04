@@ -7,7 +7,7 @@ This website houses the official documentation for [JDA](https://github.com/disc
 ## Building
 To view the wiki locally, you will first need to install Material for MkDocs locally:
 ```sh
-pip install mkdocs-material
+pip install -r requirements.txt
 ```
 
 You can serve the site locally and preview your changes as you write with this single command:

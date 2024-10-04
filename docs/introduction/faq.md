@@ -2,11 +2,11 @@
 
 Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hMr4ce0tIl3SLv5)
 
-??? question "What is a Guild?"
+??? question "What is a Guild?[](){#faq-guild}"
 
     In Discord API terminology a "Guild" is often used to refer to Discord servers with channels/roles/users
 
-??? question "How do I make a bot account and add it to my server?"
+??? question "How do I make a bot account and add it to my server?[](){#faq-make-bot-account}"
 
     1. Create an application at: <https://discord.com/developers/applications/me>
     2. Create a bot account for that application
@@ -14,7 +14,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     4. Replace `CLIENT_ID` in this link: <https://discord.com/api/oauth2/authorize?scope=bot&client_id=CLIENT_ID>
     5. Open the link, select your server and authorize the bot
 
-??? question "How do I connect my bot?"
+??? question "How do I connect my bot?[](){#faq-connect-bot-account}"
 
     1. Before you can connect you need to create a bot account
     2. Get the **token** of your bot
@@ -27,24 +27,24 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     }
     ```
 
-??? question "Does this work with Kotlin?"
+??? question "Does this work with Kotlin?[](){#faq-kotlin-support}"
 
     Yes! This library makes use of the [JSR-305](https://www.cs.umd.edu/~pugh/JSR-305.pdf) annotations to be as compatible as possible with Kotlin.
     To be more idiomatic, you can use extensions like [JDA-KTX](https://github.com/MinnDevelopment/jda-ktx) and [JDA-reactor](https://github.com/MinnDevelopment/jda-reactor).
 
-??? question "Why does method `XXX` not do anything? / What are RestActions?"
+??? question "Why does method `XXX` not do anything? / What are RestActions?[](){#faq-rest-actions}"
 
     When you use one of JDA's methods that interacts with Discord (like sending a message or retrieving data) and the method
     seems to have no effect (and no errors), chances are that you didn't use a RestAction properly or not at all.
     <br>You can read about what a RestAction is and how to use it in the [appropriate Wiki entry](../using-jda/using-restaction.md).
 
-??? question "What is sharding?"
+??? question "What is sharding?[](){#faq-sharding}"
 
     When a bot reaches 2500 joined guilds, Discord will refuse to start a connection with it.
     <br>In order to connect bots of a size like that it has to **shard** the load. It is recommended to have 1000 guilds per shard.
     More information can be found in our [README](https://github.com/discord-jda/JDA/blob/master/README.md#sharding-a-bot).
 
-??? question "How can I change the `Playing...`?"
+??? question "How can I change the `Playing...`?[](){#faq-change-playing}"
 
     This is called a `Presence`and can be modified either before building JDA or at runtime.
     <br>When building you can do `JDABuilder.setActivity(Activity.playing("Thrones"))` and later change it using `JDA.getPresence().setActivity(...)`.
@@ -52,7 +52,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     This may only be updated **5 times every 20 seconds** and all other updates will be silently dropped by Discord.
 
-??? question "What is an Custom Emoji and Unicode Emoji?"
+??? question "What is an Custom Emoji and Unicode Emoji?[](){#faq-custom-unicode-emoji}"
 
     While there are a lot of standardized emojis (defined through Unicode spec), Discord allows Guilds to add their own emojis to be available.
     Those custom emojis are not just a plain Unicode character, but rather their own entity with id, name, ...
@@ -77,7 +77,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     - Unicode escape as UTF-16 characters (`\uXXXX\uXXXX`)
     - Codepoint Notation as UTF-32 characters (`U+XXXXXXXXU+XXXXXXXX`)
 
-??? question "Why is there a warning from SLF4J when starting up?"
+??? question "Why is there a warning from SLF4J when starting up?[](){#faq-slf4j-warning}"
 
     As of JDA 3.3.1, we use SLF4J for message logging. This means that you have to manually add any suitable SLF4J implementation library to your project.
 
@@ -92,7 +92,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
 
     I recommend [Logback](https://logback.qos.ch/). You can just add it to your Gradle/Maven file as extra dependency. There is a basic setup guide in our wiki available here: [Logging Setup](../setup/logging.md)
 
-??? question "What is the best way to delete messages from history?"
+??? question "What is the best way to delete messages from history?[](){#faq-delete-message-history}"
 
     You can use [MessageChannel.getIterableHistory](https://docs.jda.wiki/net/dv8tion/jda/api/entities/MessageChannel.html#getIterableHistory()) to get an instance of [MessagePaginationAction](https://docs.jda.wiki/net/dv8tion/jda/api/requests/restaction/pagination/MessagePaginationAction.html) which can be used to load messages in various ways such as [takeAsync(amount)](https://docs.jda.wiki/net/dv8tion/jda/api/requests/restaction/pagination/PaginationAction.html#takeAsync(int)) or [takeUntilAsync(condition)](https://docs.jda.wiki/net/dv8tion/jda/api/requests/restaction/pagination/PaginationAction.html#takeUntilAsync(java.util.function.Predicate)). This can be combined with [MessageChannel.purgeMessages](https://docs.jda.wiki/net/dv8tion/jda/api/entities/MessageChannel.html#purgeMessages(java.util.List)) to bulk delete them from the channel. Keep in mind that `purgeMessages` will not delete all messages at once.
 
@@ -125,7 +125,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
         }
         ```
 
-??? question "How can I send a message to a specific channel without an event?"
+??? question "How can I send a message to a specific channel without an event?[](){#faq-message-without-event}"
 
     Since you decided that you want to send a message to a specific channel you should already have either an **ID** or the **NAME and optionally GUILD (ID/NAME)** to locate this channel. Now all you need is access to the JDA instance of your bot session. This can easily be accomplished by passing the JDA instance as a parameter to the constructor of your class.
 
@@ -172,7 +172,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
             }
             ```
 
-??? question "How can I wait for a user response?"
+??? question "How can I wait for a user response?[](){#faq-wait-for-user-response}"
 
     Since JDA is event based you can implement a [finite state machine](https://en.wikipedia.org/wiki/Finite-state_machine).
 
@@ -180,7 +180,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     - [How to make a Discord Bot wait for a specific user to send a message with JDA?](https://stackoverflow.com/a/54492973/10630900)
     - [Repetitive Consumer For Loop](https://stackoverflow.com/a/56694065/10630900)
 
-??? question "How can I find out which RestAction causes an ErrorResponseException?"
+??? question "How can I find out which RestAction causes an ErrorResponseException?[](){#faq-rest-action-exception}"
 
     ```java
     RestAction.setPassContext(true); // enable context by default
@@ -190,11 +190,11 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
     Doing this will result in performance loss so it is recommended to only go to this extreme when you need to debug errors.
     To handle failures of a specific action, read this [RestAction queue returned failure](../using-jda/troubleshooting.md#restaction-queue-returned-failure).
 
-??? question "How do I test other builds?"
+??? question "How do I test other builds?[](){#faq-test-other-builds}"
 
     You can use JitPack to provide other branches of JDA as a dependency.  We have a tutorial on how to use it on [this wiki page](/using-jda/using-new-features).
 
-??? question "How can I reduce the jar size of my bot?"
+??? question "How can I reduce the jar size of my bot?[](){#faq-reduce-bot-jar-size}"
 
     To reduce the jar size of your bot you can either use Maven or Gradle. Alternatively use the minimized jar from the download server with the name `JDA-%VERSION%-withDependencies-min.jar`
 
@@ -250,7 +250,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
             </plugin>
             ```
 
-??? question "How can I reduce the memory footprint of my bot?"
+??? question "How can I reduce the memory footprint of my bot?[](){#faq-bot-reduce-memory-footprint}"
 
     The default behavior of JDA is to cache everything except for messages. However, the library user can choose to disable some parts of the cache to decrease the memory impact of the bot process in exchange for less context and possibly more garbage accumulation.
 
@@ -279,7 +279,7 @@ Didn't find an answer? Try asking in [our Discord server](https://discord.gg/0hM
         2. `JDABuilder#setGatewayPool(ScheduledExecutorService)`
         3. `JDABuilder#setRateLimitPool(ScheduledExecutorService)`
 
-??? question "How do I make a thread dump?"
+??? question "How do I make a thread dump?[](){#faq-thread-dump}"
 
     The JDK provides a utility for creating a thread dump of a running JVM process: `jstack -l <pid>` (that's an L for "Long")
     Example: `jstack -l 1337 > dump.txt` This will list the thread dump and write it to a file called `dump.txt`.
