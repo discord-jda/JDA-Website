@@ -52,7 +52,7 @@
         }
 
         dependencies {
-            implementation("net.dv8tion:JDA:#.#.#_###")
+            implementation("net.dv8tion:JDA:#.#.#")
         }
 
         compileJava.options.encoding = "UTF-8"
@@ -94,13 +94,13 @@
     ```
     - This will make your project support UTF-8 characters (So you can have it on Japanese servers for example) and also force Java 8, which is needed.
 
-    1. Now, add the dependency, make sure you change `X.Y.Z-beta.W` to the latest version number (You can find it in the releases: https://github.com/discord-jda/JDA/releases)
+    1. Now, add the dependency, make sure you change `X.Y.Z` to the latest version number (You can find it in the releases: https://github.com/discord-jda/JDA/releases)
         ```xml
         <dependencies>
             <dependency>
             <groupId>net.dv8tion</groupId>
             <artifactId>JDA</artifactId>
-            <version>X.Y.Z-beta.W</version>
+            <version>X.Y.Z</version>
             </dependency>
         </dependencies>
         ```
@@ -173,7 +173,7 @@
 
         ![Add External Jars](../assets/images/ide/eclipse/22-addExternalJars.png)
 
-    1. Add your downloaded **JDA-withDependencies-x.x.x_xxx.jar** and expand its properties
+    1. Add your downloaded **JDA-withDependencies-x.x.x.jar** and expand its properties
     - If you don't want Javadoc and source annotations, skip to 11 (not recommended).
 
         ![Add External Jars](../assets/images/ide/eclipse/23-sourceAttachment.png)
