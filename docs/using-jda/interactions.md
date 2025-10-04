@@ -575,7 +575,7 @@ Modals are pop-ups that appear in a user's Discord client.
 
 ![Example Modal](../assets/images/interactions/modal_example.png)
 
-Similarly to messages, Modals can contain up to **5** ActionRows, although the only component that can be put inside Modals at the moment (`TextInput`) takes up a whole ActionRow. 
+A modal usually consists of a list of `Label` components, each of which contain a labelled field such as `TextInput` or `StringSelectMenu`.
 
 ### Replying with a Modal
 
@@ -586,20 +586,20 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
             @Override
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("modmail")) {
-                    TextInput subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                    TextInput subject = TextInput.create("subject", TextInputStyle.SHORT)
                             .setPlaceholder("Subject of this ticket")
                             .setMinLength(10)
                             .setMaxLength(100) // or setRequiredRange(10, 100)
                             .build();
 
-                    TextInput body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                    TextInput body = TextInput.create("body", TextInputStyle.PARAGRAPH)
                             .setPlaceholder("Your concerns go here")
                             .setMinLength(30)
                             .setMaxLength(1000)
                             .build();
 
                     Modal modal = Modal.create("modmail", "Modmail")
-                            .addComponents(ActionRow.of(subject), ActionRow.of(body))
+                            .addComponents(Label.of("Subject", subject), Label.of("Body", body))
                             .build();
 
                     event.replyModal(modal).queue();
@@ -612,20 +612,20 @@ Similarly to messages, Modals can contain up to **5** ActionRows, although the o
         object SupportCommand : ListenerAdapter() {
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "modmail") {
-                    val subject = TextInput.create("subject", "Subject", TextInputStyle.SHORT)
+                    val subject = TextInput.create("subject", TextInputStyle.SHORT)
                         .setPlaceholder("Subject of this ticket")
                         .setMinLength(10)
                         .setMaxLength(100) // or setRequiredRange(10, 100)
                         .build()
 
-                    val body = TextInput.create("body", "Body", TextInputStyle.PARAGRAPH)
+                    val body = TextInput.create("body", TextInputStyle.PARAGRAPH)
                         .setPlaceholder("Your concerns go here")
                         .setMinLength(30)
                         .setMaxLength(1000)
                         .build()
 
                     val modal = Modal.create("modmail", "Modmail")
-                        .addComponents(ActionRow.of(subject), ActionRow.of(body))
+                        .addComponents(Label.of("Subject", subject), Label.of("Body", body))
                         .build()
 
                     event.replyModal(modal).queue()
