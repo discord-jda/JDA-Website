@@ -1,0 +1,1988 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../migration-v3-v4/">
+      
+      
+        <link rel="next" href="../../setup/intellij/">
+      
+      
+      <link rel="icon" href="../../assets/images/logo-round.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.21">
+    
+    
+      
+        <title>Migration V4 -> V5 - JDA Wiki</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2a3383ac.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/colors.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/frontpage.css">
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/tasklists.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#migration-guide-4x-to-5x" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="JDA Wiki" class="md-header__button md-logo" aria-label="JDA Wiki" data-md-component="logo">
+      <style>
+  /* We want the logo imagine to consume the full height, so remove the default applied margin and padding */
+  .md-header__button.md-logo {
+    padding: 0;
+    margin: 0;
+  }
+
+  .header__logo {
+    height: 46px !important; /* !important to override strong theme specificity */
+  }
+</style>
+
+<!-- Logo -->
+
+
+  <img class="header__logo" src="../../assets/images/logo-transparent.svg" alt="logo" />
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            JDA Wiki
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Migration V4 -> V5
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="purple" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="purple" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/discord-jda/JDA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JDA
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../jda/" class="md-tabs__link">
+          
+  
+  
+  Getting Started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../setup/intellij/" class="md-tabs__link">
+          
+  
+  
+  Setup
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../using-jda/getting-started/" class="md-tabs__link">
+          
+  
+  
+  Using JDA
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../contributing/contributing/" class="md-tabs__link">
+          
+  
+  
+  Contributing
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="https://docs.jda.wiki/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Javadocs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+  
+
+<nav class="md-nav md-nav--primary md-nav--lifted md-nav--integrated" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="JDA Wiki" class="md-nav__button md-logo" aria-label="JDA Wiki" data-md-component="logo">
+      <style>
+  /* We want the logo imagine to consume the full height, so remove the default applied margin and padding */
+  .md-header__button.md-logo {
+    padding: 0;
+    margin: 0;
+  }
+
+  .header__logo {
+    height: 46px !important; /* !important to override strong theme specificity */
+  }
+</style>
+
+<!-- Logo -->
+
+
+  <img class="header__logo" src="../../assets/images/logo-transparent.svg" alt="logo" />
+
+    </a>
+    JDA Wiki
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/discord-jda/JDA" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.0.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    JDA
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_1" id="__nav_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_1">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jda/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    JDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../events/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using Events
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FAQ
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-v3-v4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration V3 -> V4
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Migration V4 -> V5
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Migration V4 -> V5
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Installation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#additional-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Additional Resources
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#extensions-that-support-5x" class="md-nav__link">
+    <span class="md-ellipsis">
+      Extensions That Support 5.X
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introduction-of-message-content-privileged-intent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction of Message Content Privileged Intent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#channel-rework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Rework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Channel Rework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#channel-return-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Channel Return Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#new-channel-attribute-interfaces" class="md-nav__link">
+    <span class="md-ellipsis">
+      New Channel Attribute Interfaces
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#permission-access-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permission Access Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#type-trimmed-channel-managers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Type-Trimmed Channel Managers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#independent-stage-channel-and-news-channel-entities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Independent Stage Channel and News Channel Entities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#permission-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Permission Changes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Event Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#removal-of-guild-context-message-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Removal of Guild Context Message Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changes-to-specifying-gatewayintents-from-event-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changes to Specifying GatewayIntents from Event Types
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#session-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Session Events
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#voice-state-events" class="md-nav__link">
+    <span class="md-ellipsis">
+      Voice State Events
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#intent-and-member-cache-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intent and Member Cache Changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Intent and Member Cache Changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#renamed-intents" class="md-nav__link">
+    <span class="md-ellipsis">
+      Renamed Intents
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chunking-and-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunking and Caching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sticker-and-emoji-rework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sticker and Emoji Rework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Sticker and Emoji Rework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sticker-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sticker Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#emoteemoji-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Emote/Emoji Changes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#message-sendedit-rework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Send/Edit Rework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Message Send/Edit Rework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#method-renames" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method Renames
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unifying-message-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unifying Message Requests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#file-sending" class="md-nav__link">
+    <span class="md-ellipsis">
+      File Sending
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#message-splitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Message Splitting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mentions-rework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mentions Rework
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interaction-rework" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interaction Rework
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Interaction Rework">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Naming Changes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creating-and-handling-commands" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating and Handling Commands
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#command-permissionsprivileges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Command Permissions/Privileges
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#usersnowflake-type" class="md-nav__link">
+    <span class="md-ellipsis">
+      UserSnowflake Type
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="UserSnowflake Type">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ban-precision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ban Precision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#managers-are-no-longer-persistent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managers are no longer persistent
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Setup
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Setup
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/intellij/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    IntelliJ IDEA Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/eclipse/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Eclipse Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/netbeans/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Netbeans Setup
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../setup/logging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Logging (SLF4J)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Using JDA
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Using JDA
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/getting-started/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/making-a-music-bot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Making a Music Bot
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/using-restaction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using RestAction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/interactions/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Interactions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/paginating-entities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Paginating Entities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/gateway-intents-and-member-cache-policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Gateway Intents and Member Cache Policy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://github.com/MinnDevelopment/discord-webhooks" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Webhooks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/separation-of-concerns/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Managers and Moderation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/using-new-features/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using New Features
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using-jda/troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contributing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Contributing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/structure-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Structure Guide
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/repository-structure/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Repository Structure
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://docs.jda.wiki/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadocs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="migration-guide-4x-to-5x">Migration Guide 4.X to 5.X<a class="headerlink" href="#migration-guide-4x-to-5x" title="Permanent link">&para;</a></h1>
+<p>This version utilizes Discord API v10, and includes several breaking changes and improvements.</p>
+<h2 id="dependency-installation">Dependency Installation<a class="headerlink" href="#dependency-installation" title="Permanent link">&para;</a></h2>
+<p>Before continuing, we should mention that JDA versions are now distributed via <a href="https://mvnrepository.com/artifact/net.dv8tion/JDA/latest">Maven Central</a>. You can remove the old <code>m2.dv8tion.net</code> resolver from your build files.</p>
+<p>Replace <code>VERSION</code> with the latest version <img alt="Maven Version" src="https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue" /></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Gradle</label><label for="__tabbed_1_2">Maven</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">repositories</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">mavenCentral</span><span class="o">()</span>
+<span class="o">}</span>
+
+<span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="o">(</span><span class="s2">&quot;net.dv8tion:JDA:VERSION&quot;</span><span class="o">)</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">  </span><span class="nt">&lt;groupId&gt;</span>net.dv8tion<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;artifactId&gt;</span>JDA<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">  </span><span class="nt">&lt;version&gt;</span>VERSION<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="additional-resources">Additional Resources<a class="headerlink" href="#additional-resources" title="Permanent link">&para;</a></h2>
+<p>This migration guide does not include every single detail and does not focus on any new features available in JDA 5, such as <a href="https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/ThreadChannel.html">ThreadChannels</a>. Here are some useful resources to learn more if you are curious about all the new things we added:</p>
+<ul>
+<li><a href="https://github.com/discord-jda/JDA/tree/master/src/examples/java">Examples</a></li>
+<li><a href="https://docs.jda.wiki/">JDA 5 Javadocs</a></li>
+<li><a href="https://github.com/discord-jda/JDA/releases">Releases</a></li>
+</ul>
+<h2 id="extensions-that-support-5x">Extensions That Support 5.X<a class="headerlink" href="#extensions-that-support-5x" title="Permanent link">&para;</a></h2>
+<p>Here is a list of known extensions that support 5.X.
+The ones that are not checked do not support it yet. You should check that everything used in your project supports 5.X before starting migration.</p>
+<ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/MinnDevelopment/jda-reactor">jda-reactor</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/lavalink-devs/lavaplayer">LavaPlayer</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/sedmelluq/jda-nas">jda-nas</a><ul class="task-list">
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/MinnDevelopment/udpqueue.rs">udpqueue.rs</a> (for minimal Rust bindings)</li>
+</ul>
+</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled checked/><span class="task-list-indicator"></span></label> <a href="https://github.com/MinnDevelopment/jda-ktx">jda-ktx</a></li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> <a href="https://github.com/JDA-Applications/JDA-Utilities">JDA-Utilities</a></li>
+</ul>
+<h2 id="introduction-of-message-content-privileged-intent">Introduction of Message Content Privileged Intent<a class="headerlink" href="#introduction-of-message-content-privileged-intent" title="Permanent link">&para;</a></h2>
+<p>As part of upgrading to API v10, accessing the following user-generated content in messages now requires the Message Content privileged intent (<code>GatewayIntent.MESSAGE_CONTENT</code>):</p>
+<ul>
+<li>Text content (<code>Message#getContentRaw</code>, <code>Message#getContentDisplay</code>, <code>Message#getContentStripped</code>)</li>
+<li>Embeds (<code>Message#getEmbeds</code>)</li>
+<li>Attachments (<code>Message#getAttachments</code>)</li>
+<li>Message Components (<code>Message#getActionRows</code>, <code>Message#getButtons</code>)</li>
+<li>Custom Emoji Mentions (<code>Message#getMentions()#getCustomEmojis()</code>)</li>
+</ul>
+<p>You must enable this intent in your <code>JDABuilder</code> <strong>AND</strong> in the Discord Developer Portal for your app if you utilize any of the above methods. For more information on intents, read the <a href="/using-jda/gateway-intents-and-member-cache-policy">dedicated wiki page</a>.</p>
+<h2 id="channel-rework">Channel Rework<a class="headerlink" href="#channel-rework" title="Permanent link">&para;</a></h2>
+<p>There are several breaking changes to <code>GuildChannel</code> and <code>ChannelManager</code>. Firstly, the packages of most channel interfaces have changed. What was previously simply found in <code>net.dv8tion.jda.api.entities</code> is now split over the following packages:</p>
+<ul>
+<li><code>net.dv8tion.jda.api.entities.channel</code><br>
+    Top level channel enums and the new <code>Channel</code> type interface.</li>
+<li><code>net.dv8tion.jda.api.entities.channel.attribute</code><br>
+    Interfaces dedicated to specific fields, such as slowmode or permissions. This also has some interfaces for <em>concepts</em>, such as copying or categorizing.</li>
+<li><code>net.dv8tion.jda.api.entities.channel.concrete</code><br>
+    The bottom level interfaces for exact concrete types, such as <code>VoiceChannel</code> and <code>TextChannel</code>.</li>
+<li><code>net.dv8tion.jda.api.entities.channel.forums</code><br>
+    Types related to <code>ForumChannel</code>, such as tags.</li>
+<li><code>net.dv8tion.jda.api.entities.channel.middleman</code><br>
+    Abstractions that apply to multiple concrete types, such as <code>MessageChannel</code> which covers all message related methods.</li>
+<li><code>net.dv8tion.jda.api.entities.channel.unions</code><br>
+    Interfaces used for return values, allowing for downcasting into specific types. They also provided shared features of the specific interface they extend.</li>
+</ul>
+<h3 id="channel-return-types">Channel Return Types<a class="headerlink" href="#channel-return-types" title="Permanent link">&para;</a></h3>
+<p>Many classes in JDA had specific getters for each channel type. For example, messages had <code>getTextChannel()</code> and <code>getPrivateChannel()</code>. The goal was to allow easy conversion to concrete types that have more functionality than their abstract counterpart (such as <code>MessageChannel</code>). In JDA v5, we've introduced new <strong>Channel Union</strong> interfaces to deal with this problem in a more elegant way. Instead of using <code>foo.getTextChannel()</code>, you now use <code>foo.getChannel().asTextChannel()</code>. The <code>getChannel()</code> method now often returns a specific <strong>Union</strong> type such as <code>MessageChannelUnion</code>, which doubles as the abstract implementation for <code>MessageChannel</code> (allows to send messages) and also downcasting via various <code>asX()</code> methods.</p>
+<h3 id="new-channel-attribute-interfaces">New Channel Attribute Interfaces<a class="headerlink" href="#new-channel-attribute-interfaces" title="Permanent link">&para;</a></h3>
+<p><code>GuildChannel</code> now implements <code>getGuild</code> and <code>getManager</code> <em>only</em>. It's meant to serve as a generic type to hold channels from guilds.</p>
+<p>Specific channel attributes, such as slowmode and permissions, have been split into several interfaces. These interfaces can be found in <a href="https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/attribute/package-summary.html">the <code>net.dv8tion.jda.api.entities.channel.attribute</code> package</a>. Each interface in this package extends <code>GuildChannel</code>.</p>
+<h3 id="permission-access-changes">Permission Access Changes<a class="headerlink" href="#permission-access-changes" title="Permanent link">&para;</a></h3>
+<p>With JDA v5 we reduced the capabilities of the <code>GuildChannel</code> interface. The method <code>GuildChannel#getPermissionContainer</code> has been introduced to make accessing permissions easier. This allows for users to confidently access the entity that dictates the permissions for a given channel without having to check whether the channel actually supports permissions, such as in the case of threads.</p>
+<p>Of course, if you have a channel type that already supports <code>IPermissionContainer</code>, you don't need this getter.</p>
+<h3 id="type-trimmed-channel-managers">Type-Trimmed Channel Managers<a class="headerlink" href="#type-trimmed-channel-managers" title="Permanent link">&para;</a></h3>
+<p>In JDA v4, <code>GuildChannel#getManager</code> returned a <code>ChannelManager</code> that gave every possible setter for every channel type. This caused for <code>UnsupportedOperationException</code> or <code>IllegalStateException</code> to be thrown in some cases, such as calling <code>setBitrate</code> on a <code>TextChannel</code>.</p>
+<p>JDA v5 provides type-trimmed channel managers, which provide only the setters that we know <em>for sure</em> can work on the given channel. Each of these managers can be found in <a href="https://docs.jda.wiki/net/dv8tion/jda/api/managers/channel/package-summary.html">the <code>net.dv8tion.jda.api.managers.channel</code> package</a>. These all follow the same implement/extension hierarchy as the channels do and map 1:1.</p>
+<h3 id="independent-stage-channel-and-news-channel-entities">Independent Stage Channel and News Channel Entities<a class="headerlink" href="#independent-stage-channel-and-news-channel-entities" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/StageChannel.html"><code>StageChannel</code></a> and <a href="https://docs.jda.wiki/net/dv8tion/jda/api/entities/channel/concrete/NewsChannel.html"><code>NewsChannel</code></a> were previously variants of <code>VoiceChannel</code> and <code>TextChannel</code>. These are now their own independent entities. This comes with a number of changes:</p>
+<ul>
+<li><code>ChannelAction#setNews</code> is replaced by <code>ChannelAction.setType</code></li>
+<li><code>ChannelManager#getType</code> is replaced by <code>ChannelManager#getChannel()#getType</code></li>
+<li><code>ChannelManager#setNews</code> is replaced by <code>ChannelManager#setType</code></li>
+<li><code>TextChannel#crosspostMessage</code> is replaced by <code>NewsChannel#crosspostMessage</code></li>
+<li><code>TextChannel#follow</code> is replaced by <code>NewsChannel#follow</code></li>
+<li><code>TextChannel#isNews</code> was removed</li>
+</ul>
+<h3 id="other-changes">Other Changes<a class="headerlink" href="#other-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>StoreChannel</code> was removed</li>
+<li><code>PrivateChannel#getUser</code> is now nullable</li>
+<li><code>MessageChannel#getLatestMessageId</code> and <code>MessageChannel#getLatestMessageIdLong</code> no longer change to null if the message was deleted</li>
+</ul>
+<h2 id="permission-changes">Permission Changes<a class="headerlink" href="#permission-changes" title="Permanent link">&para;</a></h2>
+<p>A number of permissions have been renamed, with one permission being removed entirely.</p>
+<ul>
+<li><code>Permission.MANAGE_EMOTES</code> renamed to <code>Permission.MANAGE_EMOTES_AND_STICKERS</code></li>
+<li><code>Permission.MESSAGE_WRITE</code> renamed to <code>Permission.MESSAGE_SEND</code></li>
+<li><code>Permission.USE_SLASH_COMMANDS</code> renamed to <code>Permission.USE_APPLICATION_COMMANDS</code></li>
+<li><code>Permission.USE_PUBLIC_THREADS</code> renamed to <code>Permission.CREATE_PUBLIC_THREADS</code></li>
+<li><code>Permission.USE_PRIVATE_THREADS</code> renamed to <code>Permission.CREATE_PRIVATE_THREADS</code></li>
+<li><code>Permission.MESSAGE_READ</code> was removed in favor of <code>Permission.VIEW_CHANNEL</code></li>
+</ul>
+<h2 id="event-changes">Event Changes<a class="headerlink" href="#event-changes" title="Permanent link">&para;</a></h2>
+<p>There are several changes related to events.</p>
+<h3 id="removal-of-guild-context-message-events">Removal of Guild Context Message Events<a class="headerlink" href="#removal-of-guild-context-message-events" title="Permanent link">&para;</a></h3>
+<p>All message event types for guild messages have been removed. Examples of these are:</p>
+<ul>
+<li><code>Generic&lt;Context&gt;MessageEvent</code> (ex: <code>GenericGuildMessageEvent</code>)</li>
+<li><code>&lt;Context&gt;MessageReceivedEvent</code> (ex: <code>GuildMessageReceivedEvent</code>)</li>
+<li><code>&lt;Context&gt;MessageUpdateEvent</code> (ex: <code>GuildMessageUpdateEvent</code>)</li>
+<li><code>&lt;Context&gt;MessageDeleteEvent</code> (ex: <code>GuildMessageDeleteEvent</code>)</li>
+<li><code>&lt;Context&gt;MessageEmbedEvent</code> (ex: <code>GuildMessageEmbedEvent</code>)</li>
+<li><code>&lt;Context&gt;MessageReaction&lt;X&gt;Event</code> (ex: <code>GuildMessageReactionAddEvent</code>)</li>
+</ul>
+<p>Instead, you should use the unified versions of these events:</p>
+<ul>
+<li><code>GenericMessageEvent</code></li>
+<li><code>MessageReceivedEvent</code></li>
+<li><code>MessageUpdatedEvent</code></li>
+<li><code>MessageDeletedEvent</code></li>
+<li><code>MessageReaction&lt;X&gt;Event</code> (ex: <code>MessageReactionAddEvent</code>)</li>
+</ul>
+<p>You can check if a message is from a <code>Guild</code> by using <code>Message#isFromGuild</code>.</p>
+<h3 id="changes-to-specifying-gatewayintents-from-event-types">Changes to Specifying GatewayIntents from Event Types<a class="headerlink" href="#changes-to-specifying-gatewayintents-from-event-types" title="Permanent link">&para;</a></h3>
+<p>With context-specific events being removed (such as <code>GuildMessageReceivedEvent</code>), you can no longer use these events to specify <code>GatewayIntent.GUILD_MESSAGES</code> or <code>GatewayIntent.DIRECT_MESSAGE_REACTIONS</code>. You may supply any of the unified message events, but the functionality will be slightly different. It is not recommended to use <code>GatewayIntent#fromEvents</code> if you wish to have finer grain control around intents for messages.</p>
+<h3 id="session-events">Session Events<a class="headerlink" href="#session-events" title="Permanent link">&para;</a></h3>
+<p>All events that update the gateway session of a bot now extend a common <a href="https://docs.jda.wiki/net/dv8tion/jda/api/events/session/GenericSessionEvent.html"><code>GenericSessionEvent</code></a>. Such events are located within <a href="https://docs.jda.wiki/net/dv8tion/jda/api/events/session/package-summary.html">the <code>net.dv8tion.jda.api.events.session</code> package</a>. This also includes <code>ReadyEvent</code> and <code>ShutdownEvent</code>.</p>
+<p>Some events relating to sessions have been renamed:</p>
+<ul>
+<li><code>DisconnectEvent</code> renamed to <code>SessionDisconnectEvent</code></li>
+<li><code>ReconnectedEvent</code> renamed to <code>SessionRecreateEvent</code></li>
+<li><code>ResumedEvent</code> renamed to <code>SessionResumeEvent</code></li>
+</ul>
+<h3 id="voice-state-events">Voice State Events<a class="headerlink" href="#voice-state-events" title="Permanent link">&para;</a></h3>
+<p><code>GuildVoiceJoinEvent</code> and <code>GuildVoiceLeaveEvent</code> have both been removed in favor of the unified <a href="https://docs.jda.wiki/net/dv8tion/jda/api/events/guild/voice/GuildVoiceUpdateEvent.html"><code>GuildVoiceUpdateEvent</code></a>.</p>
+<p>As an example, to detect when a user leaves a voice channel, you can use <code>GuildVoiceUpdateEvent#getChannelLeft</code>. This method will return the channel that the user left, or <code>null</code> if the user joined a channel instead.</p>
+<h2 id="intent-and-member-cache-changes">Intent and Member Cache Changes<a class="headerlink" href="#intent-and-member-cache-changes" title="Permanent link">&para;</a></h2>
+<p>A few changes to intents and member caching were also made to improve the user experience.</p>
+<h3 id="renamed-intents">Renamed Intents<a class="headerlink" href="#renamed-intents" title="Permanent link">&para;</a></h3>
+<p>The following intents have been renamed to align with the API name convention:</p>
+<ul>
+<li><code>GatewayIntent.GUILD_BANS</code> renamed to <code>GatewayIntent.GUILD_MODERATION</code></li>
+<li><code>GatewayIntent.GUILD_EMOJIS</code> renamed to <code>GatewayIntent.GUILD_EMOJIS_AND_STICKERS</code></li>
+</ul>
+<h3 id="chunking-and-caching">Chunking and Caching<a class="headerlink" href="#chunking-and-caching" title="Permanent link">&para;</a></h3>
+<p>If you used <code>ChunkingFilter.ALL</code> in the past, JDA would automatically also cache all those members it chunked. However, this is not a very flexible rule, and we changed this behavior. Instead, the <code>MemberCachePolicy</code> will control which members to keep cached after chunking.</p>
+<h2 id="sticker-and-emoji-rework">Sticker and Emoji Rework<a class="headerlink" href="#sticker-and-emoji-rework" title="Permanent link">&para;</a></h2>
+<p>We now fully support the sticker API in JDA. You can send up to 3 stickers in messages and receive both guild and nitro-only stickers. To improve the user experience with emotes/emoji we also changed this API.</p>
+<h3 id="sticker-changes">Sticker Changes<a class="headerlink" href="#sticker-changes" title="Permanent link">&para;</a></h3>
+<p>The old <code>MessageSticker</code> class has been removed in favor of an assortment of new interfaces located in <code>net.dv8tion.api.entities.sticker</code>. Instead, <code>Message#getStickers</code> now returns the new <code>StickerItem</code> interface. You can create a sendable sticker instance with <code>Sticker.fromId(stickerId)</code> and then pass it to <code>GuildMessageChannel#sendStickers</code>.</p>
+<h3 id="emoteemoji-changes">Emote/Emoji Changes<a class="headerlink" href="#emoteemoji-changes" title="Permanent link">&para;</a></h3>
+<p>In old versions we always made a distinction between <strong>Emote</strong> and <strong>Emoji</strong> to differentiate <strong>Custom Emoji</strong> from <strong>Unicode Emoji</strong>. This naming scheme was not ideal and caused a bit of confusion. In our redesign we instead simplify this to the names <code>CustomEmoji</code> and <code>UnicodeEmoji</code>. Some classes/interfaces had to be renamed for this new design:</p>
+<ul>
+<li><code>Emote</code> renamed to <code>RichCustomEmoji</code></li>
+<li><code>EmoteManager</code> renamed to <code>CustomEmojiManager</code></li>
+<li><code>MessageReactionRemoveEmoteEvent</code> renamed to <code>MessageReactionRemoveEmojiEvent</code></li>
+</ul>
+<p>All methods/enums/types using <code>emote</code> have also been adjusted to say <code>emoji</code>, for example <code>Guild#retrieveEmotes</code> is now <code>Guild#retrieveEmojis</code> and <code>CacheFlag.EMOTE</code> is now <code>CacheFlag.EMOJI</code>.</p>
+<p>This new design also had the goal to unify all usages of emoji in the API, allowing you to use them for anything that makes use of emoji. For instance, previously there was a distinction between reaction emoji (<code>MessageReaction.ReactionEmote</code>) and button emoji (<code>Emoji</code>), which now both use the same <code>Emoji</code> type:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">onMessageReactionAdd</span><span class="p">(</span><span class="n">MessageReactionAddEvent</span><span class="w"> </span><span class="n">event</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">event</span><span class="p">.</span><span class="na">getChannel</span><span class="p">().</span><span class="na">sendMessage</span><span class="p">(</span><span class="s">&quot;User reacted&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">setActionRow</span><span class="p">(</span><span class="n">Button</span><span class="p">.</span><span class="na">primary</span><span class="p">(</span><span class="s">&quot;buttonid&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">event</span><span class="p">.</span><span class="na">getEmoji</span><span class="p">()))</span>
+<span class="w">    </span><span class="p">.</span><span class="na">queue</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>To check which emoji was used in a reaction, you can use <code>emoji.equals(otherEmoji)</code> instead of checking for id/name. This has the advantage for also checking the correct type for you. For example: <code>event.getEmoji().equals(Emoji.fromFormatted("😃"))</code>.</p>
+<p>You also now use <code>Emoji</code> instances for reactions. What was previously <code>message.addReaction("...")</code> is now <code>message.addReaction(Emoji.fromFormatted("..."))</code>. And in general you can use the following factory methods to create emoji instances:</p>
+<ul>
+<li><code>Emoji.fromUnicode</code><br>
+    Parses codepoint notation like <code>"U+1F602"</code> or simply uses the provided unicode characters <code>"😃"</code>. This returns a concrete <code>UnicodeEmoji</code> type instance.</li>
+<li><code>Emoji.fromCustom</code><br>
+    Creates a <code>CustomEmoji</code> instance from the provided name and id.</li>
+<li><code>Emoji.fromFormatted</code><br>
+    Parses emoji instances from markdown such as <code>"&lt;:minn:12345581261712671&gt;"</code> and also supports unicode such as <code>"😃"</code> or codepoint notation <code>"U+1F602"</code>. This returns a <code>EmojiUnion</code> instance, which can be either custom or unicode.</li>
+</ul>
+<p>You can see the full list of breaking changes in <a href="https://github.com/discord-jda/JDA/pull/2117">#2117</a>.</p>
+<h2 id="message-sendedit-rework">Message Send/Edit Rework<a class="headerlink" href="#message-sendedit-rework" title="Permanent link">&para;</a></h2>
+<p>In JDA 5 we are separating the handling of message sending and editing, while also unifying all send and edit functionality in the API. The old <code>MessageBuilder</code> and <code>MessageAction</code> have been split up:</p>
+<ul>
+<li><code>MessageCreateBuilder</code></li>
+<li><code>MessageCreateAction</code></li>
+<li><code>MessageEditBuilder</code></li>
+<li><code>MessageEditAction</code></li>
+</ul>
+<p>This change should only affect people who made use of <code>MessageBuilder</code> in the past. You need to update your code to either the edit or create builders. If you don't know whether the resulting operation is an edit or send request, you can simply always use <code>MessageEditBuilder</code> and then use <code>MessageCreateData.fromEdit(MessageEditData)</code> to convert it at call-site. You can also use similar factory methods to create a sendable message from the <code>Message</code> interface (<code>MessageCreateData.fromMessage(message)</code>).</p>
+<p>Previously, edit requests had a method called <code>override(boolean)</code> to <em>replace</em> the entire message. This was used to remove content or embeds from a message. You can now simply use <code>setEmbeds(emptyList())</code> or <code>setContent("")</code> to remove specific parts of the message, or use <code>setReplace(true)</code> to achieve the same functionality of replacing everything.</p>
+<h3 id="method-renames">Method Renames<a class="headerlink" href="#method-renames" title="Permanent link">&para;</a></h3>
+<p>Some methods were renamed to allow for consistency between all requests.</p>
+<ul>
+<li><code>setActionRows</code>/<code>addActionRows</code> renamed to <code>setComponents</code>/<code>addComponents</code></li>
+<li><code>MessageAction#tts</code> renamed to <code>MessageCreateRequest#setTTS</code></li>
+<li><code>MessageAction#content</code> renamed to <code>MessageCreateRequest#setContent</code></li>
+<li><code>MessageAction#allowedMentions</code> renamed to <code>MessageRequest#setAllowedMentions</code></li>
+<li><code>addFile</code> removed in favor of <code>addFiles</code> and <code>setAttachments</code> (see <strong>File Sending</strong> section below)</li>
+</ul>
+<h3 id="unifying-message-requests">Unifying Message Requests<a class="headerlink" href="#unifying-message-requests" title="Permanent link">&para;</a></h3>
+<p>All message send and edit requests now use a unified <code>MessageRequest</code> interface. This allows you to make very abstracted implementations that use high level interfaces.</p>
+<p><img alt="Message Rework Hierarchy" src="https://github.com/discord-jda/JDA-Website/assets/18090140/7662acf2-6cb8-4b34-aaa8-65176bc153dc" /></p>
+<p>This also means that all methods from <code>message.editMessage(...)</code> are consistent with the methods from <code>interaction.editMessage(...)</code>, and analogously for sending. You can now use <code>addActionRow</code> when sending a message to a channel.</p>
+<h3 id="file-sending">File Sending<a class="headerlink" href="#file-sending" title="Permanent link">&para;</a></h3>
+<p>The old <code>sendFile(...)</code>/<code>replyFile(...)</code> overloads available on <code>MessageChannel</code> and interactions has been replaced by a single <code>sendFiles(...)</code> method. This new method accepts the <code>FileUpload</code> type, which also supports file descriptions (alt text) via <code>setDescription(...)</code>. For example, old code such as <code>sendFile(data, name, AttachmentOption.SPOILER)</code> is replaced with <code>sendFiles(FileUpload.fromData(data, name).asSpoiler())</code>.</p>
+<p>Due to changes in the Discord API v10, you can no longer add files to messages without replacing all existing attachments. We could previously support methods such as <code>MessageAction#addFile</code> for editing messages, which is no longer possible in API v10. Instead, you <strong>must</strong> replace the entire list of attachments, using <code>MessageEditAction#setAttachments</code>. Here is an example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Here &quot;message&quot; is an instance of the Message interface</span>
+
+<span class="c1">// Take the first attachment of the message, all others will be removed</span>
+<span class="n">AttachedFile</span><span class="w"> </span><span class="n">attachment</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">message</span><span class="p">.</span><span class="na">getAttachments</span><span class="p">().</span><span class="na">get</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+
+<span class="c1">// The name here will be &quot;cat.png&quot; to discord, what the file is called on your computer is irrelevant and only used to read the data of the image.</span>
+<span class="n">FileUpload</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">FileUpload</span><span class="p">.</span><span class="na">fromData</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">File</span><span class="p">(</span><span class="s">&quot;mycat-final-copy.png&quot;</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;cat.png&quot;</span><span class="p">);</span><span class="w"> </span><span class="c1">// Opens the file called &quot;cat.png&quot; and provides the data used for sending</span>
+
+<span class="c1">// Edit request to keep the first attachment, and add one more file to the message</span>
+<span class="n">message</span><span class="p">.</span><span class="na">editMessage</span><span class="p">(</span><span class="s">&quot;New content&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">setAttachments</span><span class="p">(</span><span class="n">attachment</span><span class="p">,</span><span class="w"> </span><span class="n">file</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">queue</span><span class="p">();</span>
+</code></pre></div>
+<h3 id="message-splitting">Message Splitting<a class="headerlink" href="#message-splitting" title="Permanent link">&para;</a></h3>
+<p>The old <code>MessageBuilder#buildAll</code> has been removed from the builder classes. Instead, you can now use the new <code>SplitUtil</code> utility class to split any string. For example:</p>
+<p><strong>Old:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Message</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">MessageBuilder</span><span class="p">().</span><span class="na">setContent</span><span class="p">(</span><span class="n">someLargeString</span><span class="p">).</span><span class="na">buildAll</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>New:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">contents</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SplitUtil</span><span class="p">.</span><span class="na">split</span><span class="p">(</span>
+<span class="w">    </span><span class="n">someLargeString</span><span class="p">,</span><span class="w">  </span><span class="c1">// input string of arbitrary length</span>
+<span class="w">    </span><span class="mi">2000</span><span class="p">,</span><span class="w">             </span><span class="c1">// the split limit, can be arbitrary (&gt;0)</span>
+<span class="w">    </span><span class="kc">true</span><span class="p">,</span><span class="w">             </span><span class="c1">// whether to trim the strings (empty will be discarded)</span>
+<span class="w">    </span><span class="n">Strategy</span><span class="p">.</span><span class="na">NEWLINE</span><span class="p">,</span><span class="w"> </span><span class="c1">// split on &#39;\n&#39; characters if possible</span>
+<span class="w">    </span><span class="n">Strategy</span><span class="p">.</span><span class="na">ANYWHERE</span><span class="w"> </span><span class="c1">// otherwise split on the limit</span>
+<span class="p">);</span>
+<span class="c1">// Convert to instance of MessageCreateData (optional, you can just send strings directly!)</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">MessageCreateData</span><span class="o">&gt;</span><span class="w"> </span><span class="n">messages</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">contents</span><span class="p">.</span><span class="na">stream</span><span class="p">().</span><span class="na">map</span><span class="p">(</span><span class="n">MessageCreateData</span><span class="p">::</span><span class="n">fromContent</span><span class="p">).</span><span class="na">toList</span><span class="p">();</span>
+</code></pre></div>
+<h2 id="mentions-rework">Mentions Rework<a class="headerlink" href="#mentions-rework" title="Permanent link">&para;</a></h2>
+<p>We made the handling of mentions consistent across both messages and interactions. You can now access mentions inside string options of slash commands through <code>OptionMapping#getMentions</code>. The old methods on <code>Message</code> have also been moved to a new <code>Mentions</code> interface, accessible via <code>Message#getMentions</code>.</p>
+<ul>
+<li><code>Message#getMentionedUsers</code> moved to <code>Mentions#getUsers</code></li>
+<li><code>Message#getMentionedMembers</code> moved to <code>Mentions#getMembers</code></li>
+<li><code>Message#getMentionedChannels</code> moved to <code>Mentions#getChannels</code></li>
+<li><code>Message#getEmotes</code> moved to <code>Mentions#getCustomEmojis</code></li>
+<li><code>Message#getMentions(MentionType...)</code> moved to <code>Mentions#getMentions(MentionType...)</code></li>
+<li><code>Message#isMentioned</code> moved to <code>Mentions#isMentioned</code></li>
+<li><code>Message#getMentionedMembers(Guild)</code> has been removed with no replacement</li>
+<li><code>Message#mentionsEveryone</code> moved to <code>Mentions#mentionsEveryone</code></li>
+<li>Analogously for all bag getters.</li>
+</ul>
+<p>Additionally, the return type of <code>Mentions#getChannels</code> has been adjusted to return <code>List&lt;GuildChannel&gt;</code> since all channel types can now be mentioned. You can use <code>Mentions#getChannels(Class)</code> to limit it to specific types, for example <code>List&lt;TextChannel&gt; channels = mentions.getChannels(TextChannel.class)</code>.</p>
+<h2 id="interaction-rework">Interaction Rework<a class="headerlink" href="#interaction-rework" title="Permanent link">&para;</a></h2>
+<p>To properly handle <strong>Context Menu</strong> and <strong>Auto-complete</strong> interactions, we reworked some interaction types. This includes numerous breaking changes to naming conventions and package layouts.</p>
+<h3 id="naming-changes">Naming Changes<a class="headerlink" href="#naming-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>SlashCommandEvent</code> renamed to <code>SlashCommandInteractionEvent</code></li>
+<li><code>ButtonClickEvent</code> renamed to <code>ButtonInteractionEvent</code></li>
+<li><code>SelectionMenu</code> renamed to <code>StringSelectMenu</code></li>
+<li><code>SelectionMenuEvent</code> renamed to <code>StringSelectEvent</code></li>
+<li><code>Component</code> renamed to <code>ActionComponent</code> and <code>ItemComponent</code> (abstraction for things like <code>Button</code>)</li>
+<li><code>ComponentLayout</code> renamed to <code>LayoutComponent</code> (abstraction for things like <code>ActionRow</code>)</li>
+<li>Introduced <strong>new</strong> <code>Component</code> interface to abstract both layouts and items.</li>
+<li><code>MessageType.APPLICATION_COMMAND</code> renamed to <code>MessageType.SLASH_COMMAND</code> (we now also have <code>MessageType.CONTEXT_COMMAND</code>)</li>
+<li><code>InteractionType.SLASH_COMMAND</code> renamed to <code>InteractionType.COMMAND</code> (we now also have <code>InteractionType.COMMAND_AUTOCOMPLETE</code>)</li>
+<li><code>SlashCommandEvent#getCommandPath</code> renamed to <code>CommandInteractionPayload#getFullCommandName</code> (it also now uses spaces instead of slashes, e.g. <code>mod/ban</code> is now <code>mod ban</code>)</li>
+</ul>
+<h3 id="creating-and-handling-commands">Creating and Handling Commands<a class="headerlink" href="#creating-and-handling-commands" title="Permanent link">&para;</a></h3>
+<p>With the introduction of <strong>Context Menu Commands</strong>, we changed how commands are created. Instead of <code>new CommandData(...)</code>, you now create a slash command using the factory method <code>Commands.slash(...)</code>, which returns a <code>SlashCommandData</code> instance that has the familiar methods. You can now also use <code>Commands.user(...)</code> and <code>Commands.message(...)</code> to create new context menu commands which appear in the right-click menu option named <strong>Apps</strong> in the Discord Client.</p>
+<p>Handling commands only changed slightly with regard to the way you reply. Previously, all <code>Interaction</code> types had a <code>reply(...)</code> or <code>deferReply(...)</code> method. This has been changed due to new interaction types like <strong>AutoCompleteInteraction</strong> and <strong>ModalInteraction</strong>. Now, each concrete interaction type implements specific <strong>callback</strong> interfaces such as:</p>
+<ul>
+<li><code>IReplyCallback</code><br>
+    Which supports direct message replies and deferred message replies via <code>reply(String)</code> and <code>deferReply()</code></li>
+<li><code>IMessageEditCallback</code><br>
+    Which supports direct message edits and deferred message edits (or no-operation) via <code>editMessage(String)</code> and <code>deferEdit()</code></li>
+<li><code>IModalCallback</code><br>
+    Which supports replying using a Modal via <code>replyModal(Modal)</code></li>
+<li><code>IAutoCompleteCallback</code><br>
+    Which supports choice suggestions for auto-complete interactions via <code>replyChoices(Command.Choice...)</code></li>
+</ul>
+<p>If you relied on the abstract <code>Interaction</code> type to provide any of these methods, you will have to adjust your code to use these new interfaces instead.</p>
+<p>You can find more explanations and examples in the dedicated <a href="/using-jda/interactions/">Interactions Wiki Page</a>.</p>
+<h3 id="command-permissionsprivileges">Command Permissions/Privileges<a class="headerlink" href="#command-permissionsprivileges" title="Permanent link">&para;</a></h3>
+<p>Discord has changed how command permissions work. Instead of limiting commands to specific roles and users on a per-guild basis, you set required permissions on each command. For instance, a ban command would require <code>Permission.BAN_MEMBERS</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">commands</span><span class="p">.</span><span class="na">addCommands</span><span class="p">(</span>
+<span class="w">    </span><span class="n">Commands</span><span class="p">.</span><span class="na">slash</span><span class="p">(</span><span class="s">&quot;ban&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Ban a user from this server. Requires permission to ban users.&quot;</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">addOption</span><span class="p">(</span><span class="n">USER</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;The user to ban&quot;</span><span class="p">,</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">addOptions</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OptionData</span><span class="p">(</span><span class="n">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;del_days&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Delete messages from the past days.&quot;</span><span class="p">)</span>
+<span class="w">            </span><span class="p">.</span><span class="na">setRequiredRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">))</span><span class="w"> </span><span class="c1">// Only allow values between 0 and 7 (inclusive)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">addOptions</span><span class="p">(</span><span class="k">new</span><span class="w"> </span><span class="n">OptionData</span><span class="p">(</span><span class="n">STRING</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;reason&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;The ban reason to use (default: Banned by &lt;user&gt;)&quot;</span><span class="p">))</span>
+<span class="w">        </span><span class="c1">// This way the command can only be executed from a guild, and not DMs</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setGuildOnly</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+<span class="w">        </span><span class="c1">// Only members with the BAN_MEMBERS permission are going to see this command</span>
+<span class="w">        </span><span class="p">.</span><span class="na">setDefaultPermissions</span><span class="p">(</span><span class="n">DefaultMemberPermissions</span><span class="p">.</span><span class="na">enabledFor</span><span class="p">(</span><span class="n">Permission</span><span class="p">.</span><span class="na">BAN_MEMBERS</span><span class="p">))</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>You can also limit it to administrators with <code>DefaultMemberPermissions.DISABLED</code>.</p>
+<h2 id="usersnowflake-type">UserSnowflake Type<a class="headerlink" href="#usersnowflake-type" title="Permanent link">&para;</a></h2>
+<p>We have started to cut down on overloads which accept 3 different inputs to specify a user. Previously methods like <code>Guild#ban</code> had many overloads to account for different types such as <code>String</code>/<code>long</code>/<code>User</code>/<code>Member</code>. We removed all of these in favor of a single <code>UserSnowflake</code> input, which can be constructed with <code>User.fromId(long/String)</code>. Both <code>User</code> and <code>Member</code> also implement this interface. This is a far more elegant handling and reduces the number of overloads in various parts of the API drastically.</p>
+<p>This applies to the following methods:</p>
+<ul>
+<li><code>Guild#ban(long/String)</code>, <code>Guild#ban(long/String, int)</code>, <code>Guild#ban(long/String, int, String)</code><br>
+    Now just <code>Guild#ban(UserSnowflake, int, TimeUnit)</code></li>
+<li><code>Guild#kick(long/String)</code>, <code>Guild#kick(long/String, String)</code><br>
+    Now just <code>Guild#kick(UserSnowflake)</code></li>
+<li><code>Guild#unban(long/String)</code> is now <code>Guild#unban(UserSnowflake)</code></li>
+<li><code>Guild#retrieveBanById(long/String)</code> is now <code>Guild#retrieveBan(UserSnowflake)</code></li>
+<li><code>Guild#addMember(String, long/String)</code> is now <code>Guild#addMember(UserSnowflake)</code></li>
+<li><code>Guild#timeoutForById(long/String, Duration)</code> is now <code>Guild#timeoutFor(UserSnowflake, Duration)</code></li>
+<li><code>Guild#timeoutUntilById(long/String, TemporalAccessor)</code> is now <code>Guild#timeoutUntil(UserSnowflake, TemporalAccessor)</code></li>
+<li><code>Guild#removeTimeoutById(long/String)</code> is now <code>Guild#removeTimeout(UserSnowflake)</code></li>
+<li><code>Guild#addRoleToMember(long/String, Role)</code> is now <code>Guild#addRoleToMember(UserSnowflake)</code></li>
+<li><code>Guild#removeRoleFromMember(long/String, Role)</code> is now <code>Guild#removeRoleFromMember(UserSnowflake)</code></li>
+<li><code>AuditLogPaginationAction#user(long/String)</code> is now <code>AuditLogPaginationAction#user(UserSnowflake)</code></li>
+</ul>
+<h3 id="ban-precision">Ban Precision<a class="headerlink" href="#ban-precision" title="Permanent link">&para;</a></h3>
+<p>You can now specify the age of messages to delete in seconds precision. To adjust your code simply add <code>TimeUnit.DAYS</code> to the end and move the ban reason into the <code>reason(...)</code> method:</p>
+<p><strong>Old:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">guild</span><span class="p">.</span><span class="na">ban</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Naughty words&quot;</span><span class="p">).</span><span class="na">queue</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>New:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">guild</span><span class="p">.</span><span class="na">ban</span><span class="p">(</span><span class="n">user</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="n">TimeUnit</span><span class="p">.</span><span class="na">DAYS</span><span class="p">).</span><span class="na">reason</span><span class="p">(</span><span class="s">&quot;Naughty words&quot;</span><span class="p">).</span><span class="na">queue</span><span class="p">()</span>
+</code></pre></div>
+<p>Kick reasons have also been moved into the <code>reason(...)</code> method, for example <code>guild.kick(user, reason)</code> turns into <code>guild.kick(user).reason(reason)</code>.</p>
+<h2 id="managers-are-no-longer-persistent">Managers are no longer persistent<a class="headerlink" href="#managers-are-no-longer-persistent" title="Permanent link">&para;</a></h2>
+<p>All getters for managers in JDA used to be lazy-idempotent, such that calling <code>getManager()</code> twice would return the same instance. This has been removed to reduce memory usage and complexity. If you previously relied on this behavior, you will need to adjust your code.</p>
+<p><strong>Old:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="n">channel</span><span class="p">.</span><span class="na">getManager</span><span class="p">().</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;new-name&quot;</span><span class="p">);</span>
+<span class="n">channel</span><span class="p">.</span><span class="na">getManager</span><span class="p">().</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;here is my title&quot;</span><span class="p">);</span>
+<span class="n">channel</span><span class="p">.</span><span class="na">getManager</span><span class="p">().</span><span class="na">queue</span><span class="p">();</span>
+</code></pre></div>
+<p><strong>New:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1">// Use method chaining or declare a variable to re-use the manager</span>
+<span class="n">channel</span><span class="p">.</span><span class="na">getManager</span><span class="p">()</span>
+<span class="w">       </span><span class="p">.</span><span class="na">setName</span><span class="p">(</span><span class="s">&quot;new-name&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">setTitle</span><span class="p">(</span><span class="s">&quot;here is my title&quot;</span><span class="p">)</span>
+<span class="w">       </span><span class="p">.</span><span class="na">queue</span><span class="p">();</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <style>
+  .footer__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto; /* Float to the middle */
+    padding: 10px;
+  }
+  .footer__columns {
+    display: flex;
+    justify-content: space-around;
+    width: 100%
+  }
+  .footer__column h3 {
+    margin: 0
+  }
+  .footer__column ul {
+    list-style: none;
+    margin-left: 0 !important; /* overriding theme CSS overly-strong selectors */
+  }
+  .footer__column li {
+    margin-left: 0 !important; /* overriding theme CSS overly-strong selectors */
+  }
+  .footer__copyright {
+    text-align: center;
+  }
+</style>
+
+<div class="footer__container">
+  <div class="md-copyright footer__columns">
+    <div class="footer__column">
+      <h3>Resources</h3>
+      <div class="md-copyright__highlight">
+        <ul>
+          <li><a href="https://docs.jda.wiki/" target="_blank" rel="noopener">Javadocs</a></li>
+          <li><a href="https://github.com/discord-jda/JDA" target="_blank" rel="noopener">GitHub (JDA)</a></li>
+          <li><a href="https://github.com/discord-jda/JDA-Website" target="_blank" rel="noopener">GitHub (Wiki)</a></li>
+          <li><a href="https://discord.dev" target="_blank" rel="noopener">Discord API Docs</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__column">
+      <h3>Community</h3>
+      <div class="md-copyright__highlight">
+        <ul>
+          <li><a href="https://discord.gg/JDA" target="_blank" rel="noopener">Discord Server</a></li>
+          <li><a href="https://opencollective.com/java-jda" target="_blank" rel="noopener">Open Collective</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="md-copyright">
+    <div class="md-copyright__highlight footer__copyright">
+      Copyright 2015 Austin Keener, Michael Ritter, Florian Spieß, and <a href="https://github.com/discord-jda/JDA-Website/graphs/contributors" target="_blank">Wiki Contributors</a>
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.instant", "navigation.tabs", "toc.integrate", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+    
+  </body>
+</html>

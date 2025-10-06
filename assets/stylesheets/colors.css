@@ -1,0 +1,33 @@
+[data-md-color-primary=purple] {
+    --md-primary-fg-color: #9449d9;
+}
+
+.md-annotation__index::after {
+  background-color: var(--md-primary-fg-color);
+}
+
+.mdx-container {
+    display: block;
+    padding-top: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.mdx-container .mdx-hero {
+    text-align: center;
+}
+
+.mdx-container .mdx-hero .mdx-description {
+    max-width: 35rem;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.mdx-container .mdx-hero .mdx-description, .mdx-container .mdx-hero .mdx-button {
+    margin: 1.8rem auto;
+}
+
+.md-typeset .admonition.jda,
+.md-typeset details.jda {
+    border-color: var(--md-primary-fg-color);
+}
