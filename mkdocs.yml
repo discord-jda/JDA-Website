@@ -63,7 +63,6 @@ nav:
   - Getting Started:
     - JDA: introduction/jda.md
     - Using Events: introduction/events.md
-    - List of Events: introduction/events-list.md
     - FAQ: introduction/faq.md
     - Migration V3 -> V4: introduction/migration-v3-v4.md
     - Migration V4 -> V5: introduction/migration-v4-v5.md
