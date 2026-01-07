@@ -62,6 +62,11 @@ public class MusicBot extends ListenerAdapter {
     public static void main(String[] args) {
         JDABuilder.createDefault(args[0]) // Use token provided as JVM argument
             .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
+            .setAudioModuleConfig(
+              new AudioModuleConfig()
+                .withDaveSessionFactory(new JDaveSessionFactory())
+                .withAudioSendFactory(new NativeAudioSendFactory())
+            )
             .build(); // Build JDA - connect to discord
     }
     
