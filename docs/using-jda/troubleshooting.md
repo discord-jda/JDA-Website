@@ -373,3 +373,23 @@ To resolve this, try stopping all current processes for the bot that could be re
 ### Interaction Followup Messages Timed out 
 
 This means you sent followup messages through `InteractionHook.sendMessage(...)` or similar but never acknowledged the interaction.
+
+## Audio Problems
+
+### Using passthrough dave session. Please migrate to an implementation of libdave!
+
+This error indicates that you opened an audio connection (`audioManager.openAudioConnection(...)`) without configuring a [DaveSessionFactory](https://docs.jda.wiki/net/dv8tion/jda/api/audio/dave/DaveSessionFactory.html).
+
+Discord requires all audio connections to implement the [DAVE protocol](https://daveprotocol.com/). To resolve this error, configure an `AudioModuleConfig` with an implementation of `DaveSessionFactory`:
+
+```java
+JDABuilder.createDefault(token. intents)
+  .setAudioModuleConfig(
+    new AudioModuleConfig()
+	  .withDaveSessionFactory(daveSessionFactory))
+  ...
+```
+
+An implementation for this protocol must be provided as an additional dependency, to avoid bloating the default size of JDA applications.
+You can use implementations like [JDAVE](https://github.com/MinnDevelopment/jdave) or [libdave-jvm](https://github.com/KyokoBot/libdave-jvm).
+
