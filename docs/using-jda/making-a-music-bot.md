@@ -4,10 +4,25 @@
     - [IntelliJ IDEA](../setup/intellij.md)
     - [Eclipse](../setup/eclipse.md)
     - [Netbeans](../setup/netbeans.md)
-
 2. [Set up JDA](getting-started.md)
-3. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/discord-jda/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
+3. Add a library that implements the Discord Audio & Video End-to-End Encryption (DAVE) Protocol.
+   - For instance [JDAVE](https://github.com/MinnDevelopment/jdave) or [libdave-jvm](https://github.com/KyokoBot/libdave-jvm) and follow their setup guidelines.
+4. Once you have your project you will need an additional dependency for your [AudioSendHandler](https://github.com/discord-jda/JDA/blob/master/src/main/java/net/dv8tion/jda/api/audio/AudioSendHandler.java)
     - If you don't want to implement it yourself, use [LavaPlayer](#using-lavaplayer)
+
+### Configure JDA Audio Module
+
+Since JDA relies on additional dependencies to provide audio support, you need to properly setup the audio module using [JDABuilder#setAudioModuleConfig](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html#setAudioModuleConfig(net.dv8tion.jda.api.audio.AudioModuleConfig)).
+
+For instance, if you use [JDAVE](https://github.com/MinnDevelopment/jdave) and [udpqueue](https://github.com/MinnDevelopment/udpqueue.rs), this would be your config setup:
+
+```java
+builder.setAudioModuleConfig(
+  new AudioModuleConfig()
+    .withDaveSessionFactory(new JDaveSessionFactory())
+    .withAudioSendFactory(new NativeAudioSendFactory())
+)
+```
 
 ### Connecting to a VoiceChannel
 
@@ -43,19 +58,15 @@
 ### A Working Example
 
 ```java
-public class MusicBot extends ListenerAdapter 
-{
-    public static void main(String[] args)
-    throws IllegalArgumentException, LoginException, RateLimitedException
-    {
+public class MusicBot extends ListenerAdapter {
+    public static void main(String[] args) {
         JDABuilder.createDefault(args[0]) // Use token provided as JVM argument
             .addEventListeners(new MusicBot()) // Register new MusicBot instance as EventListener
             .build(); // Build JDA - connect to discord
     }
     
     @Override
-    public void onMessageReceived(MessageReceivedEvent event) 
-    {
+    public void onMessageReceived(MessageReceivedEvent event) {
         // Make sure we only respond to events that occur in a guild
         if (!event.isFromGuild()) return;
         // This makes sure we only execute our code when someone sends a message with "!play"
