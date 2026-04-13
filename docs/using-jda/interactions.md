@@ -368,16 +368,16 @@ Each non-link button requires such an ID in order to be used.
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("hello")) {
                     event.reply("Click the button to say hello")
-                        .addActionRow(
+                        .addComponents(ActionRow.of(
                           Button.primary("hello", "Click Me"), // Button with only a label
-                          Button.success("emoji", Emoji.fromFormatted("<:minn:245267426227388416>"))) // Button with only an emoji
+                          Button.success("emoji", Emoji.fromFormatted("<:minn:245267426227388416>")))) // Button with only an emoji
                         .queue();
                 } else if (event.getName().equals("info")) {
                     event.reply("Click the buttons for more info")
-                        .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                        .addComponents(ActionRow.of( // link buttons don't send events, they just open a link in the browser when clicked
                             Button.link("https://github.com/discord-jda/JDA", "GitHub")
                               .withEmoji(Emoji.fromFormatted("<:github:849286315580719104>")), // Link Button with label and emoji
-                            Button.link("https://docs.jda.wiki/", "Javadocs")) // Link Button with only a label
+                            Button.link("https://docs.jda.wiki/", "Javadocs"))) // Link Button with only a label
                         .queue();
                 }
             }
@@ -398,16 +398,16 @@ Each non-link button requires such an ID in order to be used.
             override fun onSlashCommandInteraction(event: SlashCommandInteractionEvent) {
                 if (event.name == "hello") {
                     event.reply("Click the button to say hello")
-                        .addActionRow(
+                        .addComponents(ActionRow.of(
                             Button.primary("hello", "Click Me"),  // Button with only a label
-                            Button.success("emoji", Emoji.fromFormatted("<:minn:245267426227388416>"))) // Button with only an emoji
+                            Button.success("emoji", Emoji.fromFormatted("<:minn:245267426227388416>")))) // Button with only an emoji
                         .queue()
                 } else if (event.name == "info") {
                     event.reply("Click the buttons for more info")
-                        .addActionRow( // link buttons don't send events, they just open a link in the browser when clicked
+                        .addComponents(ActionRow.of( // link buttons don't send events, they just open a link in the browser when clicked
                             Button.link("https://github.com/discord-jda/JDA", "GitHub")
                                 .withEmoji(Emoji.fromFormatted("<:github:849286315580719104>")),  // Link Button with label and emoji
-                            Button.link("https://docs.jda.wiki/", "Javadocs")) // Link Button with only a label
+                            Button.link("https://docs.jda.wiki/", "Javadocs"))) // Link Button with only a label
                         .queue()
                 }
             }
@@ -473,14 +473,14 @@ Both interaction events provide the values that were selected by the user.
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("food")) {
                     event.reply("Choose your favorite food")
-                        .addActionRow(
+                        .addComponents(ActionRow.of(
                             StringSelectMenu.create("choose-food")
                               .addOption("Pizza", "pizza", "Classic") // SelectOption with only the label, value, and description
                               .addOptions(SelectOption.of("Hamburger", "hamburger") // another way to create a SelectOption
                                     .withDescription("Tasty") // this time with a description
                                     .withEmoji(Emoji.fromUnicode("\uD83C\uDF54")) // and an emoji
                                     .withDefault(true)) // while also being the default option
-                            .build())
+                            .build()))
                         .queue();
                 }
             }
@@ -507,7 +507,7 @@ Both interaction events provide the values that were selected by the user.
                         .build()
                     
                     event.reply("Choose your favorite food")
-                        .addActionRow(selectMenu)
+                        .addComponents(ActionRow.of(selectMenu))
                         .queue()
                 }
             }
@@ -528,9 +528,9 @@ Both interaction events provide the values that were selected by the user.
             public void onSlashCommandInteraction(SlashCommandInteractionEvent event) {
                 if (event.getName().equals("highfive")) {
                     event.reply("Choose the user to high-five")
-                        .addActionRow(
+                        .addComponents(ActionRow.of(
                             EntitySelectMenu.create("choose-user", SelectTarget.USER)
-                            .build())
+                            .build()))
                         .queue();
                 }
             }
@@ -554,7 +554,7 @@ Both interaction events provide the values that were selected by the user.
                         .build()
                     
                     event.reply("Choose the user to high-five")
-                        .addActionRow(selectMenu)
+                        .addComponents(ActionRow.of(selectMenu))
                         .queue()
                 }
             }
