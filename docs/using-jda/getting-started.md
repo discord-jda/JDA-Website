@@ -17,7 +17,7 @@
 
     ![public bot](../assets/images/dashboard/dashboard_public_bot.png)
 
-    You only want require code grant enabled if you plan to use an oauth2 flow, the general user will not need this.
+    You only want "Requires OAuth2 code grant" enabled if you plan to use an OAuth2 flow, the general user will not need this.
 
 ## Add your Discord Bot to a Server
 
@@ -26,10 +26,9 @@
     ![client id](../assets/images/dashboard/dashboard_client_id.png)
 
 2. Create an OAuth2 authorization URL (reference [docs](https://discord.com/developers/docs/topics/oauth2#bot-authorization-flow)).
-    Users who want to use Interaction Commands should also add the `applications.commands` scope.
-    Some example URLs:
-      - `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot`
-      - `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot+applications.commands`
+
+    This is the URL to invite your bot to a server, for example,
+    `https://discord.com/api/oauth2/authorize?client_id=492747769036013578&scope=bot`
 
     !!! note 
         This can be done from the **Bot** tab at the very bottom. Here you can select the scope **bot** and some permissions required for your bots functionality (optional).
@@ -42,12 +41,12 @@
 
 ## Connecting to Discord with a Bot Account
 
-1. Retrieve your **Bot Token** from your application dashboard (https://discord.com/developers/applications)
+1. Retrieve your **Bot Token** from your application dashboard (<https://discord.com/developers/applications>)
     
     ![get token](../assets/images/dashboard/dashboard_get_token.png)
     
-    !!! caution
-        Note that it is very important not to show this token to anyone, ever.
+    !!! danger
+        You must not show this token to anyone, ever.
 
 2. Set up your JDA project: 
     - [IntelliJ IDEA](../setup/intellij.md)
@@ -56,17 +55,29 @@
     
     [ ![Download](https://img.shields.io/maven-central/v/net.dv8tion/JDA?color=blue) ](https://github.com/discord-jda/JDA/releases/latest)
 
-3. Create [`JDABuilder`](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html) instance with token
-4. Build JDA using `JDABuilder.build()`
+3. Create [`JDABuilder`](https://docs.jda.wiki/net/dv8tion/jda/api/JDABuilder.html) instance, using the static methods and your token
+
+    !!! tip
+    
+        It is often better to load your token in from an external file or environment variable, especially if you plan on publishing the source code.
+
+4. Enable the "Message content intent" on your bot's dashboard, and add the `MESSAGE_CONTENT` intent on your `JDABuilder`
+
+    While receiving messages is enabled by default,
+    Discord requires an additional **privileged** intent for the content of the message.
+
+5. Build JDA using `JDABuilder.build()`
     
     ```java
     public static void main(String[] arguments) throws Exception
     {
-        JDA api = JDABuilder.createDefault(BOT_TOKEN).build();
+        JDA api = JDABuilder.createDefault(BOT_TOKEN)
+                            .enableIntents(GatewayIntent.MESSAGE_CONTENT)
+                            .build();
     }
     ```
-    !!! tip
-        It is often better to load your token in from an external file or environment variable, especially if you plan on publishing the source code.
+    !!! note
+        You must not build JDA more than once.
 
 ## Making a Ping-Pong Protocol
 
