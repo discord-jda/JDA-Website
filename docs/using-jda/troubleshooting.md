@@ -67,7 +67,7 @@ NDkyNzQ3NzY5MDM2MDEzNTc4.Xw2cUA.LLslVBE1tfFK20sGsNm-FVFYdsA
 
 ### Can't get emoji from message
 
-Methods such as [`Mentions.getCustomEmojis()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojis()) and [`Mentions.getCustomEmojisBag()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojisBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [emoji-java](https://github.com/MinnDevelopment/emoji-java) to extract unicode emoji from a message.
+Methods such as [`Mentions.getCustomEmojis()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojis()) and [`Mentions.getCustomEmojisBag()`](https://docs.jda.wiki/net/dv8tion/jda/api/entities/Mentions.html#getCustomEmojisBag()) only include custom emoji which have to be uploaded to a guild by a moderator. Unicode emoji such as 👍 are not included and require using a 3rd party library to be located in a string. You can use [JEmoji](https://github.com/felldo/JEmoji) to extract unicode emoji from a message.
 
 An example use-case including a code sample can be found in [this answer to a related question on StackOverflow](https://stackoverflow.com/a/58353912/10630900)
 
